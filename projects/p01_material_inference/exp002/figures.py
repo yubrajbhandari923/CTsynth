@@ -15,14 +15,15 @@ res = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).parent / "resul
 m = json.loads((res / "metrics.json").read_text())
 cells = [c for c in m["cells"] if c["condition"] == "matched" and c["n_tot"] == 1e6]
 
-fig, ax = plt.subplots(1, 3, figsize=(15, 4))
+fig, ax = plt.subplots(1, 3, figsize=(17, 5.6))
 lab = [f"{c['phantom']} {c['design']} k{c['k']}" for c in cells]
 x = np.arange(len(cells))
 cond = [c["jac_cond"]["median"] if c["identifiable"] else np.nan for c in cells]
 ax[0].bar(x, cond)
 for i, c in enumerate(cells):
     if not c["identifiable"]:
-        ax[0].text(i, 1, "non-ident.", rotation=90, ha="center", va="bottom")
+        ax[0].text(i, 1, "non-identifiable\n(rank < k)", rotation=90, ha="center",
+                   va="bottom", fontsize=7, color="firebrick")
 ax[0].set_yscale("log")
 ax[0].set_ylabel("median cond(weighted J)")
 ax[0].set_xticks(x, lab, rotation=60, ha="right")
@@ -36,6 +37,10 @@ ax[1].bar(x, ratio)
 ax[1].axhline(1, c="k")
 ax[1].axhspan(0.75, 1.25, alpha=0.15)
 ax[1].set_ylabel("iodine emp std / CRLB (N=1e6)")
+for i, c in enumerate(cells):
+    if not c["identifiable"]:
+        ax[1].text(i, 0.05, "non-identifiable\n(not scored)", rotation=90, ha="center",
+                   va="bottom", fontsize=7, color="firebrick")
 ax[1].set_xticks(x, lab, rotation=60, ha="right")
 mis = [c for c in m["cells"] if c["identifiable"] and c["condition"] != "matched"]
 for key in sorted({(c["phantom"], c["design"], c["k"], c["condition"]) for c in mis}):
@@ -49,8 +54,8 @@ ax[2].set_xscale("log")
 ax[2].set_yscale("log")
 ax[2].set_xlabel("N_tot")
 ax[2].set_ylabel("rms iodine A bias (g/cm^2)")
-ax[2].legend(fontsize=5)
-fig.tight_layout()
+ax[2].legend(fontsize=6, loc="center left", bbox_to_anchor=(1.02, 0.5), frameon=False)
+fig.subplots_adjust(left=0.06, right=0.82, bottom=0.30, top=0.95, wspace=0.30)
 fig.savefig(res / "fig_identifiability.png", dpi=130)
 
 npz = sorted(res.glob("recon_*N1e+06_matched.npz"))

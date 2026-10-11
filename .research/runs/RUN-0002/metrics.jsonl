@@ -1,0 +1,6 @@
+{"author_type": "agent", "name": "jac_cond", "ts": "2026-10-11T19:46:55-04:00", "unit": "dimensionless", "value": 195.1044}
+{"author_type": "agent", "name": "crlb_rel_std", "ts": "2026-10-11T19:46:56-04:00", "unit": "ratio_M4k3_over_M2k2_iodine", "value": 2.702994}
+{"author_type": "agent", "name": "emp_over_crlb", "ts": "2026-10-11T19:46:56-04:00", "unit": "max_abs_dev_cell_P3M4k3_iodine", "value": 1.1056}
+{"author_type": "agent", "name": "insert_rmse_gcm3", "ts": "2026-10-11T19:46:56-04:00", "unit": "g_per_cm3_iodine_P3M4k3_N1e6", "value": 0.005}
+{"author_type": "agent", "name": "mismatch_bias_gcm3", "ts": "2026-10-11T19:46:56-04:00", "unit": "g_per_cm3_misspec_rms_iodine_M2", "value": 0.02408}
+{"author_type": "agent", "name": "mismatch_bias_gcm2_corrected", "ts": "2026-10-11T19:52:47-04:00", "unit": "g_per_cm2_LINE_INTEGRAL_misspec_rms_iodine_M2", "value": 0.0240821}
