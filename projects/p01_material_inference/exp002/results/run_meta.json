@@ -1,0 +1,30 @@
+{
+  "config": {
+    "device": "cpu",
+    "experiment_id": "EXP-002",
+    "name": "exp002_spectral_identifiability",
+    "params": {
+      "escale": 0.02,
+      "full_image": true,
+      "lm_max_iter": 200,
+      "n_random_rays": 30,
+      "n_real": 20,
+      "n_tot_high": 1000000.0,
+      "n_tot_low": 100000.0,
+      "out_dir": "projects/p01_material_inference/exp002/results",
+      "rank_rtol": 1e-06,
+      "rays_per_insert": 6,
+      "tilt": 0.1
+    },
+    "seed": 20002
+  },
+  "config_sha256": "786b51bb799f2530eb2b3a6690c385e2e008123f654133203deb735f06b9fe96",
+  "ctsynth_version": "0.0.1",
+  "experiment_id": "EXP-002",
+  "git_commit": null,
+  "git_dirty": true,
+  "numpy": "2.5.4",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.7",
+  "utc_time": "2026-10-11T23:43:10+00:00"
+}

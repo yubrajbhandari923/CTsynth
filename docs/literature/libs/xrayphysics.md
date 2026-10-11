@@ -1,0 +1,19 @@
+# XrayPhysics (github.com/kylechampley/XrayPhysics) - evaluation, 2026-10-11
+
+Method: `gh api` read-only on repo metadata/files; nothing installed or run. VERIFIED = read via gh api (path given); UNVERIFIED = not read/run.
+
+## Findings
+- License: VERIFIED. `LICENSE` = "MIT License, Copyright (c) 2023 Kyle Champley"; README "SPDX-License-Identifier: MIT". No restrictions. Underlying data: README says cross sections "based on EPDL97" (IAEA/LLNL evaluated library, public).
+- Maintenance: VERIFIED. Last commit 2025-01-19 ("Update dual_energy_decomposition.cpp"). Releases v1.0 (2024-02-12), v1.1, v1.2 (2024-02-22), v1.2.1 (2024-03-15); nothing since. 3 open issues, 56 stars. Single maintainer; setup.py says version 1.2.
+- PyPI / wheels: VERIFIED negative. `pypi.org/pypi/xrayphysics/json` -> "Not Found". `setup.py` builds from source (`sh ./etc/build.sh` -> `libxrayphysics.dylib` on darwin; CMake C++). No wheel. Python bindings load the shared lib via ctypes (xrayphysics.py `__init__(lib_dir="")`). Python deps: only `python_requires>=3.6`, no torch/CUDA mandatory in what was read (rest of setup.py not read: UNVERIFIED). arm64 build success: UNVERIFIED.
+- CUDA: VERIFIED none required. README: "very few dependencies", "C/C++ library (Linux, Windows, Mac)"; CPU-only code (src/*.cpp, no .cu files in src/).
+- Tests: VERIFIED mostly absent. No tests/ directory; only `demo/xrayphysics_example.py` and `demo/dual_energy_decomp.py`. `comparisonWithTASMICS.png` is the only validation artefact (spectra vs TASMICS, claimed "at least as accurate").
+- Mass attenuation / material tables: VERIFIED. README: cross sections 1 keV-20 MeV, Z=1-100, by chemical formula or element/compound mass fractions; hard-coded C++ arrays. API (src/xrayphysics.py): `mu`, `muPE/CS/RS/PP/TP` (photoelectric, Compton, Rayleigh, pair, total), `sigma*`, `density`, `atomicMass`, `effectiveZ`, `PhotoelectricBasis`, `ComptonBasis`. Differs from NIST XCOM tables (EPDL97); agreement vs XCOM UNVERIFIED.
+- Spectrum model: VERIFIED. `simulateSpectra(kV, takeOffAngle=11.0, Z=74, gammas)` (anodes Cu, Mo, W, Au per README), `changeTakeOffAngle`, `filterResponse(formula, density, thickness, gammas)`, `detectorResponse(formula, density, thickness, gammas)`, `normalizeSpectrum`, `meanEnergy`, `load_spectra/save_spectra`, `transmission`, `effectiveAttenuation/LAC/Energy`. Covers source x filter x detector scintillator absorption (energy-integrating assumed; photon-counting response UNVERIFIED).
+- Spectral decomposition tools: VERIFIED present. `setBHlookupTable`, `polynomialBHC`, `setTwoMaterialBHClookupTable`, `setDEDlookupTable` (dual-energy decomposition w/ basis functions). Useful as cross-check of our decomposition; not differentiable.
+- Torch/autograd: VERIFIED none. numpy arrays in/out via ctypes; no torch tensors, no gradients. We would need to evaluate it once to numpy tables (mu(E) per material, spectra) and load those as constants into torch.
+- Projectors: N/A (physics only; pairs with LEAP optionally).
+- Fit for small differentiable 2D forward model: good as a DATA SOURCE (spectra + attenuation tables) but poor as runtime dependency (ctypes build, no wheel, gradient-free). The differentiable model only needs mu_m(E), S(E), D(E) arrays on an energy grid, trivial to freeze to .npz.
+
+## Verdict: USE AS TEST ORACLE / OFFLINE TABLE GENERATOR ONLY (not a runtime dependency)
+Rationale: MIT, EPDL97-based, W-anode spectrum + filter + detector response are exactly what a spectral forward model needs; use it to cross-check our spectrum/attenuation inputs (e.g. against NIST XCOM and SpekPy/TASMICS) and optionally to export frozen .npz tables with provenance (version, commit) recorded. Do not import in the package: source-only build, last commit 2025-01, no tests, no torch. Caveat: single-maintainer, unvalidated against XCOM here (UNVERIFIED); treat its numbers as one more reference, not ground truth.

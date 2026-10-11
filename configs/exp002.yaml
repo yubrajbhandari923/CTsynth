@@ -1,0 +1,16 @@
+experiment_id: EXP-002
+name: exp002_spectral_identifiability
+seed: 20002
+device: cpu
+params:
+  n_real: 20            # noise realisations per cell
+  rays_per_insert: 6    # subset: rays through each insert centre (evenly spaced views)
+  n_random_rays: 30     # subset: uniformly random rays (seeded)
+  n_tot_low: 100000.0
+  n_tot_high: 1000000.0
+  tilt: 0.1             # spectrum tilt magnitude (+-)
+  escale: 0.02          # energy-scale magnitude (+-)
+  lm_max_iter: 200
+  rank_rtol: 1.0e-6     # pre-registered relative singular-value threshold
+  full_image: true      # full-image reconstructions for the representative cells only
+  out_dir: projects/p01_material_inference/exp002/results

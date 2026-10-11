@@ -1,0 +1,5 @@
+experiment_id: EXP-000
+name: smoke
+seed: 123
+device: cpu
+params: {n: 4}

@@ -1,0 +1,180 @@
+{
+  "table_version": "v1",
+  "generated_utc": "2026-10-11T23:44:49Z",
+  "generator": {
+    "script": "scripts/make_tables.py",
+    "sha256": "ddb5a64e3e15cb773c492ae583cd44f1f69cec22b3e38b49d7511db97f26cedc",
+    "command": "uv run --no-project --with xraylib --with spekpy --with numpy python scripts/make_tables.py"
+  },
+  "libraries": {
+    "python": "3.14.7",
+    "xraylib": "4.3.0",
+    "spekpy": "2.5.4",
+    "numpy": "2.5.4",
+    "spekpy_dependency_note": "spekpy requires scipy and matplotlib; resolved by uv (versions not pinned by this script)"
+  },
+  "database_descriptions": {
+    "xraylib": {
+      "installed_package_statement": [
+        "xraylib: a library for X-ray--matter interactions"
+      ],
+      "installed_metadata_summary": "pip-installable xraylib",
+      "CS_Total_signature_doc": "CS_Total(int Z, double E) -> double",
+      "data_lineage": "UNVERIFIED: the installed package does not state which tabulation underlies CS_Total/CS_Total_CP; its documentation is an external wiki that was not read offline."
+    },
+    "spekpy": {
+      "installed_metadata_summary": "A Python software toolkit for modelling the x-ray spectra from x-ray tubes",
+      "mu_data_source_doc": [
+        ":param string: mu_data_source (default: depends on physics model)",
+        "options: ('pene' or 'nist')"
+      ],
+      "chosen": "physics='casim' (SpekPy v2 casim model), mu_data_source='pene' (SpekPy default for casim)",
+      "data_lineage": "UNVERIFIED: the bundled files are named pene_mu.dat and nist_mu.dat; their original source was not stated in the installed docs.",
+      "validation_reference": "Bujila R, Omar A, Poludniowski G. Phys Med 2020;75:44-54 (cited in the installed METADATA; not re-read)"
+    }
+  },
+  "spectra": {
+    "model": "SpekPy tungsten reflection target, 12 deg anode angle, kVp 80 and 120, mas=1, focus-to-detector 100 cm, native SpekPy defaults otherwise",
+    "filtration": "2.5 mm Al total (SpekPy filter thickness unit is mm; checked against xraylib Al mu/rho at 30 keV)",
+    "inherent_filtration": "none added (SpekPy default filtration list is empty); real tube window/oil not modelled",
+    "native_bin_width_keV": 0.5,
+    "rebinning": "native 0.5 keV bins are summed into 1 keV bins; bin n covers [n-0.5, n+0.5) and holds native bins with centre in that range; values are photons per 1 keV bin",
+    "normalisation": "SpekPy native, as returned by get_spectrum(edges=False, flu=True, diff=True) times 0.5 keV. Absolute normalisation vs a physical air kerma or fluence: UNVERIFIED. Consumers must rescale to a target count.",
+    "per_kvp_stats": {
+      "80": {
+        "native_bins": 158,
+        "native_first_centre_keV": 1.25,
+        "native_last_centre_keV": 79.75,
+        "native_total_photons_cm2": 152392161.93233156,
+        "native_in_grid_total_photons_cm2": 152392161.9297736,
+        "rebinned_total_photons_cm2": 152392161.9297736,
+        "dropped_below_9p5keV_fraction": 1.678546004349648e-11,
+        "dropped_above_150p5keV_fraction": 0.0,
+        "conservation_rel_diff": 0.0
+      },
+      "120": {
+        "native_bins": 238,
+        "native_first_centre_keV": 1.25,
+        "native_last_centre_keV": 119.75,
+        "native_total_photons_cm2": 361569450.1328968,
+        "native_in_grid_total_photons_cm2": 361569450.13064575,
+        "rebinned_total_photons_cm2": 361569450.1306457,
+        "dropped_below_9p5keV_fraction": 6.225766515745663e-12,
+        "dropped_above_150p5keV_fraction": 0.0,
+        "conservation_rel_diff": 1.6484978129057557e-16
+      }
+    }
+  },
+  "attenuation": {
+    "quantity": "total mass attenuation coefficient incl. coherent scattering, cm^2/g, at grid points",
+    "water": "xraylib CS_Total_CP('H2O', E): compound composition H2O, density 1.0 g/cm^3 reference",
+    "iodine": "xraylib CS_Total(53, E); ref density 4.93 g/cm^3 (solid I2, elemental)",
+    "calcium": "xraylib CS_Total(20, E); ref density 1.55 g/cm^3 (Ca metal, elemental)",
+    "k_edge_limitation_diagnostics": {
+      "iodine_kappa_33keV": 6.642709396203243,
+      "iodine_kappa_34keV": 33.61607676603791,
+      "iodine_K_edge_keV_xraylib": 33.1694
+    }
+  },
+  "nist_spot_checks": {
+    "rtol": 0.02,
+    "reason_for_rtol": "NIST and xraylib tabulations differ in data lineage; 2% is a loose consistency bound, not a precision claim",
+    "results": [
+      {
+        "material": "water",
+        "energy_keV": 30.0,
+        "nist_mu_over_rho_cm2_per_g": 0.3756,
+        "nist_source": "https://physics.nist.gov/PhysRefData/XrayMassCoef/ComTab/water.html",
+        "xraylib_cm2_per_g": 0.37559062454411485,
+        "xraylib_table_value_at_grid_index_matches": true,
+        "rel_diff": 2.496127764947046e-05,
+        "rtol": 0.02,
+        "pass": true
+      },
+      {
+        "material": "water",
+        "energy_keV": 60.0,
+        "nist_mu_over_rho_cm2_per_g": 0.2059,
+        "nist_source": "https://physics.nist.gov/PhysRefData/XrayMassCoef/ComTab/water.html",
+        "xraylib_cm2_per_g": 0.2059010514277534,
+        "xraylib_table_value_at_grid_index_matches": true,
+        "rel_diff": 5.106497102429224e-06,
+        "rtol": 0.02,
+        "pass": true
+      },
+      {
+        "material": "water",
+        "energy_keV": 100.0,
+        "nist_mu_over_rho_cm2_per_g": 0.1707,
+        "nist_source": "https://physics.nist.gov/PhysRefData/XrayMassCoef/ComTab/water.html",
+        "xraylib_cm2_per_g": 0.17075292398655334,
+        "xraylib_table_value_at_grid_index_matches": true,
+        "rel_diff": 0.00031004092884211654,
+        "rtol": 0.02,
+        "pass": true
+      },
+      {
+        "material": "iodine",
+        "energy_keV": 60.0,
+        "nist_mu_over_rho_cm2_per_g": 7.579,
+        "nist_source": "https://physics.nist.gov/PhysRefData/XrayMassCoef/ElemTab/z53.html",
+        "xraylib_cm2_per_g": 7.576999932215544,
+        "xraylib_table_value_at_grid_index_matches": true,
+        "rel_diff": 0.00026389600006017285,
+        "rtol": 0.02,
+        "pass": true
+      },
+      {
+        "material": "iodine",
+        "energy_keV": 100.0,
+        "nist_mu_over_rho_cm2_per_g": 1.942,
+        "nist_source": "https://physics.nist.gov/PhysRefData/XrayMassCoef/ElemTab/z53.html",
+        "xraylib_cm2_per_g": 1.9421650530662602,
+        "xraylib_table_value_at_grid_index_matches": true,
+        "rel_diff": 8.499128025759301e-05,
+        "rtol": 0.02,
+        "pass": true
+      },
+      {
+        "material": "calcium",
+        "energy_keV": 60.0,
+        "nist_mu_over_rho_cm2_per_g": 0.6578,
+        "nist_source": "https://physics.nist.gov/PhysRefData/XrayMassCoef/ElemTab/z20.html",
+        "xraylib_cm2_per_g": 0.6578517513232082,
+        "xraylib_table_value_at_grid_index_matches": true,
+        "rel_diff": 7.867334023733005e-05,
+        "rtol": 0.02,
+        "pass": true
+      },
+      {
+        "material": "calcium",
+        "energy_keV": 100.0,
+        "nist_mu_over_rho_cm2_per_g": 0.2571,
+        "nist_source": "https://physics.nist.gov/PhysRefData/XrayMassCoef/ElemTab/z20.html",
+        "xraylib_cm2_per_g": 0.2570883188395443,
+        "xraylib_table_value_at_grid_index_matches": true,
+        "rel_diff": 4.543430749004239e-05,
+        "rtol": 0.02,
+        "pass": true
+      }
+    ],
+    "skipped": [],
+    "all_pass": true
+  },
+  "known_limitations": [
+    "The 1 keV grid under-resolves the iodine K-edge at 33.17 keV. kappa is stored only at grid points; any interpolation between 33 and 34 keV straddles the edge and does not reproduce the jump. Use the diagnostics above.",
+    "Ref densities are elemental reference values (I2 solid 4.93, Ca metal 1.55), not tissue-mixture densities.",
+    "Water kappa is a single compound H2O at unit density; no tissue composition is modelled.",
+    "Spectra are SpekPy native normalisation and not verified against a physical reference. Rescale before use.",
+    "Spectrum mass below 9.5 keV and above 150.5 keV is outside the grid and is dropped; fractions are in spectra.per_kvp_stats.",
+    "Spectra assume SpekPy's characteristic W lines (default char=True) and the 12 deg reflection geometry; no heel effect or detector response.",
+    "Only 2.5 mm Al filtration is modelled; no inherent tube filtration.",
+    "Data lineage of xraylib and SpekPy attenuation tables is UNVERIFIED (see database_descriptions)."
+  ],
+  "sha256": {
+    "attenuation_v1.npz": "6c5461c5b2db172de061cdb4eb861155fd1f9d8182a31ff8fe5f32f67ed7473d",
+    "spectra_v1.npz": "47ca25399541e0e21a53e41cb6fb6fbb90f1cf7bce4fe4a67098a0fbb44bebfe"
+  },
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python_executable_version": "3.14.7"
+}
