@@ -19,15 +19,21 @@ always using the **nominal** spectra.
 Statistics (Fisher/CRLB/rank/empirical std/bias) are on a **seeded ray subset** (48 rays P2, 60 P3;
 20 Poisson realisations each) — *not* the full image. 16 full-image reconstructions use 1 realisation each.
 
-## Results after independent review
-The original findings F-001…F-004 were challenged by an independent reviewer; three were superseded.
-**Current: F-005, F-006, F-007, F-008** (`research show F-007` etc.). Read those, not the originals.
+## Results after TWO rounds of independent review
+Findings went through two independent reviews, each of which found real errors in the previous version.
+**Current: F-006, F-008, F-009, F-010.** Superseded: F-001…F-005, F-007. Read the current ones only.
 
-- **F-007** Rank ≤ min(n_meas, k) is *arithmetic, not evidence*. The empirical content is conditioning among
-  identifiable designs (dual-kVp k=2: median cond 195, max 506; 4-bin k=2: 99; 4-bin k=3: 217) and noise at
-  equal basis size, where **photon counting is 2.5× better** than dual-kVp (iodine CRLB 0.0019 vs 0.0047 g/cm²).
-- **F-005** Spectral mismatch **always** biases a nominal-spectrum estimator. A noise-free calculation gives
-  nonzero bias in every condition; visibility depends on material, dose and statistic.
+- **F-010** Rank ≤ min(n_meas, k) is *arithmetic, not evidence*. Empirically, rank verdicts are robust for
+  thresholds **1e-3 … 1e-10** but collapse at 1e-2 (singular-value ratios are only 0.0020–0.0123).
+  Median condition numbers: dual-kVp k=2 195 (max 506), 4-bin k=2 99, 4-bin k=3 217. At **equal basis size**
+  photon counting is **2.5× better** (median iodine CRLB 0.00151 vs 0.00376 g/cm²) — an upper bound, since no
+  detector response, charge sharing or pile-up is modelled.
+- **F-009 + F-011** Spectral mismatch **always** biases a nominal-spectrum estimator. Dual-kVp *water* tilt bias
+  is ~4× the floor (z ≈ ±24) and was invisible to the iodine-only criterion; dual-kVp *iodine* energy-scale is
+  ~3.8× (z ≈ ±22); 4-bin photon counting on P2 is 27–43×. The dual-kVp iodine **tilt** case is **marginal**
+  (per-ray bias 0.66–0.75× floor; z ≈ 5 only after pooling 48 rays) — do not quote it as strongly detectable.
+  All z values are *noise-free hypothetical power* against a noise-only null, not observed Monte-Carlo statistics.
+  The pre-registered rms criterion is **defective** (D-004): use a signed-mean test.
 - **F-006** Empirical std matches CRLB to 12.5% — a *self-consistency* check of Jacobian+sampler+MLE,
   **not** validation of physical fidelity (a wrong table would pass equally).
 - **F-008** Basis misspecification bias is systematic and dose-independent (iodine *line integral*, g/cm²).
