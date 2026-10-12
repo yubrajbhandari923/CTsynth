@@ -20,3 +20,4 @@ projects/*/results*/
 bundles/
 runs_imported/
 incoming/
+.venv-xcist/

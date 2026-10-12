@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~5196 tokens.
-> Generated 2026-10-12T18:37:00-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~5068 tokens.
+> Generated 2026-10-12T18:40:15-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `6c12fbebe1`
+Git: `master` @ `24bac0e3b9`
 
 ## Latest checkpoint
 
@@ -67,8 +67,8 @@ _none_
 
 ## Active decisions
 
+- D-010 (2026-10-12) Adopt Research OS 0.5.0 native HPC protocol; CTsynth keeps thin preflight/postcheck guards
 - D-009 (2026-10-12) Laptop<->HPC workflow: the laptop is authoritative, the cluster is a dumb execution worker, and transfer is manual. Implemented as 'ctsynth prepare|verify|export|import|report' (stdlib argparse, NO new dependency, ZERO network I/O - nothing in the package can contact a cluster). Research OS remains the single system of record: import registers via 'research run attach' rather than building a second tracker. Integrity rules enforced in code: prepare refuses a dirty src/tests/configs tree; verify checks every manifest hash, the config hash and commit EXISTENCE+UNAMBIGUITY (not ancestry, so old/diverged commits stay importable); import refuses duplicates via an idempotency marker and never overwrites a completed run; external checkpoints are recorded by hash without being copied. SLURM templates render every unset cluster field as a commented TODO instead of a guessed default, because a wrong partition produces a job that silently never runs.
-- D-008 (2026-10-11) Promotion gate: a finding may be marked supported only with (1) evidence matching the claim type - empirical claims bound and verified against a registered run, mathematical claims an independently checked derivation recorded as such (a deterministic verification run is the preferred form); (2) independent review by a non-author with authority to reject, including for superseding findings; (3) explicit scope - synthetic vs real, split, regime, and the tolerance of any threshold-dependent number. Provenance: git_dirty_source is the citability signal, experiment outputs stay outside tracked source.
 
 ## Blockers
 

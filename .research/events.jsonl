@@ -320,3 +320,4 @@
 {"action": "results_imported", "author_name": "opus", "author_type": "agent", "entity_id": "RUN-0013", "entity_type": "run", "summary": "RUN-0013 results imported from results-RUN-0013.tar.gz (slurm job 201821): status completed, 1 new metric entries", "ts": "2026-10-12T18:36:47-04:00"}
 {"action": "synthesized", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-008", "entity_type": "experiment", "summary": "EXP-008 synthesized (1 runs covered, 1 new)", "ts": "2026-10-12T18:36:59-04:00"}
 {"action": "status", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-008", "entity_type": "experiment", "summary": "EXP-008: needs_review → completed", "ts": "2026-10-12T18:36:59-04:00"}
+{"action": "created", "author_name": "opus", "author_type": "agent", "entity_id": "D-010", "entity_type": "decision", "summary": "D-010 Adopt Research OS 0.5.0 native HPC protocol; CTsynth keeps thin preflight/postcheck guards", "ts": "2026-10-12T18:40:15-04:00"}
