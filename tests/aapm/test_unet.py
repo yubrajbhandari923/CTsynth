@@ -16,6 +16,9 @@ def test_shape_and_params(output):
 
 
 def test_constraints_exact():
+    # Seed the WEIGHT init too, not just the input: the "linear head emits a negative" assertion
+    # below depends on random weights and failed ~1 run in 6 unseeded.
+    torch.manual_seed(0)
     # 1e-6: float32 softmax sums
     s = UNet(2, 4, "softmax")(x()).sum(1)
     torch.testing.assert_close(s, torch.ones_like(s), atol=1e-6, rtol=0)
