@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~5158 tokens.
-> Generated 2026-10-12T19:18:23-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~4882 tokens.
+> Generated 2026-10-12T19:19:51-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `bd8a465b8d`
+Git: `master` @ `322ac276b8`
 
 ## Latest checkpoint
 
@@ -38,7 +38,7 @@ _none set_
 - F-021 [supported, medium] PENG 2024 IS NOT A LABEL-FREE COMPARATOR. Loss L = lambda*||A[x1;x2] - [mu_H;mu_L]||^2 + L_GAN, image-domain on linear attenuation coefficients with a LINEAR 2x2 per-pixel matrix A from ROI means: no spectrum, no projector, no Poisson term. Because A is square and invertible the fidelity minimum is exactly the noisy direct inversion, so the GAN term supplies ALL the noise suppression (SD -91-97%). The discriminator requires an UNPAIRED reference set of clean material maps built by thresholding SECT/high-energy images from other patients, so the method carries a learned prior fitted to label-like data: it is 'unpaired-reference adversarial', not label-free. Evaluation ground truth uses the same thresholding recipe, so the reference prior is in-distribution with the evaluation - a self-favouring protocol. Like Hellwege it is 2-from-2 (determined, no sum-to-one row) and so says nothing about our 3-from-2 null space. Usable only as an unpaired-reference-prior baseline on a 2-material subproblem, and must be labelled as such. Unverified: published lambda (supplement not obtained; 1e4/1e2 from arXiv v1 only), exact GAN loss form, hyperparameter protocol; no code released. — evidence: Q-006
 - F-018 [supported, medium] EXPERIMENT A (deterministic, no training): a pure measurement-consistency loss CANNOT identify 3 material maps from 2 spectral measurements on the AAPM model, and this is not a linearisation artifact. Using the REAL polychromatic forward model and the official CC-BY spectra/mu tables, I solved for alternative material path-length vectors that reproduce BOTH kVp transmissions to machine precision: holding calcification at 0.05/0.06/0.08/0.10 cm and re-solving adipose+fibroglandular by Newton gives exact-measurement decoys with relative transmission error <= 1.8e-16 and ||dx|| up to 6.53 cm (e.g. truth [8.0,4.0,0.05] vs decoy [12.72,-0.51,0.10]). The decoy family is one-dimensional, as predicted by the 2x3 rank. Consequence: ANY label-free objective whose only signal is measurement consistency has a continuum of exact global minima; a network trained on it converges to whichever member its implicit priors (architecture, initialisation, amortisation) prefer, NOT to the truth. Reporting a low consistency loss as evidence of material accuracy is therefore invalid for this problem. — evidence: Q-006
 - F-020 [supported, medium] HELLWEGE 2026 IS NOT A PRECEDENT FOR OUR PROBLEM (full arXiv PDF text read). Their task is 2 basis materials (soft tissue, calcification) from 2 spectra: SQUARE and determined by counting, so pixelwise identifiability is automatic and never discussed in the paper. Our AAPM task is 3 materials from 2 spectra: underdetermined, and in their Eq. 6 objective L = (1/|D|)(1/M) sum_i [||p_LE - phat_LE||^2 + ||p_HE - phat_HE||^2] (unweighted MSE on log line integrals, no I0, no Poisson term, NO regulariser, no nonnegativity, no sum-to-one, no TV, no entropy, no softmax) our F-014 null direction would be EXACTLY FLAT. The paper reports no ablations at all; its gain over MBIR (VMI RMSE 5.83 vs 13.07 HU at 50 keV) comes from the network and training, not from the loss. The authors state the inverse crime explicitly (Sec 4.2: same polychromatic model generates and decodes) and run no mismatch experiment. Early stopping uses projection-domain validation loss with no ground truth, which is a genuinely label-free protocol worth copying. Unverified: energy-bin count, final activation, how 3+ AAPM tissue classes were merged into 2, whether data were noisy, and Table 1 mean-vs-median. — evidence: Q-006
-- … 21 more (`research finding list`)
+- … 22 more (`research finding list`)
 
 ## Failed directions (do not repeat without a new reason)
 
@@ -46,7 +46,7 @@ _none_
 
 ## Current experiments
 
-- EXP-010 [needs_review] XCIST vs CTsynth differentiable forward model: staged mismatch on known-material phantoms — runs 3, ⚠ 3 unsynthesized
+_none_
 
 ## Active plans
 
@@ -61,13 +61,9 @@ _none_
 
 - [reviewer disagrees] F-012 AAPM 3-material conditioning, computed from the official starting-kit spectra and mu tables (md5-verified kit, 10 sample cases): the spectrum-weighted effective attenuation matrix is [[0.26697,0.31321,3.01182],[0.21930,0.24788,1.64238]] 1/cm for (adipose,fibroglandular,calcification) at 50/80 kVp. Adipose and fibroglandular are spectrally near-degenerate: column cosine 0.999834, i.e. 1.04 degrees apart. The unconstrained 2x3 null direction is [-0.723,+0.691,-0.008], confirming F-010's prediction concretely: adipose can be traded against fibroglandular with essentially no measurement change. Appending the sum-to-one row makes the 3x3 system full rank (singular values 3.697, 1.176, 0.00290) but POORLY CONDITIONED at cond=1273. Therefore the partition constraint restores identifiability but error in the adipose/fibroglandular direction is amplified ~1000x; exact recovery in the noiseless challenge data is possible, while any model mismatch or interpolation error is magnified by that factor. Image-domain linear inversion is expected to be far worse than the published model-based winners (6.8e-7).: reviewer3: needs work — RECOMPUTED from model_data npy: mu matrix, col angle 1.043deg, SVs 3.697/1.176/0.0029, cond 1272.9 all reproduce. BUT it is the zero-thi
 - [reviewer disagrees] F-017 PROCESS (D-004 follow-up): when the provenance system itself writes into the repo during a run, a whole-tree git_dirty flag is ALWAYS true and therefore useless as a citability signal - it flagged RUN-0003/4/5 as non-citable purely because Research OS was logging the run. ctsynth.runmeta now records git_dirty_source (src/tests/configs only) alongside git_dirty; citability depends on the SOURCE being clean. Experiment outputs were also untracked (projects/*/results*/ gitignored) because writing results into a tracked directory dirties the tree as the run executes. RUN-0006 is the first run with git_dirty_source=False.: reviewer3: needs work — Overclaim: 'whole-tree git_dirty flag is ALWAYS true' - RUN-0006 record shows git dirty=False (RUN-0003 True). Process claim; could not 
+- [awaiting review] F-035 On XCIST-generated known-material disk phantoms, spectrum specification dominates the CTsynth-vs-XCIST projection mismatch: Agent finding awaiting an independent review
 - [awaiting review] F-034 Native Research OS HPC protocol completes a minimal CPU job on Duke SLURM (smoke test): Agent finding awaiting an independent review
 - [awaiting review] F-033 PROCESS: a nondeterministic test was hiding in the suite and I committed on top of it. tests/aapm/test_unet.py::test_constraints_exact seeded its INPUT but not the network WEIGHT initialisation, and its last assertion (a linear head must emit at least one negative value) depends on random weights - it failed about 1 run in 6. I observed '1 failed, 221 passed' in a gate, committed anyway, and only caught it because the count differed from the expected 222. Fixed with torch.manual_seed(0) inside the test; verified 12/12 on the file and 8/8 on the full suite. Two lessons: (1) a gate result must be READ before committing, not assumed; (2) a test whose assertion depends on random initialisation must seed the initialisation, not only the data - our determinism tests covered training loops but not test fixtures themselves.: Agent finding awaiting an independent review
-- [awaiting review] F-032 SECTION B.4 VERIFIED from the kit SOURCE CODE (not an audit summary). starting_kit/model/dualEnergyTransmission.py lines 13-20 state verbatim: 'knock out every other view for kVp switching. First view is 80 kVp, second is 50 kVp, ...' and implement it as Sinogram[:,::2] for kvp=='80' and Sinogram[:,1::2] for kvp=='50'. Our src/ctsynth/aapm/schema.py convention (KVP_HIGH=80 on EVEN views, KVP_LOW=50 on ODD views, kvp_of_view returning 80 for view%2==0) therefore matches the official generator exactly. Note projection.py itself computes a full 512-view sinogram with NO kVp split; the interlacing is applied afterwards in dualEnergyTransmission.py, so any projection-domain work must apply the parity split itself and must not assume the stored 256-view per-kVp arrays are contiguous angular sweeps - they are every other view of a 512-view circular fan-beam scan.: Agent finding awaiting an independent review
-
-## ⚠ Needs synthesis before new experiments
-
-- EXP-010 XCIST vs CTsynth differentiable forward model: staged mismatch on known-material phantoms (3 unsynthesized runs)
 
 ## Active decisions
 
@@ -76,7 +72,7 @@ _none_
 
 ## Blockers
 
-- [run] RUN-0016: RUN-0016 (EXP-010) failed — not yet reviewed
+_none_
 
 ## Project skills
 
