@@ -248,3 +248,5 @@
 {"action": "updated", "author_name": "opus", "author_type": "agent", "entity_id": "T-016", "entity_type": "task", "summary": "Task T-016 updated", "ts": "2026-10-11T21:16:58-04:00"}
 {"action": "created", "author_name": "opus", "author_type": "agent", "entity_id": "T-030", "entity_type": "task", "summary": "Task created: P1.8 HPC bundle validator + environment pinning (Prompt 4 prerequisite)", "ts": "2026-10-11T21:17:30-04:00"}
 {"action": "created", "author_name": "opus", "author_type": "agent", "entity_id": "CP-004", "entity_type": "checkpoint", "summary": "Checkpoint Checkpoint — 2026-10-11", "ts": "2026-10-11T21:17:30-04:00"}
+{"action": "synthesized", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-005", "entity_type": "experiment", "summary": "EXP-005 synthesized (1 runs covered, 1 new)", "ts": "2026-10-11T21:17:42-04:00"}
+{"action": "status", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-005", "entity_type": "experiment", "summary": "EXP-005: needs_review → completed", "ts": "2026-10-11T21:17:42-04:00"}

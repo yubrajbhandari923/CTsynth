@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~5696 tokens.
-> Generated 2026-10-11T21:17:30-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~5619 tokens.
+> Generated 2026-10-11T21:17:42-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `c461aa3330` (uncommitted changes)
+Git: `master` @ `0896c11786`
 
 ## Latest checkpoint
 
@@ -46,7 +46,7 @@ _none_
 
 ## Current experiments
 
-- EXP-005 [needs_review] EXP-006 retrospective verification of Experiment A identifiability calculations — runs 1, ⚠ 1 unsynthesized
+_none_
 
 ## Active plans
 
@@ -64,10 +64,6 @@ _none_
 - [awaiting review] F-029 SUPERSEDES F-028 (my own over-concession; Opus re-verified both records directly). Reviewer3 said F-017's 'git_dirty is ALWAYS true' is contradicted by RUN-0006 recording dirty=False, and I accepted that too readily in F-028. BOTH of us were reading different records and both numbers are real: Research OS's .research/runs/RUN-000N/run.json samples git BEFORE its own writes and records git_dirty=0 for RUN-0004/5/6; our runmeta.json samples git INSIDE the running script, after Research OS has written its event log, and records git_dirty=True for the same RUN-0006. So there are TWO dirty flags with different sampling points and they legitimately disagree. F-017's substance stands for the runmeta flag (the one our citability rule reads), and the resolution is unchanged: git_dirty_source (src/tests/configs only) is the correct citability signal, and RUN-0006 has git_dirty_source=False. LESSON: I superseded a correct finding because a reviewer cited a number I did not check against the specific artifact my claim was about - verify WHICH record a counter-claim refers to before conceding.: Agent finding awaiting an independent review
 - [awaiting review] F-027 SCOPE CORRECTION to F-015 and F-016 (reviewer3; Opus verified). Both were stated without the SYNTHETIC-ONLY qualifier they require, and they do not transfer. (a) F-015 said boundary pixels are the hard case; on REAL kit images the TISSUE pixels fail worst (sum_to_one tissue RMSE 1.823 vs all-pixel 1.555), because the dominant error is linear-model mismatch (F-025), not partition ambiguity. (b) F-016's ordering does not transfer: on real cases 0-2 the ranking is unconstrained 0.317 < simplex 0.379 < zero 0.447 << sum_to_one 1.555, so 'simplex wins' is FALSE on real data (it loses to the unconstrained estimator) while 'sum_to_one is worse than predicting nothing' HOLDS and is in fact far worse than on synthetic data. (c) The synthetic generator's boundary band is 9.5% of pixels versus 3.4-13.8% on real data depending on threshold, so the synthetic phantom is not a faithful stand-in for the boundary question. The surviving general claim from F-016 is the METRIC-DESIGN one: a pooled RMSE over a multi-regime phantom can rank a clipped estimator above an exact one, so regime-separated reporting is mandatory.: Agent finding awaiting an independent review
 - [awaiting review] F-026 SUPERSEDES F-013 (reviewer3; Opus re-verified on all 10 kit cases). Two errors corrected. (1) WRONG NUMBER: calcification max is 0.738 over the 10 cases, not 0.566 - 0.566 is case 0 only, which I presented as a 10-case figure. (2) FALSE INDEPENDENCE: all 10 kit cases share an IDENTICAL support mask (verified: every case's >0 mask equals case 0's), so the regime split is one observation repeated, not 10 confirmations. (3) THRESHOLD-DEPENDENT: over all 10 cases the split is air 35.1% / tissue 51.1% / band 13.8% at strict equality but air 36.3% / tissue 60.4% / band 3.4% at 1e-3 tolerance - the band fraction moves by 4x with the threshold, so any claim keyed to '~5% boundary pixels' must state its tolerance. CORRECT AND UNCHANGED: the two-regime structure itself, and that there is no fourth material class. Scope: these are the 10 starting-kit sample cases, NOT the 1000-case training set, which we have never downloaded.: Agent finding awaiting an independent review
-
-## ⚠ Needs synthesis before new experiments
-
-- EXP-005 EXP-006 retrospective verification of Experiment A identifiability calculations (1 unsynthesized runs)
 
 ## Active decisions
 
