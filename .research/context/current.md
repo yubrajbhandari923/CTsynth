@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~5370 tokens.
-> Generated 2026-10-12T00:40:06-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~5392 tokens.
+> Generated 2026-10-12T00:44:21-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `809ed4712f` (uncommitted changes)
+Git: `master` @ `1a1cfa54ed`
 
 ## Latest checkpoint
 
@@ -51,8 +51,9 @@ _none_
 ## Active plans
 
 - PLAN-003 P03 label-free physics-consistent decomposition (B0-B4 ladder) — 2/2 tasks done · objective: Implement and fairly compare B0 classical constrained, B1 regularized classical, B2 supervised U-Net, B3 label-free physics-consistent U-Net, B4 physics+priors; ablate priors individually; test identifiability, information, noise, mismatch, generalization
-- PLAN-002 P02 AAPM benchmark: adapter, classical and supervised baselines — 5/19 tasks done · objective: Reproducible benchmark on AAPM DL-Spectral CT: adapter with explicit conventions, deterministic splits, streaming loader, constrained classical baseline, small U-Net, honest evaluation
+- PLAN-002 P02 AAPM benchmark: adapter, classical and supervised baselines — 5/20 tasks done · objective: Reproducible benchmark on AAPM DL-Spectral CT: adapter with explicit conventions, deterministic splits, streaming loader, constrained classical baseline, small U-Net, honest evaluation
   - next ready: T-017 P1.1 Acquire + validate the real AAPM 1000-case dataset (`research task context T-017`)
+  - running: T-030 P1.8 HPC bundle validator + environment pinning (Prompt 4 prerequisite) (claimed by opus)
 - PLAN-001 P01 foundation: spectral forward model and baselines — 4/9 tasks done · objective: Validated spectral forward model + classical baseline decomposition on laptop, then HPC-ready configs
   - next ready: T-005 Classical baseline: image-domain two-material decomposition on toy phantom (`research task context T-005`)
   - BLOCKED: T-004 Read AAPM starting_kit.tgz (103 MB) for spectra/geometry/metric (needs user OK to download)

@@ -25,11 +25,22 @@ def _git(*args: str) -> str | None:
         return None
 
 
+def _lock_sha256() -> str | None:
+    """Hash of uv.lock: without it the environment is not pinned in the evidence."""
+    root = _git("rev-parse", "--show-toplevel")
+    lock = Path(root) / "uv.lock" if root else Path("uv.lock")
+    try:
+        return hashlib.sha256(lock.read_bytes()).hexdigest()
+    except OSError:
+        return None
+
+
 def collect(cfg: ExperimentConfig) -> dict[str, object]:
     import numpy
 
     return {
         "experiment_id": cfg.experiment_id,
+        "uv_lock_sha256": _lock_sha256(),
         "config_sha256": hashlib.sha256(cfg.model_dump_json().encode()).hexdigest(),
         "config": cfg.model_dump(),
         "git_commit": _git("rev-parse", "HEAD"),

@@ -32,6 +32,8 @@ def test_run_metadata_roundtrip(tmp_path: Path) -> None:
     # git_dirty covers the whole tree (always true under `research run exec`, which logs as it
     # runs); git_dirty_source covers only src/tests/configs, which is what citability needs.
     assert isinstance(meta["git_dirty_source"], bool)
+    # uv.lock hash pins the environment in the evidence (HPC bundle requirement)
+    assert meta["uv_lock_sha256"] is not None and len(meta["uv_lock_sha256"]) == 64
     assert runmeta.collect(cfg)["config_sha256"] == meta["config_sha256"]
 
 
