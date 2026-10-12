@@ -11,3 +11,7 @@ runs_local/
 # AAPM DL-Spectral CT bulk data: never committed (see docs/literature/aapm/)
 data/aapm/
 *.npy.gz
+
+# Experiment outputs: written during runs, so tracking them makes every run "dirty".
+# Register them as Research OS artifacts instead; commit a curated copy if needed.
+projects/*/results*/

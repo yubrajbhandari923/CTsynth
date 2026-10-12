@@ -1,0 +1,39 @@
+{
+  "artifacts_offset": 0,
+  "author_model": null,
+  "author_name": "opus",
+  "author_type": "agent",
+  "backend": "local",
+  "command": "uv run python projects/p02_aapm_benchmark/evaluate.py configs/exp003_aapm_smoke.yaml --data-dir /private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data --out projects/p02_aapm_benchmark/results_synthetic --split val --purpose development",
+  "created_at": "2026-10-11T20:32:38-04:00",
+  "ended_at": "2026-10-11T20:32:43-04:00",
+  "env": {
+    "lockfiles": {
+      "uv.lock": "87debd45b1676f8b"
+    },
+    "user": "yubraj"
+  },
+  "exit_code": 0,
+  "experiment_id": "EXP-003",
+  "git_branch": "master",
+  "git_commit": "4dadb3c79cb007459ae6e8d0a2eba001e6245156",
+  "git_dirty": 0,
+  "hostname": "Yubraj-1120.local",
+  "id": "RUN-0004",
+  "label": "aapm-synthetic-smoke-val-clean",
+  "metrics_offset": 0,
+  "notes": null,
+  "override_reason": null,
+  "parameters": {},
+  "pid": 29225,
+  "reviewed": 0,
+  "run_dir": ".research/runs/RUN-0004",
+  "slurm": null,
+  "slurm_job_id": null,
+  "started_at": "2026-10-11T20:32:38-04:00",
+  "status": "completed",
+  "stderr_path": ".research/runs/RUN-0004/stderr.log",
+  "stdout_path": ".research/runs/RUN-0004/stdout.log",
+  "updated_at": "2026-10-11T20:32:43-04:00",
+  "working_dir": "."
+}

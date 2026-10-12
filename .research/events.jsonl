@@ -126,3 +126,7 @@
 {"action": "evidence_bound", "author_name": "opus", "author_type": "agent", "entity_id": "F-016", "entity_type": "finding", "summary": "F-016/B3 metric binding, claim 0.4301 (read)", "ts": "2026-10-11T20:32:22-04:00"}
 {"action": "evidence_bound", "author_name": "opus", "author_type": "agent", "entity_id": "F-016", "entity_type": "finding", "summary": "F-016/B4 metric binding, claim 1.2869e-06 (read)", "ts": "2026-10-11T20:32:22-04:00"}
 {"action": "evidence_bound", "author_name": "opus", "author_type": "agent", "entity_id": "F-016", "entity_type": "finding", "summary": "F-016/B5 metric binding, claim 3.838 (read)", "ts": "2026-10-11T20:32:23-04:00"}
+{"action": "created", "author_name": "opus", "author_type": "agent", "entity_id": "RUN-0004", "entity_type": "run", "summary": "RUN-0004 registered under EXP-003 [aapm-synthetic-smoke-val-clean]", "ts": "2026-10-11T20:32:38-04:00"}
+{"action": "status", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-003", "entity_type": "experiment", "summary": "EXP-003: needs_review → running (RUN-0004 started)", "ts": "2026-10-11T20:32:38-04:00"}
+{"action": "completed", "author_name": null, "author_type": "system", "entity_id": "RUN-0004", "entity_type": "run", "summary": "RUN-0004 completed (exit 0)", "ts": "2026-10-11T20:32:43-04:00"}
+{"action": "status", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-003", "entity_type": "experiment", "summary": "EXP-003: running → needs_review (all runs finished)", "ts": "2026-10-11T20:32:43-04:00"}
