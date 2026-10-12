@@ -287,3 +287,6 @@
 {"action": "created", "author_name": "opus", "author_type": "agent", "entity_id": "CP-006", "entity_type": "checkpoint", "summary": "Checkpoint Checkpoint — 2026-10-12", "ts": "2026-10-12T01:05:40-04:00"}
 {"action": "upgraded", "author_name": "claude-code", "author_type": "agent", "entity_id": null, "entity_type": "project", "summary": "Upgraded to research 0.4.0; 5 step(s) applied", "ts": "2026-10-12T11:19:31-04:00"}
 {"action": "upgraded", "author_name": "claude-code", "author_type": "agent", "entity_id": null, "entity_type": "project", "summary": "Upgraded to research 0.5.0; 2 step(s) applied", "ts": "2026-10-12T15:15:22-04:00"}
+{"action": "hpc_init", "author_name": null, "author_type": "human", "entity_id": null, "entity_type": "project", "summary": "remote workspace ready on duke: /home/yb107/research-os/projects/CTsynth", "ts": "2026-10-12T15:19:45-04:00"}
+{"action": "upgraded", "author_name": "claude-code", "author_type": "agent", "entity_id": null, "entity_type": "project", "summary": "Upgraded to research 0.5.0; 1 step(s) applied", "ts": "2026-10-12T15:34:40-04:00"}
+{"action": "upgraded", "author_name": "claude-code", "author_type": "agent", "entity_id": null, "entity_type": "project", "summary": "Upgraded to research 0.5.0; 1 step(s) applied", "ts": "2026-10-12T15:36:25-04:00"}
