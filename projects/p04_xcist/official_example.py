@@ -1,9 +1,10 @@
-"""Run XCIST's shipped Sim_Recon_Sample.py UNMODIFIED in a scratch copy; record versions, hashes, runtime.
+"""Run XCIST's shipped Sim_Recon_Sample.py UNMODIFIED in a scratch copy; record versions, hashes,
+runtime. Run inside the optional XCIST env:
+`research run exec EXP-... -- .venv-xcist/bin/python <this file>`.
 
-Run inside the optional XCIST env (.venv-xcist): `research run exec EXP-… -- .venv-xcist/bin/python <this>`.
-Deviation handling: on macOS the shipped FDK library links /opt/homebrew gcc libgomp; if XCIST_LIBGOMP_DIR
-is given we set DYLD_FALLBACK_LIBRARY_PATH for the child only (no system change) and record it.
-(A DYLD_* variable cannot be passed through /bin/sh launchers: SIP strips it, hence the other name.)
+Deviation handling: on macOS the shipped FDK library links /opt/homebrew gcc libgomp. If
+XCIST_LIBGOMP_DIR is given we set DYLD_FALLBACK_LIBRARY_PATH for the child only (no system change)
+and record it. A DYLD_* variable cannot be passed through /bin/sh launchers (SIP strips it).
 """
 
 import hashlib

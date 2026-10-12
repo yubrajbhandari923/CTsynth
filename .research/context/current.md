@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
 > Generated from .research/ by `research current`. Do not edit; it is overwritten. ~5148 tokens.
-> Generated 2026-10-12T19:01:13-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated 2026-10-12T19:04:28-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `e27d1b756e` (uncommitted changes)
+Git: `master` @ `6473bcea78` (uncommitted changes)
 
 ## Latest checkpoint
 
@@ -46,7 +46,7 @@ _none_
 
 ## Current experiments
 
-- EXP-009 [needs_review] XCIST official example reproduction (laptop, optional env) — runs 1, ⚠ 1 unsynthesized
+- EXP-009 [needs_review] XCIST official example reproduction (laptop, optional env) — runs 2, ⚠ 2 unsynthesized
 
 ## Active plans
 
@@ -67,7 +67,7 @@ _none_
 
 ## ⚠ Needs synthesis before new experiments
 
-- EXP-009 XCIST official example reproduction (laptop, optional env) (1 unsynthesized runs)
+- EXP-009 XCIST official example reproduction (laptop, optional env) (2 unsynthesized runs)
 
 ## Active decisions
 

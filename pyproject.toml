@@ -46,3 +46,7 @@ select = ["E", "F", "I", "B", "UP", "NPY"]
 strict = true
 plugins = ["pydantic.mypy"]
 files = ["src"]
+
+[[tool.mypy.overrides]]
+module = ["gecatsim", "gecatsim.*"]
+ignore_missing_imports = true  # optional dependency, installed only in the isolated XCIST env

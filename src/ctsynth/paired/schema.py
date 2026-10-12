@@ -22,7 +22,9 @@ from ctsynth.hashing import sha256_file
 
 SCHEMA_VERSION = "paired-ct/0.1"
 Semantics = Literal["volume_fraction", "partial_mass_density_g_cm3"]
-Kind = Literal["line_integral_prep", "counts_expected", "counts_noisy", "recon_hu", "recon_mu"]
+Kind = Literal[
+    "line_integral_prep", "counts_expected", "counts_noisy", "signal_air", "signal_scan", "recon_hu"
+]
 # fields a producer may legitimately be unable to supply; anything else missing is an error
 UNKNOWABLE = {"spectrum", "detector", "scatter", "noise", "recon", "attenuation_source"}
 

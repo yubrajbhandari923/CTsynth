@@ -326,3 +326,7 @@
 {"action": "created", "author_name": "opus", "author_type": "agent", "entity_id": "RUN-0014", "entity_type": "run", "summary": "RUN-0014 registered under EXP-009 [official-example]", "ts": "2026-10-12T18:58:45-04:00"}
 {"action": "failed", "author_name": null, "author_type": "system", "entity_id": "RUN-0014", "entity_type": "run", "summary": "RUN-0014 failed (exit 1)", "ts": "2026-10-12T19:01:13-04:00"}
 {"action": "status", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-009", "entity_type": "experiment", "summary": "EXP-009: running → needs_review (all runs finished)", "ts": "2026-10-12T19:01:13-04:00"}
+{"action": "created", "author_name": "opus", "author_type": "agent", "entity_id": "RUN-0015", "entity_type": "run", "summary": "RUN-0015 registered under EXP-009 [official-example-libgomp-fallback]", "ts": "2026-10-12T19:01:42-04:00"}
+{"action": "status", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-009", "entity_type": "experiment", "summary": "EXP-009: needs_review → running (RUN-0015 started)", "ts": "2026-10-12T19:01:42-04:00"}
+{"action": "completed", "author_name": null, "author_type": "system", "entity_id": "RUN-0015", "entity_type": "run", "summary": "RUN-0015 completed (exit 0)", "ts": "2026-10-12T19:04:28-04:00"}
+{"action": "status", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-009", "entity_type": "experiment", "summary": "EXP-009: running → needs_review (all runs finished)", "ts": "2026-10-12T19:04:28-04:00"}
