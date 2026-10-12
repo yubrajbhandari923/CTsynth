@@ -1,0 +1,13 @@
+{
+ "truth_sha256_equal": true,
+ "prep_bit_identical": false,
+ "prep_max_abs_diff": 9.655952453613281e-06,
+ "prep_rms_diff": 9.260908553277303e-07,
+ "prep_max": 5.9459052085876465,
+ "recon_max_abs_diff_HU": 0.0133056640625,
+ "recon_rms_diff_HU": 0.0023726916406303644,
+ "runtime_s_hpc": 6.94,
+ "host": "node004",
+ "gecatsim": "1.6.9",
+ "numpy_hpc": "1.26.4"
+}

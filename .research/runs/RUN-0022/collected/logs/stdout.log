@@ -1,0 +1,74 @@
+Airscan
+Offset scan
+Phantom scan
+in C> Preparing to allocate memory for material volume data...
+in C> Allocated memory for image volume for material  1
+in C> Copying data for material  1 into C memory...in C>  done.
+in C> Allocated memory for image volume for material  2
+in C> Copying data for material  2 into C memory...in C>  done.
+in C> Allocated memory for image volume for material  3
+in C> Copying data for material  3 into C memory...in C>  done.
+in C> Allocated a total of      0 MB.
+Prep view
+Applying LSC...done.
+
+Simulation is done.
+* Loading the projection data...
+* Pre-weighting the filter...
+* Applying the filter...
+* Running the reconstruction...
+* Converting projection data from a numpy array to a C array...
+* Allocating a C array for the recon results...
+* In C...
+* Converting the recon results from a C array to a numpy array...
+* Scaling recon data...
+* Writing the recon results to one big file...
+{
+ "host": "node004",
+ "platform": "Linux-5.15.0-130-generic-x86_64-with-glibc2.31",
+ "runtime_s": 6.94,
+ "provenance": {
+  "gecatsim": "1.6.9",
+  "numpy": "1.26.4",
+  "acq": {
+   "kvp": 120,
+   "mono_keV": null,
+   "mA": 800.0,
+   "n_view": 360,
+   "n_col": 900,
+   "col_size_mm": 1.0,
+   "sid_mm": 540.0,
+   "sdd_mm": 950.0,
+   "col_offset": 0.25,
+   "quantum_noise": false,
+   "electronic_noise": false,
+   "subsample": false,
+   "shaped_beam": false,
+   "seed": 0
+  },
+  "xcist_names": [
+   "water",
+   "Ca",
+   "I"
+  ],
+  "dx_mm": 2.0,
+  "cfg_files": [
+   "Phantom_Sample.cfg",
+   "Phantom_Sample_Analytic.cfg",
+   "Phantom_Sample_Hybrid.cfg",
+   "Phantom_Sample_Polygonal.cfg",
+   "Phantom_Sample_XCAT.cfg",
+   "Physics_Sample.cfg",
+   "Protocol_Sample_Helical.cfg",
+   "Protocol_Sample_axial.cfg",
+   "Recon_Sample_2d.cfg",
+   "Recon_Sample_Helical.cfg",
+   "Scanner_PCCT.cfg",
+   "Scanner_Sample_generic.cfg"
+  ]
+ },
+ "truth_sha256": "33dddcf50c0ed4fa61934969ba7da1012f20c281c3e6db8e74b1dd78c18a3eb7",
+ "prep_sha256": "94e5eb04ed13ed8db43e491c0d85f0e3a282f15ccd3098b9097a4b939f599622",
+ "recon_sha256": "f659f4664ca5772b2af4f7fd1a25a28c0db4361cfceaa91925a5072bb43447ed",
+ "slurm_job_id": "201825"
+}

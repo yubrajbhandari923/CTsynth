@@ -1,0 +1,72 @@
+{
+  "artifacts_offset": 306,
+  "author_model": null,
+  "author_name": "opus",
+  "author_type": "agent",
+  "backend": "slurm",
+  "command": "bash scripts/hpc_xcist_replicate.sh",
+  "created_at": "2026-10-12T19:36:27-04:00",
+  "ended_at": "2026-10-12T19:37:57-04:00",
+  "env": {
+    "lockfiles": {
+      "uv.lock": "87debd45b1676f8b"
+    },
+    "user": "yubraj"
+  },
+  "exit_code": 0,
+  "experiment_id": "EXP-012",
+  "git_branch": "master",
+  "git_commit": "0d16491695d5efd1ca2e7c93fae4cfc5a9e7a010",
+  "git_dirty": 0,
+  "hostname": "node004",
+  "id": "RUN-0022",
+  "label": null,
+  "metrics_offset": 414,
+  "notes": "submitted to duke over ssh",
+  "override_reason": null,
+  "parameters": {
+    "cpus": 2,
+    "gpus": 0,
+    "mem": "4G",
+    "time": "00:15:00"
+  },
+  "pid": null,
+  "reviewed": 0,
+  "run_dir": ".research/runs/RUN-0022",
+  "slurm": {
+    "hpc": {
+      "archive_sha256": "c8e467d11bd86e84e0000c0a84a94b5ebd1aa36d3e2eab6b4d9223c4bdbc756e",
+      "bundle": ".research/hpc/bundles/EXP-012-RUN-0022.tar.gz",
+      "bundle_dir": ".research/hpc/bundles/EXP-012-RUN-0022",
+      "cluster": "duke",
+      "collected_at": "2026-10-12T19:38:22-04:00",
+      "collected_on": "plp-drcc-login2",
+      "datasets": {},
+      "experiment_id": "EXP-012",
+      "last_sync": "2026-10-12T19:38:17-04:00",
+      "receipt": "/home/yb107/research-os/projects/CTsynth/runs/RUN-0022/submission.json",
+      "remote_archive": "/home/yb107/research-os/projects/CTsynth/code/EXP-012/results-RUN-0022.tar.gz",
+      "remote_code": "/home/yb107/research-os/projects/CTsynth/code/EXP-012/RUN-0022",
+      "remote_results": "/home/yb107/research-os/projects/CTsynth/results/RUN-0022",
+      "remote_run_dir": "/home/yb107/research-os/projects/CTsynth/runs/RUN-0022",
+      "sha256": "563fdfdfe41e388274d248a64fe877ab9fcfa37ee33aae77f4e1fd5ea1fe5313",
+      "slurm_job_id": "201825",
+      "ssh_host": "plp-drcc-login2",
+      "state": "collected",
+      "submitted_at": "2026-10-12T19:37:47-04:00",
+      "token": "803c66f6f99fd8e479de2cf930629ff6",
+      "upload_detail": "all 6 file(s) match",
+      "upload_verified": true
+    },
+    "nodelist": "node004",
+    "partition": "defq",
+    "state": "COMPLETED"
+  },
+  "slurm_job_id": "201825",
+  "started_at": "2026-10-12T19:37:49-04:00",
+  "status": "completed",
+  "stderr_path": ".research/runs/RUN-0022/stderr.log",
+  "stdout_path": ".research/runs/RUN-0022/stdout.log",
+  "updated_at": "2026-10-12T19:38:22-04:00",
+  "working_dir": "."
+}
