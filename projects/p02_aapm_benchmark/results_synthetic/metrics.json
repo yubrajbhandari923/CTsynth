@@ -1,30 +1,49 @@
 {
   "case_indices": [
-    4,
-    16
+    2,
+    5,
+    7,
+    8,
+    10,
+    12,
+    13,
+    14,
+    17,
+    18,
+    26,
+    31,
+    40,
+    44,
+    49,
+    54,
+    59
   ],
-  "experiment_id": "EXP-004",
+  "experiment_id": "EXP-003",
   "methods": {
     "classical_simplex": {
-      "aggregate_rmse": 0.05255246281841671,
-      "boundary_rmse": 0.17074861306561648,
+      "aggregate_rmse": 0.050861691942054935,
+      "boundary_rmse": 0.16520503144508863,
       "failure_cases": {
         "worst_cases_by_s1": [
           {
-            "case": 1,
-            "s1": 0.05351823861537894
+            "case": 0,
+            "s1": 0.0536768949962667
           },
           {
-            "case": 0,
-            "s1": 0.051568603161899824
+            "case": 7,
+            "s1": 0.05354867180210484
+          },
+          {
+            "case": 4,
+            "s1": 0.0535204660227527
           }
         ],
         "worst_roi_s2": {
-          "case": 1,
+          "case": 7,
           "roi": 8,
-          "value": 0.08747732687195017,
-          "x0": 2,
-          "y0": 14
+          "value": 0.09488918333727407,
+          "x0": 14,
+          "y0": 3
         }
       },
       "limitations": [
@@ -35,7 +54,7 @@
         "Data directory /private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data is used as given; this harness does not check whether it holds AAPM or synthetic data."
       ],
       "method_name": "classical_simplex",
-      "n_cases": 2,
+      "n_cases": 17,
       "partition": {
         "air": {
           "max_abs": 0.0,
@@ -43,41 +62,41 @@
         },
         "tissue": {
           "max_abs": 1.1102230246251565e-16,
-          "mean_abs": 7.676563696630296e-19
+          "mean_abs": 1.2441133146813386e-18
         }
       },
       "per_material": {
         "adipose": {
-          "mae": 0.022583676746708317,
-          "rmse": 0.09102353565722608
+          "mae": 0.021642114612744907,
+          "rmse": 0.08809503459534268
         },
         "calcification": {
-          "mae": 6.223667512091722e-09,
-          "rmse": 2.40042274272132e-07
+          "mae": 3.0236968076656056e-09,
+          "rmse": 9.669125223523083e-08
         },
         "fibroglandular": {
-          "mae": 6.75163292618326e-07,
-          "rmse": 1.1150259371368806e-06
+          "mae": 6.63491402799569e-07,
+          "rmse": 1.1231712061169425e-06
         }
       },
       "record_version": 1,
       "regime_pixel_counts": {
-        "air": 697,
-        "band": 194,
-        "tissue": 1157
+        "air": 6388,
+        "band": 1650,
+        "tissue": 9370
       },
-      "s1": 0.05254342088863938,
-      "s2": 0.08747732687195017,
-      "s2_full_scan": 0.0879484763412679,
+      "s1": 0.050808622868951006,
+      "s2": 0.09488918333727407,
+      "s2_full_scan": 0.09488918333727407,
       "shapes": {
         "pred": [
-          2,
+          17,
           3,
           32,
           32
         ],
         "truth": [
-          2,
+          17,
           3,
           32,
           32
@@ -86,25 +105,29 @@
       "split_name": "val"
     },
     "classical_sum_to_one": {
-      "aggregate_rmse": 1.2137882651086263,
-      "boundary_rmse": 3.9437288328378903,
+      "aggregate_rmse": 1.181546050453024,
+      "boundary_rmse": 3.8378069033392608,
       "failure_cases": {
         "worst_cases_by_s1": [
           {
-            "case": 1,
-            "s1": 1.2398366489572668
+            "case": 0,
+            "s1": 1.2930098534225232
           },
           {
-            "case": 0,
-            "s1": 1.1871684753788034
+            "case": 3,
+            "s1": 1.2871535148397455
+          },
+          {
+            "case": 7,
+            "s1": 1.2736804017684702
           }
         ],
         "worst_roi_s2": {
-          "case": 1,
+          "case": 0,
           "roi": 8,
-          "value": 2.203893968602811,
-          "x0": 2,
-          "y0": 14
+          "value": 2.3326565887904263,
+          "x0": 4,
+          "y0": 3
         }
       },
       "limitations": [
@@ -115,49 +138,49 @@
         "Data directory /private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data is used as given; this harness does not check whether it holds AAPM or synthetic data."
       ],
       "method_name": "classical_sum_to_one",
-      "n_cases": 2,
+      "n_cases": 17,
       "partition": {
         "air": {
           "max_abs": 0.0,
           "mean_abs": 0.0
         },
         "tissue": {
-          "max_abs": 4.474198789239381e-14,
-          "mean_abs": 5.546988970138844e-15
+          "max_abs": 6.827871601444713e-14,
+          "mean_abs": 5.668215807782884e-15
         }
       },
       "per_material": {
         "adipose": {
-          "mae": 0.3072010066158695,
-          "rmse": 1.5194772565750039
+          "mae": 0.297447345889648,
+          "rmse": 1.4791003398018887
         },
         "calcification": {
-          "mae": 0.0032580364784719285,
-          "rmse": 0.01644256301682264
+          "mae": 0.003157163937021252,
+          "rmse": 0.016005967234154043
         },
         "fibroglandular": {
-          "mae": 0.2878760352743222,
-          "rmse": 1.452846986581506
+          "mae": 0.2789630590271513,
+          "rmse": 1.4142698476013182
         }
       },
       "record_version": 1,
       "regime_pixel_counts": {
-        "air": 697,
-        "band": 194,
-        "tissue": 1157
+        "air": 6388,
+        "band": 1650,
+        "tissue": 9370
       },
-      "s1": 1.213502562168035,
-      "s2": 2.203893968602811,
-      "s2_full_scan": 2.203893968602811,
+      "s1": 1.178760449984016,
+      "s2": 2.3326565887904263,
+      "s2_full_scan": 2.3326565887904263,
       "shapes": {
         "pred": [
-          2,
+          17,
           3,
           32,
           32
         ],
         "truth": [
-          2,
+          17,
           3,
           32,
           32
@@ -166,25 +189,29 @@
       "split_name": "val"
     },
     "classical_tv": {
-      "aggregate_rmse": 0.05425923794529044,
-      "boundary_rmse": 0.17074821849730076,
+      "aggregate_rmse": 0.05256582183441124,
+      "boundary_rmse": 0.16520501060461965,
       "failure_cases": {
         "worst_cases_by_s1": [
           {
-            "case": 1,
-            "s1": 0.05504537409435955
+            "case": 4,
+            "s1": 0.05514539607039486
           },
           {
             "case": 0,
-            "s1": 0.053461543146633005
+            "s1": 0.05510902670936403
+          },
+          {
+            "case": 7,
+            "s1": 0.0550352571858639
           }
         ],
         "worst_roi_s2": {
-          "case": 1,
+          "case": 7,
           "roi": 8,
-          "value": 0.08782477287576992,
-          "x0": 2,
-          "y0": 14
+          "value": 0.09503049184682066,
+          "x0": 14,
+          "y0": 3
         }
       },
       "limitations": [
@@ -195,7 +222,7 @@
         "Data directory /private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data is used as given; this harness does not check whether it holds AAPM or synthetic data."
       ],
       "method_name": "classical_tv",
-      "n_cases": 2,
+      "n_cases": 17,
       "partition": {
         "air": {
           "max_abs": 0.0,
@@ -203,41 +230,41 @@
         },
         "tissue": {
           "max_abs": 2.220446049250313e-16,
-          "mean_abs": 2.955477023202664e-17
+          "mean_abs": 2.7062426768877883e-17
         }
       },
       "per_material": {
         "adipose": {
-          "mae": 0.031133826985779635,
-          "rmse": 0.09249225745166365
+          "mae": 0.02984923408750259,
+          "rmse": 0.08956185855752263
         },
         "calcification": {
-          "mae": 9.572739005676564e-05,
-          "rmse": 0.00026135952980794016
+          "mae": 9.169469617431465e-05,
+          "rmse": 0.0002575841052134399
         },
         "fibroglandular": {
-          "mae": 0.008649164179721593,
-          "rmse": 0.016652588684714635
+          "mae": 0.008299478089928411,
+          "rmse": 0.01637388217657155
         }
       },
       "record_version": 1,
       "regime_pixel_counts": {
-        "air": 697,
-        "band": 194,
-        "tissue": 1157
+        "air": 6388,
+        "band": 1650,
+        "tissue": 9370
       },
-      "s1": 0.05425345862049628,
-      "s2": 0.08782477287576992,
-      "s2_full_scan": 0.08811337725838753,
+      "s1": 0.05251959486862594,
+      "s2": 0.09503049184682066,
+      "s2_full_scan": 0.09503049184682066,
       "shapes": {
         "pred": [
-          2,
+          17,
           3,
           32,
           32
         ],
         "truth": [
-          2,
+          17,
           3,
           32,
           32
@@ -246,25 +273,29 @@
       "split_name": "val"
     },
     "classical_unconstrained": {
-      "aggregate_rmse": 0.3095179512821712,
-      "boundary_rmse": 0.24643034296534952,
+      "aggregate_rmse": 0.3027935831394383,
+      "boundary_rmse": 0.2515149044314237,
       "failure_cases": {
         "worst_cases_by_s1": [
           {
-            "case": 0,
-            "s1": 0.3097841185622669
+            "case": 9,
+            "s1": 0.316676481362668
           },
           {
-            "case": 1,
-            "s1": 0.30925155491674466
+            "case": 6,
+            "s1": 0.3155112747891383
+          },
+          {
+            "case": 11,
+            "s1": 0.31041181680381164
           }
         ],
         "worst_roi_s2": {
-          "case": 0,
+          "case": 10,
           "roi": 8,
-          "value": 0.4047439737003275,
-          "x0": 12,
-          "y0": 22
+          "value": 0.41721913408567335,
+          "x0": 3,
+          "y0": 13
         }
       },
       "limitations": [
@@ -275,7 +306,7 @@
         "Data directory /private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data is used as given; this harness does not check whether it holds AAPM or synthetic data."
       ],
       "method_name": "classical_unconstrained",
-      "n_cases": 2,
+      "n_cases": 17,
       "partition": {
         "air": {
           "max_abs": 0.0,
@@ -283,41 +314,41 @@
         },
         "tissue": {
           "max_abs": 0.028393861460417558,
-          "mean_abs": 0.026783589833055486
+          "mean_abs": 0.02677594292547382
         }
       },
       "per_material": {
         "adipose": {
-          "mae": 0.30528500561655236,
-          "rmse": 0.3883121240222119
+          "mae": 0.29244994222463694,
+          "rmse": 0.37981040177373193
         },
         "calcification": {
-          "mae": 0.0032372960342187335,
-          "rmse": 0.004182887781690056
+          "mae": 0.0031030684614829006,
+          "rmse": 0.004092792338533475
         },
         "fibroglandular": {
-          "mae": 0.28604346757876514,
-          "rmse": 0.36959475684173554
+          "mae": 0.274183276305038,
+          "rmse": 0.36163402733510824
         }
       },
       "record_version": 1,
       "regime_pixel_counts": {
-        "air": 697,
-        "band": 194,
-        "tissue": 1157
+        "air": 6388,
+        "band": 1650,
+        "tissue": 9370
       },
-      "s1": 0.3095178367395058,
-      "s2": 0.4047439737003275,
-      "s2_full_scan": 0.4047439737003275,
+      "s1": 0.30268451044528283,
+      "s2": 0.41721913408567335,
+      "s2_full_scan": 0.41721913408567335,
       "shapes": {
         "pred": [
-          2,
+          17,
           3,
           32,
           32
         ],
         "truth": [
-          2,
+          17,
           3,
           32,
           32
@@ -326,17 +357,21 @@
       "split_name": "val"
     },
     "zero_prediction": {
-      "aggregate_rmse": 0.43987655361600597,
-      "boundary_rmse": 0.3340293722262755,
+      "aggregate_rmse": 0.43028623050850506,
+      "boundary_rmse": 0.34200061342999066,
       "failure_cases": {
         "worst_cases_by_s1": [
           {
-            "case": 0,
-            "s1": 0.4423735020822623
+            "case": 9,
+            "s1": 0.4480540355938639
           },
           {
-            "case": 1,
-            "s1": 0.4373653501338035
+            "case": 6,
+            "s1": 0.44802580739294257
+          },
+          {
+            "case": 4,
+            "s1": 0.4417878539666021
           }
         ],
         "worst_roi_s2": {
@@ -344,7 +379,7 @@
           "roi": 8,
           "value": 0.5773502691896257,
           "x0": 13,
-          "y0": 8
+          "y0": 10
         }
       },
       "limitations": [
@@ -355,7 +390,7 @@
         "Data directory /private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data is used as given; this harness does not check whether it holds AAPM or synthetic data."
       ],
       "method_name": "zero_prediction",
-      "n_cases": 2,
+      "n_cases": 17,
       "partition": {
         "air": {
           "max_abs": 0.0,
@@ -368,36 +403,36 @@
       },
       "per_material": {
         "adipose": {
-          "mae": 0.4160699623316759,
-          "rmse": 0.6275296210702169
+          "mae": 0.4046246437169697,
+          "rmse": 0.618727171772362
         },
         "calcification": {
-          "mae": 0.0006982135237194598,
-          "rmse": 0.022394702523088318
+          "mae": 0.0009796559461392462,
+          "rmse": 0.02463033916044737
         },
         "fibroglandular": {
-          "mae": 0.1941784794034902,
-          "rmse": 0.43148487718766826
+          "mae": 0.17979375726998328,
+          "rmse": 0.4147393805741993
         }
       },
       "record_version": 1,
       "regime_pixel_counts": {
-        "air": 697,
-        "band": 194,
-        "tissue": 1157
+        "air": 6388,
+        "band": 1650,
+        "tissue": 9370
       },
-      "s1": 0.4398694261080329,
+      "s1": 0.4301441531615672,
       "s2": 0.5773502691896257,
       "s2_full_scan": 0.5773502691896257,
       "shapes": {
         "pred": [
-          2,
+          17,
           3,
           32,
           32
         ],
         "truth": [
-          2,
+          17,
           3,
           32,
           32
@@ -406,7 +441,7 @@
       "split_name": "val"
     }
   },
-  "n_cases": 2,
+  "n_cases": 17,
   "not_computed": {},
   "seed": 7,
   "split_name": "val"

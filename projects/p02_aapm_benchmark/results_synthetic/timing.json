@@ -1,22 +1,22 @@
 {
   "classical_simplex": {
-    "tracemalloc_peak_bytes": 348907,
-    "wall_s": 0.0010677077807486057
+    "tracemalloc_peak_bytes": 2943747,
+    "wall_s": 0.0017906669527292252
   },
   "classical_sum_to_one": {
-    "tracemalloc_peak_bytes": 167504,
-    "wall_s": 0.00014183297753334045
+    "tracemalloc_peak_bytes": 1411664,
+    "wall_s": 0.0005238328594714403
   },
   "classical_tv": {
-    "tracemalloc_peak_bytes": 414409,
-    "wall_s": 0.18544091703370214
+    "tracemalloc_peak_bytes": 1123740,
+    "wall_s": 1.4229547919239849
   },
   "classical_unconstrained": {
-    "tracemalloc_peak_bytes": 127200,
-    "wall_s": 0.00036737509071826935
+    "tracemalloc_peak_bytes": 1052848,
+    "wall_s": 0.0006646669935435057
   },
   "zero_prediction": {
-    "tracemalloc_peak_bytes": 49248,
-    "wall_s": 4.084082320332527e-06
+    "tracemalloc_peak_bytes": 417888,
+    "wall_s": 1.0292045772075653e-05
   }
 }

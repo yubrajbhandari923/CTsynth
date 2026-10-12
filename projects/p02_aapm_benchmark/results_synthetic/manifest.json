@@ -1,44 +1,44 @@
 {
   "inputs": [
     {
-      "bytes": 98432,
+      "bytes": 245888,
       "path": "/private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data/Phantom_Adipose.npy",
-      "sha256": "666e7df2bfc2f45db82912934b850e63475106e8e7aded5749303b9700266890"
+      "sha256": "865beec84316f1a247527fcefbfda26cffbffcd5ecce61f407e6eb97cbd6ef71"
     },
     {
-      "bytes": 98432,
+      "bytes": 245888,
       "path": "/private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data/Phantom_Calcification.npy",
-      "sha256": "a8316d6f56d8377eca807dfea04274746cc692af0e4a5699143c01780d537b26"
+      "sha256": "abf080c27e11bc939edcf4f036fb11fba724a6cb8ee664aaa1c7df06df2a09f7"
     },
     {
-      "bytes": 98432,
+      "bytes": 245888,
       "path": "/private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data/Phantom_Fibroglandular.npy",
-      "sha256": "fb425ed2d00f2050e0a54b169f1e4804b44d7c3d1e8ab5627099d32f56226ea6"
+      "sha256": "99c5726be385212c80f6b88bcc3a87fd2d2b22205c82e335ef3b1ffbfb5657fc"
     },
     {
-      "bytes": 98432,
+      "bytes": 245888,
       "path": "/private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data/highkVpImages.npy",
-      "sha256": "70f946eae5303ca7934ea11dfa6f358b884a9431e1deab8db721fee2596bfddd"
+      "sha256": "f4d8545436c8a53d3f526b3ccacd7b2184a7eba9bed425ef1eedc1f0647522c9"
     },
     {
-      "bytes": 73856,
+      "bytes": 184448,
       "path": "/private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data/highkVpTransmission.npy",
-      "sha256": "c7024f4378479de467619f2cad7e9b7365ccc4a1d92b520574df2278156042b1"
+      "sha256": "ce9fec39ed984806d3171d7a3a9a1a71323414a8b2a4be7728566c408432d8da"
     },
     {
-      "bytes": 98432,
+      "bytes": 245888,
       "path": "/private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data/lowkVpImages.npy",
-      "sha256": "a0d8e339d7ced479cd6eedb3bb079c7946cfd65814489d84e13743136ad3f6b3"
+      "sha256": "754f9af4a07446dc856c8962c3967a6def95be067b1cdfa420070479130c859b"
     },
     {
-      "bytes": 73856,
+      "bytes": 184448,
       "path": "/private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data/lowkVpTransmission.npy",
-      "sha256": "28d6aa0a047f1c505053a049ff7639a1b476fe742911d2ca5a1866b962cee58d"
+      "sha256": "815df19d1819b479d84a0584e5cda13d296779cc2a80c1c9073d6140f3a88cec"
     },
     {
-      "bytes": 186,
-      "path": "/Users/yubraj/Code/CTsynth/configs/exp004_aapm_smoke.yaml",
-      "sha256": "43ee67f12028adf44bc983b09cad3affeac3eaeb842314438d5099e601eaeae6"
+      "bytes": 323,
+      "path": "/Users/yubraj/Code/CTsynth/configs/exp003_aapm_smoke.yaml",
+      "sha256": "a05221cfd53289e18fc68f86df67e723b368d3f8b42bdfabdae27ea6e0ce46fb"
     }
   ]
 }

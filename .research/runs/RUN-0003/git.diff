@@ -1,0 +1,550 @@
+diff --git a/projects/p02_aapm_benchmark/results_synthetic/manifest.json b/projects/p02_aapm_benchmark/results_synthetic/manifest.json
+deleted file mode 100644
+index 90edbe2..0000000
+--- a/projects/p02_aapm_benchmark/results_synthetic/manifest.json
++++ /dev/null
+@@ -1,44 +0,0 @@
+-{
+-  "inputs": [
+-    {
+-      "bytes": 98432,
+-      "path": "/private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data/Phantom_Adipose.npy",
+-      "sha256": "666e7df2bfc2f45db82912934b850e63475106e8e7aded5749303b9700266890"
+-    },
+-    {
+-      "bytes": 98432,
+-      "path": "/private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data/Phantom_Calcification.npy",
+-      "sha256": "a8316d6f56d8377eca807dfea04274746cc692af0e4a5699143c01780d537b26"
+-    },
+-    {
+-      "bytes": 98432,
+-      "path": "/private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data/Phantom_Fibroglandular.npy",
+-      "sha256": "fb425ed2d00f2050e0a54b169f1e4804b44d7c3d1e8ab5627099d32f56226ea6"
+-    },
+-    {
+-      "bytes": 98432,
+-      "path": "/private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data/highkVpImages.npy",
+-      "sha256": "70f946eae5303ca7934ea11dfa6f358b884a9431e1deab8db721fee2596bfddd"
+-    },
+-    {
+-      "bytes": 73856,
+-      "path": "/private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data/highkVpTransmission.npy",
+-      "sha256": "c7024f4378479de467619f2cad7e9b7365ccc4a1d92b520574df2278156042b1"
+-    },
+-    {
+-      "bytes": 98432,
+-      "path": "/private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data/lowkVpImages.npy",
+-      "sha256": "a0d8e339d7ced479cd6eedb3bb079c7946cfd65814489d84e13743136ad3f6b3"
+-    },
+-    {
+-      "bytes": 73856,
+-      "path": "/private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data/lowkVpTransmission.npy",
+-      "sha256": "28d6aa0a047f1c505053a049ff7639a1b476fe742911d2ca5a1866b962cee58d"
+-    },
+-    {
+-      "bytes": 186,
+-      "path": "/Users/yubraj/Code/CTsynth/configs/exp004_aapm_smoke.yaml",
+-      "sha256": "43ee67f12028adf44bc983b09cad3affeac3eaeb842314438d5099e601eaeae6"
+-    }
+-  ]
+-}
+diff --git a/projects/p02_aapm_benchmark/results_synthetic/metrics.json b/projects/p02_aapm_benchmark/results_synthetic/metrics.json
+deleted file mode 100644
+index 1d327d0..0000000
+--- a/projects/p02_aapm_benchmark/results_synthetic/metrics.json
++++ /dev/null
+@@ -1,413 +0,0 @@
+-{
+-  "case_indices": [
+-    4,
+-    16
+-  ],
+-  "experiment_id": "EXP-004",
+-  "methods": {
+-    "classical_simplex": {
+-      "aggregate_rmse": 0.05255246281841671,
+-      "boundary_rmse": 0.17074861306561648,
+-      "failure_cases": {
+-        "worst_cases_by_s1": [
+-          {
+-            "case": 1,
+-            "s1": 0.05351823861537894
+-          },
+-          {
+-            "case": 0,
+-            "s1": 0.051568603161899824
+-          }
+-        ],
+-        "worst_roi_s2": {
+-          "case": 1,
+-          "roi": 8,
+-          "value": 0.08747732687195017,
+-          "x0": 2,
+-          "y0": 14
+-        }
+-      },
+-      "limitations": [
+-        "s1 and s2 are the official kit metrics on the stated split; s2 omits the last ROI position (kit loop) unless s2_full_scan is used.",
+-        "Map units are dimensionless volume fractions (inferred, not stated by the kit).",
+-        "Regimes come from the truth sum (air: sum <= 1e-3; tissue: |sum-1| <= 1e-3; band: otherwise); partition errors use the prediction's material sum.",
+-        "Failure cases come from the evaluated split; they are for diagnosis, not model selection.",
+-        "Data directory /private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data is used as given; this harness does not check whether it holds AAPM or synthetic data."
+-      ],
+-      "method_name": "classical_simplex",
+-      "n_cases": 2,
+-      "partition": {
+-        "air": {
+-          "max_abs": 0.0,
+-          "mean_abs": 0.0
+-        },
+-        "tissue": {
+-          "max_abs": 1.1102230246251565e-16,
+-          "mean_abs": 7.676563696630296e-19
+-        }
+-      },
+-      "per_material": {
+-        "adipose": {
+-          "mae": 0.022583676746708317,
+-          "rmse": 0.09102353565722608
+-        },
+-        "calcification": {
+-          "mae": 6.223667512091722e-09,
+-          "rmse": 2.40042274272132e-07
+-        },
+-        "fibroglandular": {
+-          "mae": 6.75163292618326e-07,
+-          "rmse": 1.1150259371368806e-06
+-        }
+-      },
+-      "record_version": 1,
+-      "regime_pixel_counts": {
+-        "air": 697,
+-        "band": 194,
+-        "tissue": 1157
+-      },
+-      "s1": 0.05254342088863938,
+-      "s2": 0.08747732687195017,
+-      "s2_full_scan": 0.0879484763412679,
+-      "shapes": {
+-        "pred": [
+-          2,
+-          3,
+-          32,
+-          32
+-        ],
+-        "truth": [
+-          2,
+-          3,
+-          32,
+-          32
+-        ]
+-      },
+-      "split_name": "val"
+-    },
+-    "classical_sum_to_one": {
+-      "aggregate_rmse": 1.2137882651086263,
+-      "boundary_rmse": 3.9437288328378903,
+-      "failure_cases": {
+-        "worst_cases_by_s1": [
+-          {
+-            "case": 1,
+-            "s1": 1.2398366489572668
+-          },
+-          {
+-            "case": 0,
+-            "s1": 1.1871684753788034
+-          }
+-        ],
+-        "worst_roi_s2": {
+-          "case": 1,
+-          "roi": 8,
+-          "value": 2.203893968602811,
+-          "x0": 2,
+-          "y0": 14
+-        }
+-      },
+-      "limitations": [
+-        "s1 and s2 are the official kit metrics on the stated split; s2 omits the last ROI position (kit loop) unless s2_full_scan is used.",
+-        "Map units are dimensionless volume fractions (inferred, not stated by the kit).",
+-        "Regimes come from the truth sum (air: sum <= 1e-3; tissue: |sum-1| <= 1e-3; band: otherwise); partition errors use the prediction's material sum.",
+-        "Failure cases come from the evaluated split; they are for diagnosis, not model selection.",
+-        "Data directory /private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data is used as given; this harness does not check whether it holds AAPM or synthetic data."
+-      ],
+-      "method_name": "classical_sum_to_one",
+-      "n_cases": 2,
+-      "partition": {
+-        "air": {
+-          "max_abs": 0.0,
+-          "mean_abs": 0.0
+-        },
+-        "tissue": {
+-          "max_abs": 4.474198789239381e-14,
+-          "mean_abs": 5.546988970138844e-15
+-        }
+-      },
+-      "per_material": {
+-        "adipose": {
+-          "mae": 0.3072010066158695,
+-          "rmse": 1.5194772565750039
+-        },
+-        "calcification": {
+-          "mae": 0.0032580364784719285,
+-          "rmse": 0.01644256301682264
+-        },
+-        "fibroglandular": {
+-          "mae": 0.2878760352743222,
+-          "rmse": 1.452846986581506
+-        }
+-      },
+-      "record_version": 1,
+-      "regime_pixel_counts": {
+-        "air": 697,
+-        "band": 194,
+-        "tissue": 1157
+-      },
+-      "s1": 1.213502562168035,
+-      "s2": 2.203893968602811,
+-      "s2_full_scan": 2.203893968602811,
+-      "shapes": {
+-        "pred": [
+-          2,
+-          3,
+-          32,
+-          32
+-        ],
+-        "truth": [
+-          2,
+-          3,
+-          32,
+-          32
+-        ]
+-      },
+-      "split_name": "val"
+-    },
+-    "classical_tv": {
+-      "aggregate_rmse": 0.05425923794529044,
+-      "boundary_rmse": 0.17074821849730076,
+-      "failure_cases": {
+-        "worst_cases_by_s1": [
+-          {
+-            "case": 1,
+-            "s1": 0.05504537409435955
+-          },
+-          {
+-            "case": 0,
+-            "s1": 0.053461543146633005
+-          }
+-        ],
+-        "worst_roi_s2": {
+-          "case": 1,
+-          "roi": 8,
+-          "value": 0.08782477287576992,
+-          "x0": 2,
+-          "y0": 14
+-        }
+-      },
+-      "limitations": [
+-        "s1 and s2 are the official kit metrics on the stated split; s2 omits the last ROI position (kit loop) unless s2_full_scan is used.",
+-        "Map units are dimensionless volume fractions (inferred, not stated by the kit).",
+-        "Regimes come from the truth sum (air: sum <= 1e-3; tissue: |sum-1| <= 1e-3; band: otherwise); partition errors use the prediction's material sum.",
+-        "Failure cases come from the evaluated split; they are for diagnosis, not model selection.",
+-        "Data directory /private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data is used as given; this harness does not check whether it holds AAPM or synthetic data."
+-      ],
+-      "method_name": "classical_tv",
+-      "n_cases": 2,
+-      "partition": {
+-        "air": {
+-          "max_abs": 0.0,
+-          "mean_abs": 0.0
+-        },
+-        "tissue": {
+-          "max_abs": 2.220446049250313e-16,
+-          "mean_abs": 2.955477023202664e-17
+-        }
+-      },
+-      "per_material": {
+-        "adipose": {
+-          "mae": 0.031133826985779635,
+-          "rmse": 0.09249225745166365
+-        },
+-        "calcification": {
+-          "mae": 9.572739005676564e-05,
+-          "rmse": 0.00026135952980794016
+-        },
+-        "fibroglandular": {
+-          "mae": 0.008649164179721593,
+-          "rmse": 0.016652588684714635
+-        }
+-      },
+-      "record_version": 1,
+-      "regime_pixel_counts": {
+-        "air": 697,
+-        "band": 194,
+-        "tissue": 1157
+-      },
+-      "s1": 0.05425345862049628,
+-      "s2": 0.08782477287576992,
+-      "s2_full_scan": 0.08811337725838753,
+-      "shapes": {
+-        "pred": [
+-          2,
+-          3,
+-          32,
+-          32
+-        ],
+-        "truth": [
+-          2,
+-          3,
+-          32,
+-          32
+-        ]
+-      },
+-      "split_name": "val"
+-    },
+-    "classical_unconstrained": {
+-      "aggregate_rmse": 0.3095179512821712,
+-      "boundary_rmse": 0.24643034296534952,
+-      "failure_cases": {
+-        "worst_cases_by_s1": [
+-          {
+-            "case": 0,
+-            "s1": 0.3097841185622669
+-          },
+-          {
+-            "case": 1,
+-            "s1": 0.30925155491674466
+-          }
+-        ],
+-        "worst_roi_s2": {
+-          "case": 0,
+-          "roi": 8,
+-          "value": 0.4047439737003275,
+-          "x0": 12,
+-          "y0": 22
+-        }
+-      },
+-      "limitations": [
+-        "s1 and s2 are the official kit metrics on the stated split; s2 omits the last ROI position (kit loop) unless s2_full_scan is used.",
+-        "Map units are dimensionless volume fractions (inferred, not stated by the kit).",
+-        "Regimes come from the truth sum (air: sum <= 1e-3; tissue: |sum-1| <= 1e-3; band: otherwise); partition errors use the prediction's material sum.",
+-        "Failure cases come from the evaluated split; they are for diagnosis, not model selection.",
+-        "Data directory /private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data is used as given; this harness does not check whether it holds AAPM or synthetic data."
+-      ],
+-      "method_name": "classical_unconstrained",
+-      "n_cases": 2,
+-      "partition": {
+-        "air": {
+-          "max_abs": 0.0,
+-          "mean_abs": 0.0
+-        },
+-        "tissue": {
+-          "max_abs": 0.028393861460417558,
+-          "mean_abs": 0.026783589833055486
+-        }
+-      },
+-      "per_material": {
+-        "adipose": {
+-          "mae": 0.30528500561655236,
+-          "rmse": 0.3883121240222119
+-        },
+-        "calcification": {
+-          "mae": 0.0032372960342187335,
+-          "rmse": 0.004182887781690056
+-        },
+-        "fibroglandular": {
+-          "mae": 0.28604346757876514,
+-          "rmse": 0.36959475684173554
+-        }
+-      },
+-      "record_version": 1,
+-      "regime_pixel_counts": {
+-        "air": 697,
+-        "band": 194,
+-        "tissue": 1157
+-      },
+-      "s1": 0.3095178367395058,
+-      "s2": 0.4047439737003275,
+-      "s2_full_scan": 0.4047439737003275,
+-      "shapes": {
+-        "pred": [
+-          2,
+-          3,
+-          32,
+-          32
+-        ],
+-        "truth": [
+-          2,
+-          3,
+-          32,
+-          32
+-        ]
+-      },
+-      "split_name": "val"
+-    },
+-    "zero_prediction": {
+-      "aggregate_rmse": 0.43987655361600597,
+-      "boundary_rmse": 0.3340293722262755,
+-      "failure_cases": {
+-        "worst_cases_by_s1": [
+-          {
+-            "case": 0,
+-            "s1": 0.4423735020822623
+-          },
+-          {
+-            "case": 1,
+-            "s1": 0.4373653501338035
+-          }
+-        ],
+-        "worst_roi_s2": {
+-          "case": 0,
+-          "roi": 8,
+-          "value": 0.5773502691896257,
+-          "x0": 13,
+-          "y0": 8
+-        }
+-      },
+-      "limitations": [
+-        "s1 and s2 are the official kit metrics on the stated split; s2 omits the last ROI position (kit loop) unless s2_full_scan is used.",
+-        "Map units are dimensionless volume fractions (inferred, not stated by the kit).",
+-        "Regimes come from the truth sum (air: sum <= 1e-3; tissue: |sum-1| <= 1e-3; band: otherwise); partition errors use the prediction's material sum.",
+-        "Failure cases come from the evaluated split; they are for diagnosis, not model selection.",
+-        "Data directory /private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data is used as given; this harness does not check whether it holds AAPM or synthetic data."
+-      ],
+-      "method_name": "zero_prediction",
+-      "n_cases": 2,
+-      "partition": {
+-        "air": {
+-          "max_abs": 0.0,
+-          "mean_abs": 0.0
+-        },
+-        "tissue": {
+-          "max_abs": 1.0,
+-          "mean_abs": 1.0
+-        }
+-      },
+-      "per_material": {
+-        "adipose": {
+-          "mae": 0.4160699623316759,
+-          "rmse": 0.6275296210702169
+-        },
+-        "calcification": {
+-          "mae": 0.0006982135237194598,
+-          "rmse": 0.022394702523088318
+-        },
+-        "fibroglandular": {
+-          "mae": 0.1941784794034902,
+-          "rmse": 0.43148487718766826
+-        }
+-      },
+-      "record_version": 1,
+-      "regime_pixel_counts": {
+-        "air": 697,
+-        "band": 194,
+-        "tissue": 1157
+-      },
+-      "s1": 0.4398694261080329,
+-      "s2": 0.5773502691896257,
+-      "s2_full_scan": 0.5773502691896257,
+-      "shapes": {
+-        "pred": [
+-          2,
+-          3,
+-          32,
+-          32
+-        ],
+-        "truth": [
+-          2,
+-          3,
+-          32,
+-          32
+-        ]
+-      },
+-      "split_name": "val"
+-    }
+-  },
+-  "n_cases": 2,
+-  "not_computed": {},
+-  "seed": 7,
+-  "split_name": "val"
+-}
+diff --git a/projects/p02_aapm_benchmark/results_synthetic/run_meta.json b/projects/p02_aapm_benchmark/results_synthetic/run_meta.json
+deleted file mode 100644
+index 460829c..0000000
+--- a/projects/p02_aapm_benchmark/results_synthetic/run_meta.json
++++ /dev/null
+@@ -1,26 +0,0 @@
+-{
+-  "config": {
+-    "device": "cpu",
+-    "experiment_id": "EXP-004",
+-    "name": "aapm_synthetic_smoke",
+-    "params": {
+-      "k_worst": 3,
+-      "n_cases": 24,
+-      "n_det": 48,
+-      "n_pix": 32,
+-      "n_views": 32,
+-      "roi": 8,
+-      "table_dir": "data/aapm_kit_sample"
+-    },
+-    "seed": 7
+-  },
+-  "config_sha256": "b6dddf6f2637a39c8366e073f34f1ca6d37e9891a3aa0910541d3249fd2a97ef",
+-  "ctsynth_version": "0.0.1",
+-  "experiment_id": "EXP-004",
+-  "git_commit": "c9613e21de68fdbd2038bcd6d283023c95b2a9e4",
+-  "git_dirty": true,
+-  "numpy": "2.5.4",
+-  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+-  "python": "3.14.7",
+-  "utc_time": "2026-10-12T00:29:42+00:00"
+-}
+\ No newline at end of file
+diff --git a/projects/p02_aapm_benchmark/results_synthetic/timing.json b/projects/p02_aapm_benchmark/results_synthetic/timing.json
+deleted file mode 100644
+index dd32e7e..0000000
+--- a/projects/p02_aapm_benchmark/results_synthetic/timing.json
++++ /dev/null
+@@ -1,22 +0,0 @@
+-{
+-  "classical_simplex": {
+-    "tracemalloc_peak_bytes": 348907,
+-    "wall_s": 0.0010677077807486057
+-  },
+-  "classical_sum_to_one": {
+-    "tracemalloc_peak_bytes": 167504,
+-    "wall_s": 0.00014183297753334045
+-  },
+-  "classical_tv": {
+-    "tracemalloc_peak_bytes": 414409,
+-    "wall_s": 0.18544091703370214
+-  },
+-  "classical_unconstrained": {
+-    "tracemalloc_peak_bytes": 127200,
+-    "wall_s": 0.00036737509071826935
+-  },
+-  "zero_prediction": {
+-    "tracemalloc_peak_bytes": 49248,
+-    "wall_s": 4.084082320332527e-06
+-  }
+-}
+diff --git a/projects/p02_aapm_benchmark/results_synthetic/worst_case_classical_simplex.npz b/projects/p02_aapm_benchmark/results_synthetic/worst_case_classical_simplex.npz
+deleted file mode 100644
+index 5190169..0000000
+Binary files a/projects/p02_aapm_benchmark/results_synthetic/worst_case_classical_simplex.npz and /dev/null differ
+diff --git a/projects/p02_aapm_benchmark/results_synthetic/worst_case_classical_sum_to_one.npz b/projects/p02_aapm_benchmark/results_synthetic/worst_case_classical_sum_to_one.npz
+deleted file mode 100644
+index bfee421..0000000
+Binary files a/projects/p02_aapm_benchmark/results_synthetic/worst_case_classical_sum_to_one.npz and /dev/null differ
+diff --git a/projects/p02_aapm_benchmark/results_synthetic/worst_case_classical_tv.npz b/projects/p02_aapm_benchmark/results_synthetic/worst_case_classical_tv.npz
+deleted file mode 100644
+index 6dd2cf9..0000000
+Binary files a/projects/p02_aapm_benchmark/results_synthetic/worst_case_classical_tv.npz and /dev/null differ
+diff --git a/projects/p02_aapm_benchmark/results_synthetic/worst_case_classical_unconstrained.npz b/projects/p02_aapm_benchmark/results_synthetic/worst_case_classical_unconstrained.npz
+deleted file mode 100644
+index 84490d5..0000000
+Binary files a/projects/p02_aapm_benchmark/results_synthetic/worst_case_classical_unconstrained.npz and /dev/null differ
+diff --git a/projects/p02_aapm_benchmark/results_synthetic/worst_case_zero_prediction.npz b/projects/p02_aapm_benchmark/results_synthetic/worst_case_zero_prediction.npz
+deleted file mode 100644
+index 49870bc..0000000
+Binary files a/projects/p02_aapm_benchmark/results_synthetic/worst_case_zero_prediction.npz and /dev/null differ

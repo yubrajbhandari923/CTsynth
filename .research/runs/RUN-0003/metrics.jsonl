@@ -1,0 +1,5 @@
+{"author_type": "agent", "name": "s1_classical_simplex", "ts": "2026-10-11T20:32:09-04:00", "unit": "volume_fraction_rmse_synthetic_val", "value": 0.05081}
+{"author_type": "agent", "name": "s1_sum_to_one", "ts": "2026-10-11T20:32:09-04:00", "unit": "volume_fraction_rmse_synthetic_val", "value": 1.179}
+{"author_type": "agent", "name": "s1_zero_prediction", "ts": "2026-10-11T20:32:09-04:00", "unit": "volume_fraction_rmse_synthetic_val", "value": 0.4301}
+{"author_type": "agent", "name": "tissue_rmse_sum_to_one", "ts": "2026-10-11T20:32:10-04:00", "unit": "volume_fraction_rmse_tissue_pixels_only", "value": 1.2869e-06}
+{"author_type": "agent", "name": "boundary_rmse_sum_to_one", "ts": "2026-10-11T20:32:10-04:00", "unit": "volume_fraction_rmse_boundary_band", "value": 3.838}
