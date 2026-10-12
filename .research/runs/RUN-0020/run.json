@@ -22,7 +22,7 @@
   "id": "RUN-0020",
   "label": null,
   "metrics_offset": 57,
-  "notes": "submitted to duke over ssh",
+  "notes": "Failed (same CRLF defect); this run only added the full pip log that exposed it.",
   "override_reason": null,
   "parameters": {
     "cpus": 2,
@@ -31,7 +31,7 @@
     "time": "00:20:00"
   },
   "pid": null,
-  "reviewed": 0,
+  "reviewed": 1,
   "run_dir": ".research/runs/RUN-0020",
   "slurm": {
     "hpc": {
@@ -39,19 +39,20 @@
       "bundle": ".research/hpc/bundles/EXP-011-RUN-0020.tar.gz",
       "bundle_dir": ".research/hpc/bundles/EXP-011-RUN-0020",
       "cluster": "duke",
-      "collected_at": "2026-10-12T19:32:32-04:00",
+      "collected_at": "2026-10-12T19:32:33-04:00",
       "collected_on": "plp-drcc-login2",
       "datasets": {},
       "experiment_id": "EXP-011",
       "last_sync": "2026-10-12T19:32:30-04:00",
       "receipt": "/home/yb107/research-os/projects/CTsynth/runs/RUN-0020/submission.json",
+      "remote_archive": "/home/yb107/research-os/projects/CTsynth/code/EXP-011/results-RUN-0020.tar.gz",
       "remote_code": "/home/yb107/research-os/projects/CTsynth/code/EXP-011/RUN-0020",
       "remote_results": "/home/yb107/research-os/projects/CTsynth/results/RUN-0020",
       "remote_run_dir": "/home/yb107/research-os/projects/CTsynth/runs/RUN-0020",
       "sha256": "ac924bdbdd6fc58b3c7a9ae7c810000924cbd669ac8c402c9a7eee4c5831b62e",
       "slurm_job_id": "201823",
       "ssh_host": "plp-drcc-login2",
-      "state": "submitted",
+      "state": "collected",
       "submitted_at": "2026-10-12T19:32:12-04:00",
       "token": "d7a31969b31ca864a64e843c84113c95",
       "upload_detail": "all 6 file(s) match",
@@ -66,6 +67,6 @@
   "status": "failed",
   "stderr_path": ".research/runs/RUN-0020/stderr.log",
   "stdout_path": ".research/runs/RUN-0020/stdout.log",
-  "updated_at": "2026-10-12T19:32:33-04:00",
+  "updated_at": "2026-10-12T19:35:49-04:00",
   "working_dir": "."
 }

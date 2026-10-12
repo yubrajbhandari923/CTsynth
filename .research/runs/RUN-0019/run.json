@@ -22,7 +22,7 @@
   "id": "RUN-0019",
   "label": null,
   "metrics_offset": 57,
-  "notes": "submitted to duke over ssh",
+  "notes": "Failed: gecatsim 1.6.9 sdist build script clib_build/BuildLinux64 has CRLF line endings (bash: $'\\r': command not found).",
   "override_reason": null,
   "parameters": {
     "cpus": 2,
@@ -31,7 +31,7 @@
     "time": "00:20:00"
   },
   "pid": null,
-  "reviewed": 0,
+  "reviewed": 1,
   "run_dir": ".research/runs/RUN-0019",
   "slurm": {
     "hpc": {
@@ -39,19 +39,20 @@
       "bundle": ".research/hpc/bundles/EXP-011-RUN-0019.tar.gz",
       "bundle_dir": ".research/hpc/bundles/EXP-011-RUN-0019",
       "cluster": "duke",
-      "collected_at": "2026-10-12T19:30:46-04:00",
+      "collected_at": "2026-10-12T19:30:47-04:00",
       "collected_on": "plp-drcc-login2",
       "datasets": {},
       "experiment_id": "EXP-011",
       "last_sync": "2026-10-12T19:30:44-04:00",
       "receipt": "/home/yb107/research-os/projects/CTsynth/runs/RUN-0019/submission.json",
+      "remote_archive": "/home/yb107/research-os/projects/CTsynth/code/EXP-011/results-RUN-0019.tar.gz",
       "remote_code": "/home/yb107/research-os/projects/CTsynth/code/EXP-011/RUN-0019",
       "remote_results": "/home/yb107/research-os/projects/CTsynth/results/RUN-0019",
       "remote_run_dir": "/home/yb107/research-os/projects/CTsynth/runs/RUN-0019",
       "sha256": "e0a2d0b2a7f217374064b8764ba2c2ac8d031ac47fd6002b9bae4e9927c61162",
       "slurm_job_id": "201822",
       "ssh_host": "plp-drcc-login2",
-      "state": "submitted",
+      "state": "collected",
       "submitted_at": "2026-10-12T19:21:30-04:00",
       "token": "cb71ccc2e7e7d597ea38dcf17f912656",
       "upload_detail": "all 6 file(s) match",
@@ -66,6 +67,6 @@
   "status": "failed",
   "stderr_path": ".research/runs/RUN-0019/stderr.log",
   "stdout_path": ".research/runs/RUN-0019/stdout.log",
-  "updated_at": "2026-10-12T19:30:46-04:00",
+  "updated_at": "2026-10-12T19:35:48-04:00",
   "working_dir": "."
 }

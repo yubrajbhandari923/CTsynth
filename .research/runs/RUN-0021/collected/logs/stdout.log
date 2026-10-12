@@ -1,0 +1,36 @@
+host=node004 date=2026-10-12T19:34:22-04:00
+uv=uv 0.9.8
+system gcc: gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+gcc now: gcc (GCC) 11.2.0
+Using CPython 3.11.14
+Creating virtual environment at: /home/yb107/research-os/projects/CTsynth/env/xcist-venv
+warning: A virtual environment already exists at `/home/yb107/research-os/projects/CTsynth/env/xcist-venv`. In the future, uv will require `--clear` to replace it
+Activate with: source /home/yb107/research-os/projects/CTsynth/env/xcist-venv/bin/activate
+uv venv rc=0
+deps rc=0
+sdist gecatsim-1.6.9.tar.gz sha256 verified e8da3294ebd889ca9c8bf839f5f91cc14fe82376c962fafe43258827e847234f
+build path A: rebuild with converted line endings
+path A rc=0
+import ok 3.11.14 1.26.4 1.17.1 /home/yb107/research-os/projects/CTsynth/env/xcist-venv/lib/python3.11/site-packages/gecatsim/__init__.py
+C lib GetMu water 60keV mu/cm = 0.20569877326488495
+Using Python 3.11.14 environment at: /home/yb107/research-os/projects/CTsynth/env/xcist-venv
+annotated-types==0.8.0
+contourpy==1.3.3
+cycler==0.12.1
+fonttools==4.66.1
+gecatsim @ file:///home/yb107/research-os/projects/CTsynth/env/src/gecatsim-1.6.9
+kiwisolver==1.5.1
+matplotlib==3.11.2
+numpy==1.26.4
+packaging==26.3
+pillow==12.3.0
+pydantic==2.14.1
+pydantic-core==2.50.1
+pyparsing==3.3.3
+python-dateutil==2.9.0.post0
+pyyaml==6.0.3
+scipy==1.17.1
+six==1.17.0
+tqdm==4.70.1
+typing-extensions==4.16.0
+typing-inspection==0.4.4

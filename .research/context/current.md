@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~4909 tokens.
-> Generated 2026-10-12T19:20:17-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~4882 tokens.
+> Generated 2026-10-12T19:35:50-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `8cd476ac15`
+Git: `master` @ `1262f06473`
 
 ## Latest checkpoint
 
@@ -46,7 +46,7 @@ _none_
 
 ## Current experiments
 
-- EXP-011 [running] HPC: isolated Python 3.11 + gecatsim environment under the project's approved directory — runs 0
+_none_
 
 ## Active plans
 
