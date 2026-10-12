@@ -1,0 +1,30 @@
+host=node004 date=2026-10-12T19:21:32-04:00
+uv=uv 0.9.8
+system gcc: gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+gcc now: gcc (GCC) 11.2.0
+Downloading cpython-3.11.14-linux-x86_64-gnu (download) (29.2MiB)
+ Downloading cpython-3.11.14-linux-x86_64-gnu (download)
+Using CPython 3.11.14
+Creating virtual environment at: /home/yb107/research-os/projects/CTsynth/env/xcist-venv
+Activate with: source /home/yb107/research-os/projects/CTsynth/env/xcist-venv/bin/activate
+uv venv rc=0
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmpmu5ml8/lib/python3.11/site-packages/setuptools/_distutils/dist.py",
+      line 1047, in run_command
+          cmd_obj.run()
+        File "<string>", line 29, in run
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-python/cpython-3.11.14-linux-x86_64-gnu/lib/python3.11/subprocess.py",
+      line 413, in check_call
+          raise CalledProcessError(retcode, cmd)
+      subprocess.CalledProcessError: Command '['bash',
+      '/home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/gecatsim/clib_build/BuildLinux64']'
+      returned non-zero exit status 1.
+
+      hint: This usually indicates a problem with the package or the build
+      environment.
+uv pip rc=1
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'numpy'
+Using Python 3.11.14 environment at: /home/yb107/research-os/projects/CTsynth/env/xcist-venv

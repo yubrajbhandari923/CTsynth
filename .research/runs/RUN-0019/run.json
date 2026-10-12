@@ -1,0 +1,71 @@
+{
+  "artifacts_offset": 245,
+  "author_model": null,
+  "author_name": "opus",
+  "author_type": "agent",
+  "backend": "slurm",
+  "command": "bash scripts/hpc_setup_xcist_env.sh",
+  "created_at": "2026-10-12T19:20:22-04:00",
+  "ended_at": "2026-10-12T19:22:03-04:00",
+  "env": {
+    "lockfiles": {
+      "uv.lock": "87debd45b1676f8b"
+    },
+    "user": "yubraj"
+  },
+  "exit_code": 1,
+  "experiment_id": "EXP-011",
+  "git_branch": "master",
+  "git_commit": "8cd476ac151f5f7086e0a0220c46449bb20f58e5",
+  "git_dirty": 0,
+  "hostname": "node004",
+  "id": "RUN-0019",
+  "label": null,
+  "metrics_offset": 57,
+  "notes": "submitted to duke over ssh",
+  "override_reason": null,
+  "parameters": {
+    "cpus": 2,
+    "gpus": 0,
+    "mem": "4G",
+    "time": "00:20:00"
+  },
+  "pid": null,
+  "reviewed": 0,
+  "run_dir": ".research/runs/RUN-0019",
+  "slurm": {
+    "hpc": {
+      "archive_sha256": "ea86bb000775d8c4646649942a37a1e266121ac625fec0bd969da1c7c84afe2d",
+      "bundle": ".research/hpc/bundles/EXP-011-RUN-0019.tar.gz",
+      "bundle_dir": ".research/hpc/bundles/EXP-011-RUN-0019",
+      "cluster": "duke",
+      "collected_at": "2026-10-12T19:30:46-04:00",
+      "collected_on": "plp-drcc-login2",
+      "datasets": {},
+      "experiment_id": "EXP-011",
+      "last_sync": "2026-10-12T19:30:44-04:00",
+      "receipt": "/home/yb107/research-os/projects/CTsynth/runs/RUN-0019/submission.json",
+      "remote_code": "/home/yb107/research-os/projects/CTsynth/code/EXP-011/RUN-0019",
+      "remote_results": "/home/yb107/research-os/projects/CTsynth/results/RUN-0019",
+      "remote_run_dir": "/home/yb107/research-os/projects/CTsynth/runs/RUN-0019",
+      "sha256": "e0a2d0b2a7f217374064b8764ba2c2ac8d031ac47fd6002b9bae4e9927c61162",
+      "slurm_job_id": "201822",
+      "ssh_host": "plp-drcc-login2",
+      "state": "submitted",
+      "submitted_at": "2026-10-12T19:21:30-04:00",
+      "token": "cb71ccc2e7e7d597ea38dcf17f912656",
+      "upload_detail": "all 6 file(s) match",
+      "upload_verified": true
+    },
+    "nodelist": "node004",
+    "partition": "defq",
+    "state": "FAILED"
+  },
+  "slurm_job_id": "201822",
+  "started_at": "2026-10-12T19:21:32-04:00",
+  "status": "failed",
+  "stderr_path": ".research/runs/RUN-0019/stderr.log",
+  "stdout_path": ".research/runs/RUN-0019/stdout.log",
+  "updated_at": "2026-10-12T19:30:46-04:00",
+  "working_dir": "."
+}
