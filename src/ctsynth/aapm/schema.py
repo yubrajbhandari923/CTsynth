@@ -72,15 +72,17 @@ class GeometrySpec:
 
     def pixel_cm(self) -> float:
         """fov_cm / n_pix (0.03515625 cm for the real geometry)."""
-        raise NotImplementedError
+        return self.fov_cm / self.n_pix
 
     def detector_length_cm(self) -> float:
         """2 * tan(asin((fov_cm/2) / source_radius_cm)) * sdd_cm (36.598 cm real)."""
-        raise NotImplementedError
+        return (
+            2.0 * float(np.tan(np.arcsin(self.fov_cm / 2.0 / self.source_radius_cm))) * self.sdd_cm
+        )
 
     def view_angles(self) -> Array:
         """float64 (n_views,): angle_k = k * 2*pi / n_views, counter-clockwise from 0."""
-        raise NotImplementedError
+        return 2.0 * np.pi * np.arange(self.n_views, dtype=np.float64) / self.n_views
 
 
 REAL_GEOMETRY = GeometrySpec(n_pix=512, fov_cm=18.0, n_views=512, n_det=1024)
@@ -101,12 +103,18 @@ def load_model_table(path: str | Path, kvp: int) -> ModelTable:
 
     Raises SchemaError(CONV_TABLE) if the shape is not (5, E) or sum(0.5*s) != 1 within 1e-4.
     """
-    raise NotImplementedError
+    raw = np.load(path).astype(np.float64)
+    if raw.ndim != 2 or raw.shape[0] != 5:
+        raise SchemaError(CONV_TABLE, f"{path}: expected (5, E), got {raw.shape}")
+    norm = float((0.5 * raw[1]).sum())
+    if abs(norm - 1.0) > 1e-4:
+        raise SchemaError(CONV_TABLE, f"{path}: sum(0.5*spectrum) = {norm}, expected 1")
+    return ModelTable(kvp, raw[0], raw[1], raw[2:5])
 
 
 def kvp_of_view(view: int) -> int:
     """80 for even `view`, 50 for odd."""
-    raise NotImplementedError
+    return KVP_HIGH if view % 2 == 0 else KVP_LOW
 
 
 def view_indices(kvp: int, n_views: int) -> Array:
@@ -114,17 +122,20 @@ def view_indices(kvp: int, n_views: int) -> Array:
 
     Raises SchemaError(CONV_KVP_PARITY) for kvp not in (50, 80).
     """
-    raise NotImplementedError
+    if kvp not in KVPS:
+        raise SchemaError(CONV_KVP_PARITY, f"kVp must be 50 or 80, got {kvp}")
+    return np.arange(0 if kvp == KVP_HIGH else 1, n_views, 2, dtype=np.int64)
 
 
 def deinterlace(full: Array) -> dict[int, Array]:
     """Split a full (N, n_views, n_det) array into {80: full[:, 0::2], 50: full[:, 1::2]}."""
-    raise NotImplementedError
+    return {KVP_HIGH: full[:, 0::2], KVP_LOW: full[:, 1::2]}
 
 
 def check_material_order(names: Sequence[str]) -> None:
     """Raise SchemaError(CONV_MATERIAL_ORDER) unless tuple(names) == MATERIALS exactly."""
-    raise NotImplementedError
+    if tuple(names) != MATERIALS:
+        raise SchemaError(CONV_MATERIAL_ORDER, f"material order {tuple(names)} != {MATERIALS}")
 
 
 def validate_phantoms(
@@ -139,17 +150,50 @@ def validate_phantoms(
     over the batch
     (CONV_MATERIAL_ORDER; detects calcification swapped with a bulk channel, NOT adipose<->fibro).
     """
-    raise NotImplementedError
+    n = geometry.n_pix
+    if phantoms.ndim != 4 or phantoms.shape[1:] != (3, n, n):
+        raise SchemaError(CONV_SHAPE, f"phantoms {phantoms.shape}, expected (N, 3, {n}, {n})")
+    if phantoms.dtype != DTYPE:
+        raise SchemaError(CONV_DTYPE, f"phantoms dtype {phantoms.dtype}, expected float32")
+    if not np.isfinite(phantoms).all():
+        raise SchemaError(CONV_FINITE, "phantoms contain non-finite values")
+    if phantoms.min() < -MAP_EPS or phantoms.max() > 1 + MAP_EPS:
+        raise SchemaError(CONV_RANGE, "phantom volume fractions outside [0, 1]")
+    total = phantoms.sum(axis=1, dtype=np.float64)
+    if total.max() > SUM_MAX:
+        raise SchemaError(CONV_PARTITION, f"material sum up to {total.max()} > {SUM_MAX}")
+    if material_names is not None:
+        check_material_order(material_names)
+    support = float((phantoms[:, 2] > CALC_SUPPORT_THRESH).mean())
+    if support >= CALC_SUPPORT_MAX_FRAC:
+        raise SchemaError(
+            CONV_MATERIAL_ORDER,
+            f"calcification support {support:.3f} >= {CALC_SUPPORT_MAX_FRAC}: channels swapped?",
+        )
 
 
 def validate_images(images: Array, geometry: GeometrySpec) -> None:
     """Validate (N, n_pix, n_pix) float32 finite image[ix, iy] arrays (shape/dtype/finite)."""
-    raise NotImplementedError
+    n = geometry.n_pix
+    if images.ndim != 3 or images.shape[1:] != (n, n):
+        raise SchemaError(CONV_SHAPE, f"images {images.shape}, expected (N, {n}, {n})")
+    if images.dtype != DTYPE:
+        raise SchemaError(CONV_DTYPE, f"images dtype {images.dtype}, expected float32")
+    if not np.isfinite(images).all():
+        raise SchemaError(CONV_FINITE, "images contain non-finite values")
 
 
 def validate_transmission(transmission: Array, geometry: GeometrySpec) -> None:
     """Validate (N, n_views//2, n_det) float32, finite, values in (0, 1] (CONV_RANGE)."""
-    raise NotImplementedError
+    want = (geometry.n_views // 2, geometry.n_det)
+    if transmission.ndim != 3 or transmission.shape[1:] != want:
+        raise SchemaError(CONV_SHAPE, f"transmission {transmission.shape}, expected (N, {want})")
+    if transmission.dtype != DTYPE:
+        raise SchemaError(CONV_DTYPE, f"transmission dtype {transmission.dtype}, expected float32")
+    if not np.isfinite(transmission).all():
+        raise SchemaError(CONV_FINITE, "transmission contains non-finite values")
+    if transmission.min() <= 0 or transmission.max() > 1:
+        raise SchemaError(CONV_RANGE, "transmission outside (0, 1]")
 
 
 def validate_dataset(
@@ -164,4 +208,18 @@ def validate_dataset(
     to `phantoms` (CONV_SHAPE), and mean(transmission[50]) < mean(transmission[80]) over the batch
     (CONV_KVP_PARITY: lower kVp attenuates more; detects swapped labels).
     """
-    raise NotImplementedError
+    validate_phantoms(phantoms, geometry)
+    if set(transmission) != set(KVPS) or set(images) != set(KVPS):
+        raise SchemaError(
+            CONV_KVP_PARITY, "transmission and images must be keyed by exactly {50, 80}"
+        )
+    for kvp in KVPS:
+        validate_transmission(transmission[kvp], geometry)
+        validate_images(images[kvp], geometry)
+        if (
+            transmission[kvp].shape[0] != phantoms.shape[0]
+            or images[kvp].shape[0] != phantoms.shape[0]
+        ):
+            raise SchemaError(CONV_SHAPE, f"case count mismatch for kVp {kvp}")
+    if transmission[KVP_LOW].mean() >= transmission[KVP_HIGH].mean():
+        raise SchemaError(CONV_KVP_PARITY, "mean T(50 kVp) must be below mean T(80 kVp)")

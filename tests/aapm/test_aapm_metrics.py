@@ -45,7 +45,9 @@ def test_s2_hand_values_and_skipping() -> None:
     t[0, 0, 0, 0] = 0.5  # only ROI(0,0) of size 2 has truth max > 0.01
     p[0, 0, 1, 1] = 0.2  # error inside that ROI
     p[0, 0, 3, 3] = 1.0  # huge error in low-signal ROIs: must be ignored
-    want = math.sqrt(0.04 / 12)
+    # ROI(0,0) holds 3 materials x 2x2 = 12 elements; errors: truth px 0.5 vs pred 0 -> 0.25,
+    # pred px 0.2 vs truth 0 -> 0.04. The p=1.0 pixel is only in skipped ROIs.
+    want = math.sqrt((0.25 + 0.04) / 12)
     assert math.isclose(M.s2_worst_roi_rmse(t, p, roi=2), want, rel_tol=RT)
     assert math.isclose(want, ref.ref_s2(t, p, 2), rel_tol=RT)
 
@@ -56,7 +58,9 @@ def test_s2_threshold_is_strict() -> None:
     t[0, 1, 0, 0] = 0.01  # max <= 0.01 -> skipped
     assert M.s2_worst_roi_rmse(t, p, roi=2) == 0.0
     t[0, 1, 0, 0] = 0.011  # just above -> counted (any material's max counts)
-    assert math.isclose(M.s2_worst_roi_rmse(t, p, roi=2), math.sqrt(0.09 * 1 / 12), rel_tol=1e-9)
+    # ROI(0,0), 12 elements: pred 0.3 vs truth 0 -> 0.09; truth 0.011 vs 0 -> 1.21e-4.
+    want = math.sqrt((0.09 + 0.011**2) / 12)
+    assert math.isclose(M.s2_worst_roi_rmse(t, p, roi=2), want, rel_tol=1e-9)
 
 
 def test_s2_last_position_quirk() -> None:
@@ -99,9 +103,10 @@ def test_per_material_and_aggregate() -> None:
 
 def test_aggregate_differs_from_s1() -> None:
     t, r = z(2), z(2)
-    r[0, 0] = 0.1  # case rmse 0.1
-    r[1, 0, 0, 0] = 0.3  # case rmse sqrt(0.0075)
-    assert math.isclose(M.aggregate_rmse(t, r), math.sqrt(0.21 / 24), rel_tol=RT)
+    r[0, 0] = 0.1  # whole 2x2 plane: 4 * 0.01 = 0.04 (case rmse sqrt(0.04/12))
+    r[1, 0, 0, 0] = 0.3  # one pixel: 0.09 (case rmse sqrt(0.0075))
+    # pooled: (0.04 + 0.09) / (2 cases * 3 * 2 * 2 = 24 elements)
+    assert math.isclose(M.aggregate_rmse(t, r), math.sqrt(0.13 / 24), rel_tol=RT)
     assert not math.isclose(M.aggregate_rmse(t, r), M.s1_mean_rmse(t, r), rel_tol=1e-3)
 
 
