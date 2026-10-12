@@ -1,0 +1,6 @@
+{"author_type": "agent", "name": "b3_tissue_rmse", "ts": "2026-10-11T21:15:13-04:00", "unit": "volume_fraction_rmse_synthetic_val", "value": 0.4761}
+{"author_type": "agent", "name": "b3_consistency_val", "ts": "2026-10-11T21:15:14-04:00", "unit": "mse_image_domain", "value": 9.6e-05}
+{"author_type": "agent", "name": "b2_supervised_tissue_rmse", "ts": "2026-10-11T21:15:14-04:00", "unit": "volume_fraction_rmse_synthetic_val", "value": 0.0549}
+{"author_type": "agent", "name": "b0_classical_tissue_rmse", "ts": "2026-10-11T21:15:14-04:00", "unit": "volume_fraction_rmse_synthetic_val", "value": 0.0}
+{"author_type": "agent", "name": "b3_null_cos", "ts": "2026-10-11T21:15:14-04:00", "unit": "abs_cosine_tissue_mean", "value": 0.993}
+{"author_type": "agent", "name": "supervised_converged_floor", "ts": "2026-10-11T21:15:14-04:00", "unit": "volume_fraction_rmse_1500ep_w16_d2", "value": 0.0372}

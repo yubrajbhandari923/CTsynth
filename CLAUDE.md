@@ -46,6 +46,18 @@ Before an experiment is registered, its success criteria must:
   Never report arithmetic as evidence.
 - Compare like with like: changing two factors at once (design *and* basis size) confounds them.
 
+## Promotion gate (D-L) — a finding may be marked `supported` only with all three
+1. **Evidence matching the claim type**: an empirical claim needs `research evidence bind` + `verify`
+   against a registered run; a mathematical claim needs an independently checked derivation, recorded as
+   such (a deterministic verification run counts and is the preferred form — see EXP-005/RUN-0007).
+2. **Independent review** by an agent that did not author it, with authority to reject. A superseding
+   finding is itself authored and needs its own review.
+3. **Explicit scope**: synthetic vs real data, which split, which regime, and the tolerance any
+   threshold-dependent number was computed at.
+Run provenance: `git_dirty_source` (not `git_dirty`) is the citability signal; experiment outputs live
+outside tracked source (`projects/*/results*/` is gitignored) so a run never dirties its own source tree.
+Never put an experiment number in an experiment title — create the record first and use the id it returns (D-007).
+
 ## Evidence rules
 - Passing tests show code matches its spec, not that a scientific claim is true. Conclusions need run evidence: `research evidence bind` numbers to RUN/metric records.
 - Every finding links an experiment ID **and** a git commit (`git_commit` in `run_meta.json`; dirty tree = not citable).

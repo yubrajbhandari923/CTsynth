@@ -1,0 +1,5 @@
+{"author_type": "agent", "name": "decoy_separation_nonneg_cm", "ts": "2026-10-11T21:12:48-04:00", "unit": "cm_path_length_L2", "value": 19.734}
+{"author_type": "agent", "name": "decoy_separation_original_cm", "ts": "2026-10-11T21:12:48-04:00", "unit": "cm_path_length_L2", "value": 6.53}
+{"author_type": "agent", "name": "cond_sum_to_one_zero_thickness", "ts": "2026-10-11T21:12:48-04:00", "unit": "dimensionless", "value": 1272.96}
+{"author_type": "agent", "name": "sigma_max_Binv", "ts": "2026-10-11T21:12:49-04:00", "unit": "dimensionless", "value": 343.4}
+{"author_type": "agent", "name": "adipose_fibro_angle_deg", "ts": "2026-10-11T21:12:49-04:00", "unit": "degrees", "value": 1.043}
