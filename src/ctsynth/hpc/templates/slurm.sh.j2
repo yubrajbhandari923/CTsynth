@@ -8,6 +8,9 @@ set -u
 BUNDLE_DIR="${{SLURM_SUBMIT_DIR:-$PWD}}"
 OUT="${{SCRATCH_DIR:-$BUNDLE_DIR/result}}/{bundle_id}"
 mkdir -p "$OUT"
+# Pinned source checkout (runbook step 3): the entry point is relative to it.
+: "${{CTSYNTH_SRC_ROOT:?set CTSYNTH_SRC_ROOT to the pinned checkout of {git_commit}}}"
+cd "$CTSYNTH_SRC_ROOT"
 # --- environment setup (from bundle config; never inherited silently) ---
 {env_setup}
 # --- pinned entry point ---

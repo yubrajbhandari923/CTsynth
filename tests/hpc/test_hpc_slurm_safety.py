@@ -34,7 +34,11 @@ def test_sbatch_all_unset_is_todo_not_default(laptop: Laptop) -> None:
         assert re.search(rf"# TODO\(unset\).*{flag}", text), flag
     assert re.search(r"# TODO\(unset\).*scratch", text, re.I)
     assert re.search(r"# TODO\(unset\).*environment", text, re.I)
-    assert not any(w in text.lower() for w in BANNED)
+    # Scan everything EXCEPT the commit sha: "dcc" and "a100" are spellable in hex, so a random
+    # 40-hex sha trips this ~0.9% of the time (measured). The sha is required content, not a
+    # cluster default, so excluding it keeps the check strict without being flaky.
+    scanned = text.lower().replace(str(b["git_commit"]).lower(), "")
+    assert not any(w in scanned for w in BANNED)
     assert b["git_commit"] in text and "ctsynth export" in text  # type: ignore[operator]
 
 
