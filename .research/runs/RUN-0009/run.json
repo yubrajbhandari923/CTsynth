@@ -1,0 +1,39 @@
+{
+  "artifacts_offset": 0,
+  "author_model": null,
+  "author_name": "opus",
+  "author_type": "agent",
+  "backend": "local",
+  "command": "uv run python projects/p02_aapm_benchmark/verify_real_kit.py --kit /private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/kit/starting_kit --out projects/p02_aapm_benchmark/results_real_kit",
+  "created_at": "2026-10-12T00:31:59-04:00",
+  "ended_at": "2026-10-12T00:32:00-04:00",
+  "env": {
+    "lockfiles": {
+      "uv.lock": "87debd45b1676f8b"
+    },
+    "user": "yubraj"
+  },
+  "exit_code": 0,
+  "experiment_id": "EXP-006",
+  "git_branch": "master",
+  "git_commit": "2ed36c01ac1fff87dccc30a40a1650ffe6e3e739",
+  "git_dirty": 0,
+  "hostname": "Yubraj-1120.local",
+  "id": "RUN-0009",
+  "label": "real-kit-classical-verification",
+  "metrics_offset": 1224,
+  "notes": null,
+  "override_reason": null,
+  "parameters": {},
+  "pid": 67283,
+  "reviewed": 0,
+  "run_dir": ".research/runs/RUN-0009",
+  "slurm": null,
+  "slurm_job_id": null,
+  "started_at": "2026-10-12T00:32:00-04:00",
+  "status": "completed",
+  "stderr_path": ".research/runs/RUN-0009/stderr.log",
+  "stdout_path": ".research/runs/RUN-0009/stdout.log",
+  "updated_at": "2026-10-12T00:32:00-04:00",
+  "working_dir": "."
+}

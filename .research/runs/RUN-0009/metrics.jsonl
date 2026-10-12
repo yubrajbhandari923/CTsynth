@@ -1,0 +1,8 @@
+{"author_type": "agent", "name": "real_rmse_sum_to_one", "ts": "2026-10-12T00:32:13-04:00", "unit": "volume_fraction_rmse_real_kit_3cases", "value": 1.5554}
+{"author_type": "agent", "name": "real_rmse_zero", "ts": "2026-10-12T00:32:14-04:00", "unit": "volume_fraction_rmse_real_kit_3cases", "value": 0.4465}
+{"author_type": "agent", "name": "real_rmse_unconstrained", "ts": "2026-10-12T00:32:14-04:00", "unit": "volume_fraction_rmse_real_kit_3cases", "value": 0.3173}
+{"author_type": "agent", "name": "real_rmse_simplex", "ts": "2026-10-12T00:32:14-04:00", "unit": "volume_fraction_rmse_real_kit_3cases", "value": 0.3787}
+{"author_type": "agent", "name": "real_rmse_sum_to_one_clipped", "ts": "2026-10-12T00:32:14-04:00", "unit": "volume_fraction_rmse_real_kit_3cases", "value": 0.3789}
+{"author_type": "agent", "name": "linear_model_resid_lo", "ts": "2026-10-12T00:32:14-04:00", "unit": "relative_residual_tissue", "value": 0.0776}
+{"author_type": "agent", "name": "linear_model_resid_hi", "ts": "2026-10-12T00:32:14-04:00", "unit": "relative_residual_tissue", "value": 0.0586}
+{"author_type": "agent", "name": "sum_to_one_frac_outside_01", "ts": "2026-10-12T00:32:15-04:00", "unit": "fraction_of_pixels", "value": 0.4392}
