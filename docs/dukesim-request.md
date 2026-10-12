@@ -27,7 +27,7 @@ XCIST (docs/xcist.md) is the working independent producer meanwhile.
 12. Contrast handling: static iodine concentration vs phase-dependent perfusion (do not conflate).
 
 ## C. Minimum viable paired dataset (start supervised work)
-≥ 20 distinct phantoms, 2 slices–volumes each is not enough; need: **per-voxel material truth with declared semantics,
+≥ 20 distinct phantoms with: **per-voxel material truth with declared semantics,
 noisy and noiseless CT (or projections) at ≥2 kVp for the same phantoms, spectra and geometry files, voxel geometry,
 patient-level identifiers.** One scanner model, one kernel is acceptable for a first run.
 

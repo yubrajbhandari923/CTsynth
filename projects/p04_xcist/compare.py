@@ -131,9 +131,17 @@ def run_one(ds: Path, pid: str, kvp: int) -> dict[str, object]:
     dx = ref.grid.spacing_mm()[2]
     a_vx = voxel_chords(truth, dx, src, det) / 10.0 * rho[:, None, None]
     tg, tk, ts = tables()
-    # our spectra_v1 binned onto XCIST's 6 keV bins (photons per bin, as our Spectrum expects)
+    # our spectra_v1 (1 keV points, each covering [e-0.5, e+0.5)) mapped onto XCIST's energy bins
+    # [E-h, E+h) with h = half the grid step (4 keV at 80 kVp, 6 keV at 120 kVp) by EXACT overlap
+    # weights, so each photon is counted once. Review of F-035 found a fixed +-3 keV window
+    # double-counted photons at 80 kVp. Photons per bin, as our Spectrum expects.
     e_s, f_s = ts["energies_keV"], ts[f"fluence_{kvp}"]
-    ours_flu = np.array([f_s[(e_s >= e - 3) & (e_s < e + 3)].sum() for e in ev])
+    step = np.diff(np.array(sp["energies_keV"]))
+    assert np.allclose(step, step[0]), "XCIST energy grid must be uniform"
+    h = step[0] / 2
+    ov = lambda e: np.clip(np.minimum(e_s + 0.5, e + h) - np.maximum(e_s - 0.5, e - h), 0, 1)  # noqa: E731
+    ours_flu = np.array([(f_s * ov(e)).sum() for e in ev])
+    ours_flu_pt = np.array([f_s[(e_s >= e - h) & (e_s < e + h)].sum() for e in ev])  # sensitivity
     ideal = ev.copy()
     stages = {
         "M1_analytic_xcistphys": model_prep(a_an, ev, flu, ev * dw, ev, xk),
@@ -141,6 +149,7 @@ def run_one(ds: Path, pid: str, kvp: int) -> dict[str, object]:
         "M2_our_kappa": model_prep(a_an, ev, flu, ev * dw, tg, tk),
         "M3_ideal_detector": model_prep(a_an, ev, flu, ideal, tg, tk),
         "M4_our_spectrum": model_prep(a_an, ev, ours_flu, ideal, tg, tk),
+        "M4pt_point_binned_sensitivity": model_prep(a_an, ev, ours_flu_pt, ideal, tg, tk),
     }
     res: dict[str, object] = {"dropped_weight_fraction_below_10keV": dropped}
     for k, p in stages.items():
@@ -156,6 +165,9 @@ def run_one(ds: Path, pid: str, kvp: int) -> dict[str, object]:
             stages["M3_ideal_detector"] - stages["M2_our_kappa"], prep_x
         ),
         "spectrum(M4-M3)": metrics(stages["M4_our_spectrum"] - stages["M3_ideal_detector"], prep_x),
+        "spectrum_pointbin(M4pt-M3)": metrics(
+            stages["M4pt_point_binned_sensitivity"] - stages["M3_ideal_detector"], prep_x
+        ),
     }
     sub = np.load(ds / f"{pid}__kvp{kvp}_sub" / "prep.npy")
     res["xcist_subsampling(sub-ref)"] = metrics(sub - prep_x, prep_x)
