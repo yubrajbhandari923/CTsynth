@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3775 tokens.
-> Generated 2026-10-11T20:06:28-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3806 tokens.
+> Generated 2026-10-11T20:15:02-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `41f164386d` (uncommitted changes)
+Git: `master` @ `9d3b5efb4d` (uncommitted changes)
 
 ## Latest checkpoint
 
@@ -51,6 +51,7 @@ _none_
 - PLAN-002 P02 AAPM benchmark: adapter, classical and supervised baselines — 0/5 tasks done · objective: Reproducible benchmark on AAPM DL-Spectral CT: adapter with explicit conventions, deterministic splits, streaming loader, constrained classical baseline, small U-Net, honest evaluation
   - next ready: T-014 Full-data HPC acquisition and experiment plan (`research task context T-014`)
   - running: T-010 AAPM adapter + synthetic schema-mirror generator + deterministic splits (claimed by opus)
+  - running: T-011 Classical constrained decomposition baseline (NNLS + simplex constraint, TV variant) (claimed by opus)
 - PLAN-001 P01 foundation: spectral forward model and baselines — 4/9 tasks done · objective: Validated spectral forward model + classical baseline decomposition on laptop, then HPC-ready configs
   - next ready: T-005 Classical baseline: image-domain two-material decomposition on toy phantom (`research task context T-005`)
   - BLOCKED: T-004 Read AAPM starting_kit.tgz (103 MB) for spectra/geometry/metric (needs user OK to download)

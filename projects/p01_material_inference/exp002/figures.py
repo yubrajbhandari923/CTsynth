@@ -22,8 +22,16 @@ cond = [c["jac_cond"]["median"] if c["identifiable"] else np.nan for c in cells]
 ax[0].bar(x, cond)
 for i, c in enumerate(cells):
     if not c["identifiable"]:
-        ax[0].text(i, 1, "non-identifiable\n(rank < k)", rotation=90, ha="center",
-                   va="bottom", fontsize=7, color="firebrick")
+        ax[0].text(
+            i,
+            1,
+            "non-identifiable\n(rank < k)",
+            rotation=90,
+            ha="center",
+            va="bottom",
+            fontsize=7,
+            color="firebrick",
+        )
 ax[0].set_yscale("log")
 ax[0].set_ylabel("median cond(weighted J)")
 ax[0].set_xticks(x, lab, rotation=60, ha="right")
@@ -39,8 +47,16 @@ ax[1].axhspan(0.75, 1.25, alpha=0.15)
 ax[1].set_ylabel("iodine emp std / CRLB (N=1e6)")
 for i, c in enumerate(cells):
     if not c["identifiable"]:
-        ax[1].text(i, 0.05, "non-identifiable\n(not scored)", rotation=90, ha="center",
-                   va="bottom", fontsize=7, color="firebrick")
+        ax[1].text(
+            i,
+            0.05,
+            "non-identifiable\n(not scored)",
+            rotation=90,
+            ha="center",
+            va="bottom",
+            fontsize=7,
+            color="firebrick",
+        )
 ax[1].set_xticks(x, lab, rotation=60, ha="right")
 mis = [c for c in m["cells"] if c["identifiable"] and c["condition"] != "matched"]
 for key in sorted({(c["phantom"], c["design"], c["k"], c["condition"]) for c in mis}):
