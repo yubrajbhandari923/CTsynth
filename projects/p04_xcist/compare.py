@@ -5,7 +5,8 @@
 Reference = XCIST noise-free, single-sample projections (`*_ref` records). Every stage changes ONE
 ingredient of our model relative to the previous one, so each delta is attributable. All numbers are
 -ln(transmission) differences (dimensionless); rms_obj / rms_all are RMS over rays through the
-object (XCIST prep in (0.05, 8)) / all rays. This characterises mismatch; nothing is tuned to reduce it.
+object (XCIST prep in (0.05, 8)) / all rays. This characterises mismatch; nothing is tuned
+to reduce it.
 
   M1  analytic chords, XCIST mu + spectrum + detector weights -> geometry/sampling floor
   M1v voxel-marched chords instead of analytic                -> truth rasterisation share
