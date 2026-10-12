@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
 > Generated from .research/ by `research current`. Do not edit; it is overwritten. ~5196 tokens.
-> Generated 2026-10-12T18:35:21-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated 2026-10-12T18:37:00-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `37d5ce246b`
+Git: `master` @ `6c12fbebe1`
 
 ## Latest checkpoint
 

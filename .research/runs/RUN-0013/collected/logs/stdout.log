@@ -1,0 +1,27 @@
+{
+  "which": {
+    "python3": "/usr/bin/python3",
+    "python3.9": null,
+    "python3.10": null,
+    "python3.11": null,
+    "python3.12": null,
+    "python3.13": null,
+    "uv": "/home/yb107/.local/bin/uv",
+    "conda": null,
+    "mamba": null,
+    "micromamba": null,
+    "gcc": "/usr/bin/gcc",
+    "g++": "/usr/bin/g++",
+    "cmake": null,
+    "make": "/usr/bin/make",
+    "git": "/usr/bin/git",
+    "module": "module",
+    "apptainer": null,
+    "singularity": null
+  },
+  "module_avail_python": "---------------------------- /cm/local/modulefiles -----------------------------\npython3  python39",
+  "module_avail_gcc_cuda_conda": "---------------------------- /cm/local/modulefiles -----------------------------\ngcc/11.2.0  \n\n---------------------------- /cm/shared/modulefiles ----------------------------\ngcc/11.2.0  gcc9/9.3.0  \n\n---------------------------- /cm/local/modulefiles -----------------------------\ncuda-dcgm/3.1.3.1  \n\n---------------------------- /cm/shared/modulefiles ----------------------------\ncuda10.0/toolkit/10.0.130  cuda11.2/fft/11.2.2      cuda12.3/blas/12.3.2     \ncuda11.0/blas/11.0.3       cuda11.2/toolkit/11.2.2  cuda12.3/fft/12.3.2      \ncuda11.0/fft/11.0.3        cuda12.2/blas/12.2.1     cuda12.3/toolkit/12.3.2  \ncuda11.0/toolkit/11.0.3    cuda12.2/fft/12.2.1      \ncuda11.2/blas/11.2.2       cuda12.2/toolkit/12.2.1  \n\n---------------------------- /cm/shared/modulefiles ----------------------------\nminiconda/py39_4.12.0",
+  "lmod_or_env": "none\n/bin/bash",
+  "cpu": "2\nx86_64",
+  "home_quota_df": "192.168.10.160:/mnt/CVIT/home   21T   17T  3.8T  82% /home"
+}
