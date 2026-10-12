@@ -35,6 +35,10 @@ select = ["E", "F", "I", "B", "UP", "NPY"]
 [tool.ruff.lint.per-file-ignores]
 # long provenance strings are data, not code: rewrapping them would change the recorded text
 "scripts/make_tables.py" = ["E501"]
+# frozen as run on the cluster (RUN-0012/0013): editing would change the recorded script hash;
+# stdlib/py3.8 style on purpose
+"scripts/hpc_smoke.py" = ["E501", "UP"]
+"scripts/hpc_env_probe.py" = ["E501", "UP"]
 
 [tool.mypy]
 strict = true

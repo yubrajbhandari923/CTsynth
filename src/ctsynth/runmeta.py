@@ -14,6 +14,7 @@ from pathlib import Path
 
 from ctsynth import __version__
 from ctsynth.config import ExperimentConfig
+from ctsynth.hashing import config_sha256
 
 
 def _git(*args: str) -> str | None:
@@ -41,7 +42,7 @@ def collect(cfg: ExperimentConfig) -> dict[str, object]:
     return {
         "experiment_id": cfg.experiment_id,
         "uv_lock_sha256": _lock_sha256(),
-        "config_sha256": hashlib.sha256(cfg.model_dump_json().encode()).hexdigest(),
+        "config_sha256": config_sha256(cfg),
         "config": cfg.model_dump(),
         "git_commit": _git("rev-parse", "HEAD"),
         "git_dirty": bool(_git("status", "--porcelain")),
