@@ -13,6 +13,12 @@ project:
   created_at: '2026-10-11T19:14:28-04:00'
   git_repo: null
 hpc:
+  bundle:
+    # Replaces the default list (which ignores .gitignore): keep data, outputs, caches, checkpoints out of bundles.
+    exclude: ['.git', '.github', '.research', '__pycache__', '*.pyc', '.venv', 'venv', 'node_modules',
+      '.mypy_cache', '.pytest_cache', '.ruff_cache', '.DS_Store', '*.egg-info', '.ipynb_checkpoints',
+      'outputs', 'runs_local', 'bundles', 'runs_imported', 'incoming', 'data/aapm', 'projects/*/results*',
+      '*.npy.gz', '*.pt', '*.pth', '*.ckpt', '*.tar.gz', '*.zip', '.env*']
   clusters:
     duke:
       project:
