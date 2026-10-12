@@ -7,3 +7,7 @@ __pycache__/
 outputs/
 runs_local/
 .DS_Store
+
+# AAPM DL-Spectral CT bulk data: never committed (see docs/literature/aapm/)
+data/aapm/
+*.npy.gz

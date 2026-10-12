@@ -9,6 +9,26 @@ Scope, physics and contracts: `docs/`. Active project: `projects/p01_material_in
 - **Haiku** implements bounded tasks and iterates against frozen tests / a stated objective. Never edits frozen tests or specs; escalates after repeated failure.
 - Humans (Yubraj) decide what to investigate; discuss science with GPT Astra. Laptop is authoritative; HPC runs experiments only.
 
+## Tooling and delegation
+Verified available (2026-10-11): Ponytail 5.1.0 (enabled, `full` active; `/ponytail lite|full|ultra`,
+skills `ponytail:ponytail-review|-audit|-debt`), pyright-lsp, research-desk (reference-lookup MCP:
+`verify_reference`, `lookup_reference`, `search_works`), parallel (web_search/web_fetch MCP), zeroguess,
+Google Drive/Gmail/Calendar + Claude Docs MCP. **No project or global `skills` CLI entries, no `.claude/`
+dir in this repo** — all skills come from plugins. Research OS CLI: `.research/bin/research` (no install).
+
+Use before working, not for show: `reference-lookup` to verify any citation before it enters `docs/literature/`;
+`parallel` web_search for literature/dataset facts; `ponytail:ponytail-review` on a substantial diff.
+
+Model routing (cost-aware; one job per agent, explicit owned files):
+- **Opus** — scientific interpretation, findings, synthesis, pre-registration, review arbitration.
+- **Sonnet** — interfaces, specs, test design, hard numerics, independent review.
+- **Haiku** — bounded implementation against frozen tests, debugging, exploration, parameter tuning.
+  Let Haiku loop implement → test → fix on its own; escalate only when a failure is architectural or scientific,
+  never for routine debugging.
+Avoid duplicate context loading, redundant subagents and repeated literature searches: check `docs/literature/`
+and `research search` before dispatching a new search agent. Prefer the cheapest mode that does the job.
+Record decisions and evidence in Research OS; do not log routine implementation iterations.
+
 ## Coordination
 - One **coordinator** (the main session) integrates shared files: `pyproject.toml`, `uv.lock`, `src/ctsynth/__init__.py`, `docs/architecture.md`, `docs/data-contracts.md`, `.research/`.
 - Every delegated task states **owned files** in its brief; touch nothing else. Parallel agents never share a file.
