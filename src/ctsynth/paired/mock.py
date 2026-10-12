@@ -61,6 +61,7 @@ def make_mock_record(
     n_view: int = 16,
     photons_scale: float = 1.0,
     noisy: bool = True,
+    attenuation_source: str = "test-fixture",
 ) -> Path:
     """Random disks (from `seed`), fraction-valued truth; writes a record directory."""
     gen = rng(seed)
@@ -117,7 +118,7 @@ def make_mock_record(
         producer={"name": "ctsynth-mock", "version": "1"},
         grid=_grid(n, dx_cm),
         materials=tuple(
-            MaterialSpec(nm, "volume_fraction", float(r), "NIST-XCOM")
+            MaterialSpec(nm, "volume_fraction", float(r), attenuation_source)
             for nm, r in zip(names, ref_density, strict=True)
         ),
         truth_file="truth.npy",

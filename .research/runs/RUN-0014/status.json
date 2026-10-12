@@ -1,0 +1,9 @@
+{
+  "ended_at": "2026-10-12T19:01:13-04:00",
+  "exit_code": 1,
+  "hostname": "Yubraj-1407.local",
+  "pid": 82203,
+  "runner_pid": 82161,
+  "started_at": "2026-10-12T18:58:45-04:00",
+  "state": "failed"
+}

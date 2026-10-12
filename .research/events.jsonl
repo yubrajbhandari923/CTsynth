@@ -321,3 +321,8 @@
 {"action": "synthesized", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-008", "entity_type": "experiment", "summary": "EXP-008 synthesized (1 runs covered, 1 new)", "ts": "2026-10-12T18:36:59-04:00"}
 {"action": "status", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-008", "entity_type": "experiment", "summary": "EXP-008: needs_review → completed", "ts": "2026-10-12T18:36:59-04:00"}
 {"action": "created", "author_name": "opus", "author_type": "agent", "entity_id": "D-010", "entity_type": "decision", "summary": "D-010 Adopt Research OS 0.5.0 native HPC protocol; CTsynth keeps thin preflight/postcheck guards", "ts": "2026-10-12T18:40:15-04:00"}
+{"action": "created", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-009", "entity_type": "experiment", "summary": "EXP-009 XCIST official example reproduction (laptop, optional env)", "ts": "2026-10-12T18:58:35-04:00"}
+{"action": "status", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-009", "entity_type": "experiment", "summary": "EXP-009: proposed → running", "ts": "2026-10-12T18:58:39-04:00"}
+{"action": "created", "author_name": "opus", "author_type": "agent", "entity_id": "RUN-0014", "entity_type": "run", "summary": "RUN-0014 registered under EXP-009 [official-example]", "ts": "2026-10-12T18:58:45-04:00"}
+{"action": "failed", "author_name": null, "author_type": "system", "entity_id": "RUN-0014", "entity_type": "run", "summary": "RUN-0014 failed (exit 1)", "ts": "2026-10-12T19:01:13-04:00"}
+{"action": "status", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-009", "entity_type": "experiment", "summary": "EXP-009: running → needs_review (all runs finished)", "ts": "2026-10-12T19:01:13-04:00"}
