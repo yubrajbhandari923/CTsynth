@@ -1,0 +1,10 @@
+{
+  "python": "3.8.10",
+  "platform": "Linux-5.15.0-130-generic-x86_64-with-glibc2.29",
+  "host": "node004",
+  "slurm_job_id": "201820",
+  "run_id": "RUN-0012",
+  "sum_squares": 333332833333500000,
+  "sha256": "cc8027d7a44ad7ea90678b8ce0460469f07f5e19c001867c45938a64c8865401",
+  "script_sha256": "59b4f438673f5dccfb73dff87568dc17a6973f2a694f6ca14d133159e9886b96"
+}
