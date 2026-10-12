@@ -13,6 +13,9 @@ dependencies = ["numpy>=1.26", "pydantic>=2.6", "pyyaml>=6"]
 torch = ["torch>=2.1"]  # CPU-first; MPS/CUDA picked at runtime by ctsynth.device
 physics = ["torch>=2.1"]  # ctsynth.physics is torch-based (autograd); only this subpackage needs it
 
+[project.scripts]
+ctsynth = "ctsynth.hpc.cli:main"
+
 [dependency-groups]
 dev = ["torch>=2.1", "pytest>=8", "ruff>=0.6", "mypy>=1.11", "types-PyYAML"]
 

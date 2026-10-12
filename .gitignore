@@ -15,3 +15,8 @@ data/aapm/
 # Experiment outputs: written during runs, so tracking them makes every run "dirty".
 # Register them as Research OS artifacts instead; commit a curated copy if needed.
 projects/*/results*/
+
+# HPC workflow: frozen bundles and imported run directories are evidence, not source
+bundles/
+runs_imported/
+incoming/
