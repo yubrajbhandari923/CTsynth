@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
 > Generated from .research/ by `research current`. Do not edit; it is overwritten. ~5158 tokens.
-> Generated 2026-10-12T19:14:19-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated 2026-10-12T19:18:23-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `be91a057c2`
+Git: `master` @ `bd8a465b8d`
 
 ## Latest checkpoint
 
@@ -46,7 +46,7 @@ _none_
 
 ## Current experiments
 
-- EXP-010 [needs_review] XCIST vs CTsynth differentiable forward model: staged mismatch on known-material phantoms — runs 1, ⚠ 1 unsynthesized
+- EXP-010 [needs_review] XCIST vs CTsynth differentiable forward model: staged mismatch on known-material phantoms — runs 3, ⚠ 3 unsynthesized
 
 ## Active plans
 
@@ -67,7 +67,7 @@ _none_
 
 ## ⚠ Needs synthesis before new experiments
 
-- EXP-010 XCIST vs CTsynth differentiable forward model: staged mismatch on known-material phantoms (1 unsynthesized runs)
+- EXP-010 XCIST vs CTsynth differentiable forward model: staged mismatch on known-material phantoms (3 unsynthesized runs)
 
 ## Active decisions
 

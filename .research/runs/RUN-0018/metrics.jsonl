@@ -1,0 +1,72 @@
+{"name": "G1_kvp120.M1_analytic_xcistphys.rel_rms_obj", "value": 0.007760303450029178, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp120.M1_analytic_xcistphys.mean_obj", "value": -0.0007325045342948256, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp120.M1v_voxel_chords.rel_rms_obj", "value": 0.003580052232782772, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp120.M1v_voxel_chords.mean_obj", "value": -6.625240046320667e-06, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp120.M2_our_kappa.rel_rms_obj", "value": 0.007806664794787451, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp120.M2_our_kappa.mean_obj", "value": 0.002519463250694892, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp120.M3_ideal_detector.rel_rms_obj", "value": 0.00802195207007634, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp120.M3_ideal_detector.mean_obj", "value": -0.006376038622826863, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp120.M4_our_spectrum.rel_rms_obj", "value": 0.02163016586585869, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp120.M4_our_spectrum.mean_obj", "value": 0.07177239005837979, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp120.noise_law.r2", "value": 0.9960241795606869}
+{"name": "G1_kvp120.xcist_sub.rms_obj", "value": 0.006324580532431869}
+{"name": "G1_kvp80.M1_analytic_xcistphys.rel_rms_obj", "value": 0.010485420780476103, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp80.M1_analytic_xcistphys.mean_obj", "value": -0.0010100496422894044, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp80.M1v_voxel_chords.rel_rms_obj", "value": 0.004668743738188731, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp80.M1v_voxel_chords.mean_obj", "value": 7.608537179570085e-05, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp80.M2_our_kappa.rel_rms_obj", "value": 0.010505192064188465, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp80.M2_our_kappa.mean_obj", "value": 0.0016544203598147088, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp80.M3_ideal_detector.rel_rms_obj", "value": 0.010563531862743655, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp80.M3_ideal_detector.mean_obj", "value": 0.00404400261165247, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp80.M4_our_spectrum.rel_rms_obj", "value": 0.024284762102002592, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp80.M4_our_spectrum.mean_obj", "value": 0.09083979874710846, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G1_kvp80.noise_law.r2", "value": 0.9902753506782871}
+{"name": "G1_kvp80.xcist_sub.rms_obj", "value": 0.00866761437838794}
+{"name": "G2_kvp120.M1_analytic_xcistphys.rel_rms_obj", "value": 0.00739569208645191, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp120.M1_analytic_xcistphys.mean_obj", "value": 0.0005442242476681365, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp120.M1v_voxel_chords.rel_rms_obj", "value": 0.0035924535789360504, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp120.M1v_voxel_chords.mean_obj", "value": -3.318468186799865e-05, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp120.M2_our_kappa.rel_rms_obj", "value": 0.007499002507044578, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp120.M2_our_kappa.mean_obj", "value": 0.003491277643396904, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp120.M3_ideal_detector.rel_rms_obj", "value": 0.007577565039230757, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp120.M3_ideal_detector.mean_obj", "value": -0.004477838285344643, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp120.M4_our_spectrum.rel_rms_obj", "value": 0.023407327614720724, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp120.M4_our_spectrum.mean_obj", "value": 0.07126771984367286, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp120.noise_law.r2", "value": 0.9961338964355043}
+{"name": "G2_kvp120.xcist_sub.rms_obj", "value": 0.0055310048317294865}
+{"name": "G2_kvp80.M1_analytic_xcistphys.rel_rms_obj", "value": 0.009082759800183674, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp80.M1_analytic_xcistphys.mean_obj", "value": 0.0008802055578658782, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp80.M1v_voxel_chords.rel_rms_obj", "value": 0.004444376784687578, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp80.M1v_voxel_chords.mean_obj", "value": -4.724482650994583e-05, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp80.M2_our_kappa.rel_rms_obj", "value": 0.009145737040786774, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp80.M2_our_kappa.mean_obj", "value": 0.0033157577004818135, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp80.M3_ideal_detector.rel_rms_obj", "value": 0.009252789249930529, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp80.M3_ideal_detector.mean_obj", "value": 0.00558411763196133, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp80.M4_our_spectrum.rel_rms_obj", "value": 0.025832178901567065, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp80.M4_our_spectrum.mean_obj", "value": 0.09189215205580636, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G2_kvp80.noise_law.r2", "value": 0.9904719767607719}
+{"name": "G2_kvp80.xcist_sub.rms_obj", "value": 0.007539532406822137}
+{"name": "G3_kvp120.M1_analytic_xcistphys.rel_rms_obj", "value": 0.004676270965307053, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp120.M1_analytic_xcistphys.mean_obj", "value": -0.0009511610740477845, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp120.M1v_voxel_chords.rel_rms_obj", "value": 0.002576722611814714, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp120.M1v_voxel_chords.mean_obj", "value": -2.861671657141321e-05, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp120.M2_our_kappa.rel_rms_obj", "value": 0.004742826951676306, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp120.M2_our_kappa.mean_obj", "value": 0.002532861886807629, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp120.M3_ideal_detector.rel_rms_obj", "value": 0.0048922125188379, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp120.M3_ideal_detector.mean_obj", "value": -0.004963792667813546, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp120.M4_our_spectrum.rel_rms_obj", "value": 0.020882835650129782, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp120.M4_our_spectrum.mean_obj", "value": 0.07496812063903863, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp120.noise_law.r2", "value": 0.9951398299159424}
+{"name": "G3_kvp120.xcist_sub.rms_obj", "value": 0.006167330189616801}
+{"name": "G3_kvp80.M1_analytic_xcistphys.rel_rms_obj", "value": 0.005113346613428277, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp80.M1_analytic_xcistphys.mean_obj", "value": -0.001320747478934868, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp80.M1v_voxel_chords.rel_rms_obj", "value": 0.002699317895443737, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp80.M1v_voxel_chords.mean_obj", "value": -2.7799873575282966e-05, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp80.M2_our_kappa.rel_rms_obj", "value": 0.005130145787234796, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp80.M2_our_kappa.mean_obj", "value": 0.0015073606971131638, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp80.M3_ideal_detector.rel_rms_obj", "value": 0.005220077046489084, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp80.M3_ideal_detector.mean_obj", "value": 0.0039046538654540354, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp80.M4_our_spectrum.rel_rms_obj", "value": 0.024195844563677602, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp80.M4_our_spectrum.mean_obj", "value": 0.10088245286801953, "ts": "2026-10-12T20:00:00-04:00"}
+{"name": "G3_kvp80.noise_law.r2", "value": 0.9847493511511626}
+{"name": "G3_kvp80.xcist_sub.rms_obj", "value": 0.0071799860216460445}
