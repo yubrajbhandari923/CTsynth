@@ -1,0 +1,30 @@
+host=node004 date=2026-10-12T19:32:14-04:00
+uv=uv 0.9.8
+system gcc: gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+gcc now: gcc (GCC) 11.2.0
+Using CPython 3.11.14
+Creating virtual environment at: /home/yb107/research-os/projects/CTsynth/env/xcist-venv
+warning: A virtual environment already exists at `/home/yb107/research-os/projects/CTsynth/env/xcist-venv`. In the future, uv will require `--clear` to replace it
+Activate with: source /home/yb107/research-os/projects/CTsynth/env/xcist-venv/bin/activate
+uv venv rc=0
+uv pip rc=1
+213:DEBUG Not using uv build backend direct build for source tree `gecatsim==1.6.9`, failed to parse pyproject.toml: failed to open file `/home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/pyproject.toml`: No such file or directory (os error 2)
+1447:DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/gecatsim/clib_build/BuildLinux64: line 2: $'\r': command not found
+1448:DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/gecatsim/clib_build/BuildLinux64: line 3: cd: $'src\r': No such file or directory
+1449:DEBUG make: ../Makefile: No such file or directory
+1451:DEBUG make: ../Makefile: No such file or directory
+1453:DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/gecatsim/clib_build/BuildLinux64: line 6: cd: $'..\r': No such file or directory
+1502:DEBUG     raise CalledProcessError(retcode, cmd)
+1503:DEBUG subprocess.CalledProcessError: Command '['bash', '/home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/gecatsim/clib_build/BuildLinux64']' returned non-zero exit status 1.
+1509:  ├─▶ The build backend returned an error
+3233:      line 2: $'\r': command not found
+3235:      line 3: cd: $'src\r': No such file or directory
+3236:      make: ../Makefile: No such file or directory
+3238:      make: ../Makefile: No such file or directory
+3241:      line 6: cd: $'..\r': No such file or directory
+3330:          raise CalledProcessError(retcode, cmd)
+3331:      subprocess.CalledProcessError: Command '['bash',
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'numpy'
+Using Python 3.11.14 environment at: /home/yb107/research-os/projects/CTsynth/env/xcist-venv

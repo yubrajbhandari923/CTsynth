@@ -1,0 +1,3338 @@
+DEBUG uv 0.9.8
+DEBUG Acquired shared lock for `/home/yb107/research-os/projects/CTsynth/env/uv-cache`
+DEBUG Checking for Python interpreter at path `/home/yb107/research-os/projects/CTsynth/env/xcist-venv/bin/python`
+Using Python 3.11.14 environment at: /home/yb107/research-os/projects/CTsynth/env/xcist-venv
+DEBUG Acquired lock for `/home/yb107/research-os/projects/CTsynth/env/xcist-venv`
+DEBUG At least one requirement is not satisfied: gecatsim==1.6.9
+DEBUG Using request timeout of 30s
+DEBUG Solving with installed Python version: 3.11.14
+DEBUG Solving with target Python version: >=3.11.14
+DEBUG Adding direct dependency: numpy<2
+DEBUG Adding direct dependency: scipy*
+DEBUG Adding direct dependency: matplotlib*
+DEBUG Adding direct dependency: tqdm*
+DEBUG Adding direct dependency: pydantic*
+DEBUG Adding direct dependency: pyyaml*
+DEBUG Adding direct dependency: gecatsim>=1.6.9, <1.6.9+
+DEBUG Found stale response for: https://pypi.org/simple/gecatsim/
+DEBUG Sending revalidation request for: https://pypi.org/simple/gecatsim/
+DEBUG Found stale response for: https://pypi.org/simple/tqdm/
+DEBUG Sending revalidation request for: https://pypi.org/simple/tqdm/
+DEBUG Found stale response for: https://pypi.org/simple/pyyaml/
+DEBUG Sending revalidation request for: https://pypi.org/simple/pyyaml/
+DEBUG Found stale response for: https://pypi.org/simple/pydantic/
+DEBUG Sending revalidation request for: https://pypi.org/simple/pydantic/
+DEBUG Found stale response for: https://pypi.org/simple/scipy/
+DEBUG Sending revalidation request for: https://pypi.org/simple/scipy/
+DEBUG Found stale response for: https://pypi.org/simple/matplotlib/
+DEBUG Sending revalidation request for: https://pypi.org/simple/matplotlib/
+DEBUG Found stale response for: https://pypi.org/simple/numpy/
+DEBUG Sending revalidation request for: https://pypi.org/simple/numpy/
+DEBUG Found not-modified response for: https://pypi.org/simple/scipy/
+DEBUG Found not-modified response for: https://pypi.org/simple/matplotlib/
+DEBUG Found not-modified response for: https://pypi.org/simple/pydantic/
+DEBUG Found not-modified response for: https://pypi.org/simple/numpy/
+DEBUG Found not-modified response for: https://pypi.org/simple/pyyaml/
+DEBUG Found not-modified response for: https://pypi.org/simple/tqdm/
+DEBUG Found not-modified response for: https://pypi.org/simple/gecatsim/
+DEBUG Searching for a compatible version of gecatsim (>=1.6.9, <1.6.9+)
+DEBUG Selecting: gecatsim==1.6.9 [compatible] (gecatsim-1.6.9.tar.gz)
+DEBUG Acquired lock for `/home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9`
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/35/ea/a56b9fe5066f3537b7882f77e9c5dfb26d8c2eefdaed9b5fc73d57b4dc22/pydantic-2.14.1-py3-none-any.whl.metadata
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/2e/a4/1ca765c63a60e3096ae2ad132eb25f6f7eab0377418cd0472808befd9665/matplotlib-3.11.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/71/60/917329f640924b18ff085ab889a11c763e0b573da888e8404ff486657602/pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/3a/d0/edc009c27b406c4f9cbc79274d6e46d634d139075492ad055e3d68445925/numpy-1.26.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/a7/03/921a3d3c75785aca9ebfbfcabfbc3a1be12e2ab5265deb026d55a5a3f83e/tqdm-4.70.1-py3-none-any.whl.metadata
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/65/f1/dbc2f97d4cd2a01f0cf3d897e28558c349095f0487f34742edb62a8babd3/gecatsim-1.6.9.tar.gz
+DEBUG No `pyproject.toml` available for: gecatsim==1.6.9
+DEBUG Found static `PKG-INFO` for: gecatsim==1.6.9
+DEBUG Released lock at `/home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/.lock`
+DEBUG Adding transitive dependency for gecatsim==1.6.9: numpy*
+DEBUG Adding transitive dependency for gecatsim==1.6.9: scipy*
+DEBUG Adding transitive dependency for gecatsim==1.6.9: matplotlib*
+DEBUG Adding transitive dependency for gecatsim==1.6.9: tqdm*
+DEBUG Searching for a compatible version of numpy (<2)
+DEBUG Selecting: numpy==1.26.4 [compatible] (numpy-1.26.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl)
+DEBUG Searching for a compatible version of scipy (*)
+DEBUG No compatible version found for: Python
+DEBUG Recording unit propagation conflict of Python from incompatibility of (scipy)
+DEBUG Searching for a compatible version of gecatsim (>=1.6.9, <1.6.9+)
+DEBUG Selecting: gecatsim==1.6.9 [compatible] (gecatsim-1.6.9.tar.gz)
+DEBUG Searching for a compatible version of numpy (<2)
+DEBUG Selecting: numpy==1.26.4 [compatible] (numpy-1.26.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl)
+DEBUG Searching for a compatible version of scipy (<1.18.1 | >1.18.1)
+DEBUG Recording unit propagation conflict of Python from incompatibility of (scipy)
+DEBUG Searching for a compatible version of gecatsim (>=1.6.9, <1.6.9+)
+DEBUG Selecting: gecatsim==1.6.9 [compatible] (gecatsim-1.6.9.tar.gz)
+DEBUG Searching for a compatible version of numpy (<2)
+DEBUG Selecting: numpy==1.26.4 [compatible] (numpy-1.26.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl)
+DEBUG Searching for a compatible version of scipy (<1.18.0 | >1.18.0, <1.18.1 | >1.18.1)
+DEBUG Selecting: scipy==1.17.1 [compatible] (scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl)
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/09/7d/af933f0f6e0767995b4e2d705a0665e454d1c19402aa7e895de3951ebb04/scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata
+DEBUG Adding transitive dependency for scipy==1.17.1: numpy>=1.26.4, <2.7
+DEBUG Searching for a compatible version of matplotlib (*)
+DEBUG Selecting: matplotlib==3.11.2 [compatible] (matplotlib-3.11.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl)
+DEBUG Adding transitive dependency for matplotlib==3.11.2: contourpy>=1.0.1
+DEBUG Adding transitive dependency for matplotlib==3.11.2: cycler>=0.10
+DEBUG Adding transitive dependency for matplotlib==3.11.2: fonttools>=4.28.2
+DEBUG Adding transitive dependency for matplotlib==3.11.2: kiwisolver>=1.3.1
+DEBUG Adding transitive dependency for matplotlib==3.11.2: numpy>=1.25
+DEBUG Adding transitive dependency for matplotlib==3.11.2: packaging>=20.0
+DEBUG Adding transitive dependency for matplotlib==3.11.2: pillow>=9
+DEBUG Adding transitive dependency for matplotlib==3.11.2: pyparsing>=3
+DEBUG Adding transitive dependency for matplotlib==3.11.2: python-dateutil>=2.7
+DEBUG Searching for a compatible version of tqdm (*)
+DEBUG Selecting: tqdm==4.70.1 [compatible] (tqdm-4.70.1-py3-none-any.whl)
+DEBUG Searching for a compatible version of pydantic (*)
+DEBUG Selecting: pydantic==2.14.1 [compatible] (pydantic-2.14.1-py3-none-any.whl)
+DEBUG Adding transitive dependency for pydantic==2.14.1: annotated-types>=0.6.0
+DEBUG Adding transitive dependency for pydantic==2.14.1: pydantic-core>=2.50.1, <2.50.1+
+DEBUG Adding transitive dependency for pydantic==2.14.1: typing-extensions>=4.16.0
+DEBUG Adding transitive dependency for pydantic==2.14.1: typing-inspection>=0.4.4
+DEBUG Found stale response for: https://pypi.org/simple/cycler/
+DEBUG Sending revalidation request for: https://pypi.org/simple/cycler/
+DEBUG Found stale response for: https://pypi.org/simple/python-dateutil/
+DEBUG Sending revalidation request for: https://pypi.org/simple/python-dateutil/
+DEBUG Found stale response for: https://pypi.org/simple/packaging/
+DEBUG Sending revalidation request for: https://pypi.org/simple/packaging/
+DEBUG Found stale response for: https://pypi.org/simple/pyparsing/
+DEBUG Sending revalidation request for: https://pypi.org/simple/pyparsing/
+DEBUG Found stale response for: https://pypi.org/simple/annotated-types/
+DEBUG Sending revalidation request for: https://pypi.org/simple/annotated-types/
+DEBUG Found stale response for: https://pypi.org/simple/typing-inspection/
+DEBUG Sending revalidation request for: https://pypi.org/simple/typing-inspection/
+DEBUG Found stale response for: https://pypi.org/simple/typing-extensions/
+DEBUG Sending revalidation request for: https://pypi.org/simple/typing-extensions/
+DEBUG Found stale response for: https://pypi.org/simple/kiwisolver/
+DEBUG Sending revalidation request for: https://pypi.org/simple/kiwisolver/
+DEBUG Found stale response for: https://pypi.org/simple/contourpy/
+DEBUG Sending revalidation request for: https://pypi.org/simple/contourpy/
+DEBUG Found not-modified response for: https://pypi.org/simple/cycler/
+DEBUG Found stale response for: https://pypi.org/simple/pillow/
+DEBUG Sending revalidation request for: https://pypi.org/simple/pillow/
+DEBUG Found stale response for: https://pypi.org/simple/fonttools/
+DEBUG Sending revalidation request for: https://pypi.org/simple/fonttools/
+DEBUG Found not-modified response for: https://pypi.org/simple/python-dateutil/
+DEBUG Found not-modified response for: https://pypi.org/simple/pyparsing/
+DEBUG Found not-modified response for: https://pypi.org/simple/packaging/
+DEBUG Found not-modified response for: https://pypi.org/simple/annotated-types/
+DEBUG Found not-modified response for: https://pypi.org/simple/typing-inspection/
+DEBUG Found not-modified response for: https://pypi.org/simple/typing-extensions/
+DEBUG Found not-modified response for: https://pypi.org/simple/contourpy/
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/ec/57/56b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b/python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/e7/05/c19819d5e3d95294a6f5947fb9b9629efb316b96de511b418c53d245aae6/cycler-0.12.1-py3-none-any.whl.metadata
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/38/bb/d215ee7c73b61497b28a5503f9f53523f294fcc936762b7caf90e0c1c2b5/pyparsing-3.3.3-py3-none-any.whl.metadata
+DEBUG Found not-modified response for: https://pypi.org/simple/kiwisolver/
+DEBUG Found not-modified response for: https://pypi.org/simple/pillow/
+DEBUG Found not-modified response for: https://pypi.org/simple/fonttools/
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl.metadata
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/99/91/8acff4f5e50511b911bbccb72b8628a49c68ce14148cd9f6431094859a90/annotated_types-0.8.0-py3-none-any.whl.metadata
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/67/81/4add07e5172b7ac40d8ed5ff580409a7801a4fe26d529bdd915401dabfbe/typing_inspection-0.4.4-py3-none-any.whl.metadata
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl.metadata
+DEBUG Found stale response for: https://pypi.org/simple/pydantic-core/
+DEBUG Sending revalidation request for: https://pypi.org/simple/pydantic-core/
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/89/00/05c2d0369ac322d22d5c05f84b5c4a6856fa6207fbae42869108a28f0383/kiwisolver-1.5.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/3b/2d/ede717bc1144f63886c21fd349bb95860b0d1a21149ff16f2bb362b612b6/pillow-12.3.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/c3/e0/ed45f50fe7a7320656ac7dde60f26afa3a92a21e14749135b4c03f3385b7/fonttools-4.66.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata
+DEBUG Found not-modified response for: https://pypi.org/simple/pydantic-core/
+DEBUG Searching for a compatible version of pydantic-core (>=2.50.1, <2.50.1+)
+DEBUG Selecting: pydantic-core==2.50.1 [compatible] (pydantic_core-2.50.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl)
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/ed/60/7f2ae89c37e69a3dc0da9ff57b0388c285542c688d05f36767770429de85/pydantic_core-2.50.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata
+DEBUG Adding transitive dependency for pydantic-core==2.50.1: typing-extensions>=4.16.0
+DEBUG Searching for a compatible version of pyyaml (*)
+DEBUG Selecting: pyyaml==6.0.3 [compatible] (pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl)
+DEBUG Searching for a compatible version of contourpy (>=1.0.1)
+DEBUG Recording unit propagation conflict of Python from incompatibility of (contourpy)
+DEBUG Searching for a compatible version of tqdm (*)
+DEBUG Selecting: tqdm==4.70.1 [compatible] (tqdm-4.70.1-py3-none-any.whl)
+DEBUG Searching for a compatible version of pydantic (*)
+DEBUG Selecting: pydantic==2.14.1 [compatible] (pydantic-2.14.1-py3-none-any.whl)
+DEBUG Searching for a compatible version of pydantic-core (>=2.50.1, <2.50.1+)
+DEBUG Selecting: pydantic-core==2.50.1 [compatible] (pydantic_core-2.50.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl)
+DEBUG Searching for a compatible version of pyyaml (*)
+DEBUG Selecting: pyyaml==6.0.3 [compatible] (pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl)
+DEBUG Searching for a compatible version of contourpy (>=1.0.1, <1.4.0 | >1.4.0)
+DEBUG Selecting: contourpy==1.3.3 [compatible] (contourpy-1.3.3-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl)
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/5f/4b/6157f24ca425b89fe2eb7e7be642375711ab671135be21e6faa100f7448c/contourpy-1.3.3-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata
+DEBUG Adding transitive dependency for contourpy==1.3.3: numpy>=1.25
+DEBUG Searching for a compatible version of cycler (>=0.10)
+DEBUG Selecting: cycler==0.12.1 [compatible] (cycler-0.12.1-py3-none-any.whl)
+DEBUG Searching for a compatible version of fonttools (>=4.28.2)
+DEBUG Selecting: fonttools==4.66.1 [compatible] (fonttools-4.66.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl)
+DEBUG Searching for a compatible version of kiwisolver (>=1.3.1)
+DEBUG Selecting: kiwisolver==1.5.1 [compatible] (kiwisolver-1.5.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl)
+DEBUG Searching for a compatible version of packaging (>=20.0)
+DEBUG Selecting: packaging==26.3 [compatible] (packaging-26.3-py3-none-any.whl)
+DEBUG Searching for a compatible version of pillow (>=9)
+DEBUG Selecting: pillow==12.3.0 [compatible] (pillow-12.3.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl)
+DEBUG Searching for a compatible version of pyparsing (>=3)
+DEBUG Selecting: pyparsing==3.3.3 [compatible] (pyparsing-3.3.3-py3-none-any.whl)
+DEBUG Searching for a compatible version of python-dateutil (>=2.7)
+DEBUG Selecting: python-dateutil==2.9.0.post0 [compatible] (python_dateutil-2.9.0.post0-py2.py3-none-any.whl)
+DEBUG Adding transitive dependency for python-dateutil==2.9.0.post0: six>=1.5
+DEBUG Searching for a compatible version of annotated-types (>=0.6.0)
+DEBUG Selecting: annotated-types==0.8.0 [compatible] (annotated_types-0.8.0-py3-none-any.whl)
+DEBUG Searching for a compatible version of typing-extensions (>=4.16.0)
+DEBUG Selecting: typing-extensions==4.16.0 [compatible] (typing_extensions-4.16.0-py3-none-any.whl)
+DEBUG Searching for a compatible version of typing-inspection (>=0.4.4)
+DEBUG Selecting: typing-inspection==0.4.4 [compatible] (typing_inspection-0.4.4-py3-none-any.whl)
+DEBUG Adding transitive dependency for typing-inspection==0.4.4: typing-extensions>=4.15.0
+DEBUG Found stale response for: https://pypi.org/simple/six/
+DEBUG Sending revalidation request for: https://pypi.org/simple/six/
+DEBUG Found not-modified response for: https://pypi.org/simple/six/
+DEBUG Searching for a compatible version of six (>=1.5)
+DEBUG Selecting: six==1.17.0 [compatible] (six-1.17.0-py2.py3-none-any.whl)
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl.metadata
+DEBUG Tried 20 versions: annotated-types 1, contourpy 1, cycler 1, fonttools 1, gecatsim 1, kiwisolver 1, matplotlib 1, numpy 1, packaging 1, pillow 1, pydantic 1, pydantic-core 1, pyparsing 1, python-dateutil 1, pyyaml 1, scipy 1, six 1, tqdm 1, typing-extensions 1, typing-inspection 1
+DEBUG marker environment resolution took 0.298s
+Resolved 20 packages in 299ms
+DEBUG Registry requirement already cached: matplotlib==3.11.2
+DEBUG Registry requirement already cached: pydantic-core==2.50.1
+DEBUG Registry requirement already cached: pillow==12.3.0
+DEBUG Registry requirement already cached: typing-inspection==0.4.4
+DEBUG Registry requirement already cached: six==1.17.0
+DEBUG Registry requirement already cached: packaging==26.3
+DEBUG Registry requirement already cached: annotated-types==0.8.0
+DEBUG Registry requirement already cached: pydantic==2.14.1
+DEBUG Registry requirement already cached: python-dateutil==2.9.0.post0
+DEBUG Registry requirement already cached: fonttools==4.66.1
+DEBUG Registry requirement already cached: scipy==1.17.1
+DEBUG Registry requirement already cached: pyyaml==6.0.3
+DEBUG Registry requirement already cached: tqdm==4.70.1
+DEBUG Identified uncached distribution: gecatsim==1.6.9
+DEBUG Registry requirement already cached: contourpy==1.3.3
+DEBUG Registry requirement already cached: kiwisolver==1.5.1
+DEBUG Registry requirement already cached: typing-extensions==4.16.0
+DEBUG Registry requirement already cached: numpy==1.26.4
+DEBUG Registry requirement already cached: cycler==0.12.1
+DEBUG Registry requirement already cached: pyparsing==3.3.3
+DEBUG Acquired lock for `/home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9`
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/65/f1/dbc2f97d4cd2a01f0cf3d897e28558c349095f0487f34742edb62a8babd3/gecatsim-1.6.9.tar.gz
+   Building gecatsim==1.6.9
+DEBUG Building: gecatsim==1.6.9
+DEBUG Not using uv build backend direct build for source tree `gecatsim==1.6.9`, failed to parse pyproject.toml: failed to open file `/home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/pyproject.toml`: No such file or directory (os error 2)
+DEBUG Assessing Python executable as base candidate: /home/yb107/research-os/projects/CTsynth/env/uv-python/cpython-3.11.14-linux-x86_64-gnu/bin/python3.11
+DEBUG Reusing existing build environment for: gecatsim==1.6.9
+DEBUG Assessing Python executable as base candidate: /home/yb107/research-os/projects/CTsynth/env/uv-python/cpython-3.11.14-linux-x86_64-gnu/bin/python3.11
+DEBUG Using base executable for virtual environment: /home/yb107/research-os/projects/CTsynth/env/uv-python/cpython-3.11.14-linux-x86_64-gnu/bin/python3.11
+DEBUG Resolving build requirements
+DEBUG Solving with installed Python version: 3.11.14
+DEBUG Solving with target Python version: >=3.11.14
+DEBUG Adding direct dependency: setuptools>=40.8.0
+DEBUG Found stale response for: https://pypi.org/simple/setuptools/
+DEBUG Sending revalidation request for: https://pypi.org/simple/setuptools/
+DEBUG Found not-modified response for: https://pypi.org/simple/setuptools/
+DEBUG Searching for a compatible version of setuptools (>=40.8.0)
+DEBUG Selecting: setuptools==84.0.0 [compatible] (setuptools-84.0.0-py3-none-any.whl)
+DEBUG Found fresh response for: https://files.pythonhosted.org/packages/95/9c/c510029fc6ef33a6275cd2c5d3cecd6613dfd6aa401d57c54f1c18852ccf/setuptools-84.0.0-py3-none-any.whl.metadata
+DEBUG Tried 1 versions: setuptools 1
+DEBUG marker environment resolution took 0.032s
+DEBUG Installing in setuptools==84.0.0 in /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW
+DEBUG Registry requirement already cached: setuptools==84.0.0
+DEBUG Installing build requirement: setuptools==84.0.0
+DEBUG Creating PEP 517 build environment
+DEBUG Calling `setuptools.build_meta:__legacy__.get_requires_for_build_wheel()`
+DEBUG running egg_info
+DEBUG writing gecatsim.egg-info/PKG-INFO
+DEBUG writing dependency_links to gecatsim.egg-info/dependency_links.txt
+DEBUG writing requirements to gecatsim.egg-info/requires.txt
+DEBUG writing top-level names to gecatsim.egg-info/top_level.txt
+DEBUG reading manifest file 'gecatsim.egg-info/SOURCES.txt'
+DEBUG adding license file 'LICENSE'
+DEBUG writing manifest file 'gecatsim.egg-info/SOURCES.txt'
+DEBUG Locking the source tree for setuptools
+DEBUG Acquired lock for `/home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src`
+DEBUG Calling `setuptools.build_meta:__legacy__.build_wheel("/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmpXYeORB", {}, None)`
+DEBUG running bdist_wheel
+DEBUG running build
+DEBUG running build_py
+DEBUG running egg_info
+DEBUG writing gecatsim.egg-info/PKG-INFO
+DEBUG writing dependency_links to gecatsim.egg-info/dependency_links.txt
+DEBUG writing requirements to gecatsim.egg-info/requires.txt
+DEBUG writing top-level names to gecatsim.egg-info/top_level.txt
+DEBUG reading manifest file 'gecatsim.egg-info/SOURCES.txt'
+DEBUG adding license file 'LICENSE'
+DEBUG writing manifest file 'gecatsim.egg-info/SOURCES.txt'
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.bowtie' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.bowtie' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.bowtie' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.bowtie' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.bowtie' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.cfg' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.cfg' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.cfg' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.cfg' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.cfg' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.clib_build' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.clib_build' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.clib_build' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.clib_build' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.clib_build' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.clib_build.src' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.clib_build.src' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.clib_build.src' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.clib_build.src' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.clib_build.src' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.dose.data' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.dose.data' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.dose.data' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.dose.data' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.dose.data' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.dose.examples' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.dose.examples' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.dose.examples' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.dose.examples' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.dose.examples' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.dose.lib' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.dose.lib' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.dose.lib' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.dose.lib' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.dose.lib' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.dose.pyfiles' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.dose.pyfiles' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.dose.pyfiles' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.dose.pyfiles' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.dose.pyfiles' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.dose.src' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.dose.src' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.dose.src' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.dose.src' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.dose.src' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.examples' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.examples' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.examples' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.examples' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.examples' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.examples.cfg' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.examples.cfg' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.examples.cfg' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.examples.cfg' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.examples.cfg' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.examples.vct_examples' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.examples.vct_examples' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.examples.vct_examples' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.examples.vct_examples' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.examples.vct_examples' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.focal_spot' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.focal_spot' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.focal_spot' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.focal_spot' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.focal_spot' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.lib' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.lib' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.lib' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.lib' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.lib' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.material' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.material' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.material' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.material' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.material' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.material.edlp.comp' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.material.edlp.comp' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.material.edlp.comp' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.material.edlp.comp' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.material.edlp.comp' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.material.edlp.pair' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.material.edlp.pair' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.material.edlp.pair' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.material.edlp.pair' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.material.edlp.pair' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.material.edlp.phot' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.material.edlp.phot' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.material.edlp.phot' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.material.edlp.phot' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.material.edlp.phot' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.material.edlp.rayl' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.material.edlp.rayl' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.material.edlp.rayl' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.material.edlp.rayl' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.material.edlp.rayl' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.phantom' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.phantom' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.phantom' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.phantom' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.phantom' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.phantom.CatSimLogo_1024' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.phantom.CatSimLogo_1024' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.phantom.CatSimLogo_1024' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.phantom.CatSimLogo_1024' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.phantom.CatSimLogo_1024' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.phantom.poly_bin' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.phantom.poly_bin' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.phantom.poly_bin' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.phantom.poly_bin' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.phantom.poly_bin' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.pyfiles.FlatPanel' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.pyfiles.FlatPanel' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.pyfiles.FlatPanel' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.pyfiles.FlatPanel' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.pyfiles.FlatPanel' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.reconstruction.lib' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.reconstruction.lib' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.reconstruction.lib' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.reconstruction.lib' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.reconstruction.lib' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.reconstruction.pyfiles' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.reconstruction.pyfiles' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.reconstruction.pyfiles' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.reconstruction.pyfiles' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.reconstruction.pyfiles' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.reconstruction.src' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.reconstruction.src' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.reconstruction.src' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.reconstruction.src' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.reconstruction.src' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.response_matrix' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.response_matrix' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.response_matrix' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.response_matrix' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.response_matrix' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.scatter' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.scatter' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.scatter' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.scatter' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.scatter' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215: _Warning: Package 'gecatsim.spectrum' is absent from the `packages` configuration.
+DEBUG !!
+DEBUG 
+DEBUG         ********************************************************************************
+DEBUG         ############################
+DEBUG         # Package would be ignored #
+DEBUG         ############################
+DEBUG         Python recognizes 'gecatsim.spectrum' as an importable package[^1],
+DEBUG         but it is absent from setuptools' `packages` configuration.
+DEBUG 
+DEBUG         This leads to an ambiguous overall configuration. If you want to distribute this
+DEBUG         package, please make sure that 'gecatsim.spectrum' is explicitly added
+DEBUG         to the `packages` configuration field.
+DEBUG 
+DEBUG         Alternatively, you can also rely on setuptools' discovery methods
+DEBUG         (for example by using `find_namespace_packages(...)`/`find_namespace:`
+DEBUG         instead of `find_packages(...)`/`find:`).
+DEBUG 
+DEBUG         You can read more about "package discovery" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+DEBUG 
+DEBUG         If you don't want 'gecatsim.spectrum' to be distributed and are
+DEBUG         already explicitly excluding 'gecatsim.spectrum' via
+DEBUG         `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+DEBUG         you can try to use `exclude_package_data`, or `include-package-data=False` in
+DEBUG         combination with a more fine grained `package-data` configuration.
+DEBUG 
+DEBUG         You can read more about "package data files" on setuptools documentation page:
+DEBUG 
+DEBUG         - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+DEBUG 
+DEBUG 
+DEBUG         [^1]: For Python, any directory (with suitable naming) can be imported,
+DEBUG               even if it does not contain any `.py` files.
+DEBUG               On the other hand, currently there is no concept of package data
+DEBUG               directory, all directories are treated like packages.
+DEBUG         ********************************************************************************
+DEBUG 
+DEBUG !!
+DEBUG   check.warn(importable)
+DEBUG running build_ext
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/gecatsim/clib_build/BuildLinux64: line 2: $'\r': command not found
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/gecatsim/clib_build/BuildLinux64: line 3: cd: $'src\r': No such file or directory
+DEBUG make: ../Makefile: No such file or directory
+DEBUG make: *** No rule to make target '../Makefile'.  Stop.
+DEBUG make: ../Makefile: No such file or directory
+DEBUG make: *** No rule to make target '../Makefile'.  Stop.
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/gecatsim/clib_build/BuildLinux64: line 6: cd: $'..\r': No such file or directory
+DEBUG Traceback (most recent call last):
+DEBUG   File "<string>", line 11, in <module>
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/build_meta.py", line 438, in build_wheel
+DEBUG     return _build(['bdist_wheel'])
+DEBUG            ^^^^^^^^^^^^^^^^^^^^^^^
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/build_meta.py", line 429, in _build
+DEBUG     return self._build_with_temp_dir(
+DEBUG            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/build_meta.py", line 410, in _build_with_temp_dir
+DEBUG     self.run_setup()
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/build_meta.py", line 520, in run_setup
+DEBUG     super().run_setup(setup_script=setup_script)
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/build_meta.py", line 317, in run_setup
+DEBUG     exec(code, locals())  # noqa: S102 # exec is intentional here
+DEBUG     ^^^^^^^^^^^^^^^^^^^^
+DEBUG   File "<string>", line 35, in <module>
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/__init__.py", line 117, in setup
+DEBUG     return distutils.core.setup(**attrs)  # type: ignore[return-value]
+DEBUG            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/_distutils/core.py", line 168, in setup
+DEBUG     return run_commands(dist)
+DEBUG            ^^^^^^^^^^^^^^^^^^
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/_distutils/core.py", line 184, in run_commands
+DEBUG     dist.run_commands()
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/_distutils/dist.py", line 1028, in run_commands
+DEBUG     self.run_command(cmd)
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/dist.py", line 1106, in run_command
+DEBUG     super().run_command(command)
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/_distutils/dist.py", line 1047, in run_command
+DEBUG     cmd_obj.run()
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/bdist_wheel.py", line 385, in run
+DEBUG     self.run_command("build")
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/_distutils/cmd.py", line 342, in run_command
+DEBUG     self.distribution.run_command(command)
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/dist.py", line 1106, in run_command
+DEBUG     super().run_command(command)
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/_distutils/dist.py", line 1047, in run_command
+DEBUG     cmd_obj.run()
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/_distutils/command/build.py", line 137, in run
+DEBUG     self.run_command(cmd_name)
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/_distutils/cmd.py", line 342, in run_command
+DEBUG     self.distribution.run_command(command)
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/dist.py", line 1106, in run_command
+DEBUG     super().run_command(command)
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/_distutils/dist.py", line 1047, in run_command
+DEBUG     cmd_obj.run()
+DEBUG   File "<string>", line 29, in run
+DEBUG   File "/home/yb107/research-os/projects/CTsynth/env/uv-python/cpython-3.11.14-linux-x86_64-gnu/lib/python3.11/subprocess.py", line 413, in check_call
+DEBUG     raise CalledProcessError(retcode, cmd)
+DEBUG subprocess.CalledProcessError: Command '['bash', '/home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/gecatsim/clib_build/BuildLinux64']' returned non-zero exit status 1.
+DEBUG /home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/gecatsim/clib_build/BuildLinux64
+DEBUG Building the catsim library with:  /home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/gecatsim/clib_build/BuildLinux64
+DEBUG Released lock at `/tmp/uv-setuptools-8dea59a372eaa639.lock`
+DEBUG Released lock at `/home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/.lock`
+  × Failed to build `gecatsim==1.6.9`
+  ├─▶ The build backend returned an error
+  ╰─▶ Call to `setuptools.build_meta:__legacy__.build_wheel` failed (exit
+      status: 1)
+
+      [stdout]
+      running bdist_wheel
+      running build
+      running build_py
+      running egg_info
+      writing gecatsim.egg-info/PKG-INFO
+      writing dependency_links to gecatsim.egg-info/dependency_links.txt
+      writing requirements to gecatsim.egg-info/requires.txt
+      writing top-level names to gecatsim.egg-info/top_level.txt
+      reading manifest file 'gecatsim.egg-info/SOURCES.txt'
+      adding license file 'LICENSE'
+      writing manifest file 'gecatsim.egg-info/SOURCES.txt'
+      running build_ext
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/gecatsim/clib_build/BuildLinux64
+      Building the catsim library with:
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/gecatsim/clib_build/BuildLinux64
+
+      [stderr]
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.bowtie' is absent from the `packages`
+      configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.bowtie' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.bowtie' is explicitly
+      added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.bowtie' to be distributed and are
+              already explicitly excluding 'gecatsim.bowtie' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.cfg' is absent from the `packages`
+      configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.cfg' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.cfg' is explicitly
+      added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.cfg' to be distributed and are
+              already explicitly excluding 'gecatsim.cfg' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.clib_build' is absent from the `packages`
+      configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.clib_build' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.clib_build' is
+      explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.clib_build' to be distributed and
+      are
+              already explicitly excluding 'gecatsim.clib_build' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.clib_build.src' is absent from the
+      `packages` configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.clib_build.src' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.clib_build.src' is
+      explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.clib_build.src' to be distributed
+      and are
+              already explicitly excluding 'gecatsim.clib_build.src' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.dose.data' is absent from the `packages`
+      configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.dose.data' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.dose.data' is
+      explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.dose.data' to be distributed and are
+              already explicitly excluding 'gecatsim.dose.data' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.dose.examples' is absent from the `packages`
+      configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.dose.examples' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.dose.examples' is
+      explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.dose.examples' to be distributed
+      and are
+              already explicitly excluding 'gecatsim.dose.examples' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.dose.lib' is absent from the `packages`
+      configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.dose.lib' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.dose.lib' is explicitly
+      added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.dose.lib' to be distributed and are
+              already explicitly excluding 'gecatsim.dose.lib' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.dose.pyfiles' is absent from the `packages`
+      configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.dose.pyfiles' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.dose.pyfiles' is
+      explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.dose.pyfiles' to be distributed
+      and are
+              already explicitly excluding 'gecatsim.dose.pyfiles' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.dose.src' is absent from the `packages`
+      configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.dose.src' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.dose.src' is explicitly
+      added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.dose.src' to be distributed and are
+              already explicitly excluding 'gecatsim.dose.src' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.examples' is absent from the `packages`
+      configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.examples' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.examples' is explicitly
+      added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.examples' to be distributed and are
+              already explicitly excluding 'gecatsim.examples' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.examples.cfg' is absent from the `packages`
+      configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.examples.cfg' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.examples.cfg' is
+      explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.examples.cfg' to be distributed
+      and are
+              already explicitly excluding 'gecatsim.examples.cfg' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.examples.vct_examples' is absent from the
+      `packages` configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.examples.vct_examples' as an
+      importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.examples.vct_examples'
+      is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.examples.vct_examples' to be
+      distributed and are
+              already explicitly excluding 'gecatsim.examples.vct_examples'
+      via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.focal_spot' is absent from the `packages`
+      configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.focal_spot' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.focal_spot' is
+      explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.focal_spot' to be distributed and
+      are
+              already explicitly excluding 'gecatsim.focal_spot' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.lib' is absent from the `packages`
+      configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.lib' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.lib' is explicitly
+      added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.lib' to be distributed and are
+              already explicitly excluding 'gecatsim.lib' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.material' is absent from the `packages`
+      configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.material' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.material' is explicitly
+      added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.material' to be distributed and are
+              already explicitly excluding 'gecatsim.material' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.material.edlp.comp' is absent from the
+      `packages` configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.material.edlp.comp' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.material.edlp.comp' is
+      explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.material.edlp.comp' to be
+      distributed and are
+              already explicitly excluding 'gecatsim.material.edlp.comp' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.material.edlp.pair' is absent from the
+      `packages` configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.material.edlp.pair' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.material.edlp.pair' is
+      explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.material.edlp.pair' to be
+      distributed and are
+              already explicitly excluding 'gecatsim.material.edlp.pair' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.material.edlp.phot' is absent from the
+      `packages` configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.material.edlp.phot' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.material.edlp.phot' is
+      explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.material.edlp.phot' to be
+      distributed and are
+              already explicitly excluding 'gecatsim.material.edlp.phot' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.material.edlp.rayl' is absent from the
+      `packages` configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.material.edlp.rayl' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.material.edlp.rayl' is
+      explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.material.edlp.rayl' to be
+      distributed and are
+              already explicitly excluding 'gecatsim.material.edlp.rayl' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.phantom' is absent from the `packages`
+      configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.phantom' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.phantom' is explicitly
+      added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.phantom' to be distributed and are
+              already explicitly excluding 'gecatsim.phantom' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.phantom.CatSimLogo_1024' is absent from the
+      `packages` configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.phantom.CatSimLogo_1024' as an
+      importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that
+      'gecatsim.phantom.CatSimLogo_1024' is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.phantom.CatSimLogo_1024' to be
+      distributed and are
+              already explicitly excluding 'gecatsim.phantom.CatSimLogo_1024'
+      via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.phantom.poly_bin' is absent from the
+      `packages` configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.phantom.poly_bin' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.phantom.poly_bin' is
+      explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.phantom.poly_bin' to be distributed
+      and are
+              already explicitly excluding 'gecatsim.phantom.poly_bin' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.pyfiles.FlatPanel' is absent from the
+      `packages` configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.pyfiles.FlatPanel' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.pyfiles.FlatPanel' is
+      explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.pyfiles.FlatPanel' to be distributed
+      and are
+              already explicitly excluding 'gecatsim.pyfiles.FlatPanel' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.reconstruction.lib' is absent from the
+      `packages` configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.reconstruction.lib' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.reconstruction.lib' is
+      explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.reconstruction.lib' to be
+      distributed and are
+              already explicitly excluding 'gecatsim.reconstruction.lib' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.reconstruction.pyfiles' is absent from the
+      `packages` configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.reconstruction.pyfiles' as an
+      importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.reconstruction.pyfiles'
+      is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.reconstruction.pyfiles' to be
+      distributed and are
+              already explicitly excluding 'gecatsim.reconstruction.pyfiles'
+      via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.reconstruction.src' is absent from the
+      `packages` configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.reconstruction.src' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.reconstruction.src' is
+      explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.reconstruction.src' to be
+      distributed and are
+              already explicitly excluding 'gecatsim.reconstruction.src' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.response_matrix' is absent from the
+      `packages` configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.response_matrix' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.response_matrix' is
+      explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.response_matrix' to be distributed
+      and are
+              already explicitly excluding 'gecatsim.response_matrix' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.scatter' is absent from the `packages`
+      configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.scatter' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.scatter' is explicitly
+      added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.scatter' to be distributed and are
+              already explicitly excluding 'gecatsim.scatter' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/build_py.py:215:
+      _Warning: Package 'gecatsim.spectrum' is absent from the `packages`
+      configuration.
+      !!
+
+      
+      ********************************************************************************
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'gecatsim.spectrum' as an importable
+      package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to
+      distribute this
+              package, please make sure that 'gecatsim.spectrum' is explicitly
+      added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery
+      methods
+              (for example by using
+      `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools
+      documentation page:
+
+              -
+      https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'gecatsim.spectrum' to be distributed and are
+              already explicitly excluding 'gecatsim.spectrum' via
+              `find_namespace_packages(...)/find_namespace` or
+      `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or
+      `include-package-data=False` in
+              combination with a more fine grained `package-data`
+      configuration.
+
+              You can read more about "package data files" on setuptools
+      documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be
+      imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of
+      package data
+                    directory, all directories are treated like packages.
+      
+      ********************************************************************************
+
+      !!
+        check.warn(importable)
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/gecatsim/clib_build/BuildLinux64:
+      line 2: $'\r': command not found
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/gecatsim/clib_build/BuildLinux64:
+      line 3: cd: $'src\r': No such file or directory
+      make: ../Makefile: No such file or directory
+      make: *** No rule to make target '../Makefile'.  Stop.
+      make: ../Makefile: No such file or directory
+      make: *** No rule to make target '../Makefile'.  Stop.
+      /home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/gecatsim/clib_build/BuildLinux64:
+      line 6: cd: $'..\r': No such file or directory
+      Traceback (most recent call last):
+        File "<string>", line 11, in <module>
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/build_meta.py",
+      line 438, in build_wheel
+          return _build(['bdist_wheel'])
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/build_meta.py",
+      line 429, in _build
+          return self._build_with_temp_dir(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/build_meta.py",
+      line 410, in _build_with_temp_dir
+          self.run_setup()
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/build_meta.py",
+      line 520, in run_setup
+          super().run_setup(setup_script=setup_script)
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/build_meta.py",
+      line 317, in run_setup
+          exec(code, locals())  # noqa: S102 # exec is intentional here
+          ^^^^^^^^^^^^^^^^^^^^
+        File "<string>", line 35, in <module>
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/__init__.py",
+      line 117, in setup
+          return distutils.core.setup(**attrs)  # type: ignore[return-value]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/_distutils/core.py",
+      line 168, in setup
+          return run_commands(dist)
+                 ^^^^^^^^^^^^^^^^^^
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/_distutils/core.py",
+      line 184, in run_commands
+          dist.run_commands()
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/_distutils/dist.py",
+      line 1028, in run_commands
+          self.run_command(cmd)
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/dist.py",
+      line 1106, in run_command
+          super().run_command(command)
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/_distutils/dist.py",
+      line 1047, in run_command
+          cmd_obj.run()
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/command/bdist_wheel.py",
+      line 385, in run
+          self.run_command("build")
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/_distutils/cmd.py",
+      line 342, in run_command
+          self.distribution.run_command(command)
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/dist.py",
+      line 1106, in run_command
+          super().run_command(command)
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/_distutils/dist.py",
+      line 1047, in run_command
+          cmd_obj.run()
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/_distutils/command/build.py",
+      line 137, in run
+          self.run_command(cmd_name)
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/_distutils/cmd.py",
+      line 342, in run_command
+          self.distribution.run_command(command)
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/dist.py",
+      line 1106, in run_command
+          super().run_command(command)
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-cache/builds-v0/.tmps2oeIW/lib/python3.11/site-packages/setuptools/_distutils/dist.py",
+      line 1047, in run_command
+          cmd_obj.run()
+        File "<string>", line 29, in run
+        File
+      "/home/yb107/research-os/projects/CTsynth/env/uv-python/cpython-3.11.14-linux-x86_64-gnu/lib/python3.11/subprocess.py",
+      line 413, in check_call
+          raise CalledProcessError(retcode, cmd)
+      subprocess.CalledProcessError: Command '['bash',
+      '/home/yb107/research-os/projects/CTsynth/env/uv-cache/sdists-v9/pypi/gecatsim/1.6.9/V0DWfqWqkjFwGR31jqJfU/src/gecatsim/clib_build/BuildLinux64']'
+      returned non-zero exit status 1.
+
+      hint: This usually indicates a problem with the package or the build
+      environment.
+DEBUG Released lock at `/home/yb107/research-os/projects/CTsynth/env/xcist-venv/.lock`
+DEBUG Released lock at `/home/yb107/research-os/projects/CTsynth/env/uv-cache/.lock`
