@@ -321,3 +321,17 @@ def to_paired_record(
         provenance=prov | (extra_provenance or {}),
     )
     return save_record(rec, fractions, {k: v[0] for k, v in arrays.items()}, dest)
+
+
+def reexec_with_libgomp() -> None:
+    """macOS: the prebuilt FDK library needs a libgomp. SIP strips DYLD_* across /bin/sh launchers
+    (e.g. `research run exec`), so take the directory from XCIST_LIBGOMP_DIR and re-exec once."""
+    d = os.environ.get("XCIST_LIBGOMP_DIR")
+    if d and os.environ.get("DYLD_FALLBACK_LIBRARY_PATH") != d:
+        import sys
+
+        os.execve(
+            sys.executable,
+            [sys.executable, *sys.argv],
+            {**os.environ, "DYLD_FALLBACK_LIBRARY_PATH": d},
+        )

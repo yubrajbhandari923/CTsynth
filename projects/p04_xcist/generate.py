@@ -15,7 +15,7 @@ import numpy as np
 
 from ctsynth.paired.phantoms import Disk, fractions
 from ctsynth.paired.schema import load_record, record_digest
-from ctsynth.paired.xcist import XcistAcq, run_xcist, to_paired_record
+from ctsynth.paired.xcist import XcistAcq, reexec_with_libgomp, run_xcist, to_paired_record
 
 N, DX = 128, 2.0
 XN = ["water", "Ca", "I"]
@@ -78,4 +78,5 @@ def main(out_dir: Path) -> None:
 
 
 if __name__ == "__main__":
+    reexec_with_libgomp()
     main(Path(sys.argv[1]))

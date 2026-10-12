@@ -334,3 +334,6 @@
 {"action": "status", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-009", "entity_type": "experiment", "summary": "EXP-009: needs_review → completed", "ts": "2026-10-12T19:14:07-04:00"}
 {"action": "created", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-010", "entity_type": "experiment", "summary": "EXP-010 XCIST vs CTsynth differentiable forward model: staged mismatch on known-material phantoms", "ts": "2026-10-12T19:14:07-04:00"}
 {"action": "status", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-010", "entity_type": "experiment", "summary": "EXP-010: proposed → running", "ts": "2026-10-12T19:14:12-04:00"}
+{"action": "created", "author_name": "opus", "author_type": "agent", "entity_id": "RUN-0016", "entity_type": "run", "summary": "RUN-0016 registered under EXP-010 [generate-dataset-v0]", "ts": "2026-10-12T19:14:13-04:00"}
+{"action": "failed", "author_name": null, "author_type": "system", "entity_id": "RUN-0016", "entity_type": "run", "summary": "RUN-0016 failed (exit 1)", "ts": "2026-10-12T19:14:18-04:00"}
+{"action": "status", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-010", "entity_type": "experiment", "summary": "EXP-010: running → needs_review (all runs finished)", "ts": "2026-10-12T19:14:18-04:00"}

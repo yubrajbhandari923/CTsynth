@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~5096 tokens.
-> Generated 2026-10-12T19:14:13-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~5158 tokens.
+> Generated 2026-10-12T19:14:19-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `ffc96e5fe6`
+Git: `master` @ `be91a057c2`
 
 ## Latest checkpoint
 
@@ -46,7 +46,7 @@ _none_
 
 ## Current experiments
 
-- EXP-010 [running] XCIST vs CTsynth differentiable forward model: staged mismatch on known-material phantoms — runs 0
+- EXP-010 [needs_review] XCIST vs CTsynth differentiable forward model: staged mismatch on known-material phantoms — runs 1, ⚠ 1 unsynthesized
 
 ## Active plans
 
@@ -65,6 +65,10 @@ _none_
 - [awaiting review] F-033 PROCESS: a nondeterministic test was hiding in the suite and I committed on top of it. tests/aapm/test_unet.py::test_constraints_exact seeded its INPUT but not the network WEIGHT initialisation, and its last assertion (a linear head must emit at least one negative value) depends on random weights - it failed about 1 run in 6. I observed '1 failed, 221 passed' in a gate, committed anyway, and only caught it because the count differed from the expected 222. Fixed with torch.manual_seed(0) inside the test; verified 12/12 on the file and 8/8 on the full suite. Two lessons: (1) a gate result must be READ before committing, not assumed; (2) a test whose assertion depends on random initialisation must seed the initialisation, not only the data - our determinism tests covered training loops but not test fixtures themselves.: Agent finding awaiting an independent review
 - [awaiting review] F-032 SECTION B.4 VERIFIED from the kit SOURCE CODE (not an audit summary). starting_kit/model/dualEnergyTransmission.py lines 13-20 state verbatim: 'knock out every other view for kVp switching. First view is 80 kVp, second is 50 kVp, ...' and implement it as Sinogram[:,::2] for kvp=='80' and Sinogram[:,1::2] for kvp=='50'. Our src/ctsynth/aapm/schema.py convention (KVP_HIGH=80 on EVEN views, KVP_LOW=50 on ODD views, kvp_of_view returning 80 for view%2==0) therefore matches the official generator exactly. Note projection.py itself computes a full 512-view sinogram with NO kVp split; the interlacing is applied afterwards in dualEnergyTransmission.py, so any projection-domain work must apply the parity split itself and must not assume the stored 256-view per-kVp arrays are contiguous angular sweeps - they are every other view of a 512-view circular fan-beam scan.: Agent finding awaiting an independent review
 
+## ⚠ Needs synthesis before new experiments
+
+- EXP-010 XCIST vs CTsynth differentiable forward model: staged mismatch on known-material phantoms (1 unsynthesized runs)
+
 ## Active decisions
 
 - D-010 (2026-10-12) Adopt Research OS 0.5.0 native HPC protocol; CTsynth keeps thin preflight/postcheck guards
@@ -72,7 +76,7 @@ _none_
 
 ## Blockers
 
-_none_
+- [run] RUN-0016: RUN-0016 (EXP-010) failed — not yet reviewed
 
 ## Project skills
 
