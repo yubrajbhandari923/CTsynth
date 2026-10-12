@@ -18,6 +18,16 @@ backends:
     extra_args: []
     setup: []
 artifacts: {hash_max_bytes: 67108864}
+hpc:
+  default_cluster: null
+  clusters: {}
+  bundle:
+    exclude: [.git, .research, __pycache__, '*.pyc', .venv, venv, node_modules, .mypy_cache, .pytest_cache,
+      .DS_Store, '*.egg-info', .ipynb_checkpoints]
+    max_file_bytes: 8388608
+    max_total_bytes: 268435456
+    include: []
+  collect: {max_artifact_bytes: 33554432}
 resume: {stale_checkpoint_days: 14}
 agents:
   default_profile: claude

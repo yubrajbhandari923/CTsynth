@@ -26,8 +26,9 @@ Training loop proven on synthetic data with validated gradients; each prior abla
 
 <!-- research:generated — everything below is regenerated; edits here are ignored -->
 
-## Tasks (0/0 done)
+## Tasks (2/2 done)
 
-_(no tasks yet)_
+- ✓ **T-015** Spec+tests: U-Net, differentiable AAPM forward model, loss registry, training loop — done
+- ✓ **T-016** B2 supervised + B3 label-free + B4 prior ablations on synthetic data — done (deps: T-015)
 
 _Author: agent (opus)_

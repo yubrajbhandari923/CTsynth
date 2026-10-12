@@ -26,8 +26,18 @@ Forward model reproduces analytic Beer-Lambert cases; baseline recovers noise-fr
 
 <!-- research:generated — everything below is regenerated; edits here are ignored -->
 
-## Tasks (0/0 done)
+## Tasks (4/9 done)
 
-_(no tasks yet)_
+- ✓ **T-001** Spec: spectral forward model interface + physics tests — done
+- ✓ **T-002** Implement spectral forward model (numpy, CPU) — done (deps: T-001)
+- ✓ **T-003** Vendor NIST XCOM mass-attenuation tables with provenance — done
+- ⛔ **T-004** Read AAPM starting_kit.tgz (103 MB) for spectra/geometry/metric (needs user OK to download) — blocked
+- ○ **T-005** Classical baseline: image-domain two-material decomposition on toy phantom — todo (deps: T-002, T-003)
+- ○ **T-006** Attenuation table v2 with K-edge-resolved energy grid — todo
+- ✓ **T-007** EXP-002: identifiability toy experiment (designs x basis size x mismatch) — done
+- ○ **T-008** EXP-003: spectral-mismatch power study (resolve F-004) — todo
+- ○ **T-009** Inverse-crime-free evaluation harness (H1/Q-002 prerequisite) — todo
+
+⚠ 1 task(s) blocked
 
 _Author: agent (opus)_
