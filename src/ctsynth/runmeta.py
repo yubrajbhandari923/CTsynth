@@ -34,6 +34,9 @@ def collect(cfg: ExperimentConfig) -> dict[str, object]:
         "config": cfg.model_dump(),
         "git_commit": _git("rev-parse", "HEAD"),
         "git_dirty": bool(_git("status", "--porcelain")),
+        # Research OS writes its own event log while the run executes, so git_dirty is always
+        # true for a `research run exec` run. Citability depends on the SOURCE being clean.
+        "git_dirty_source": bool(_git("status", "--porcelain", "--", "src", "tests", "configs")),
         "ctsynth_version": __version__,
         "python": sys.version.split()[0],
         "numpy": numpy.__version__,

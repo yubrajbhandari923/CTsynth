@@ -29,6 +29,9 @@ def test_run_metadata_roundtrip(tmp_path: Path) -> None:
     cfg = config.load_config(SMOKE)
     meta = json.loads(runmeta.write(cfg, tmp_path).read_text())
     assert meta["experiment_id"] == "EXP-000" and len(meta["config_sha256"]) == 64
+    # git_dirty covers the whole tree (always true under `research run exec`, which logs as it
+    # runs); git_dirty_source covers only src/tests/configs, which is what citability needs.
+    assert isinstance(meta["git_dirty_source"], bool)
     assert runmeta.collect(cfg)["config_sha256"] == meta["config_sha256"]
 
 

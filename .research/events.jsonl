@@ -130,3 +130,7 @@
 {"action": "status", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-003", "entity_type": "experiment", "summary": "EXP-003: needs_review → running (RUN-0004 started)", "ts": "2026-10-11T20:32:38-04:00"}
 {"action": "completed", "author_name": null, "author_type": "system", "entity_id": "RUN-0004", "entity_type": "run", "summary": "RUN-0004 completed (exit 0)", "ts": "2026-10-11T20:32:43-04:00"}
 {"action": "status", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-003", "entity_type": "experiment", "summary": "EXP-003: running → needs_review (all runs finished)", "ts": "2026-10-11T20:32:43-04:00"}
+{"action": "created", "author_name": "opus", "author_type": "agent", "entity_id": "RUN-0005", "entity_type": "run", "summary": "RUN-0005 registered under EXP-003 [aapm-synthetic-smoke-val-clean2]", "ts": "2026-10-11T20:32:57-04:00"}
+{"action": "status", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-003", "entity_type": "experiment", "summary": "EXP-003: needs_review → running (RUN-0005 started)", "ts": "2026-10-11T20:32:57-04:00"}
+{"action": "completed", "author_name": null, "author_type": "system", "entity_id": "RUN-0005", "entity_type": "run", "summary": "RUN-0005 completed (exit 0)", "ts": "2026-10-11T20:33:02-04:00"}
+{"action": "status", "author_name": "opus", "author_type": "agent", "entity_id": "EXP-003", "entity_type": "experiment", "summary": "EXP-003: running → needs_review (all runs finished)", "ts": "2026-10-11T20:33:02-04:00"}

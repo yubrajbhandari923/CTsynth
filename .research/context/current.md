@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3926 tokens.
-> Generated 2026-10-11T20:32:43-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3920 tokens.
+> Generated 2026-10-11T20:33:02-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `4dadb3c79c` (uncommitted changes)
+Git: `master` @ `1eae4d308c`
 
 ## Latest checkpoint
 
@@ -44,7 +44,7 @@ _none_
 
 ## Current experiments
 
-- EXP-003 [needs_review] EXP-004 AAPM synthetic smoke benchmark: classical baselines vs no-training reference — runs 2, ⚠ 2 unsynthesized
+- EXP-003 [needs_review] EXP-004 AAPM synthetic smoke benchmark: classical baselines vs no-training reference — runs 3, ⚠ 3 unsynthesized
 
 ## Active plans
 
@@ -64,7 +64,7 @@ _none_
 
 ## ⚠ Needs synthesis before new experiments
 
-- EXP-003 EXP-004 AAPM synthetic smoke benchmark: classical baselines vs no-training reference (2 unsynthesized runs)
+- EXP-003 EXP-004 AAPM synthetic smoke benchmark: classical baselines vs no-training reference (3 unsynthesized runs)
 
 ## Active decisions
 
