@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3782 tokens.
-> Generated 2026-10-11T20:22:56-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3799 tokens.
+> Generated 2026-10-11T20:30:52-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `6d2fefc3d7` (uncommitted changes)
+Git: `master` @ `c9613e21de`
 
 ## Latest checkpoint
 
@@ -26,9 +26,9 @@ _none set_
 
 ## Active & open questions
 
+- Q-005 [investigating] P01-Q5: On the AAPM DL-Spectral CT benchmark, how do a constrained classical estimator and a small supervised U-Net compare for 3-material decomposition, and what makes the 3-from-2 problem well posed?
 - Q-003 [investigating] P01-H2: Does material-map error depend more on spectral separation (kVp pair / photon-counting bins) and noise than on the inference architecture?
 - Q-001 [investigating] P01: Can material maps be inferred from dual-energy/spectral CT measurements well enough to seed editable virtual patients?
-- Q-005 [open] P01-Q5: On the AAPM DL-Spectral CT benchmark, how do a constrained classical estimator and a small supervised U-Net compare for 3-material decomposition, and what makes the 3-from-2 problem well posed?
 - … 2 more (`research question list`)
 
 ## Established findings (what we believe)
@@ -36,7 +36,7 @@ _none set_
 - F-009 [supported, medium] SUPERSEDES F-005 (2nd independent review). Spectral mismatch ALWAYS biases a nominal-spectrum estimator, and on the real ray subset every condition is DETECTABLE with an appropriate test - no cell is genuinely 'unbiased'. Noise-free MLE on exact expected counts, 48 P2 rays, 1e6 photons, floor = rms(CRLB)/sqrt(20): dual-kVp iodine tilt +-10% gives rms/floor 0.82-0.92 BUT signed-mean z = +4.6/-5.2 (detectable); dual-kVp iodine energy-scale +-2% rms/floor 3.8-3.9, z = +-22; dual-kVp WATER tilt rms/floor 4.0-4.3, z = +-24 (a large bias the iodine-only criterion hid entirely); 4-bin photon counting on P2 is 21-38x floor. All fits converged. The pre-registered 3x-observed-rms criterion is DEFECTIVE: it compares a noise-inflated rms against an unsubtracted floor and so cannot distinguish 'no bias' from 'bias below the rms detection limit'. A signed-mean-over-rays test is the correct statistic. Supersedes the earlier 'under-powered, not unbiased' framing, which conceded too much to the defective criterion. — evidence: EXP-002, RUN-0002
 - F-010 [supported, medium] SUPERSEDES F-007 (2nd independent review). Identifiability: STRUCTURAL part (rank <= min(n_meas,k), so 1 measurement cannot separate 2+ materials and dual-kVp cannot separate 3) is arithmetic, not evidence, and holds at any threshold. EMPIRICAL part, on the real ray subset at 1e6 photons: rank verdicts are robust for rank thresholds 1e-3 to 1e-10 (100% full rank) but NOT at 1e-2, where the full-rank fraction collapses to 0% for dual-kVp k=2 and 4-bin k=3 and 58% for 4-bin k=2, because smallest/largest singular-value ratios are only 0.0020-0.0123. (The superseded F-007 wrongly claimed robustness up to 1e-2, contradicting the ratios quoted in its own sentence.) Median condition numbers: dual-kVp k=2 195 (max 506), 4-bin k=2 99, 4-bin k=3 217. At EQUAL basis size k=2 and equal total unattenuated photons, 4-bin photon counting has median iodine CRLB 0.00151 vs dual-kVp 0.00376 g/cm^2 = 2.5x better by median (2.4x by rms aggregation; the ratio is ray-dependent). This compares an idealised energy-weighted 2-exposure design against an idealised 4-window 1-exposure design with NO detector response, charge sharing or pile-up, so it is an upper bound on the photon-counting advantage. — evidence: EXP-002, RUN-0002
 - F-006 [supported, medium] SUPERSEDES F-002. Empirical Monte-Carlo std agrees with the Cramer-Rao bound to within 12.5% (median over rays; range 0.875-1.106) for the three identifiable cells at 1e6 photons, with a systematic pattern (P2 cells low 0.87-0.95, P3 k=3 cells high 1.05-1.11) rather than scatter about 1. The sampling spread of this check is ~3-4% (median of per-ray std estimates over 26-54 rays, 20 draws each), so the deviation is real, not check noise. This is a SELF-CONSISTENCY check of Jacobian + sampler + MLE under one shared model and table: a wrong attenuation table or spectrum would pass it equally. It is not validation of physical fidelity. — evidence: EXP-002, RUN-0002
-- … 5 more (`research finding list`)
+- … 7 more (`research finding list`)
 
 ## Failed directions (do not repeat without a new reason)
 
@@ -44,22 +44,23 @@ _none_
 
 ## Current experiments
 
-_none_
+- EXP-003 [proposed] EXP-004 AAPM synthetic smoke benchmark: classical baselines vs no-training reference — runs 0
 
 ## Active plans
 
 - PLAN-002 P02 AAPM benchmark: adapter, classical and supervised baselines — 2/5 tasks done · objective: Reproducible benchmark on AAPM DL-Spectral CT: adapter with explicit conventions, deterministic splits, streaming loader, constrained classical baseline, small U-Net, honest evaluation
   - next ready: T-012 Small supervised U-Net (2 CT channels -> 3 material maps) (`research task context T-012`)
   - running: T-011 Classical constrained decomposition baseline (NNLS + simplex constraint, TV variant) (claimed by opus)
+  - running: T-013 Evaluation protocol + metrics/figures/manifests (claimed by opus)
 - PLAN-001 P01 foundation: spectral forward model and baselines — 4/9 tasks done · objective: Validated spectral forward model + classical baseline decomposition on laptop, then HPC-ready configs
   - next ready: T-005 Classical baseline: image-domain two-material decomposition on toy phantom (`research task context T-005`)
   - BLOCKED: T-004 Read AAPM starting_kit.tgz (103 MB) for spectra/geometry/metric (needs user OK to download)
 
 ## Needs attention (verification)
 
+- [awaiting review] F-015 REFINES F-013 (boundary pixels are the hard case, not merely a partial-volume nuisance). In the two-regime AAPM partition, pixels whose three fractions sum strictly between 0 and 1 (~5% of the image) are mis-modelled by a sum-to-one estimator: the unit-sum row CONTRADICTS the measurement there, and that contradiction is amplified by the ~1273 conditioning, so the resulting error is far LARGER than the sum deficit (1 - sum) itself. Simplex projection only clips the result and does not fix the model error. Consequence for the benchmark: boundary-band error must be reported separately (it is, in the evaluation record), and an air/tissue decision rule is a MODELLING CHOICE, not a fact recoverable from the data - the implementation uses AIR_CUTOFF_PER_CM = 0.1 (half the smallest tissue mu from F-012), which is untested on real AAPM data.: Agent finding awaiting an independent review
+- [awaiting review] F-014 F-012's null space is now demonstrated OPERATIONALLY, not just algebraically (synthetic data, src/ctsynth/aapm/classical.py + tests/aapm/test_classical.py). Unconstrained per-pixel inversion of the 2x3 AAPM system genuinely fails (max per-pixel error > 0.05 in volume fraction) and its error vector is parallel to the SVD null direction to <1e-6 deg; that independently-computed null vector lies 0.024 deg from the published F-012 vector [-0.723,+0.691,-0.008]. Crucially the error is INVISIBLE to the data: |e @ mu^T| < 1e-12, i.e. the wrong answer reproduces the measurements exactly. Adding the sum-to-one row restores a unique solution (exact recovery to ~1e-10 in float64 on noiseless synthetic tissue pixels) but amplifies measurement perturbation: the derived worst-direction amplification sigma_max(B^-1[:,:2])*|d|/|x| = 181 for a typical 50/50 adipose/fibroglandular pixel, matched to rel 1e-4, which is 0.14x cond(B)=1273 (below cond because the appended sum row is exact and unperturbed).: Agent finding awaiting an independent review
 - [awaiting review] F-013 AAPM phantom maps are a TWO-REGIME partition, not a plain simplex (verified directly on the 10 kit sample cases, case 0): the three maps sum to exactly 0 in 35.1% of pixels (air background, no fourth material class), to 1 within 4e-8 in 59.6%, and lie strictly between 0 and 1 in only 5.2% (boundary/partial-volume pixels). Maxima: adipose 1.0, fibroglandular 1.0, calcification 0.566 (10-case sample). A classical estimator must therefore handle air explicitly - imposing sum-to-one globally would be wrong for 35% of pixels - and the 5.2% transition pixels are where a hard two-class assumption will fail. Arrays verified: phantoms/images (N,512,512) float32, transmission (N,256,1024) float32 in (0,1].: Agent finding awaiting an independent review
-- [awaiting review] F-012 AAPM 3-material conditioning, computed from the official starting-kit spectra and mu tables (md5-verified kit, 10 sample cases): the spectrum-weighted effective attenuation matrix is [[0.26697,0.31321,3.01182],[0.21930,0.24788,1.64238]] 1/cm for (adipose,fibroglandular,calcification) at 50/80 kVp. Adipose and fibroglandular are spectrally near-degenerate: column cosine 0.999834, i.e. 1.04 degrees apart. The unconstrained 2x3 null direction is [-0.723,+0.691,-0.008], confirming F-010's prediction concretely: adipose can be traded against fibroglandular with essentially no measurement change. Appending the sum-to-one row makes the 3x3 system full rank (singular values 3.697, 1.176, 0.00290) but POORLY CONDITIONED at cond=1273. Therefore the partition constraint restores identifiability but error in the adipose/fibroglandular direction is amplified ~1000x; exact recovery in the noiseless challenge data is possible, while any model mismatch or interpolation error is magnified by that factor. Image-domain linear inversion is expected to be far worse than the published model-based winners (6.8e-7).: Agent finding awaiting an independent review
-- [awaiting review] F-011 AMENDS F-009 (two numerical/scope corrections from the 2nd reviewer's verdict check, verified by Opus). (1) The 4-bin photon-counting bias on P2 is 27-43x the floor over all 8 (condition x material) cells, NOT the 21-38x stated in F-009. (2) The dual-kVp iodine TILT case is MARGINAL and must not be quoted as strongly detectable: per-ray bias is only 0.66-0.75 of the floor and the signed-mean z of about 5 arises only by pooling 48 rays. (3) All z values are noise-free hypothetical power computed against a noise-only null, i.e. the bias an infinite-data experiment would see relative to a 20-realisation floor - they are NOT observed test statistics from the Monte-Carlo run. F-009's central claim (mismatch always biases; the rms criterion is defective; dual-kVp water tilt bias is large and was hidden by iodine-only scoring) is unaffected.: Agent finding awaiting an independent review
 
 ## Active decisions
 

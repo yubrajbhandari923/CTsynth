@@ -1,0 +1,16 @@
+experiment_id: EXP-003
+name: aapm_synthetic_smoke
+seed: 7
+device: cpu
+params:
+  n_pix: 32
+  n_views: 32
+  n_det: 48
+  n_cases: 24
+  roi: 8
+  k_worst: 3
+  table_dir: data/aapm_kit_sample
+  # 60 synthetic cases: wider val/test than the 0.8/0.1/0.1 default so each has enough cases
+  f_train: 0.5
+  f_val: 0.25
+  f_test: 0.25

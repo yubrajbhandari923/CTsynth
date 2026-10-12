@@ -1,0 +1,413 @@
+{
+  "case_indices": [
+    4,
+    16
+  ],
+  "experiment_id": "EXP-004",
+  "methods": {
+    "classical_simplex": {
+      "aggregate_rmse": 0.05255246281841671,
+      "boundary_rmse": 0.17074861306561648,
+      "failure_cases": {
+        "worst_cases_by_s1": [
+          {
+            "case": 1,
+            "s1": 0.05351823861537894
+          },
+          {
+            "case": 0,
+            "s1": 0.051568603161899824
+          }
+        ],
+        "worst_roi_s2": {
+          "case": 1,
+          "roi": 8,
+          "value": 0.08747732687195017,
+          "x0": 2,
+          "y0": 14
+        }
+      },
+      "limitations": [
+        "s1 and s2 are the official kit metrics on the stated split; s2 omits the last ROI position (kit loop) unless s2_full_scan is used.",
+        "Map units are dimensionless volume fractions (inferred, not stated by the kit).",
+        "Regimes come from the truth sum (air: sum <= 1e-3; tissue: |sum-1| <= 1e-3; band: otherwise); partition errors use the prediction's material sum.",
+        "Failure cases come from the evaluated split; they are for diagnosis, not model selection.",
+        "Data directory /private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data is used as given; this harness does not check whether it holds AAPM or synthetic data."
+      ],
+      "method_name": "classical_simplex",
+      "n_cases": 2,
+      "partition": {
+        "air": {
+          "max_abs": 0.0,
+          "mean_abs": 0.0
+        },
+        "tissue": {
+          "max_abs": 1.1102230246251565e-16,
+          "mean_abs": 7.676563696630296e-19
+        }
+      },
+      "per_material": {
+        "adipose": {
+          "mae": 0.022583676746708317,
+          "rmse": 0.09102353565722608
+        },
+        "calcification": {
+          "mae": 6.223667512091722e-09,
+          "rmse": 2.40042274272132e-07
+        },
+        "fibroglandular": {
+          "mae": 6.75163292618326e-07,
+          "rmse": 1.1150259371368806e-06
+        }
+      },
+      "record_version": 1,
+      "regime_pixel_counts": {
+        "air": 697,
+        "band": 194,
+        "tissue": 1157
+      },
+      "s1": 0.05254342088863938,
+      "s2": 0.08747732687195017,
+      "s2_full_scan": 0.0879484763412679,
+      "shapes": {
+        "pred": [
+          2,
+          3,
+          32,
+          32
+        ],
+        "truth": [
+          2,
+          3,
+          32,
+          32
+        ]
+      },
+      "split_name": "val"
+    },
+    "classical_sum_to_one": {
+      "aggregate_rmse": 1.2137882651086263,
+      "boundary_rmse": 3.9437288328378903,
+      "failure_cases": {
+        "worst_cases_by_s1": [
+          {
+            "case": 1,
+            "s1": 1.2398366489572668
+          },
+          {
+            "case": 0,
+            "s1": 1.1871684753788034
+          }
+        ],
+        "worst_roi_s2": {
+          "case": 1,
+          "roi": 8,
+          "value": 2.203893968602811,
+          "x0": 2,
+          "y0": 14
+        }
+      },
+      "limitations": [
+        "s1 and s2 are the official kit metrics on the stated split; s2 omits the last ROI position (kit loop) unless s2_full_scan is used.",
+        "Map units are dimensionless volume fractions (inferred, not stated by the kit).",
+        "Regimes come from the truth sum (air: sum <= 1e-3; tissue: |sum-1| <= 1e-3; band: otherwise); partition errors use the prediction's material sum.",
+        "Failure cases come from the evaluated split; they are for diagnosis, not model selection.",
+        "Data directory /private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data is used as given; this harness does not check whether it holds AAPM or synthetic data."
+      ],
+      "method_name": "classical_sum_to_one",
+      "n_cases": 2,
+      "partition": {
+        "air": {
+          "max_abs": 0.0,
+          "mean_abs": 0.0
+        },
+        "tissue": {
+          "max_abs": 4.474198789239381e-14,
+          "mean_abs": 5.546988970138844e-15
+        }
+      },
+      "per_material": {
+        "adipose": {
+          "mae": 0.3072010066158695,
+          "rmse": 1.5194772565750039
+        },
+        "calcification": {
+          "mae": 0.0032580364784719285,
+          "rmse": 0.01644256301682264
+        },
+        "fibroglandular": {
+          "mae": 0.2878760352743222,
+          "rmse": 1.452846986581506
+        }
+      },
+      "record_version": 1,
+      "regime_pixel_counts": {
+        "air": 697,
+        "band": 194,
+        "tissue": 1157
+      },
+      "s1": 1.213502562168035,
+      "s2": 2.203893968602811,
+      "s2_full_scan": 2.203893968602811,
+      "shapes": {
+        "pred": [
+          2,
+          3,
+          32,
+          32
+        ],
+        "truth": [
+          2,
+          3,
+          32,
+          32
+        ]
+      },
+      "split_name": "val"
+    },
+    "classical_tv": {
+      "aggregate_rmse": 0.05425923794529044,
+      "boundary_rmse": 0.17074821849730076,
+      "failure_cases": {
+        "worst_cases_by_s1": [
+          {
+            "case": 1,
+            "s1": 0.05504537409435955
+          },
+          {
+            "case": 0,
+            "s1": 0.053461543146633005
+          }
+        ],
+        "worst_roi_s2": {
+          "case": 1,
+          "roi": 8,
+          "value": 0.08782477287576992,
+          "x0": 2,
+          "y0": 14
+        }
+      },
+      "limitations": [
+        "s1 and s2 are the official kit metrics on the stated split; s2 omits the last ROI position (kit loop) unless s2_full_scan is used.",
+        "Map units are dimensionless volume fractions (inferred, not stated by the kit).",
+        "Regimes come from the truth sum (air: sum <= 1e-3; tissue: |sum-1| <= 1e-3; band: otherwise); partition errors use the prediction's material sum.",
+        "Failure cases come from the evaluated split; they are for diagnosis, not model selection.",
+        "Data directory /private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data is used as given; this harness does not check whether it holds AAPM or synthetic data."
+      ],
+      "method_name": "classical_tv",
+      "n_cases": 2,
+      "partition": {
+        "air": {
+          "max_abs": 0.0,
+          "mean_abs": 0.0
+        },
+        "tissue": {
+          "max_abs": 2.220446049250313e-16,
+          "mean_abs": 2.955477023202664e-17
+        }
+      },
+      "per_material": {
+        "adipose": {
+          "mae": 0.031133826985779635,
+          "rmse": 0.09249225745166365
+        },
+        "calcification": {
+          "mae": 9.572739005676564e-05,
+          "rmse": 0.00026135952980794016
+        },
+        "fibroglandular": {
+          "mae": 0.008649164179721593,
+          "rmse": 0.016652588684714635
+        }
+      },
+      "record_version": 1,
+      "regime_pixel_counts": {
+        "air": 697,
+        "band": 194,
+        "tissue": 1157
+      },
+      "s1": 0.05425345862049628,
+      "s2": 0.08782477287576992,
+      "s2_full_scan": 0.08811337725838753,
+      "shapes": {
+        "pred": [
+          2,
+          3,
+          32,
+          32
+        ],
+        "truth": [
+          2,
+          3,
+          32,
+          32
+        ]
+      },
+      "split_name": "val"
+    },
+    "classical_unconstrained": {
+      "aggregate_rmse": 0.3095179512821712,
+      "boundary_rmse": 0.24643034296534952,
+      "failure_cases": {
+        "worst_cases_by_s1": [
+          {
+            "case": 0,
+            "s1": 0.3097841185622669
+          },
+          {
+            "case": 1,
+            "s1": 0.30925155491674466
+          }
+        ],
+        "worst_roi_s2": {
+          "case": 0,
+          "roi": 8,
+          "value": 0.4047439737003275,
+          "x0": 12,
+          "y0": 22
+        }
+      },
+      "limitations": [
+        "s1 and s2 are the official kit metrics on the stated split; s2 omits the last ROI position (kit loop) unless s2_full_scan is used.",
+        "Map units are dimensionless volume fractions (inferred, not stated by the kit).",
+        "Regimes come from the truth sum (air: sum <= 1e-3; tissue: |sum-1| <= 1e-3; band: otherwise); partition errors use the prediction's material sum.",
+        "Failure cases come from the evaluated split; they are for diagnosis, not model selection.",
+        "Data directory /private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data is used as given; this harness does not check whether it holds AAPM or synthetic data."
+      ],
+      "method_name": "classical_unconstrained",
+      "n_cases": 2,
+      "partition": {
+        "air": {
+          "max_abs": 0.0,
+          "mean_abs": 0.0
+        },
+        "tissue": {
+          "max_abs": 0.028393861460417558,
+          "mean_abs": 0.026783589833055486
+        }
+      },
+      "per_material": {
+        "adipose": {
+          "mae": 0.30528500561655236,
+          "rmse": 0.3883121240222119
+        },
+        "calcification": {
+          "mae": 0.0032372960342187335,
+          "rmse": 0.004182887781690056
+        },
+        "fibroglandular": {
+          "mae": 0.28604346757876514,
+          "rmse": 0.36959475684173554
+        }
+      },
+      "record_version": 1,
+      "regime_pixel_counts": {
+        "air": 697,
+        "band": 194,
+        "tissue": 1157
+      },
+      "s1": 0.3095178367395058,
+      "s2": 0.4047439737003275,
+      "s2_full_scan": 0.4047439737003275,
+      "shapes": {
+        "pred": [
+          2,
+          3,
+          32,
+          32
+        ],
+        "truth": [
+          2,
+          3,
+          32,
+          32
+        ]
+      },
+      "split_name": "val"
+    },
+    "zero_prediction": {
+      "aggregate_rmse": 0.43987655361600597,
+      "boundary_rmse": 0.3340293722262755,
+      "failure_cases": {
+        "worst_cases_by_s1": [
+          {
+            "case": 0,
+            "s1": 0.4423735020822623
+          },
+          {
+            "case": 1,
+            "s1": 0.4373653501338035
+          }
+        ],
+        "worst_roi_s2": {
+          "case": 0,
+          "roi": 8,
+          "value": 0.5773502691896257,
+          "x0": 13,
+          "y0": 8
+        }
+      },
+      "limitations": [
+        "s1 and s2 are the official kit metrics on the stated split; s2 omits the last ROI position (kit loop) unless s2_full_scan is used.",
+        "Map units are dimensionless volume fractions (inferred, not stated by the kit).",
+        "Regimes come from the truth sum (air: sum <= 1e-3; tissue: |sum-1| <= 1e-3; band: otherwise); partition errors use the prediction's material sum.",
+        "Failure cases come from the evaluated split; they are for diagnosis, not model selection.",
+        "Data directory /private/tmp/claude-501/-Users-yubraj-Code-CTsynth/445890b5-68ad-4cf8-8b1c-fcce0c22387e/scratchpad/synth_data is used as given; this harness does not check whether it holds AAPM or synthetic data."
+      ],
+      "method_name": "zero_prediction",
+      "n_cases": 2,
+      "partition": {
+        "air": {
+          "max_abs": 0.0,
+          "mean_abs": 0.0
+        },
+        "tissue": {
+          "max_abs": 1.0,
+          "mean_abs": 1.0
+        }
+      },
+      "per_material": {
+        "adipose": {
+          "mae": 0.4160699623316759,
+          "rmse": 0.6275296210702169
+        },
+        "calcification": {
+          "mae": 0.0006982135237194598,
+          "rmse": 0.022394702523088318
+        },
+        "fibroglandular": {
+          "mae": 0.1941784794034902,
+          "rmse": 0.43148487718766826
+        }
+      },
+      "record_version": 1,
+      "regime_pixel_counts": {
+        "air": 697,
+        "band": 194,
+        "tissue": 1157
+      },
+      "s1": 0.4398694261080329,
+      "s2": 0.5773502691896257,
+      "s2_full_scan": 0.5773502691896257,
+      "shapes": {
+        "pred": [
+          2,
+          3,
+          32,
+          32
+        ],
+        "truth": [
+          2,
+          3,
+          32,
+          32
+        ]
+      },
+      "split_name": "val"
+    }
+  },
+  "n_cases": 2,
+  "not_computed": {},
+  "seed": 7,
+  "split_name": "val"
+}

@@ -1,0 +1,22 @@
+{
+  "classical_simplex": {
+    "tracemalloc_peak_bytes": 348907,
+    "wall_s": 0.0010677077807486057
+  },
+  "classical_sum_to_one": {
+    "tracemalloc_peak_bytes": 167504,
+    "wall_s": 0.00014183297753334045
+  },
+  "classical_tv": {
+    "tracemalloc_peak_bytes": 414409,
+    "wall_s": 0.18544091703370214
+  },
+  "classical_unconstrained": {
+    "tracemalloc_peak_bytes": 127200,
+    "wall_s": 0.00036737509071826935
+  },
+  "zero_prediction": {
+    "tracemalloc_peak_bytes": 49248,
+    "wall_s": 4.084082320332527e-06
+  }
+}

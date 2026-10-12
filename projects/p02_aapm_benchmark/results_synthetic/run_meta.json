@@ -1,0 +1,26 @@
+{
+  "config": {
+    "device": "cpu",
+    "experiment_id": "EXP-004",
+    "name": "aapm_synthetic_smoke",
+    "params": {
+      "k_worst": 3,
+      "n_cases": 24,
+      "n_det": 48,
+      "n_pix": 32,
+      "n_views": 32,
+      "roi": 8,
+      "table_dir": "data/aapm_kit_sample"
+    },
+    "seed": 7
+  },
+  "config_sha256": "b6dddf6f2637a39c8366e073f34f1ca6d37e9891a3aa0910541d3249fd2a97ef",
+  "ctsynth_version": "0.0.1",
+  "experiment_id": "EXP-004",
+  "git_commit": "c9613e21de68fdbd2038bcd6d283023c95b2a9e4",
+  "git_dirty": true,
+  "numpy": "2.5.4",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.7",
+  "utc_time": "2026-10-12T00:29:42+00:00"
+}
