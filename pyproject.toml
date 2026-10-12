@@ -29,6 +29,8 @@ addopts = "-q"
 [tool.ruff]
 line-length = 100
 src = ["src", "tests"]
+# frozen as run on the cluster (RUN-0012/0013): editing would change the recorded script hash
+extend-exclude = ["scripts/hpc_smoke.py", "scripts/hpc_env_probe.py"]
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "NPY"]
 
