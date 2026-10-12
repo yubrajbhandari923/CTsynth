@@ -198,9 +198,27 @@ def run_xcist(
                 raise FileNotFoundError(f"XCIST did not produce {f} in {work}")
             out[ext] = np.fromfile(f, dtype="<f4").reshape(shape).astype(np.float64)
         spec = ct.cfg.spec
+        net = np.atleast_2d(np.asarray(spec.netIvec, dtype=float))
+        w = np.atleast_2d(np.asarray(ct.cfg.sim.Wvec, dtype=float))
+        # gecatsim keeps these per detector cell; with an unshaped beam and a curved detector
+        # focused on the source every cell must be identical, else a single row would be a lie
+        if not (np.allclose(net, net[0], rtol=1e-6) and np.allclose(w, w[0], rtol=1e-6)):
+            raise ValueError("spectrum/detector weights vary across cells: use shaped_beam=False")
+        from gecatsim.pyfiles.GetMu import GetMu
+        from gecatsim.pyfiles.ReadMaterialFile import ReadMaterialFile
+
+        ev = np.atleast_1d(spec.Evec).astype(np.single)
+        mats = {m: [float(v) for v in GetMu(m, ev)] for m in xnames}  # linear mu, 1/cm
+        dens = {
+            m: float(ReadMaterialFile(xc.pyfiles.CommonTools.my_path.find("material", m, ""))[1])
+            for m in xnames
+        }
         out["spectrum"] = {
-            "energies_keV": np.atleast_1d(spec.Evec).astype(float).tolist(),
-            "fluence": np.atleast_1d(spec.Ivec).astype(float).ravel().tolist(),
+            "energies_keV": ev.astype(float).tolist(),
+            "net_fluence": net[0].tolist(),
+            "detector_weights": w[0].tolist(),
+            "mu_per_cm": mats,
+            "density_g_cm3": dens,
         }
         if recon:
             import gecatsim.reconstruction.pyfiles.recon as rc
@@ -237,6 +255,7 @@ def to_paired_record(
     acquisition_id: str,
     dest: Path,
     attenuation_source: str,
+    extra_provenance: dict[str, Any] | None = None,
 ) -> Path:
     """Save one XCIST run as a paired-ct record; truth is the INPUT `fractions`."""
     from ctsynth.paired.schema import (
@@ -299,6 +318,6 @@ def to_paired_record(
         },
         unknown=tuple(unknown),
         measurements=meas,
-        provenance=prov,
+        provenance=prov | (extra_provenance or {}),
     )
     return save_record(rec, fractions, {k: v[0] for k, v in arrays.items()}, dest)
