@@ -22,7 +22,7 @@
   "id": "RUN-0019",
   "label": null,
   "metrics_offset": 57,
-  "notes": "Failed: gecatsim 1.6.9 sdist build script clib_build/BuildLinux64 has CRLF line endings (bash: $'\\r': command not found).",
+  "notes": "BUNDLE DEFECT found at consolidation 2026-10-13: this run's bundle packaged the local macOS .venv-xcist (about 5580 files, ~60 MB compressed, ~250 MB unpacked) because hpc.bundle.exclude matched '.venv' but not '.venv-xcist'. Uploaded to the cluster code dir; the job itself did not use it. Exclude fixed to '.venv*' afterwards. Remote copy NOT deleted (cleanup awaits human approval).",
   "override_reason": null,
   "parameters": {
     "cpus": 2,
@@ -67,6 +67,6 @@
   "status": "failed",
   "stderr_path": ".research/runs/RUN-0019/stderr.log",
   "stdout_path": ".research/runs/RUN-0019/stdout.log",
-  "updated_at": "2026-10-12T19:35:48-04:00",
+  "updated_at": "2026-10-13T00:00:44-04:00",
   "working_dir": "."
 }

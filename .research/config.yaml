@@ -15,7 +15,7 @@ project:
 hpc:
   bundle:
     # Replaces the default list (which ignores .gitignore): keep data, outputs, caches, checkpoints out of bundles.
-    exclude: ['.git', '.github', '.research', '__pycache__', '*.pyc', '.venv', 'venv', 'node_modules',
+    exclude: ['.git', '.github', '.research', '__pycache__', '*.pyc', '.venv*', 'venv', '.venv-*', 'node_modules',
       '.mypy_cache', '.pytest_cache', '.ruff_cache', '.DS_Store', '*.egg-info', '.ipynb_checkpoints',
       'outputs', 'runs_local', 'bundles', 'runs_imported', 'incoming', 'data/aapm', 'projects/*/results*',
       '*.npy.gz', '*.pt', '*.pth', '*.ckpt', '*.tar.gz', '*.zip', '.env*']
