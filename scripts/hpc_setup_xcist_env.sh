@@ -2,7 +2,8 @@
 # Build an isolated XCIST env on the cluster, inside the project's approved directory only.
 # Never touches system Python; uv cache and its Python downloads are redirected under $P.
 set -uo pipefail
-P=/home/yb107/research-os/projects/CTsynth/env
+source "$(dirname "${BASH_SOURCE[0]}")/xcist_env_path.sh"
+P="$CTSYNTH_XCIST_ENV"
 OUT="${RESEARCH_RUN_DIR:-.}"
 mkdir -p "$P"
 export UV_CACHE_DIR="$P/uv-cache" UV_PYTHON_INSTALL_DIR="$P/uv-python"

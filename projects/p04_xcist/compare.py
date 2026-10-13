@@ -24,11 +24,12 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from ctsynth.paired.phantoms import Disk, chords
+from ctsynth.paired.phantoms import Disk, chords, voxel_chords
 from ctsynth.paired.schema import PairedRecord, load_record
 from ctsynth.paired.xcist import XcistAcq, fan_rays
 from ctsynth.physics import MaterialBasis, ParallelBeamProjector2D, SpectralForwardModel, Spectrum
 
+TABLES = Path(__file__).resolve().parents[2] / "data" / "tables"
 F64 = torch.float64
 NAMES = ("water", "calcium", "iodine")
 E_MIN = 10.0  # our attenuation tables start at 10 keV; lower XCIST bins are dropped (reported)
@@ -44,26 +45,6 @@ def _acq(rec: PairedRecord) -> XcistAcq:
         sdd_mm=g["sdd_mm"],
         col_offset=g["col_offset"],
     )
-
-
-def voxel_chords(truth: np.ndarray, dx: float, src: np.ndarray, det: np.ndarray) -> np.ndarray:
-    """Pixel-constant ray march of volume fractions: (n_mat, n_view, n_col) in mm."""
-    n_mat, _, n, _ = truth.shape
-    f = truth[:, 0]
-    c = (n - 1) / 2
-    step = 0.5 * dx
-    out = np.zeros((n_mat, det.shape[0], det.shape[1]))
-    t = np.arange(0.0, 2 * np.linalg.norm(src, axis=1).max() + 1.0, step)
-    for v in range(det.shape[0]):
-        u = det[v] - src[v]
-        u = u / np.linalg.norm(u, axis=-1, keepdims=True)
-        p = src[v][None, None, :] + t[None, :, None] * u[:, None, :]  # (col, t, 2)
-        ix = np.rint(p[..., 0] / dx + c).astype(int)
-        iy = np.rint(-p[..., 1] / dx + c).astype(int)
-        ok = (ix >= 0) & (ix < n) & (iy >= 0) & (iy < n)
-        ix, iy = np.where(ok, ix, 0), np.where(ok, iy, 0)
-        out[:, v] = (f[:, iy, ix] * ok).sum(axis=-1) * step
-    return out
 
 
 def model_prep(
@@ -101,9 +82,9 @@ def metrics(delta: np.ndarray, ref: np.ndarray) -> dict[str, float]:
 
 
 def tables() -> tuple[np.ndarray, np.ndarray, dict[str, np.ndarray]]:
-    d = np.load(Path("data/tables/attenuation_v1.npz"))
+    d = np.load(TABLES / "attenuation_v1.npz")
     order = [list(d["names"]).index(n) for n in NAMES]
-    s = np.load(Path("data/tables/spectra_v1.npz"))
+    s = np.load(TABLES / "spectra_v1.npz")
     return d["energies_keV"], d["kappa_cm2_per_g"][order], {k: s[k] for k in s.files}
 
 

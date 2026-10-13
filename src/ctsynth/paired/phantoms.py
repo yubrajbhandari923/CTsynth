@@ -48,3 +48,27 @@ def chords(disks: list[Disk], src: np.ndarray, det: np.ndarray) -> np.ndarray:
         chord = 2 * np.sqrt(np.clip(d.r_mm**2 - dist**2, 0, None))
         out += np.asarray(d.delta)[:, None, None] * chord
     return out
+
+
+def voxel_chords(truth: np.ndarray, dx: float, src: np.ndarray, det: np.ndarray) -> np.ndarray:
+    """Pixel-constant ray march of volume fractions: (n_mat, n_view, n_col) in mm.
+
+    `truth` is `(n_mat, 1, n, n)`; `src` is `(n_view, 2)`, `det` is `(n_view, n_col, 2)` (mm, the
+    same scanner frame and row-0-is-+y convention as `fractions`).
+    """
+    n_mat, _, n, _ = truth.shape
+    f = truth[:, 0]
+    c = (n - 1) / 2
+    step = 0.5 * dx
+    out = np.zeros((n_mat, det.shape[0], det.shape[1]))
+    t = np.arange(0.0, 2 * np.linalg.norm(src, axis=1).max() + 1.0, step)
+    for v in range(det.shape[0]):
+        u = det[v] - src[v]
+        u = u / np.linalg.norm(u, axis=-1, keepdims=True)
+        p = src[v][None, None, :] + t[None, :, None] * u[:, None, :]  # (col, t, 2)
+        ix = np.rint(p[..., 0] / dx + c).astype(int)
+        iy = np.rint(-p[..., 1] / dx + c).astype(int)
+        ok = (ix >= 0) & (ix < n) & (iy >= 0) & (iy < n)
+        ix, iy = np.where(ok, ix, 0), np.where(ok, iy, 0)
+        out[:, v] = (f[:, iy, ix] * ok).sum(axis=-1) * step
+    return out

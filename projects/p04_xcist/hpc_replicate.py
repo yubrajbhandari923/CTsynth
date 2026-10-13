@@ -19,28 +19,34 @@ from ctsynth.hashing import sha256_file
 from ctsynth.paired.phantoms import fractions
 from ctsynth.paired.xcist import run_xcist
 
-run_dir = Path(os.environ["RESEARCH_RUN_DIR"])
-f = fractions(PHANTOMS["G1"], N, DX)
-acq = replace(BASE, kvp=120)
-t0 = time.time()
-out = run_xcist(run_dir / "_work", f, XN, DX, acq, recon=True)
-rt = time.time() - t0
-np.save(run_dir / "prep.npy", out["prep"])
-np.save(run_dir / "recon.npy", out["recon"])
-meta = {
-    "host": platform.node(),
-    "platform": platform.platform(),
-    "runtime_s": round(rt, 2),
-    "provenance": out["provenance"],
-    "truth_sha256": hashlib.sha256(f.tobytes()).hexdigest(),
-    "prep_sha256": sha256_file(run_dir / "prep.npy"),
-    "recon_sha256": sha256_file(run_dir / "recon.npy"),
-    "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
-}
-(run_dir / "replication.json").write_text(json.dumps(meta, indent=1, sort_keys=True))
-with open(run_dir / "artifacts.jsonl", "a") as a:
-    for n in ("replication.json", "prep.npy", "recon.npy"):
-        a.write(json.dumps({"path": str((run_dir / n).resolve()), "name": n}) + "\n")
-with open(run_dir / "metrics.jsonl", "a") as m:
-    m.write(json.dumps({"name": "xcist_runtime_s", "value": rt}) + "\n")
-print(json.dumps(meta, indent=1))
+
+def main() -> None:
+    run_dir = Path(os.environ["RESEARCH_RUN_DIR"])
+    f = fractions(PHANTOMS["G1"], N, DX)
+    acq = replace(BASE, kvp=120)
+    t0 = time.time()
+    out = run_xcist(run_dir / "_work", f, XN, DX, acq, recon=True)
+    rt = time.time() - t0
+    np.save(run_dir / "prep.npy", out["prep"])
+    np.save(run_dir / "recon.npy", out["recon"])
+    meta = {
+        "host": platform.node(),
+        "platform": platform.platform(),
+        "runtime_s": round(rt, 2),
+        "provenance": out["provenance"],
+        "truth_sha256": hashlib.sha256(f.tobytes()).hexdigest(),
+        "prep_sha256": sha256_file(run_dir / "prep.npy"),
+        "recon_sha256": sha256_file(run_dir / "recon.npy"),
+        "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
+    }
+    (run_dir / "replication.json").write_text(json.dumps(meta, indent=1, sort_keys=True))
+    with open(run_dir / "artifacts.jsonl", "a") as a:
+        for n in ("replication.json", "prep.npy", "recon.npy"):
+            a.write(json.dumps({"path": str((run_dir / n).resolve()), "name": n}) + "\n")
+    with open(run_dir / "metrics.jsonl", "a") as m:
+        m.write(json.dumps({"name": "xcist_runtime_s", "value": rt}) + "\n")
+    print(json.dumps(meta, indent=1))
+
+
+if __name__ == "__main__":
+    main()

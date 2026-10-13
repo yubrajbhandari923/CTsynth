@@ -17,6 +17,7 @@ _BY_PATH = (
     ("tests/exp002/", "regression"),
     ("tests/p02/", "regression"),
     ("tests/p03/", "regression"),
+    ("tests/p04/", "regression"),
     ("tests/aapm/test_consolidation_facts.py", "regression"),
     ("tests/paired/test_xcist.py", "integration"),
 )
