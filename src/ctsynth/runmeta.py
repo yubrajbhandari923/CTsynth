@@ -16,11 +16,10 @@ from ctsynth import __version__
 from ctsynth.config import ExperimentConfig
 from ctsynth.hashing import config_sha256
 
-
-# The one definition of "source" for citability (D-008): everything that determines what a run computes.
-# Used by the run metadata below and by `ctsynth.hpc.check.preflight`, so local and HPC paths agree.
+# The one definition of "source" for citability (D-008): what determines a run's result.
+# Shared by the run metadata and `ctsynth.hpc.check.preflight`, so local and HPC paths agree.
 SOURCE_PATHS = ("src", "tests", "configs", "scripts", "projects", "pyproject.toml", "uv.lock")
-# Outputs written under projects/ (or tracked as curated evidence, e.g. exp002/results) are not source.
+# Outputs under projects/ (incl. tracked curated evidence such as exp002/results) are not source.
 _OUTPUT_EXCLUDE = ":(exclude,glob)projects/**/results*/**"
 
 
