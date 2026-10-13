@@ -24,7 +24,14 @@ packages = ["src/ctsynth"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-q"
+addopts = "-q --strict-markers"
+markers = [
+    "unit: fast contract tests (default)",
+    "physics: forward-model / projector invariants",
+    "regression: pinned numerical baselines and driver outputs on tiny fixtures",
+    "integration: needs optional XCIST env (.venv-xcist); skipped when absent",
+    "hpc: needs a live cluster; never run in CI",
+]
 
 [tool.ruff]
 line-length = 100
