@@ -1,19 +1,20 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~2855 tokens.
-> Generated 2026-10-12T23:54:02-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3195 tokens.
+> Generated 2026-10-12T23:56:00-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `b85822d85b`
+Git: `master` @ `ad1633bddc`
 
 ## Latest checkpoint
 
-**CP-007** Native HPC adopted; XCIST integrated; forward-mismatch ladder; E1-E4 registered (2026-10-12)
-- **Understanding:** Research OS 0.5.0 native HPC works on Duke SLURM (RUN-0012; D-010); legacy CTsynth orchestration replaced by ctsynth.hpc.check guards. XCIST 1.6.9 installed (laptop + HPC after a CRLF line-ending patch of the hash-verified sdist build script), official example reproduced (RUN-0015), adapter conventions verified against an analytic reference, paired-ct/0.1 schema + 18-record dataset v0 (RUN-0017), staged mismatch ladder (RUN-0023, F-037, preliminary): XCIST-ingredient floor 0.26-0.47% (voxel chords), spectrum specification the largest term (~2.4-3.2%, convention-sensitive), attenuation tables ~0.1-0.2%, detector <=0.25% relative. HPC replication of one cell matches laptop to 9.7e-6 in -ln units (RUN-0022, F-036). F-035 was superseded after review found a binning bug. NOT done: photon-counting, scatter, learning experiments (E1-E4 registered as proposed, splits declared in docs/xcist-experiments.md), DukeSim.
-- **Next step:** T-032 dataset v1 + split file + power analysis, then E1/E4; T-033 review of F-037.
+**CP-008** Consolidated scientific state before Research OS migration (2026-10-12)
+- **Understanding:** NARRATIVE: docs/SCIENTIST_GUIDE.md (native guide). KEY SCIENCE: (1) 3 materials from 2 spectra has a 1-D null space; consistency-only losses are non-identifying (F-010, F-018); fully nonnegative decoys ~20 cm away exist (F-024); nonnegativity does not fix it. (2) Label-free ladder error is ~92% identifiability gap (F-022); soft sum-to-one test was badly designed (F-023). (3) Real AAPM kit: linear effective-mu model wrong by 7.8%/5.9%, sum-to-one worse than zero-prediction (F-025), simplex win = clipping (F-030); kit sample only, 1000-case set never downloaded. (4) Infrastructure: Research OS native HPC adopted (D-010; RUN-0012 CPU smoke, SLURM 201820), XCIST first independent producer (D-011), HPC XCIST env needed CRLF-patched sdist build (EXP-011), HPC replication matches laptop (RUN-0022, F-036). (5) Forward mismatch vs XCIST on known water/Ca/I disks: floor 0.26-0.47% with XCIST ingredients; our spectra add ~2.4-3.2% (convention-sensitive); tables ~0.1-0.2%; detector <=0.25% (RUN-0023, F-037 preliminary; F-035 superseded after review found a binning bug). EVIDENCE STATUS: 8 supported findings; F-011/012/014/017/020/021/026/029/031/032/033 have no numeric bindings (reasons recorded in each finding's limitations); F-034/036/037 verified but preliminary (unreviewed). Imported HPC outputs live in .research/runs/RUN-*/collected/outputs (gitignored 'outputs/'); native artifact records point at cluster paths, local hashed copies A-0026..A-0038. NOT DONE: photon counting, scatter, reconstruction-domain comparison, learning experiments (EXP-013..016 registered, not run), DukeSim, real data beyond kit.
+- **Current problem:** No running or un-imported jobs. EXP-010 stays needs_review until F-037 is independently reviewed (T-033). Many preliminary findings await independent review (T-037). Real PCCT/DukeSim access unconfirmed (T-025).
+- **Next step:** T-032: generate XCIST dataset v1, commit phantom-level split file (24/6/12) and compute power analysis BEFORE training; then T-039 (E4 deterministic decoys, no training), then T-038 (E1). T-033 review in parallel. Inspect new results (research hpc sync; research current) before any dependent run.
 
 ## Current baseline
 
@@ -71,7 +72,7 @@ _none_
 
 ## Blockers
 
-_none_
+- [checkpoint] CP-008: No running or un-imported jobs. EXP-010 stays needs_review until F-037 is independently reviewed (T-033). Many preliminary findings await independent review (T-037). Real PCCT/DukeSim access unconfirmed (T-025).
 
 ## Project skills
 
