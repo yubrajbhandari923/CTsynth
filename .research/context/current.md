@@ -1,20 +1,20 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3062 tokens.
-> Generated 2026-10-13T00:49:00-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3378 tokens.
+> Generated 2026-10-13T00:50:56-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `7011767657` (uncommitted changes)
+Git: `master` @ `05c45736bf`
 
 ## Latest checkpoint
 
-**CP-010** Phase 2 architecture audit complete (design only; no code changed) (2026-10-13)
-- **Understanding:** Scientific state unchanged since CP-009. Audit done: see docs/architecture-workflow-audit.md and the pinned Phase 2 note. Strategy sonnet_first is set but orchestration.enabled=false; no hooks registered; PLAN-004 holds the Phase 3 backlog T-043..T-060.
-- **Current problem:** Provenance guards disagree (T-043); orchestration inert (T-053); hooks need human approval (T-054); 14 findings still await independent review (T-033, T-037).
-- **Next step:** Human: decide the listed items (enable orchestration, approve hooks, T-042, T-052). Scientific line unchanged: T-032 then T-039, T-038, T-033 in parallel. Land T-043 before the next experiment run. Re-preview bundle before every hpc submit.
+**CP-011** Phase 3 engineering baseline (refactor complete; scientific state unchanged) (2026-10-13)
+- **Understanding:** Scientific state unchanged since CP-009/CP-010: no experiments run, no finding promoted or reviewed, 14 preliminary findings still await independent review (T-033, T-037). Engineering baseline now: one source-clean definition (runmeta.SOURCE_PATHS, shared with preflight; D-012 supersedes D-009); sha256 helpers consolidated; seed_everything removed; undeclared scipy dropped from verify_identifiability (numpy Newton, reproduces RUN-0007 values to 1e-9); AAPM<->paired converter (aapm.convert); test markers by path (unit 158 / physics 69 / regression 71, integration = XCIST tests: 4 pass 1 skip in .venv-xcist, whole file skipped in core env); P02/P03/P04 drivers tested; compare.py reproduces all 396 recorded mismatch_v2 values; XCIST HPC env path configurable (CTSYNTH_XCIST_ENV; live cluster run NOT re-exercised); guards bundle-check, run-check, paired-check, xcist-check; 5 hooks registered (4 required ones disabled, all unapproved); 3 project skills; docs consolidated (hpc.md, research-os.md, architecture.md, README; hpc-handoff archived). Orchestration remains disabled. Full suite: 298 passed, 2 skipped; ruff, format, mypy clean.
+- **Current problem:** Needs human: enable+approve hooks (T-054), decide orchestration (T-053), T-042 cleanup, plan re-parenting is unsupported by Research OS 1.0 (T-052 note), T-051 attenuation cross-check is ill-defined (materials differ), T-056 dataset-v1 move blocked on T-032. Next live HPC job must re-verify scripts/hpc_xcist_replicate.sh path resolution.
+- **Next step:** Scientific line unchanged: T-032 (XCIST dataset v1, split file, power analysis), then T-039 (E4 deterministic decoys), T-038 (E1); T-033 review of F-037 in parallel. Re-preview bundle (uv run ctsynth bundle-check) before EVERY hpc submit; commit before any run.
 
 ## Current baseline
 
@@ -71,7 +71,7 @@ _none set_
 
 ## Blockers
 
-- [checkpoint] CP-010: Provenance guards disagree (T-043); orchestration inert (T-053); hooks need human approval (T-054); 14 findings still await independent review (T-033, T-037).
+- [checkpoint] CP-011: Needs human: enable+approve hooks (T-054), decide orchestration (T-053), T-042 cleanup, plan re-parenting is unsupported by Research OS 1.0 (T-052 note), T-051 attenuation cross-check is ill-defined (materials differ), T-056 dataset-v1 move blocked on T-032. Next live HPC job must re-verify scripts/hpc_xcist_replicate.sh path resolution.
 
 ## Project skills
 
