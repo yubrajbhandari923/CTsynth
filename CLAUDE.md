@@ -6,6 +6,8 @@ Before ANY research task or dependent experiment: `research current`, then `rese
 jobs), then inspect what completed since the last checkpoint (`research status`, `research experiment show`,
 `research task show`) and synthesize/review it first. Never launch an experiment that depends on a result you have
 not read from its run record. Active work: `projects/p04_xcist/` (XCIST pairs); earlier: `projects/p01_material_inference/`.
+`research task next` picks the lowest ready ID, not the most important task: the next scientific action is the latest
+checkpoint's Next step. Re-preview bundle contents (`hpc.bundle.exclude`) before EVERY `hpc submit` (F-038).
 XCIST/paired data: `docs/xcist.md`; planned experiments: `docs/xcist-experiments.md` (registered as EXP-013..016).
 
 ## Roles
