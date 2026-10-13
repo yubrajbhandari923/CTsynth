@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~2643 tokens.
-> Generated 2026-10-13T00:47:04-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3062 tokens.
+> Generated 2026-10-13T00:49:00-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `b4d192e55e`
+Git: `master` @ `7011767657` (uncommitted changes)
 
 ## Latest checkpoint
 
@@ -46,8 +46,12 @@ _none set_
 
 ## Active plans
 
-- PLAN-004 P04 Phase 2 audit and Phase 3 refactoring backlog — 9/18 tasks done · objective: Execute the audit roadmap (docs/architecture-workflow-audit.md) without changing scientific results, the HPC baseline or history
-  - next ready: T-049 Consolidate docs: pointer-rewrite scientific-decisions, merge hpc docs, archive obsolete aapm hand-off docs (`research task context T-049`)
+- PLAN-004 P04 Phase 2 audit and Phase 3 refactoring backlog — 13/18 tasks done · objective: Execute the audit roadmap (docs/architecture-workflow-audit.md) without changing scientific results, the HPC baseline or history
+  - next ready: T-052 Plan hygiene: re-parent XCIST E1-E4 tasks, resolve stale PLAN-001 tasks (`research task context T-052`)
+  - BLOCKED: T-051 Cross-check attenuation_v1 vs AAPM kit mu tables with stated tolerance (A7) — Not well-defined: attenuation_v1 is water/iodine/calcium, the AAPM kit is adipose/fibroglandular/calcification (composition of kit calcification unstated); no shared material to compare except possibly calcium. Needs a human/Opus scoping decision before any tolerance exists
+  - BLOCKED: T-053 Pilot orchestration: enable, contract and verify one Haiku task (A2) — Out of scope by owner instruction for Phase 3 (do not enable orchestration). Re-open only on an explicit human decision
+  - BLOCKED: T-054 Propose and register CTsynth hooks (not approved) — Hooks registered; awaiting human 'research hook enable/approve' (see docs/research-os.md)
+  - BLOCKED: T-056 Move p04 dataset generation, split and loader into src (with tests) — Partial work done (voxel_chords moved, drivers testable). Dataset v1 generator/split/loader depends on T-032 (unresolved scientific design)
 - PLAN-003 P03 label-free physics-consistent decomposition (B0-B4 ladder) — 2/2 tasks done · objective: Implement and fairly compare B0 classical constrained, B1 regularized classical, B2 supervised U-Net, B3 label-free physics-consistent U-Net, B4 physics+priors; ablate priors individually; test identifiability, information, noise, mismatch, generalization
 - PLAN-002 P02 AAPM benchmark: adapter, classical and supervised baselines — 7/31 tasks done · objective: Reproducible benchmark on AAPM DL-Spectral CT: adapter with explicit conventions, deterministic splits, streaming loader, constrained classical baseline, small U-Net, honest evaluation
   - next ready: T-017 P1.1 Acquire + validate the real AAPM 1000-case dataset (`research task context T-017`)
@@ -62,8 +66,8 @@ _none set_
 
 ## Active decisions
 
+- D-012 (2026-10-13) D-009 is superseded: the CTsynth 'ctsynth prepare|verify|export|import|report' laptop<->HPC CLI no longer exists (removed in 6a98348 when the Research OS native HPC protocol replaced it, D-010). The current workflow is docs/hpc.md: ctsynth preflight/postcheck/bundle-check/run-check guards around research hpc. Phase 3 conventions recorded with it: (1) ONE definition of 'source' for citability, runmeta.SOURCE_PATHS (src tests configs scripts projects pyproject.toml uv.lock), shared by run metadata and preflight; projects/**/results* are outputs; unknown git state is None and never citable; (2) AAPM<->paired axis conversion only through ctsynth.aapm.convert (index relabel, no invented affine); (3) hooks are registered but unapproved/disabled until a human enables them; (4) orchestration stays disabled.
 - D-011 (2026-10-12) XCIST is the first independent CT forward-data producer; DukeSim deferred
-- D-010 (2026-10-12) Adopt Research OS 0.5.0 native HPC protocol; CTsynth keeps thin preflight/postcheck guards
 
 ## Blockers
 

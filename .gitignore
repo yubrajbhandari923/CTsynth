@@ -15,6 +15,9 @@ data/aapm/
 # Experiment outputs: written during runs, so tracking them makes every run "dirty".
 # Register them as Research OS artifacts instead; commit a curated copy if needed.
 projects/*/results*/
+# Exception: projects/p01_material_inference/exp002/results/ is TRACKED curated evidence for EXP-002 (artifact
+# hashes A-0001..); never delete or regenerate it. The source-clean check (runmeta.SOURCE_PATHS) ignores all
+# projects/**/results*/ so modifying it does not make a tree "dirty source".
 
 # HPC workflow: frozen bundles and imported run directories are evidence, not source
 bundles/

@@ -8,7 +8,7 @@ author_type: agent
 author_name: opus
 author_model: null
 created_at: '2026-10-11T20:01:57-04:00'
-updated_at: '2026-10-11T20:01:57-04:00'
+updated_at: '2026-10-13T00:48:47-04:00'
 completed_at: null
 ---
 
@@ -24,9 +24,11 @@ Synthetic smoke benchmark runs end-to-end locally; adapter verified against real
 
 ## Context
 
+Phase 3 note: this plan also holds the XCIST E1-E4 work (T-032..T-042) because Research OS 1.0 cannot re-parent tasks (task update has no --plan). Read XCIST progress from those task IDs, not from this plan's 'x/31' count.
+
 <!-- research:generated — everything below is regenerated; edits here are ignored -->
 
-## Tasks (7/20 done)
+## Tasks (7/31 done)
 
 - ✓ **T-010** AAPM adapter + synthetic schema-mirror generator + deterministic splits — done
 - ✓ **T-011** Classical constrained decomposition baseline (NNLS + simplex constraint, TV variant) — done (deps: T-010)
@@ -48,5 +50,16 @@ Synthetic smoke benchmark runs end-to-end locally; adapter verified against real
 - ○ **T-029** P2.6 Disease interventions and downstream virtual-trial validation — todo
 - ✓ **T-030** P1.8 HPC bundle validator + environment pinning (Prompt 4 prerequisite) — done
 - ✓ **T-031** P1.9 Laptop<->HPC bundle workflow CLI — done (deps: T-030)
+- ○ **T-032** XCIST dataset v1, declared split file and power analysis (prerequisite for E1-E4) — todo
+- ○ **T-033** Independent review of F-037 (spectrum mismatch, corrected) — todo
+- ○ **T-034** DukeSim vs XCIST forward comparison on shared phantoms — todo (deps: T-025)
+- ○ **T-035** XCIST scatter and same-generator spectrum sensitivity — todo
+- ○ **T-036** Clinical spectral CT adaptation (after E3) — todo
+- ○ **T-037** Independent review of outstanding preliminary findings (F-011,F-012,F-017,F-022..F-027,F-029..F-034,F-036) — todo
+- ○ **T-038** Run E1 supervised baseline (EXP-013) on XCIST dataset v1 — todo (deps: T-032)
+- ○ **T-039** Run E4 deterministic decoy analysis (EXP-016) on XCIST data — todo (deps: T-032)
+- ○ **T-040** Run E2 self-supervised priors (EXP-014) — todo (deps: T-032)
+- ○ **T-041** Run E3 hybrid adaptation (EXP-015) — todo (deps: T-038, T-040)
+- ○ **T-042** Decide cleanup of accidental .venv-xcist copies in cluster code dirs and local bundle dirs — todo
 
 _Author: agent (opus)_
