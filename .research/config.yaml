@@ -68,3 +68,43 @@ hpc:
 # Uncommenting one here overrides it for this project only.
 orchestration:
   active_strategy: sonnet_first
+harness:
+  hooks:
+    lint-types:
+      stage: post_implementation
+      command: uv run ruff check . && uv run ruff format --check . && uv run mypy
+      required: true
+      enabled: true
+      timeout: 120.0
+      description: Style and strict typing (≈1 s). Run via 'research hook run lint-types' after code changes.
+    tests-fast:
+      stage: post_implementation
+      command: uv run pytest -q -m "not integration and not hpc"
+      required: true
+      enabled: true
+      timeout: 300.0
+      description: 'Unit, physics and regression tests (≈20 s). XCIST integration tests are excluded: run
+        them in .venv-xcist.'
+    source-clean:
+      stage: pre_experiment
+      command: uv run ctsynth preflight --repo .
+      required: true
+      enabled: true
+      timeout: 60.0
+      description: Refuse to create a run from a dirty/untracked source tree (D-008 citability). Blocks research
+        run exec.
+    bundle-content:
+      stage: pre_experiment
+      command: uv run ctsynth bundle-check --repo .
+      required: true
+      enabled: true
+      timeout: 60.0
+      description: Fail if hpc.bundle.exclude would let envs, data or results into a bundle (F-038).
+    run-meta-citable:
+      stage: post_experiment
+      command: uv run ctsynth run-check
+      required: false
+      enabled: true
+      timeout: 60.0
+      description: Registered run_meta.json files of the experiment must be citable; runs of drivers without
+        one only produce a note. Runs in 'research experiment check'.

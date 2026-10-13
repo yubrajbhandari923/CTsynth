@@ -1,0 +1,8 @@
+# Project skills: where each imported skill came from, and project settings for it.
+# always: list as always-on in current.md · applies_to: task types/roles/tags it is suggested for.
+ctsynth-conventions:
+  applies_to: [implementation]
+ctsynth-experiment:
+  applies_to: [experiment]
+ctsynth-xcist:
+  applies_to: [data, experiment]
