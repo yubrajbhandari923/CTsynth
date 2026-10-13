@@ -430,3 +430,4 @@
 {"action": "created", "author_name": "opus", "author_type": "agent", "entity_id": "T-034", "entity_type": "task", "summary": "Task created: DukeSim vs XCIST forward comparison on shared phantoms", "ts": "2026-10-12T23:10:15-04:00"}
 {"action": "created", "author_name": "opus", "author_type": "agent", "entity_id": "T-035", "entity_type": "task", "summary": "Task created: XCIST scatter and same-generator spectrum sensitivity", "ts": "2026-10-12T23:10:15-04:00"}
 {"action": "created", "author_name": "opus", "author_type": "agent", "entity_id": "T-036", "entity_type": "task", "summary": "Task created: Clinical spectral CT adaptation (after E3)", "ts": "2026-10-12T23:10:15-04:00"}
+{"action": "created", "author_name": "opus", "author_type": "agent", "entity_id": "CP-007", "entity_type": "checkpoint", "summary": "Checkpoint Native HPC adopted; XCIST integrated; forward-mismatch ladder; E1-E4 registered", "ts": "2026-10-12T23:11:08-04:00"}
