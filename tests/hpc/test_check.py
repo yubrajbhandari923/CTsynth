@@ -93,3 +93,73 @@ def test_output_hashes_change_when_modified(tmp_path: Path) -> None:
     before = output_hashes(run)
     (run / "collected" / "outputs" / "metrics.json").write_text("tampered")
     assert output_hashes(run) != before
+
+
+# --- local (runmeta) and HPC (preflight) paths must make the same cleanliness decision ---------
+from ctsynth.config import load_config  # noqa: E402
+from ctsynth.runmeta import SOURCE_PATHS, collect  # noqa: E402
+
+
+def _both(repo: Path) -> tuple[bool, bool]:
+    """(runmeta says dirty, preflight refuses) for the same tree."""
+    cfg_path = repo / "configs" / "c.yaml"
+    local = bool(collect(load_config(cfg_path), repo)["git_dirty_source"])
+    try:
+        preflight(repo, cfg_path)
+        return local, False
+    except PreflightError:
+        return local, True
+
+
+def test_clean_tree_agrees(repo: Path) -> None:
+    assert _both(repo) == (False, False)
+
+
+@pytest.mark.parametrize(
+    "path", [p for p in SOURCE_PATHS if p not in ("uv.lock", "pyproject.toml")]
+)
+def test_untracked_file_in_each_source_dir_is_dirty_on_both_paths(repo: Path, path: str) -> None:
+    d = repo / path
+    d.mkdir(exist_ok=True)
+    (d / "new_file.py").write_text("x = 1\n")
+    assert _both(repo) == (True, True)
+
+
+@pytest.mark.parametrize("name", ["uv.lock", "pyproject.toml"])
+def test_modified_root_file_is_dirty_on_both_paths(repo: Path, name: str) -> None:
+    (repo / name).write_text("changed\n")
+    assert _both(repo) == (True, True)
+
+
+def test_staged_change_is_dirty_on_both_paths(repo: Path) -> None:
+    (repo / "src" / "a.py").write_text("x = 3\n")
+    _run(repo, "add", "src/a.py")
+    assert _both(repo) == (True, True)
+
+
+def test_project_results_are_outputs_not_source(repo: Path) -> None:
+    out = repo / "projects" / "p" / "results_x"
+    out.mkdir(parents=True)
+    (out / "metrics.json").write_text("{}")
+    assert _both(repo) == (False, False)  # untracked output
+    _run(repo, "-c", "user.name=t", "-c", "user.email=t@t", "add", "-f", "-A")
+    _run(repo, "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", "curated results")
+    (out / "metrics.json").write_text('{"changed": 1}')
+    assert _both(repo) == (False, False)  # tracked curated evidence (exp002) modified
+    (repo / "projects" / "p" / "run.py").write_text("x = 1\n")
+    assert _both(repo) == (True, True)  # a driver next to it still counts
+
+
+def test_not_a_repository_is_unknown_never_clean(tmp_path: Path) -> None:
+    (tmp_path / "configs").mkdir()
+    (tmp_path / "configs" / "c.yaml").write_text("experiment_id: EXP-009\nname: t\n")
+    assert (
+        collect(load_config(tmp_path / "configs" / "c.yaml"), tmp_path)["git_dirty_source"] is None
+    )
+    with pytest.raises(PreflightError, match="unknown"):
+        preflight(tmp_path, tmp_path / "configs" / "c.yaml")
+
+
+def test_postcheck_rejects_unknown_dirty_state(tmp_path: Path) -> None:
+    run = _imported(tmp_path, {**EXPECT, "git_dirty_source": None}, ())
+    assert any("not citable" in m for m in postcheck(run, EXPECT, []))

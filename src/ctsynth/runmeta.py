@@ -17,38 +17,64 @@ from ctsynth.config import ExperimentConfig
 from ctsynth.hashing import config_sha256
 
 
-def _git(*args: str) -> str | None:
+# The one definition of "source" for citability (D-008): everything that determines what a run computes.
+# Used by the run metadata below and by `ctsynth.hpc.check.preflight`, so local and HPC paths agree.
+SOURCE_PATHS = ("src", "tests", "configs", "scripts", "projects", "pyproject.toml", "uv.lock")
+# Outputs written under projects/ (or tracked as curated evidence, e.g. exp002/results) are not source.
+_OUTPUT_EXCLUDE = ":(exclude,glob)projects/**/results*/**"
+
+
+def _git(*args: str, repo: str | Path | None = None) -> str | None:
     try:
         return subprocess.run(
-            ["git", *args], capture_output=True, text=True, check=True
+            ["git", *args], capture_output=True, text=True, check=True, cwd=repo
         ).stdout.strip()
     except (OSError, subprocess.CalledProcessError):
         return None
 
 
-def _lock_sha256() -> str | None:
+def dirty_source(repo: str | Path | None = None) -> str | None:
+    """`git status --porcelain` lines for modified, staged or untracked source ('' = clean).
+
+    Untracked files count because Research OS packages the working tree, not the commit.
+    None means git could not answer (no repository): unknown, never reported as clean.
+    """
+    return _git(
+        "status",
+        "--porcelain",
+        "--untracked-files=all",
+        "--",
+        *SOURCE_PATHS,
+        _OUTPUT_EXCLUDE,
+        repo=repo,
+    )
+
+
+def _lock_sha256(repo: str | Path | None) -> str | None:
     """Hash of uv.lock: without it the environment is not pinned in the evidence."""
-    root = _git("rev-parse", "--show-toplevel")
-    lock = Path(root) / "uv.lock" if root else Path("uv.lock")
+    root = _git("rev-parse", "--show-toplevel", repo=repo)
+    lock = Path(root) / "uv.lock" if root else Path(repo or ".") / "uv.lock"
     try:
         return hashlib.sha256(lock.read_bytes()).hexdigest()
     except OSError:
         return None
 
 
-def collect(cfg: ExperimentConfig) -> dict[str, object]:
+def collect(cfg: ExperimentConfig, repo: str | Path | None = None) -> dict[str, object]:
     import numpy
 
+    dirty = dirty_source(repo)
     return {
         "experiment_id": cfg.experiment_id,
-        "uv_lock_sha256": _lock_sha256(),
+        "uv_lock_sha256": _lock_sha256(repo),
         "config_sha256": config_sha256(cfg),
         "config": cfg.model_dump(),
-        "git_commit": _git("rev-parse", "HEAD"),
-        "git_dirty": bool(_git("status", "--porcelain")),
+        "git_commit": _git("rev-parse", "HEAD", repo=repo),
+        "git_dirty": bool(_git("status", "--porcelain", repo=repo)),
         # Research OS writes its own event log while the run executes, so git_dirty is always
-        # true for a `research run exec` run. Citability depends on the SOURCE being clean.
-        "git_dirty_source": bool(_git("status", "--porcelain", "--", "src", "tests", "configs")),
+        # true for a `research run exec` run. Citability depends on the SOURCE being clean
+        # (SOURCE_PATHS); None = git unavailable, which postcheck treats as not citable.
+        "git_dirty_source": None if dirty is None else bool(dirty),
         "ctsynth_version": __version__,
         "python": sys.version.split()[0],
         "numpy": numpy.__version__,
@@ -57,8 +83,8 @@ def collect(cfg: ExperimentConfig) -> dict[str, object]:
     }
 
 
-def write(cfg: ExperimentConfig, out_dir: str | Path) -> Path:
+def write(cfg: ExperimentConfig, out_dir: str | Path, repo: str | Path | None = None) -> Path:
     path = Path(out_dir) / "run_meta.json"
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(collect(cfg), indent=2, sort_keys=True))
+    path.write_text(json.dumps(collect(cfg, repo), indent=2, sort_keys=True))
     return path

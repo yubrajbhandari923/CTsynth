@@ -12,8 +12,7 @@ from typing import Any
 
 from ctsynth.config import load_config
 from ctsynth.hashing import config_sha256, sha256_file
-
-_SOURCE_PATHS = ("src", "tests", "configs", "scripts", "projects", "pyproject.toml", "uv.lock")
+from ctsynth.runmeta import dirty_source
 
 
 class PreflightError(Exception):
@@ -33,7 +32,9 @@ def preflight(repo: Path, config_path: Path) -> dict[str, str]:
     Untracked (non-ignored) files count: Research OS packages the working tree, not the commit.
     """
     repo = Path(repo)
-    dirty = _git(repo, "status", "--porcelain", "--untracked-files=all", "--", *_SOURCE_PATHS)
+    dirty = dirty_source(repo)
+    if dirty is None:
+        raise PreflightError(f"git_dirty_source unknown: {repo} is not a git repository")
     if dirty:
         raise PreflightError("git_dirty_source: commit or remove first:\n" + dirty)
     commit = _git(repo, "rev-parse", "HEAD")
@@ -65,8 +66,10 @@ def postcheck(
         for key in ("git_commit", "config_sha256", "uv_lock_sha256", "experiment_id"):
             if key in expect and meta.get(key) != expect[key]:
                 problems.append(f"{key}: run has {meta.get(key)!r}, expected {expect[key]!r}")
-        if meta.get("git_dirty_source"):
-            problems.append("run_meta says git_dirty_source=true: not citable")
+        if meta.get("git_dirty_source") is not False:
+            problems.append(
+                f"run_meta git_dirty_source={meta.get('git_dirty_source')!r}: not citable"
+            )
     elif not failed:
         problems.append("run_meta.json missing from collected outputs")
     if not failed:
