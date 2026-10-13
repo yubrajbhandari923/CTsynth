@@ -22,15 +22,15 @@ from ctsynth.aapm import metrics as M
 from ctsynth.aapm import schema as S
 from ctsynth.hashing import sha256_file
 
-TABLE_DIR = Path("data/aapm_kit_sample")
+TABLE_DIR = Path(__file__).resolve().parents[2] / "data" / "aapm_kit_sample"
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--kit", type=Path, required=True, help="extracted starting_kit directory")
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--n-cases", type=int, default=3)
-    a = ap.parse_args()
+    a = ap.parse_args(argv)
     if not (a.kit / "Phantom_Adipose.npy").exists():
         raise SystemExit(f"no kit data at {a.kit}; refusing to produce numbers without it")
 

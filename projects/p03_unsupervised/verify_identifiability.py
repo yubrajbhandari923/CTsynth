@@ -14,13 +14,12 @@ import json
 from pathlib import Path
 
 import numpy as np
-from scipy.optimize import fsolve
 
 from ctsynth.aapm import classical as C
 from ctsynth.aapm import schema as S
 from ctsynth.hashing import sha256_file
 
-TABLE_DIR = Path("data/aapm_kit_sample")
+TABLE_DIR = Path(__file__).resolve().parents[2] / "data" / "aapm_kit_sample"
 
 
 def transmission(x: np.ndarray, tables: dict[int, S.ModelTable]) -> np.ndarray:
@@ -36,19 +35,44 @@ def transmission(x: np.ndarray, tables: dict[int, S.ModelTable]) -> np.ndarray:
 def exact_decoy(
     x_true: np.ndarray, calc: float, tables: dict[int, S.ModelTable], guess: np.ndarray
 ) -> np.ndarray:
-    """Hold calcification at `calc`; solve the 2x2 polychromatic system for the other two."""
-    sol = fsolve(
-        lambda ab: np.log(transmission(np.array([ab[0], ab[1], calc]), tables) / t_true),
-        guess,
-        xtol=1e-14,
-    )
-    return np.array([sol[0], sol[1], calc])
+    """Hold calcification at `calc`; solve the 2x2 polychromatic system for the other two.
+
+    Damped Newton on log-transmission residuals with the analytic Jacobian (numpy only: the
+    original used scipy.optimize.fsolve, an undeclared dependency).
+    """
+    t_true = transmission(x_true, tables)
+    ts = (tables[50], tables[80])
+
+    def resid(ab: np.ndarray) -> np.ndarray:
+        return np.log(transmission(np.array([ab[0], ab[1], calc]), tables) / t_true)
+
+    def jac(ab: np.ndarray) -> np.ndarray:
+        x = np.array([ab[0], ab[1], calc])
+        rows = []
+        for t in ts:
+            w = 0.5 * t.spectrum * np.exp(-(t.mu_per_cm * x[:, None]).sum(axis=0))
+            rows.append(-(t.mu_per_cm[:2] * w).sum(axis=1) / w.sum())
+        return np.array(rows)
+
+    ab = np.asarray(guess, dtype=float).copy()
+    for _ in range(200):
+        r = resid(ab)
+        if np.abs(r).max() < 1e-15:
+            break
+        step = np.linalg.solve(jac(ab), -r)
+        lam = 1.0
+        while lam > 1e-8 and np.linalg.norm(resid(ab + lam * step)) > np.linalg.norm(r):
+            lam /= 2
+        ab = ab + lam * step
+    else:
+        raise RuntimeError(f"decoy solve did not converge (residual {np.abs(resid(ab)).max():.2e})")
+    return np.array([ab[0], ab[1], calc])
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", type=Path, required=True)
-    a = ap.parse_args()
+    a = ap.parse_args(argv)
     tables = {k: S.load_model_table(TABLE_DIR / f"model_data_{k}kVp.npy", k) for k in S.KVPS}
     mu = C.effective_mu(tables)
     null = np.linalg.svd(mu)[2][-1]
@@ -56,7 +80,6 @@ def main() -> int:
     sv = np.linalg.svd(b_full, compute_uv=False)
     amp = np.linalg.svd(np.linalg.inv(b_full)[:, :2], compute_uv=False)[0]
 
-    global t_true
     out: dict[str, object] = {
         "kind": "retrospective_verification",
         "deterministic": True,
