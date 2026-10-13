@@ -3,8 +3,12 @@
 <!-- research:begin — managed by `research init`; edit outside these markers freely -->
 ## Research OS
 
-This repo uses Research OS for research memory and task coordination. Every tool below is also available as an
-MCP tool if the `research` MCP server is configured (`research mcp install`).
+This repo uses Research OS for research memory and task coordination. The core loop (current state, tasks,
+experiments, runs, findings, review, search) is also exposed as MCP tools if the `research` MCP server is configured
+(`research mcp install`). MCP does **not** cover orchestration (`orchestrate freeze|contract|attempt|delegate|verify`),
+hooks, skills editing, strategy/configuration, tuning, or most `hpc` commands: use the CLI for those.
+`research task context T-…` prints the effective task specification (objective, constraints, permitted files,
+acceptance criteria, checks, hooks needing human approval, conflicts) and is the same on CLI, MCP and the editor.
 
 ### Running the CLI (no install needed)
 Use `.research/bin/research` from the project root (e.g. `.research/bin/research current`). It is a project-local
@@ -70,8 +74,10 @@ the human to open the project in VS Code with the Research Panel extension, or t
   block. Everything outside the two marker comments below is the project's — never rewrite it.
 
 ### Tiered agents (optional)
-If `orchestration.enabled`: Opus = science/synthesis/guide, Sonnet = contracts + tests + review, Haiku = frozen-test
-implementation. `research orchestrate route T-001`; protocol: `research skill show engineering-loop`. Never edit frozen tests.
+If `orchestration.enabled`: `research strategy show` says which model level does what (or the legacy Opus/Sonnet/Haiku tiers when no
+strategy is active). `research orchestrate route T-001`; protocol: `research skill show engineering-loop`. Never edit frozen tests.
+A delegated task has a contract (`research task context T-001`); check your work with `research orchestrate verify T-001 --tier LEVEL --record`.
+Project hooks (`research hook list`) are run by Research OS only after a human approves them; propose one with `research hook add`.
 
 ### Recording work
 ```bash

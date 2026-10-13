@@ -10,11 +10,18 @@ not read from its run record. Active work: `projects/p04_xcist/` (XCIST pairs); 
 checkpoint's Next step. Re-preview bundle contents (`hpc.bundle.exclude`) before EVERY `hpc submit` (F-038).
 XCIST/paired data: `docs/xcist.md`; planned experiments: `docs/xcist-experiments.md` (registered as EXP-013..016).
 
-## Roles
-- **Opus** owns scientific interpretation, findings, synthesis, `docs/scientific-decisions.md`.
-- **Sonnet** owns technical specs (interfaces, data contracts) and *substantive test design* (physics invariants, tolerances with rationale). Tests are frozen before Haiku implements.
-- **Haiku** implements bounded tasks and iterates against frozen tests / a stated objective. Never edits frozen tests or specs; escalates after repeated failure.
+## Roles (Research OS 1.0.0, strategy `sonnet_first`; `research strategy show`)
+Levels map to models: deep = Opus, balanced = Sonnet, fast = Haiku. Routing is by task kind, not label (`research strategy route T-…`).
+- **Sonnet (balanced)** is the coordinator: planning, verification, unchecked work, technical specs (interfaces, data contracts),
+  *substantive test design* (physics invariants, tolerances with rationale), and independent review. Tests are frozen before Haiku implements.
+- **Haiku (fast)** implements checkable/mechanical tasks against frozen tests / a stated objective (retries: 3, then escalates to Sonnet).
+  Never edits frozen tests or specs.
+- **Opus (deep)** only for scientific interpretation, findings, synthesis, `docs/scientific-decisions.md`, and scientific-assumption calls.
 - Humans (Yubraj) decide what to investigate; discuss science with GPT Astra. Laptop is authoritative; HPC runs experiments only.
+- Delegated task protocol: `research task context T-…` (effective spec: files, criteria, checks, hooks), then
+  `research orchestrate verify T-… --tier LEVEL --record` before handing back. Project hooks (`research hook list`) run only after human approval.
+- MCP covers the core loop only; use the CLI for orchestrate, hooks, strategy, tuning and most `hpc` commands.
+- Tuning: `research tuning declare|trial|select|test` (no longer under `orchestrate`); held-out test is evaluated once.
 
 ## Tooling and delegation
 Verified available (2026-10-11): Ponytail 5.1.0 (enabled, `full` active; `/ponytail lite|full|ultra`,
@@ -26,12 +33,8 @@ dir in this repo** — all skills come from plugins. Research OS CLI: `.research
 Use before working, not for show: `reference-lookup` to verify any citation before it enters `docs/literature/`;
 `parallel` web_search for literature/dataset facts; `ponytail:ponytail-review` on a substantial diff.
 
-Model routing (cost-aware; one job per agent, explicit owned files):
-- **Opus** — scientific interpretation, findings, synthesis, pre-registration, review arbitration.
-- **Sonnet** — interfaces, specs, test design, hard numerics, independent review.
-- **Haiku** — bounded implementation against frozen tests, debugging, exploration, parameter tuning.
-  Let Haiku loop implement → test → fix on its own; escalate only when a failure is architectural or scientific,
-  never for routine debugging.
+Model routing follows the active strategy (above); one job per agent, explicit owned files. Let Haiku loop implement → test → fix
+on its own; escalate only when a failure is architectural or scientific, never for routine debugging.
 Avoid duplicate context loading, redundant subagents and repeated literature searches: check `docs/literature/`
 and `research search` before dispatching a new search agent. Prefer the cheapest mode that does the job.
 Record decisions and evidence in Research OS; do not log routine implementation iterations.

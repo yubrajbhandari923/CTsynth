@@ -1,20 +1,20 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~2810 tokens.
-> Generated 2026-10-13T00:02:38-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~2585 tokens.
+> Generated 2026-10-13T00:26:28-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `b999f636c5`
+Git: `master` @ `952a99d798` (uncommitted changes)
 
 ## Latest checkpoint
 
-**CP-009** PRE-MIGRATION checkpoint (Research OS 0.5.0, schema 3) - verified backup (2026-10-13)
-- **Understanding:** Scientific state unchanged since CP-008 (see CP-008 and docs/SCIENTIST_GUIDE.md); changes since: EXP-010 completed (F-037 still preliminary pending T-033), T-004 done, F-017 superseded by F-029, Q-002 investigating, F-038 (process failure: four HPC bundles RUN-0019..0022 accidentally packaged local .venv-xcist, remote copies NOT deleted, T-042 needs a human decision), bundle exclude fixed to .venv*. MIGRATION STATE: Research OS 0.5.0, schema 3, base commit b999f63. Counts before this checkpoint: task 42, experiment 16, run 23, metric 188, artifact 38, synthesis 15, finding 38, review 14, decision 11, checkpoint 8, source 6. Backup: ~/Code/CTsynth-backups/pre-migration-2026-10-13 (tarball sha256 0e1efc36d51cefee..., restore-tested 351 files 0 mismatches, MANIFEST.json with per-file hashes). Verification procedure: pinned note pre-migration-verification-procedure-and-state-r (research note list). Known expected warnings: missing_artifacts=13 (cluster-path artifacts; local hashed copies A-0026..A-0038), never_recorded_fields=16.
-- **Current problem:** Migration blockers: none known. Do not upgrade before reading research agents-md --diff and the pinned note. Remote .venv-xcist copies and ~1 GB local unpacked bundle dirs await a human cleanup decision (T-042). No jobs running.
-- **Next step:** After the upgrade verify against the pinned note; then T-032 (XCIST dataset v1, split file, power analysis), then T-039 (E4 deterministic decoys), T-038 (E1); T-033 review of F-037 in parallel. Re-preview bundle contents before EVERY hpc submit.
+**CP-010** Phase 2 architecture audit complete (design only; no code changed) (2026-10-13)
+- **Understanding:** Scientific state unchanged since CP-009. Audit done: see docs/architecture-workflow-audit.md and the pinned Phase 2 note. Strategy sonnet_first is set but orchestration.enabled=false; no hooks registered; PLAN-004 holds the Phase 3 backlog T-043..T-060.
+- **Current problem:** Provenance guards disagree (T-043); orchestration inert (T-053); hooks need human approval (T-054); 14 findings still await independent review (T-033, T-037).
+- **Next step:** Human: decide the listed items (enable orchestration, approve hooks, T-042, T-052). Scientific line unchanged: T-032 then T-039, T-038, T-033 in parallel. Land T-043 before the next experiment run. Re-preview bundle before every hpc submit.
 
 ## Current baseline
 
@@ -46,11 +46,11 @@ _none set_
 
 ## Active plans
 
+- PLAN-004 P04 Phase 2 audit and Phase 3 refactoring backlog — 0/18 tasks done · objective: Execute the audit roadmap (docs/architecture-workflow-audit.md) without changing scientific results, the HPC baseline or history
+  - next ready: T-043 Unify source-clean definition across runmeta and preflight (A1) (`research task context T-043`)
 - PLAN-003 P03 label-free physics-consistent decomposition (B0-B4 ladder) — 2/2 tasks done · objective: Implement and fairly compare B0 classical constrained, B1 regularized classical, B2 supervised U-Net, B3 label-free physics-consistent U-Net, B4 physics+priors; ablate priors individually; test identifiability, information, noise, mismatch, generalization
 - PLAN-002 P02 AAPM benchmark: adapter, classical and supervised baselines — 7/31 tasks done · objective: Reproducible benchmark on AAPM DL-Spectral CT: adapter with explicit conventions, deterministic splits, streaming loader, constrained classical baseline, small U-Net, honest evaluation
   - next ready: T-017 P1.1 Acquire + validate the real AAPM 1000-case dataset (`research task context T-017`)
-- PLAN-001 P01 foundation: spectral forward model and baselines — 5/9 tasks done · objective: Validated spectral forward model + classical baseline decomposition on laptop, then HPC-ready configs
-  - next ready: T-005 Classical baseline: image-domain two-material decomposition on toy phantom (`research task context T-005`)
 
 ## Needs attention (verification)
 
@@ -66,7 +66,7 @@ _none set_
 
 ## Blockers
 
-- [checkpoint] CP-009: Migration blockers: none known. Do not upgrade before reading research agents-md --diff and the pinned note. Remote .venv-xcist copies and ~1 GB local unpacked bundle dirs await a human cleanup decision (T-042). No jobs running.
+- [checkpoint] CP-010: Provenance guards disagree (T-043); orchestration inert (T-053); hooks need human approval (T-054); 14 findings still await independent review (T-033, T-037).
 
 ## Project skills
 
