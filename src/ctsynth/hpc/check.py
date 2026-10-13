@@ -10,8 +10,8 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
-from ctsynth.config import load_config
-from ctsynth.hashing import config_sha256, sha256_file
+from ctsynth.config import config_sha256, load_config
+from ctsynth.hashing import sha256_file
 from ctsynth.runmeta import dirty_source
 
 

@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~2587 tokens.
-> Generated 2026-10-13T00:33:32-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~2589 tokens.
+> Generated 2026-10-13T00:34:25-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `45c3fe99f6` (uncommitted changes)
+Git: `master` @ `0e434544f3` (uncommitted changes)
 
 ## Latest checkpoint
 
@@ -46,8 +46,8 @@ _none set_
 
 ## Active plans
 
-- PLAN-004 P04 Phase 2 audit and Phase 3 refactoring backlog — 1/18 tasks done · objective: Execute the audit roadmap (docs/architecture-workflow-audit.md) without changing scientific results, the HPC baseline or history
-  - next ready: T-044 Replace duplicated sha256 helpers with ctsynth.hashing.sha256_file (D1) (`research task context T-044`)
+- PLAN-004 P04 Phase 2 audit and Phase 3 refactoring backlog — 4/18 tasks done · objective: Execute the audit roadmap (docs/architecture-workflow-audit.md) without changing scientific results, the HPC baseline or history
+  - next ready: T-046 Add pytest markers (unit, physics, regression, integration, hpc) and CI selection (`research task context T-046`)
 - PLAN-003 P03 label-free physics-consistent decomposition (B0-B4 ladder) — 2/2 tasks done · objective: Implement and fairly compare B0 classical constrained, B1 regularized classical, B2 supervised U-Net, B3 label-free physics-consistent U-Net, B4 physics+priors; ablate priors individually; test identifiability, information, noise, mismatch, generalization
 - PLAN-002 P02 AAPM benchmark: adapter, classical and supervised baselines — 7/31 tasks done · objective: Reproducible benchmark on AAPM DL-Spectral CT: adapter with explicit conventions, deterministic splits, streaming loader, constrained classical baseline, small U-Net, honest evaluation
   - next ready: T-017 P1.1 Acquire + validate the real AAPM 1000-case dataset (`research task context T-017`)

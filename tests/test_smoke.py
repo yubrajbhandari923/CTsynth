@@ -41,3 +41,15 @@ def test_device_cpu_default_and_unavailable_fails_loudly() -> None:
     assert device.pick_device() == "cpu"
     with pytest.raises((RuntimeError, ValueError)):
         device.pick_device("tpu")
+
+
+def test_sha256_file_matches_hashlib_and_config_hash_is_stable(tmp_path: Path) -> None:
+    import hashlib
+
+    from ctsynth.hashing import sha256_file
+
+    f = tmp_path / "x.bin"
+    f.write_bytes(b"ctsynth" * 300_000)  # > 1 MiB: exercises chunking
+    assert sha256_file(f) == hashlib.sha256(f.read_bytes()).hexdigest()
+    cfg = config.ExperimentConfig(experiment_id="EXP-000", name="t")
+    assert config.config_sha256(cfg) == hashlib.sha256(cfg.model_dump_json().encode()).hexdigest()

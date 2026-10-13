@@ -12,7 +12,6 @@ starting_kit directory with --kit; the script refuses to invent numbers if it is
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 from pathlib import Path
 
@@ -21,6 +20,7 @@ import numpy as np
 from ctsynth.aapm import classical as C
 from ctsynth.aapm import metrics as M
 from ctsynth.aapm import schema as S
+from ctsynth.hashing import sha256_file
 
 TABLE_DIR = Path("data/aapm_kit_sample")
 
@@ -70,10 +70,7 @@ def main() -> int:
         "kind": "retrospective_verification",
         "deterministic": True,
         "n_cases": n,
-        "kit_files_sha256": {
-            p.name: hashlib.sha256(p.read_bytes()).hexdigest()
-            for p in sorted(TABLE_DIR.glob("*.npy"))
-        },
+        "kit_files_sha256": {p.name: sha256_file(p) for p in sorted(TABLE_DIR.glob("*.npy"))},
         "linear_model_rel_residual_lo": float(np.abs(pl - lo)[m].mean() / np.abs(lo[m]).mean()),
         "linear_model_rel_residual_hi": float(np.abs(ph - hi)[m].mean() / np.abs(hi[m]).mean()),
         "sum_to_one_frac_outside_unit_range": float(

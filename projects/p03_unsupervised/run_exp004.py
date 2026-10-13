@@ -15,7 +15,6 @@ DIR/manifest.json, DIR/val_predictions.npz.
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import math
 import time
@@ -37,6 +36,7 @@ from ctsynth.aapm.torch_forward import AapmTorchForward
 from ctsynth.aapm.train import train_label_free, train_supervised
 from ctsynth.aapm.unet import UNet
 from ctsynth.config import ExperimentConfig, load_config
+from ctsynth.hashing import sha256_file
 
 ROOT = Path(__file__).resolve().parents[2]
 RECORD_VERSION = 1
@@ -166,10 +166,6 @@ def _clean(o: Any) -> Any:
 
 def _dump(obj: Any, path: Path) -> None:
     path.write_text(json.dumps(_clean(obj), indent=2, sort_keys=True, allow_nan=False) + "\n")
-
-
-def _sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def null_cos_tissue(
@@ -525,7 +521,8 @@ def _sha_inputs(cfg_path: Path, p: dict[str, Any]) -> list[dict[str, Any]]:
     files = [cfg_path] + [ROOT / str(p["table_dir"]) / f"model_data_{k}kVp.npy" for k in S.KVPS]
     files += [Path(__file__).resolve()] + sorted((ROOT / "src/ctsynth/aapm").glob("*.py"))
     return [
-        {"path": str(f.resolve()), "bytes": f.stat().st_size, "sha256": _sha256(f)} for f in files
+        {"path": str(f.resolve()), "bytes": f.stat().st_size, "sha256": sha256_file(f)}
+        for f in files
     ]
 
 

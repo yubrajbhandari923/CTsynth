@@ -1,5 +1,6 @@
 """Structured experiment configuration: YAML -> validated, immutable pydantic model."""
 
+import hashlib
 from pathlib import Path
 from typing import Literal
 
@@ -19,3 +20,7 @@ class ExperimentConfig(BaseModel):
 
 def load_config(path: str | Path) -> ExperimentConfig:
     return ExperimentConfig.model_validate(yaml.safe_load(Path(path).read_text()))
+
+
+def config_sha256(cfg: ExperimentConfig) -> str:
+    return hashlib.sha256(cfg.model_dump_json().encode()).hexdigest()

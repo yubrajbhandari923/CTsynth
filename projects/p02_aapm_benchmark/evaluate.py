@@ -26,7 +26,6 @@ Wall time is measured in an untraced run; tracemalloc overhead is excluded from 
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import math
 import time
@@ -46,6 +45,7 @@ from ctsynth.aapm import schema as S
 from ctsynth.aapm.loader import CaseStore
 from ctsynth.aapm.splits import split_indices
 from ctsynth.config import load_config
+from ctsynth.hashing import sha256_file
 
 RECORD_VERSION = 1
 BASE_LIMITATIONS: tuple[str, ...] = (
@@ -218,14 +218,6 @@ def evaluate_predictions(
             raise ValueError(f"extra would overwrite record keys {sorted(clash)}")
         rec.update(extra)
     return _clean(rec)
-
-
-def sha256_file(path: Path) -> str:
-    h = hashlib.sha256()
-    with path.open("rb") as f:
-        for chunk in iter(lambda: f.read(1 << 20), b""):
-            h.update(chunk)
-    return h.hexdigest()
 
 
 def _dump(obj: Any, path: Path) -> None:

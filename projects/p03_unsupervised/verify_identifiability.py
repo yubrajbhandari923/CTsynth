@@ -18,6 +18,7 @@ from scipy.optimize import fsolve
 
 from ctsynth.aapm import classical as C
 from ctsynth.aapm import schema as S
+from ctsynth.hashing import sha256_file
 
 TABLE_DIR = Path("data/aapm_kit_sample")
 
@@ -59,10 +60,7 @@ def main() -> int:
     out: dict[str, object] = {
         "kind": "retrospective_verification",
         "deterministic": True,
-        "source_tables": {
-            p.name: __import__("hashlib").sha256(p.read_bytes()).hexdigest()
-            for p in sorted(TABLE_DIR.glob("*.npy"))
-        },
+        "source_tables": {p.name: sha256_file(p) for p in sorted(TABLE_DIR.glob("*.npy"))},
         "effective_mu_per_cm": mu.tolist(),
         "null_direction": null.tolist(),
         "adipose_fibro_angle_deg": float(

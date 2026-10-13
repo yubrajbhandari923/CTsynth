@@ -13,8 +13,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from ctsynth import __version__
-from ctsynth.config import ExperimentConfig
-from ctsynth.hashing import config_sha256
+from ctsynth.config import ExperimentConfig, config_sha256
 
 # The one definition of "source" for citability (D-008): what determines a run's result.
 # Shared by the run metadata and `ctsynth.hpc.check.preflight`, so local and HPC paths agree.

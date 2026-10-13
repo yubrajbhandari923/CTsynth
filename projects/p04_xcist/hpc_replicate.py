@@ -15,6 +15,7 @@ from pathlib import Path
 import numpy as np
 from generate import BASE, DX, PHANTOMS, XN, N  # type: ignore[import-not-found]
 
+from ctsynth.hashing import sha256_file
 from ctsynth.paired.phantoms import fractions
 from ctsynth.paired.xcist import run_xcist
 
@@ -26,15 +27,14 @@ out = run_xcist(run_dir / "_work", f, XN, DX, acq, recon=True)
 rt = time.time() - t0
 np.save(run_dir / "prep.npy", out["prep"])
 np.save(run_dir / "recon.npy", out["recon"])
-sha = lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest()  # noqa: E731
 meta = {
     "host": platform.node(),
     "platform": platform.platform(),
     "runtime_s": round(rt, 2),
     "provenance": out["provenance"],
     "truth_sha256": hashlib.sha256(f.tobytes()).hexdigest(),
-    "prep_sha256": sha(run_dir / "prep.npy"),
-    "recon_sha256": sha(run_dir / "recon.npy"),
+    "prep_sha256": sha256_file(run_dir / "prep.npy"),
+    "recon_sha256": sha256_file(run_dir / "recon.npy"),
     "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
 }
 (run_dir / "replication.json").write_text(json.dumps(meta, indent=1, sort_keys=True))
