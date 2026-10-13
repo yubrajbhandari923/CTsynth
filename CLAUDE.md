@@ -1,7 +1,12 @@
 # CTsynth — agent rules
 
 Read `AGENTS.md` (Research OS commands) first; start with `.research/bin/research current`.
-Scope, physics and contracts: `docs/`. Active project: `projects/p01_material_inference/`.
+Scope, physics and contracts: `docs/`. Research state lives in Research OS, not in chat or Markdown history.
+Before ANY research task or dependent experiment: `research current`, then `research hpc sync` (imports finished
+jobs), then inspect what completed since the last checkpoint (`research status`, `research experiment show`,
+`research task show`) and synthesize/review it first. Never launch an experiment that depends on a result you have
+not read from its run record. Active work: `projects/p04_xcist/` (XCIST pairs); earlier: `projects/p01_material_inference/`.
+XCIST/paired data: `docs/xcist.md`; planned experiments: `docs/xcist-experiments.md` (registered as EXP-013..016).
 
 ## Roles
 - **Opus** owns scientific interpretation, findings, synthesis, `docs/scientific-decisions.md`.
