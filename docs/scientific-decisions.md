@@ -3,7 +3,7 @@
 Owner: Opus. Decisions are superseded, never rewritten. Evidence levels: see `literature/README.md`.
 
 > **Status 2026-10-13 (annotation, original text kept below).** This file is the 2026-10-11 scientific framing. The authoritative,
-> current records are in Research OS: `research decision list` (D-001..D-011), `research question list`, `research finding list`.
+> current records are in Research OS: `research decision list` (D-001..D-012), `research question list`, `research finding list`.
 > Where this file disagrees with those records, the records win. Stale items are marked inline with *[status: …]*; nothing was deleted.
 
 ## Prior art (what we can say)
@@ -26,7 +26,7 @@ Owner: Opus. Decisions are superseded, never rewritten. Evidence levels: see `li
 | Q-004 H3 | Procedural-phantom-trained models generalise to unseen compositions | error on held-out compositions ≫ in-distribution |
 
 ## Decisions
-- **D-A (2026-10-11)** Research OS is the experiment record; no custom tracker. See `architecture.md`. *[historical lettering; Research OS D-001..D-011 are the numbered decisions]*
+- **D-A (2026-10-11)** Research OS is the experiment record; no custom tracker. See `architecture.md`. *[historical lettering; Research OS D-001..D-012 are the numbered decisions]*
 - **D-B** Build the forward model *before* any learning; every learned method is compared to a classical decomposition baseline.
 - **D-C** Evaluation must include a **forward-model-mismatch** test set (different spectra/NIST version/noise) — mitigates inverse crime.
 - **D-D** No GPU/HPC claims from laptop runs (`hpc.md`).
