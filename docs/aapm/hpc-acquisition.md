@@ -1,6 +1,9 @@
 # AAPM DL-Spectral CT — full-data acquisition plan (HPC)
 
-**Not executed on the laptop.** Per `docs/hpc-workflow.md`, HPC is run-only: no code is developed there.
+> Status 2026-10-13: still a plan (task T-017, not executed). Use the native protocol in `docs/hpc.md` (`research hpc datasets` for
+> placement on the cluster; do not create a project-specific dataset registry).
+
+**Not executed on the laptop.** Per `docs/hpc.md`, HPC is run-only: no code is developed there.
 Nothing in this plan has been run; it is a specification. Bulk files are gitignored (`data/aapm/`, `*.npy.gz`).
 
 ## Source

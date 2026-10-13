@@ -1,5 +1,9 @@
 # Architecture and workflow audit (Phase 2)
 
+> **Historical snapshot (Phase 2, 2026-10-13).** Written before the refactor; the findings were addressed in Phase 3 (outcomes are recorded
+> in PLAN-004 tasks and checkpoint CP-011, current structure in `architecture.md`). Counts, line numbers and "open" statements below
+> describe the tree at `952a99d`. Do not update; supersede through Research OS.
+
 Date 2026-10-13 · Research OS 1.0.0, schema 3, strategy `sonnet_first` · base commit `952a99d` · author: Sonnet (coordinator).
 Audit only: no code, record, dataset, HPC or hook was changed. Research state is in Research OS (PLAN-004, T-043..T-060, the
 Phase 2 note and checkpoint); this file holds only the inventory, diagrams and tables that do not fit there.

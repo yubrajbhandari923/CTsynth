@@ -18,8 +18,8 @@ Levels map to models: deep = Opus, balanced = Sonnet, fast = Haiku. Routing is b
   Never edits frozen tests or specs.
 - **Opus (deep)** only for scientific interpretation, findings, synthesis, `docs/scientific-decisions.md`, and scientific-assumption calls.
 - Humans (Yubraj) decide what to investigate; discuss science with GPT Astra. Laptop is authoritative; HPC runs experiments only.
-- Delegated task protocol: `research task context T-…` (effective spec: files, criteria, checks, hooks), then
-  `research orchestrate verify T-… --tier LEVEL --record` before handing back. Project hooks (`research hook list`) run only after human approval.
+- Orchestration execution is **off** (`orchestration.enabled: false`): the strategy only advises routing (`research strategy route T-…`).
+  Enabling `orchestrate contract|verify` is a human decision. Hooks and skills: `docs/research-os.md`; hooks run only after human approval.
 - MCP covers the core loop only; use the CLI for orchestrate, hooks, strategy, tuning and most `hpc` commands.
 - Tuning: `research tuning declare|trial|select|test` (no longer under `orchestrate`); held-out test is evaluated once.
 
@@ -33,8 +33,8 @@ dir in this repo** — all skills come from plugins. Research OS CLI: `.research
 Use before working, not for show: `reference-lookup` to verify any citation before it enters `docs/literature/`;
 `parallel` web_search for literature/dataset facts; `ponytail:ponytail-review` on a substantial diff.
 
-Model routing follows the active strategy (above); one job per agent, explicit owned files. Let Haiku loop implement → test → fix
-on its own; escalate only when a failure is architectural or scientific, never for routine debugging.
+Model routing follows the active strategy (above); one job per agent, explicit owned files. Escalate only when a failure is
+architectural or scientific, never for routine debugging.
 Avoid duplicate context loading, redundant subagents and repeated literature searches: check `docs/literature/`
 and `research search` before dispatching a new search agent. Prefer the cheapest mode that does the job.
 Record decisions and evidence in Research OS; do not log routine implementation iterations.
@@ -79,8 +79,8 @@ Never put an experiment number in an experiment title — create the record firs
 - State the **units and the scope** of every number: line integral (g/cm²) vs density (g/cm³), which material,
   which rays, which cell, median vs universal.
 - Literature/implementation claims must be verifiable: cite DOI/arXiv/Zenodo ID and mark each as read-in-full / abstract-only / unverified (`docs/literature/`). Never invent a citation, CLI command, or number.
-- Laptop tests never establish GPU/HPC validation. HPC results enter only as transferred outputs + `run_meta.json` (see `docs/hpc-workflow.md`); no code is developed on HPC.
+- Laptop tests never establish GPU/HPC validation. HPC results enter only as transferred outputs + `run_meta.json` (see `docs/hpc.md`); no code is developed on HPC.
 - Never tune on held-out data; never loosen a tolerance to pass.
 
 ## Code
-`uv run ruff check . && uv run ruff format --check . && uv run mypy && uv run pytest` must pass. Randomness only via `ctsynth.seeding.rng`. CPU-first; MPS/CUDA opt-in via config `device`. Units and conventions: `docs/physics-conventions.md`. Keep the package small; use Research OS for experiment tracking rather than building one.
+`uv run ruff check . && uv run ruff format --check . && uv run mypy && uv run pytest` must pass (markers: unit, physics, regression, integration; XCIST tests run in `.venv-xcist`). Guards: `uv run ctsynth preflight|bundle-check|postcheck|run-check|paired-check|xcist-check`. Randomness only via `ctsynth.seeding.rng`. CPU-first; MPS/CUDA opt-in via config `device`. Units and conventions: `docs/physics-conventions.md`. Keep the package small; use Research OS for experiment tracking rather than building one.

@@ -1,3 +1,7 @@
+> **HISTORICAL (archived 2026-10-13).** Specification for a CTsynth bundle/import CLI (T-030/T-031, D-009) that was
+> implemented and then removed in `6a98348` when the Research OS native HPC protocol replaced it (D-010). The gaps listed here
+> are now closed by `ctsynth preflight|postcheck` and Research OS; current procedure: `docs/hpc.md`. Kept unedited below for provenance.
+
 # HPC experiment-bundle requirements (specification only — Prompt 4 not implemented)
 
 What an HPC run must carry so its results are citable under the same rules as a laptop run.
