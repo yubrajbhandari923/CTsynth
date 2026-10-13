@@ -335,3 +335,42 @@ def reexec_with_libgomp() -> None:
             [sys.executable, *sys.argv],
             {**os.environ, "DYLD_FALLBACK_LIBRARY_PATH": d},
         )
+
+
+def environment_report() -> dict[str, Any]:
+    """Cheap readiness check for the optional XCIST stack (no simulation): which parts are usable.
+
+    `ok_simulate`: gecatsim imports and its attenuation library answers; `ok_recon`: the prebuilt
+    FDK library loads (on macOS this needs XCIST_LIBGOMP_DIR, see docs/xcist.md).
+    """
+    rep: dict[str, Any] = {
+        "gecatsim": None,
+        "ok_simulate": False,
+        "ok_recon": False,
+        "problems": [],
+    }
+    try:
+        import gecatsim as xc
+        from gecatsim.pyfiles.GetMu import GetMu
+    except ImportError as exc:
+        rep["problems"].append(f"gecatsim not importable: {exc}")
+        return rep
+    rep["gecatsim"] = metadata.version("gecatsim")
+    try:
+        mu = float(GetMu("water", np.array([60.0], dtype=np.single))[0])
+        rep["ok_simulate"] = 0.15 < mu < 0.25  # water at 60 keV is ~0.206 /cm
+        if not rep["ok_simulate"]:
+            rep["problems"].append(f"GetMu(water, 60 keV) = {mu} /cm is not plausible")
+    except Exception as exc:  # the C library failing to load is reported, not raised
+        rep["problems"].append(f"GetMu failed: {exc}")
+    import ctypes
+
+    libs = sorted((Path(xc.__file__).parent / "reconstruction" / "lib").glob("fdk_equiAngle_*"))
+    try:
+        if not libs:
+            raise OSError("no fdk_equiAngle_* library shipped for this platform")
+        ctypes.CDLL(str(libs[0]))
+        rep["ok_recon"] = True
+    except OSError as exc:
+        rep["problems"].append(f"FDK library unavailable: {exc}")
+    return rep

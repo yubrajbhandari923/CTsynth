@@ -1,4 +1,9 @@
-"""`ctsynth preflight | postcheck`: guards around `research hpc` (the native HPC protocol).
+"""`ctsynth` guards around `research hpc` (the native HPC protocol) and around run outputs.
+
+    preflight / postcheck   source-clean + identity fingerprints before/after a cluster run
+    bundle-check            what `research hpc bundle` would package (F-038)
+    paired-check DIR...     paired-ct records load and every sha256 verifies
+    xcist-check             optional XCIST stack usable (simulate / FDK recon)
 
 Exit codes: 0 ok; 1 refusal or failed check (reasons on stderr); 2 usage error.
 
@@ -14,7 +19,9 @@ import json
 import sys
 from pathlib import Path
 
-from ctsynth.hpc.check import PreflightError, output_hashes, postcheck, preflight
+from ctsynth.hpc.check import PreflightError, bundle_check, output_hashes, postcheck, preflight
+from ctsynth.paired.schema import load_record
+from ctsynth.paired.xcist import environment_report
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -28,7 +35,33 @@ def main(argv: list[str] | None = None) -> int:
     q.add_argument("--expect", type=Path, required=True, help="JSON written from preflight output")
     q.add_argument("--require", action="append", default=[], metavar="FILE")
     q.add_argument("--failed", action="store_true", help="run is expected to have failed")
+    b = sub.add_parser("bundle-check", help="refuse a bundle that would ship envs, data or results")
+    b.add_argument("--repo", type=Path, default=Path("."))
+    b.add_argument("--max-mb", type=float, default=50.0)
+    c = sub.add_parser("paired-check", help="verify paired-ct record directories")
+    c.add_argument("records", type=Path, nargs="+")
+    sub.add_parser("xcist-check", help="report whether the optional XCIST stack is usable")
     a = ap.parse_args(argv)
+    if a.cmd == "bundle-check":
+        rep = bundle_check(a.repo, a.max_mb)
+        print(json.dumps({k: v for k, v in rep.items() if k != "largest"}, indent=2))
+        for m in rep["problems"]:
+            print(m, file=sys.stderr)
+        return 1 if rep["problems"] else 0
+    if a.cmd == "paired-check":
+        failed = 0
+        for d in a.records:
+            try:
+                rec = load_record(d)  # verifies every array sha256
+                print(f"ok  {d}  {rec.phantom_id}/{rec.acquisition_id}")
+            except Exception as exc:  # any load/verify failure is a failed check, with its reason
+                failed += 1
+                print(f"FAIL {d}: {exc}", file=sys.stderr)
+        return 1 if failed else 0
+    if a.cmd == "xcist-check":
+        rep = environment_report()
+        print(json.dumps(rep, indent=2))
+        return 0 if rep["ok_simulate"] and rep["ok_recon"] else 1
     if a.cmd == "preflight":
         try:
             print(json.dumps(preflight(a.repo, a.config), indent=2))

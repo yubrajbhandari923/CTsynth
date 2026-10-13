@@ -5,10 +5,14 @@ tree and returns the fingerprints to record as experiment parameters. `postcheck
 `research hpc sync` and verifies the imported run against them. Neither opens a connection.
 """
 
+import fnmatch
 import json
+import os
 import subprocess
 from pathlib import Path
 from typing import Any
+
+import yaml
 
 from ctsynth.config import config_sha256, load_config
 from ctsynth.hashing import sha256_file
@@ -82,3 +86,45 @@ def postcheck(
 def output_hashes(run_dir: Path) -> dict[str, str]:
     out = Path(run_dir) / "collected" / "outputs"
     return {p.name: sha256_file(p) for p in sorted(out.glob("*")) if p.is_file()}
+
+
+def bundle_check(repo: Path, max_mb: float = 50.0) -> dict[str, Any]:
+    """Approximate what `research hpc bundle` would package: the working tree minus
+    `hpc.bundle.exclude` (.gitignore does NOT apply, F-038). `problems` is empty when the bundle
+    is small and contains no environments, data or result directories. Approximation: patterns are
+    fnmatch'd against each entry's name and its repo-relative path.
+    """
+    repo = Path(repo)
+    cfg = yaml.safe_load((repo / ".research" / "config.yaml").read_text())
+    patterns: list[str] = cfg.get("hpc", {}).get("bundle", {}).get("exclude", [])
+    if not patterns:
+        return {
+            "bytes": None,
+            "problems": ["hpc.bundle.exclude is empty: bundle would take everything"],
+        }
+
+    def excluded(rel: str, name: str) -> bool:
+        return any(fnmatch.fnmatch(name, g) or fnmatch.fnmatch(rel, g) for g in patterns)
+
+    total, sizes = 0, []
+    for root, dirs, files in os.walk(repo):
+        rel_root = Path(root).relative_to(repo).as_posix()
+        dirs[:] = [d for d in dirs if not excluded(f"{rel_root}/{d}".lstrip("./"), d)]
+        for f in files:
+            rel = f"{rel_root}/{f}".removeprefix("./")
+            if not excluded(rel, f):
+                n = (Path(root) / f).stat().st_size
+                total += n
+                sizes.append((n, rel))
+    problems = (
+        [f"bundle would be {total / 1e6:.1f} MB (limit {max_mb} MB)"]
+        if total > max_mb * 1e6
+        else []
+    )
+    bad = ("/.venv", "site-packages", "data/aapm/", "/results")
+    problems += [
+        f"would include {rel}"
+        for _, rel in sorted(sizes, reverse=True)
+        if any(b in f"/{rel}" for b in bad)
+    ][:10]
+    return {"bytes": total, "largest": sorted(sizes, reverse=True)[:5], "problems": problems}
