@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~4694 tokens.
-> Generated 2026-10-12T19:38:40-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~4605 tokens.
+> Generated 2026-10-12T23:10:15-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `0d16491695`
+Git: `master` @ `6b5181461d`
 
 ## Latest checkpoint
 
@@ -46,12 +46,14 @@ _none_
 
 ## Current experiments
 
-_none_
+- EXP-010 [needs_review] XCIST vs CTsynth differentiable forward model: staged mismatch on known-material phantoms — runs 4
+- EXP-014 [proposed] E2 physics-consistent self-supervised material inference on XCIST measurements — runs 0
+- EXP-015 [proposed] E3 supervised pretraining plus physics-consistent adaptation under changed acquisition — runs 0
 
 ## Active plans
 
 - PLAN-003 P03 label-free physics-consistent decomposition (B0-B4 ladder) — 2/2 tasks done · objective: Implement and fairly compare B0 classical constrained, B1 regularized classical, B2 supervised U-Net, B3 label-free physics-consistent U-Net, B4 physics+priors; ablate priors individually; test identifiability, information, noise, mismatch, generalization
-- PLAN-002 P02 AAPM benchmark: adapter, classical and supervised baselines — 7/20 tasks done · objective: Reproducible benchmark on AAPM DL-Spectral CT: adapter with explicit conventions, deterministic splits, streaming loader, constrained classical baseline, small U-Net, honest evaluation
+- PLAN-002 P02 AAPM benchmark: adapter, classical and supervised baselines — 7/25 tasks done · objective: Reproducible benchmark on AAPM DL-Spectral CT: adapter with explicit conventions, deterministic splits, streaming loader, constrained classical baseline, small U-Net, honest evaluation
   - next ready: T-017 P1.1 Acquire + validate the real AAPM 1000-case dataset (`research task context T-017`)
 - PLAN-001 P01 foundation: spectral forward model and baselines — 4/9 tasks done · objective: Validated spectral forward model + classical baseline decomposition on laptop, then HPC-ready configs
   - next ready: T-005 Classical baseline: image-domain two-material decomposition on toy phantom (`research task context T-005`)
@@ -61,14 +63,18 @@ _none_
 
 - [reviewer disagrees] F-012 AAPM 3-material conditioning, computed from the official starting-kit spectra and mu tables (md5-verified kit, 10 sample cases): the spectrum-weighted effective attenuation matrix is [[0.26697,0.31321,3.01182],[0.21930,0.24788,1.64238]] 1/cm for (adipose,fibroglandular,calcification) at 50/80 kVp. Adipose and fibroglandular are spectrally near-degenerate: column cosine 0.999834, i.e. 1.04 degrees apart. The unconstrained 2x3 null direction is [-0.723,+0.691,-0.008], confirming F-010's prediction concretely: adipose can be traded against fibroglandular with essentially no measurement change. Appending the sum-to-one row makes the 3x3 system full rank (singular values 3.697, 1.176, 0.00290) but POORLY CONDITIONED at cond=1273. Therefore the partition constraint restores identifiability but error in the adipose/fibroglandular direction is amplified ~1000x; exact recovery in the noiseless challenge data is possible, while any model mismatch or interpolation error is magnified by that factor. Image-domain linear inversion is expected to be far worse than the published model-based winners (6.8e-7).: reviewer3: needs work — RECOMPUTED from model_data npy: mu matrix, col angle 1.043deg, SVs 3.697/1.176/0.0029, cond 1272.9 all reproduce. BUT it is the zero-thi
 - [reviewer disagrees] F-017 PROCESS (D-004 follow-up): when the provenance system itself writes into the repo during a run, a whole-tree git_dirty flag is ALWAYS true and therefore useless as a citability signal - it flagged RUN-0003/4/5 as non-citable purely because Research OS was logging the run. ctsynth.runmeta now records git_dirty_source (src/tests/configs only) alongside git_dirty; citability depends on the SOURCE being clean. Experiment outputs were also untracked (projects/*/results*/ gitignored) because writing results into a tracked directory dirties the tree as the run executes. RUN-0006 is the first run with git_dirty_source=False.: reviewer3: needs work — Overclaim: 'whole-tree git_dirty flag is ALWAYS true' - RUN-0006 record shows git dirty=False (RUN-0003 True). Process claim; could not 
+- [awaiting review] F-037 CORRECTED: spectrum specification is the largest CTsynth-vs-XCIST projection mismatch (about 2.4-3.2%, binning-convention dependent): Agent finding awaiting an independent review
 - [awaiting review] F-036 XCIST on Duke SLURM reproduces the laptop reference cell to float32 precision: Agent finding awaiting an independent review
-- [awaiting review] F-035 On XCIST-generated known-material disk phantoms, spectrum specification dominates the CTsynth-vs-XCIST projection mismatch: Agent finding awaiting an independent review
 - [awaiting review] F-034 Native Research OS HPC protocol completes a minimal CPU job on Duke SLURM (smoke test): Agent finding awaiting an independent review
+
+## ⚠ Needs synthesis before new experiments
+
+- EXP-010 XCIST vs CTsynth differentiable forward model: staged mismatch on known-material phantoms (0 unsynthesized runs)
 
 ## Active decisions
 
+- D-011 (2026-10-12) XCIST is the first independent CT forward-data producer; DukeSim deferred
 - D-010 (2026-10-12) Adopt Research OS 0.5.0 native HPC protocol; CTsynth keeps thin preflight/postcheck guards
-- D-009 (2026-10-12) Laptop<->HPC workflow: the laptop is authoritative, the cluster is a dumb execution worker, and transfer is manual. Implemented as 'ctsynth prepare|verify|export|import|report' (stdlib argparse, NO new dependency, ZERO network I/O - nothing in the package can contact a cluster). Research OS remains the single system of record: import registers via 'research run attach' rather than building a second tracker. Integrity rules enforced in code: prepare refuses a dirty src/tests/configs tree; verify checks every manifest hash, the config hash and commit EXISTENCE+UNAMBIGUITY (not ancestry, so old/diverged commits stay importable); import refuses duplicates via an idempotency marker and never overwrites a completed run; external checkpoints are recorded by hash without being copied. SLURM templates render every unset cluster field as a commented TODO instead of a guessed default, because a wrong partition produces a job that silently never runs.
 
 ## Blockers
 

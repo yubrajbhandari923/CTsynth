@@ -1,0 +1,39 @@
+{
+  "artifacts_offset": 0,
+  "author_model": null,
+  "author_name": "opus",
+  "author_type": "agent",
+  "backend": "local",
+  "command": "uv run python projects/p04_xcist/compare.py projects/p04_xcist/results/dataset_v0 projects/p04_xcist/results/mismatch_v2",
+  "created_at": "2026-10-12T19:40:55-04:00",
+  "ended_at": "2026-10-12T19:43:27-04:00",
+  "env": {
+    "lockfiles": {
+      "uv.lock": "87debd45b1676f8b"
+    },
+    "user": "yubraj"
+  },
+  "exit_code": 0,
+  "experiment_id": "EXP-010",
+  "git_branch": "master",
+  "git_commit": "6b5181461d86a6571f05396e875054c044004eb7",
+  "git_dirty": 0,
+  "hostname": "Yubraj-1407.local.dhe.duke.edu",
+  "id": "RUN-0023",
+  "label": "mismatch-ladder-v2-binning-fix",
+  "metrics_offset": 5934,
+  "notes": null,
+  "override_reason": null,
+  "parameters": {},
+  "pid": 29296,
+  "reviewed": 0,
+  "run_dir": ".research/runs/RUN-0023",
+  "slurm": null,
+  "slurm_job_id": null,
+  "started_at": "2026-10-12T19:40:55-04:00",
+  "status": "completed",
+  "stderr_path": ".research/runs/RUN-0023/stderr.log",
+  "stdout_path": ".research/runs/RUN-0023/stdout.log",
+  "updated_at": "2026-10-12T19:43:27-04:00",
+  "working_dir": "."
+}
