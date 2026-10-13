@@ -2,7 +2,7 @@
 
 unit         default: pure-function / schema / contract tests (fast, no data, no network)
 physics      invariants of the forward model and projector (adjoint, conservation, units, gradients)
-regression   pinned numbers: frozen tables, kit facts, experiment-driver outputs on tiny fixtures
+regression   pinned numbers: frozen tables, kit facts, driver outputs on tiny fixtures
 integration  needs an optional external stack (XCIST in .venv-xcist); skipped when absent
 hpc          needs a live cluster; never in CI (none yet: cluster behaviour is covered by run records)
 
