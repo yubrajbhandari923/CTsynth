@@ -31,6 +31,11 @@ def test_preflight_clean_returns_fingerprints(repo: Path) -> None:
     assert len(fp["config_sha256"]) == 64 and len(fp["uv_lock_sha256"]) == 64
 
 
+def test_preflight_without_config_returns_commit_and_lock_only(repo: Path) -> None:
+    fp = preflight(repo)
+    assert set(fp) == {"git_commit", "uv_lock_sha256"}
+
+
 def test_preflight_refuses_modified_tracked(repo: Path) -> None:
     (repo / "src" / "a.py").write_text("x = 2\n")
     with pytest.raises(PreflightError, match="git_dirty_source"):

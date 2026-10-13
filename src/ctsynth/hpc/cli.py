@@ -2,6 +2,7 @@
 
     preflight / postcheck   source-clean + identity fingerprints before/after a cluster run
     bundle-check            what `research hpc bundle` would package (F-038)
+    run-check [--experiment]  registered run_meta.json files are citable (post_experiment hook)
     paired-check DIR...     paired-ct records load and every sha256 verifies
     xcist-check             optional XCIST stack usable (simulate / FDK recon)
 
@@ -16,10 +17,18 @@ Exit codes: 0 ok; 1 refusal or failed check (reasons on stderr); 2 usage error.
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
-from ctsynth.hpc.check import PreflightError, bundle_check, output_hashes, postcheck, preflight
+from ctsynth.hpc.check import (
+    PreflightError,
+    bundle_check,
+    output_hashes,
+    postcheck,
+    preflight,
+    run_check,
+)
 from ctsynth.paired.schema import load_record
 from ctsynth.paired.xcist import environment_report
 
@@ -29,7 +38,7 @@ def main(argv: list[str] | None = None) -> int:
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("preflight", help="refuse a dirty/untracked source tree; print fingerprints")
     p.add_argument("--repo", type=Path, default=Path("."))
-    p.add_argument("--config", type=Path, required=True)
+    p.add_argument("--config", type=Path, help="adds experiment_id and config_sha256 to the output")
     q = sub.add_parser("postcheck", help="verify an imported run against preflight fingerprints")
     q.add_argument("run_dir", type=Path)
     q.add_argument("--expect", type=Path, required=True, help="JSON written from preflight output")
@@ -38,6 +47,11 @@ def main(argv: list[str] | None = None) -> int:
     b = sub.add_parser("bundle-check", help="refuse a bundle that would ship envs, data or results")
     b.add_argument("--repo", type=Path, default=Path("."))
     b.add_argument("--max-mb", type=float, default=50.0)
+    r = sub.add_parser(
+        "run-check", help="registered run_meta.json files of an experiment are citable"
+    )
+    r.add_argument("--repo", type=Path, default=Path("."))
+    r.add_argument("--experiment", default=os.environ.get("RESEARCH_EXPERIMENT"))
     c = sub.add_parser("paired-check", help="verify paired-ct record directories")
     c.add_argument("records", type=Path, nargs="+")
     sub.add_parser("xcist-check", help="report whether the optional XCIST stack is usable")
@@ -48,6 +62,16 @@ def main(argv: list[str] | None = None) -> int:
         for m in rep["problems"]:
             print(m, file=sys.stderr)
         return 1 if rep["problems"] else 0
+    if a.cmd == "run-check":
+        if not a.experiment:
+            print("no experiment: pass --experiment or set RESEARCH_EXPERIMENT", file=sys.stderr)
+            return 2
+        problems, notes = run_check(a.repo, a.experiment)
+        for m in notes:
+            print("note:", m)
+        for m in problems:
+            print(m, file=sys.stderr)
+        return 1 if problems else 0
     if a.cmd == "paired-check":
         failed = 0
         for d in a.records:

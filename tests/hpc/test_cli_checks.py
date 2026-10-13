@@ -81,3 +81,33 @@ def test_xcist_check_reports_without_raising(capsys: pytest.CaptureFixture[str])
     assert rc == (0 if rep["ok_simulate"] and rep["ok_recon"] else 1)
     if rep["gecatsim"] is None:  # core env: absence is reported, not an exception
         assert rep["problems"] and rc == 1
+
+
+def _artifacts(repo: Path, rows: list[dict]) -> None:
+    (repo / ".research").mkdir(exist_ok=True)
+    (repo / ".research" / "artifacts.jsonl").write_text("\n".join(json.dumps(r) for r in rows))
+
+
+def _meta_row(repo: Path, dirty: object, exp: str = "EXP-1") -> dict:
+    (repo / "m").mkdir(exist_ok=True)
+    (repo / "m" / "run_meta.json").write_text(json.dumps({"git_dirty_source": dirty}))
+    return {"id": "A-1", "experiment_id": exp, "name": "run_meta.json", "path": "m/run_meta.json"}
+
+
+def test_run_check_flags_non_citable_registered_run_meta(tmp_path: Path) -> None:
+    _artifacts(tmp_path, [_meta_row(tmp_path, True)])
+    assert main(["run-check", "--repo", str(tmp_path), "--experiment", "EXP-1"]) == 1
+    _artifacts(tmp_path, [_meta_row(tmp_path, None)])  # unknown is not citable either
+    assert main(["run-check", "--repo", str(tmp_path), "--experiment", "EXP-1"]) == 1
+
+
+def test_run_check_ok_and_missing_meta_is_only_a_note(tmp_path: Path) -> None:
+    _artifacts(tmp_path, [_meta_row(tmp_path, False)])
+    assert main(["run-check", "--repo", str(tmp_path), "--experiment", "EXP-1"]) == 0
+    assert main(["run-check", "--repo", str(tmp_path), "--experiment", "EXP-2"]) == 0  # no run_meta
+
+
+def test_run_check_requires_an_experiment(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv("RESEARCH_EXPERIMENT", raising=False)
+    _artifacts(tmp_path, [])
+    assert main(["run-check", "--repo", str(tmp_path)]) == 2

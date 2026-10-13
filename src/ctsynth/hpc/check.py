@@ -30,7 +30,7 @@ def _git(repo: Path, *args: str) -> str:
     return p.stdout.strip()
 
 
-def preflight(repo: Path, config_path: Path) -> dict[str, str]:
+def preflight(repo: Path, config_path: Path | None = None) -> dict[str, str]:
     """Fingerprints of a clean source tree; raises PreflightError if anything source-like is dirty.
 
     Untracked (non-ignored) files count: Research OS packages the working tree, not the commit.
@@ -41,17 +41,17 @@ def preflight(repo: Path, config_path: Path) -> dict[str, str]:
         raise PreflightError(f"git_dirty_source unknown: {repo} is not a git repository")
     if dirty:
         raise PreflightError("git_dirty_source: commit or remove first:\n" + dirty)
-    commit = _git(repo, "rev-parse", "HEAD")
+    fp = {
+        "git_commit": _git(repo, "rev-parse", "HEAD"),
+        "uv_lock_sha256": sha256_file(repo / "uv.lock"),
+    }
+    if config_path is None:
+        return fp
     try:
         cfg = load_config(config_path)
     except Exception as exc:  # any load/validation failure is a refusal, with its reason
         raise PreflightError(f"config {config_path} is invalid: {exc}") from exc
-    return {
-        "experiment_id": cfg.experiment_id,
-        "git_commit": commit,
-        "config_sha256": config_sha256(cfg),
-        "uv_lock_sha256": sha256_file(repo / "uv.lock"),
-    }
+    return {"experiment_id": cfg.experiment_id, "config_sha256": config_sha256(cfg), **fp}
 
 
 def postcheck(
@@ -128,3 +128,30 @@ def bundle_check(repo: Path, max_mb: float = 50.0) -> dict[str, Any]:
         if any(b in f"/{rel}" for b in bad)
     ][:10]
     return {"bytes": total, "largest": sorted(sizes, reverse=True)[:5], "problems": problems}
+
+
+def run_check(root: Path, experiment: str) -> tuple[list[str], list[str]]:
+    """(problems, notes) for the run_meta.json files registered under `experiment`.
+
+    A registered run_meta.json must be citable (`git_dirty_source` is False). Having none is a note,
+    not a problem: only the drivers that call `runmeta.write` produce one.
+    """
+    problems, notes = [], []
+    rows = [
+        json.loads(x)
+        for x in (Path(root) / ".research" / "artifacts.jsonl").read_text().splitlines()
+    ]
+    metas = [
+        r for r in rows if r.get("experiment_id") == experiment and r["name"] == "run_meta.json"
+    ]
+    for r in metas:
+        path = Path(r["path"]) if Path(r["path"]).is_absolute() else Path(root) / r["path"]
+        if r.get("external") or not path.is_file():
+            notes.append(f"{r['id']}: {r['path']} not available locally; not checked")
+            continue
+        flag = json.loads(path.read_text()).get("git_dirty_source")
+        if flag is not False:
+            problems.append(f"{r['id']} {r['path']}: git_dirty_source={flag!r}, not citable")
+    if not metas:
+        notes.append(f"{experiment}: no run_meta.json registered")
+    return problems, notes
