@@ -121,12 +121,16 @@ def bundle_check(repo: Path, max_mb: float = 50.0) -> dict[str, Any]:
         if total > max_mb * 1e6
         else []
     )
-    bad = ("/.venv", "site-packages", "data/aapm/", "/results")
-    problems += [
-        f"would include {rel}"
-        for _, rel in sorted(sizes, reverse=True)
-        if any(b in f"/{rel}" for b in bad)
-    ][:10]
+
+    def leaked(rel: str) -> bool:  # directory components only: a file named results.py is fine
+        dirs = rel.split("/")[:-1]
+        return rel.startswith("data/aapm/") or any(
+            d.startswith((".venv", "results")) or d == "site-packages" for d in dirs
+        )
+
+    problems += [f"would include {rel}" for _, rel in sorted(sizes, reverse=True) if leaked(rel)][
+        :10
+    ]
     return {"bytes": total, "largest": sorted(sizes, reverse=True)[:5], "problems": problems}
 
 

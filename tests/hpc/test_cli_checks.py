@@ -111,3 +111,16 @@ def test_run_check_requires_an_experiment(tmp_path: Path, monkeypatch: pytest.Mo
     monkeypatch.delenv("RESEARCH_EXPERIMENT", raising=False)
     _artifacts(tmp_path, [])
     assert main(["run-check", "--repo", str(tmp_path)]) == 2
+
+
+def test_bundle_check_does_not_flag_files_merely_named_like_results(tmp_path: Path) -> None:
+    repo = _repo(tmp_path, EXCLUDE)
+    (repo / "src" / "results.py").write_text("x = 1\n")
+    (repo / "projects").mkdir()
+    (repo / "projects" / "results_utils.py").write_text("y = 1\n")
+    assert bundle_check(repo)["problems"] == []
+    (repo / "analysis" / "results_v2").mkdir(
+        parents=True
+    )  # an unexcluded results DIRECTORY is flagged
+    (repo / "analysis" / "results_v2" / "m.npy").write_bytes(b"0")
+    assert any("results_v2" in p for p in bundle_check(repo)["problems"])

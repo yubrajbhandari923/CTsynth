@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3378 tokens.
-> Generated 2026-10-13T00:50:56-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3437 tokens.
+> Generated 2026-10-13T00:58:54-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `05c45736bf`
+Git: `master` @ `8d166bcd2b` (uncommitted changes)
 
 ## Latest checkpoint
 
@@ -47,8 +47,8 @@ _none set_
 ## Active plans
 
 - PLAN-004 P04 Phase 2 audit and Phase 3 refactoring backlog — 13/18 tasks done · objective: Execute the audit roadmap (docs/architecture-workflow-audit.md) without changing scientific results, the HPC baseline or history
-  - next ready: T-052 Plan hygiene: re-parent XCIST E1-E4 tasks, resolve stale PLAN-001 tasks (`research task context T-052`)
   - BLOCKED: T-051 Cross-check attenuation_v1 vs AAPM kit mu tables with stated tolerance (A7) — Not well-defined: attenuation_v1 is water/iodine/calcium, the AAPM kit is adipose/fibroglandular/calcification (composition of kit calcification unstated); no shared material to compare except possibly calcium. Needs a human/Opus scoping decision before any tolerance exists
+  - BLOCKED: T-052 Plan hygiene: re-parent XCIST E1-E4 tasks, resolve stale PLAN-001 tasks — Human decision only: re-parenting is impossible in Research OS 1.0 (documented in PLAN-002 context); PLAN-001 tasks T-005/6/8/9 reviewed and left open. Close/abandon them only if you decide they are superseded. Not a blocker for any experiment.
   - BLOCKED: T-053 Pilot orchestration: enable, contract and verify one Haiku task (A2) — Out of scope by owner instruction for Phase 3 (do not enable orchestration). Re-open only on an explicit human decision
   - BLOCKED: T-054 Propose and register CTsynth hooks (not approved) — Hooks registered; awaiting human 'research hook enable/approve' (see docs/research-os.md)
   - BLOCKED: T-056 Move p04 dataset generation, split and loader into src (with tests) — Partial work done (voxel_chords moved, drivers testable). Dataset v1 generator/split/loader depends on T-032 (unresolved scientific design)
