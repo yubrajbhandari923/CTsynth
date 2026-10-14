@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3421 tokens.
-> Generated 2026-10-13T21:31:00-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3424 tokens.
+> Generated 2026-10-13T21:36:36-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `9742b6627e` (uncommitted changes)
+Git: `master` @ `8a2475020a` (uncommitted changes)
 
 ## Latest checkpoint
 
@@ -40,13 +40,13 @@ _none set_
 
 ## Current experiments
 
-- EXP-017 [needs_review] Oracle forward-model verification on AAPM kit cases — runs 1
+- EXP-019 [needs_review] Single-case supervised U-Net smoke test — runs 1
+- EXP-020 [proposed] Label-free end-to-end demo: supervised vs physics-only vs physics+feasibility — runs 0
 - EXP-027 [proposed] Physics mismatch and calibration sensitivity — runs 0
-- EXP-028 [proposed] Hybrid physics-gradient refinement of frozen U-Net — runs 0
 
 ## Active plans
 
-- PLAN-005 P05 AAPM end-to-end physics pipeline and benchmark suite — 4/10 tasks done · objective: Milestone A: verified differentiable fan-beam AAPM pipeline and label-free demo. Milestone B: reproducible AAPM benchmark (classical, supervised, physics-only, priors, hybrid) on the full 1000-case dataset
+- PLAN-005 P05 AAPM end-to-end physics pipeline and benchmark suite — 6/10 tasks done · objective: Milestone A: verified differentiable fan-beam AAPM pipeline and label-free demo. Milestone B: reproducible AAPM benchmark (classical, supervised, physics-only, priors, hybrid) on the full 1000-case dataset
   - next ready: T-062 Polychromatic AAPM forward: fractions -> kVp-switched transmissions (`research task context T-062`)
 - PLAN-004 P04 Phase 2 audit and Phase 3 refactoring backlog — 13/18 tasks done · objective: Execute the audit roadmap (docs/architecture-workflow-audit.md) without changing scientific results, the HPC baseline or history
   - BLOCKED: T-051 Cross-check attenuation_v1 vs AAPM kit mu tables with stated tolerance (A7) — Not well-defined: attenuation_v1 is water/iodine/calcium, the AAPM kit is adipose/fibroglandular/calcification (composition of kit calcification unstated); no shared material to compare except possibly calcium. Needs a human/Opus scoping decision before any tolerance exists

@@ -1,0 +1,23 @@
+{
+ "all_T_in_unit_interval": true,
+ "all_finite": true,
+ "chord_vs_layered_n128_max_cm": 4.263256414560601e-14,
+ "chord_vs_layered_n128_rel_rms": 1.0457424994410523e-15,
+ "chord_vs_layered_n128_rms_cm": 5.51241505244526e-15,
+ "chord_vs_layered_n64_max_cm": 3.019806626980426e-14,
+ "chord_vs_layered_n64_rel_rms": 9.682334214133563e-16,
+ "chord_vs_layered_n64_rms_cm": 5.095914461884128e-15,
+ "device": "cuda",
+ "float32_vs_float64_max_abs_T": 5.301712630023658e-07,
+ "max_abs_T_error": 3.5762786865234375e-07,
+ "max_ratio_to_tol": 0.30299012995313,
+ "max_rmse_T": 1.497216796769835e-08,
+ "max_sinogram_abs_cm": 1.9073486328125e-06,
+ "n_cases": 50,
+ "n_kit_cases": 10,
+ "pass": true,
+ "peak_mem_mib": 327.71630859375,
+ "runtime_s": 76.88284373283386,
+ "sinogram_check_failures": 0,
+ "total_violating_rays": 0
+}

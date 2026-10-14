@@ -1,0 +1,17 @@
+step 25 loss 1.323e-01 gn 1.225e-01 val_proj 8.302e-02 val_label 1.322e-01
+step 50 loss 1.263e-01 gn 1.066e-01 val_proj 8.589e-02 val_label 1.260e-01
+step 75 loss 1.156e-01 gn 6.240e-02 val_proj 8.781e-02 val_label 1.145e-01
+step 100 loss 9.025e-02 gn 2.557e-01 val_proj nan val_label 9.015e-02
+step 125 loss 5.944e-02 gn 1.717e-01 val_proj nan val_label 5.874e-02
+step 150 loss 4.766e-02 gn 1.337e-01 val_proj nan val_label 4.738e-02
+step 175 loss 4.197e-02 gn 1.479e-01 val_proj nan val_label 4.189e-02
+step 200 loss 3.939e-02 gn 2.966e-01 val_proj nan val_label 3.910e-02
+step 225 loss 3.742e-02 gn 3.545e-02 val_proj nan val_label 3.738e-02
+step 250 loss 4.099e-02 gn 1.274e+00 val_proj nan val_label 3.905e-02
+step 275 loss 3.794e-02 gn 2.577e-01 val_proj nan val_label 3.781e-02
+step 300 loss 3.682e-02 gn 3.555e-02 val_proj nan val_label 3.678e-02
+{
+ "s1": 0.19178230249429346,
+ "proj_rmse_T": NaN,
+ "null_dir_error_frac": 1.9046480293296963
+}

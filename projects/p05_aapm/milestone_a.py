@@ -56,7 +56,7 @@ def evaluate(model, fwd, img, tr, tru, bs=2):
         "partition": partition_errors(t, p),
         "proj_rmse_T": float(torch.cat(pe).mean().sqrt()),
         "null_dir_error_frac": float(
-            np.abs(np.einsum("cmhw,m->chw", e, NULL)).mean() / np.abs(e).mean()
+            np.abs(np.einsum("cmhw,m->chw", e, NULL)).sum() / np.sqrt((e**2).sum(1)).sum()
         ),
     }
     return out, p
@@ -75,6 +75,7 @@ def main() -> int:
     ap.add_argument("--views", type=int, default=32, help="view positions per step (stochastic)")
     ap.add_argument("--lr", type=float, default=1e-3)
     ap.add_argument("--w-feas", type=float, default=1.0)
+    ap.add_argument("--output", default="softplus", choices=["linear", "softplus"])
     ap.add_argument("--width", type=int, default=8)
     ap.add_argument("--depth", type=int, default=2)
     ap.add_argument("--val-every", type=int, default=25)
@@ -95,7 +96,7 @@ def main() -> int:
     img_tr, T_tr, tru_tr = load(store, tr_idx, dev)
     img_va, T_va, tru_va = load(store, va_idx, dev)
     fwd = AapmFanbeamForward(tables).to(dev)
-    model = UNet(depth=a.depth, width=a.width, output="linear").to(dev)
+    model = UNet(depth=a.depth, width=a.width, output=a.output).to(dev)
     opt = torch.optim.Adam(model.parameters(), lr=a.lr)
     val_sub = torch.arange(0, 256, 8, device=dev)  # fixed validation views (physics selection)
     hist: dict[str, list] = {
@@ -125,7 +126,7 @@ def main() -> int:
         gn = float(
             torch.sqrt(sum((p.grad**2).sum() for p in model.parameters() if p.grad is not None))
         )
-        if not (np.isfinite(gn) and np.isfinite(float(loss))):
+        if not (np.isfinite(gn) and np.isfinite(loss.item())):
             raise RuntimeError(f"non-finite loss/grad at step {step}")
         opt.step()
         hist["step"].append(step)
