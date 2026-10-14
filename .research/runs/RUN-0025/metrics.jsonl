@@ -1,0 +1,5 @@
+{"name": "n", "value": 1000}
+{"name": "duplicate_phantoms", "value": 0}
+{"name": "duplicate_image_pairs", "value": 0}
+{"name": "distinct_support_masks", "value": 1}
+{"name": "cases_with_calcification", "value": 1000}

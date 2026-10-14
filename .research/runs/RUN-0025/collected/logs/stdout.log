@@ -1,0 +1,12 @@
+{
+ "n": 1000,
+ "duplicate_phantoms": 0,
+ "duplicate_image_pairs": 0,
+ "distinct_support_masks": 1,
+ "cases_with_calcification": 1000,
+ "calc_cases_per_split": {
+  "train": 800,
+  "val": 100,
+  "test": 100
+ }
+} 47c8a182dabc2f91adfdecac26e485a5a079ddd3f7cb15e894bbd99f143a7292
