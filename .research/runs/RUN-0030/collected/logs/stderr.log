@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/yb107/research-os/projects/CTsynth/code/EXP-017/RUN-0030/source/projects/p05_aapm/exp017_oracle.py", line 241, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/yb107/research-os/projects/CTsynth/code/EXP-017/RUN-0030/source/projects/p05_aapm/exp017_oracle.py", line 84, in main
+    kit_idx = [
+              ^
+  File "/home/yb107/research-os/projects/CTsynth/code/EXP-017/RUN-0030/source/projects/p05_aapm/exp017_oracle.py", line 85, in <listcomp>
+    h[hashlib.sha1(np.ascontiguousarray(kit_img[j]).tobytes()).hexdigest()]
+    ~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'e07d13ee911115beac775c1eaf8f29e4c370b5c8'

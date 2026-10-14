@@ -65,30 +65,30 @@ def main() -> int:
     store = CaseStore(a.data / "files")
     n = len(store)
 
-    # kit cases located by content hash (not assumed to be the first ten)
-    import hashlib
+    # The 10 starting-kit cases are NOT among the 1000 (EXP-029): read them from the kit archive.
+    import io
+    from types import SimpleNamespace
 
+    def _arr(tf, name):
+        m = next(x for x in tf.getmembers() if Path(x.name).name == name)
+        return np.load(io.BytesIO(tf.extractfile(m).read()))  # type: ignore[union-attr]
+
+    mats = ("Adipose", "Fibroglandular", "Calcification")
     with tarfile.open(a.data / "archives/starting_kit.tgz") as tf:
-        m = next(x for x in tf.getmembers() if Path(x.name).name == "lowkVpImages.npy")
-        import io
+        kph = np.stack([_arr(tf, f"Phantom_{m}.npy") for m in mats], 1)  # (10,3,512,512)
+        ktr = {50: _arr(tf, "lowkVpTransmission.npy"), 80: _arr(tf, "highkVpTransmission.npy")}
+        sino = {m: _arr(tf, f"Sinogram_{m}.npy") for m in mats}
+    n_kit = kph.shape[0]
 
-        kit_img = np.load(io.BytesIO(tf.extractfile(m).read()))  # type: ignore[union-attr]
-        sino = {}
-        for mat in ("Adipose", "Fibroglandular", "Calcification"):
-            mm = next(x for x in tf.getmembers() if Path(x.name).name == f"Sinogram_{mat}.npy")
-            sino[mat] = np.load(io.BytesIO(tf.extractfile(mm).read()))
-    h = {
-        hashlib.sha1(np.ascontiguousarray(store.arrays["lowkVpImages"][i]).tobytes()).hexdigest(): i
-        for i in range(n)
-    }
-    kit_idx = [
-        h[hashlib.sha1(np.ascontiguousarray(kit_img[j]).tobytes()).hexdigest()]
-        for j in range(len(kit_img))
-    ]
-    others = [
-        i for i in np.linspace(0, n - 1, a.n_other + len(kit_idx)).astype(int) if i not in kit_idx
-    ][: a.n_other]
-    cases = [(i, j) for j, i in enumerate(kit_idx)] + [(int(i), None) for i in others]
+    def fetch(key):
+        src, i = key
+        if src == "kit":
+            return SimpleNamespace(phantom=kph[i], transmission={k: ktr[k][i] for k in S.KVPS})
+        return store[i]
+
+    others = [int(i) for i in np.linspace(0, n - 1, a.n_other).astype(int)]
+    cases = [(("kit", j), j) for j in range(n_kit)] + [(("ds", i), None) for i in others]
+    kit_idx = list(range(n_kit))
 
     fwd = AapmFanbeamForward(tables, dtype=torch.float32).to(dev)
     rows, viol_total, worst = [], 0, 0.0
@@ -99,7 +99,7 @@ def main() -> int:
     if dev.type == "cuda":
         torch.cuda.reset_peak_memory_stats()
     for i, j in cases:
-        c = store[i]
+        c = fetch(i)
         x = torch.tensor(c.phantom[None], device=dev)
         with torch.no_grad():
             pred = fwd(x)
@@ -116,7 +116,7 @@ def main() -> int:
             tissue = pk.sum(0) > 0
             rows.append(
                 {
-                    "case": i,
+                    "case": f"{i[0]}:{i[1]}",
                     "kit_index": j,
                     "kvp": k,
                     "rmse": float(np.sqrt((err**2).mean())),
@@ -147,7 +147,7 @@ def main() -> int:
                 tolp = 4 * math.sqrt(1024) * U24 * float(ref_p.max())
                 rows.append(
                     {
-                        "case": i,
+                        "case": f"{i[0]}:{i[1]}",
                         "kit_index": j,
                         "check": f"sinogram_{mat}_kvp80",
                         "max_abs_cm": float(np.abs(lines[mi] - ref_p).max()),
@@ -168,12 +168,12 @@ def main() -> int:
     )
     dprec = 0.0
     for i, _ in cases[:3]:
-        x = torch.tensor(store[i].phantom[None], device=dev)
+        x = torch.tensor(fetch(i).phantom[None], device=dev)
         with torch.no_grad():
             a32, a64 = c32(x), c64(x.double())
         dprec = max(dprec, max(float((a32[k].double() - a64[k]).abs().max()) for k in S.KVPS))
 
-    ph = store[kit_idx[3]].phantom.astype(np.float64)
+    ph = kph[3].astype(np.float64)
     disc = {**chord_vs_layered(ph, 128), **chord_vs_layered(ph, 64)}
     sino_fail = [r for r in rows if "check" in r and r["max_abs_cm"] > r["tol_cm"]]
     summary = {
