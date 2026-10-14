@@ -38,14 +38,14 @@ class AapmTorchForward(nn.Module):
         """(N,3,H,W) fractions -> (N,2,H,W) attenuation images [cm^-1]."""
         return torch.einsum("km,nm...->nk...", self.A.to(frac.dtype), frac)
 
-    def path_forward(self, paths: torch.Tensor) -> torch.Tensor:
-        """(N,3,...) line integrals [cm] -> (N,2,...) transmission in (0,1]."""
+    def path_forward(self, paths: torch.Tensor, channels: tuple[int, ...] = (0, 1)) -> torch.Tensor:
+        """(N,3,...) line integrals [cm] -> (N,len(channels),...) transmission in (0,1]."""
         n = paths.shape[0]
         flat = paths.reshape(n, 3, -1)
         out = []
-        for i in range(2):
+        for i in channels:
             mu, w = getattr(self, f"mu{i}").to(paths.dtype), getattr(self, f"w{i}").to(paths.dtype)
             out.append(
                 torch.einsum("e,ner->nr", w, torch.exp(-torch.einsum("me,nmr->ner", mu, flat)))
             )
-        return torch.stack(out, dim=1).reshape(n, 2, *paths.shape[2:])
+        return torch.stack(out, dim=1).reshape(n, len(out), *paths.shape[2:])
