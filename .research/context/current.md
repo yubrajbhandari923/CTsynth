@@ -1,20 +1,20 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3424 tokens.
-> Generated 2026-10-13T21:36:36-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3235 tokens.
+> Generated 2026-10-13T22:11:54-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `8a2475020a` (uncommitted changes)
+Git: `master` @ `e72089482a`
 
 ## Latest checkpoint
 
-**CP-011** Phase 3 engineering baseline (refactor complete; scientific state unchanged) (2026-10-13)
-- **Understanding:** Scientific state unchanged since CP-009/CP-010: no experiments run, no finding promoted or reviewed, 14 preliminary findings still await independent review (T-033, T-037). Engineering baseline now: one source-clean definition (runmeta.SOURCE_PATHS, shared with preflight; D-012 supersedes D-009); sha256 helpers consolidated; seed_everything removed; undeclared scipy dropped from verify_identifiability (numpy Newton, reproduces RUN-0007 values to 1e-9); AAPM<->paired converter (aapm.convert); test markers by path (unit 158 / physics 69 / regression 71, integration = XCIST tests: 4 pass 1 skip in .venv-xcist, whole file skipped in core env); P02/P03/P04 drivers tested; compare.py reproduces all 396 recorded mismatch_v2 values; XCIST HPC env path configurable (CTSYNTH_XCIST_ENV; live cluster run NOT re-exercised); guards bundle-check, run-check, paired-check, xcist-check; 5 hooks registered (4 required ones disabled, all unapproved); 3 project skills; docs consolidated (hpc.md, research-os.md, architecture.md, README; hpc-handoff archived). Orchestration remains disabled. Full suite: 298 passed, 2 skipped; ruff, format, mypy clean.
-- **Current problem:** Needs human: enable+approve hooks (T-054), decide orchestration (T-053), T-042 cleanup, plan re-parenting is unsupported by Research OS 1.0 (T-052 note), T-051 attenuation cross-check is ill-defined (materials differ), T-056 dataset-v1 move blocked on T-032. Next live HPC job must re-verify scripts/hpc_xcist_replicate.sh path resolution.
-- **Next step:** Scientific line unchanged: T-032 (XCIST dataset v1, split file, power analysis), then T-039 (E4 deterministic decoys), T-038 (E1); T-033 review of F-037 in parallel. Re-preview bundle (uv run ctsynth bundle-check) before EVERY hpc submit; commit before any run.
+**CP-012** Milestone A: AAPM end-to-end physics pipeline demonstrated (gradient flow yes, label-free recovery no) (2026-10-13)
+- **Understanding:** Verified: official projector port equals the exact chord and the kit sinograms (EXP-017: 0 violating rays of 50 cases x 2 kVp, max error ratio 0.30 of the pre-derived tolerance); gradients match finite differences to <2e-6 incl. real 512^2 (EXP-018); supervised smoke passed on 2nd run after a documented NaN/undertraining failure (EXP-019); three-arm demo EXP-020: supervised s1 0.029, physics-only s1 0.392 with 99.7% of error along the F-012 null direction and a collapsed uniform adipose/fibro prediction, physics+sum<=1 hinge s1 0.504. Dataset (1000 cases) acquired and validated (EXP-029), no duplicates, the 10 kit cases are not in it, ALL cases share one support mask (EXP-031), frozen 800/100/100 split in configs/aapm_split_v1.json. Single seed, 8 val cases: descriptive. No finding has been independently reviewed.
+- **Current problem:** Physics-only arm was optimisation-limited (projection RMSE 4.3e-3 vs supervised 2.6e-3). Fixed single support mask limits Exp 8. No independent review done yet; findings not yet registered.
+- **Next step:** EXP-021 classical baselines (validation only) and EXP-022 supervised U-Net on the full 800-case train split; then EXP-023 physics-only with 3 seeds.
 
 ## Current baseline
 
@@ -40,13 +40,13 @@ _none set_
 
 ## Current experiments
 
-- EXP-019 [needs_review] Single-case supervised U-Net smoke test — runs 1
-- EXP-020 [proposed] Label-free end-to-end demo: supervised vs physics-only vs physics+feasibility — runs 0
+- EXP-021 [ready] Full-data classical baselines (frozen split) — runs 0
 - EXP-027 [proposed] Physics mismatch and calibration sensitivity — runs 0
+- EXP-028 [proposed] Hybrid physics-gradient refinement of frozen U-Net — runs 0
 
 ## Active plans
 
-- PLAN-005 P05 AAPM end-to-end physics pipeline and benchmark suite — 6/10 tasks done · objective: Milestone A: verified differentiable fan-beam AAPM pipeline and label-free demo. Milestone B: reproducible AAPM benchmark (classical, supervised, physics-only, priors, hybrid) on the full 1000-case dataset
+- PLAN-005 P05 AAPM end-to-end physics pipeline and benchmark suite — 8/10 tasks done · objective: Milestone A: verified differentiable fan-beam AAPM pipeline and label-free demo. Milestone B: reproducible AAPM benchmark (classical, supervised, physics-only, priors, hybrid) on the full 1000-case dataset
   - next ready: T-062 Polychromatic AAPM forward: fractions -> kVp-switched transmissions (`research task context T-062`)
 - PLAN-004 P04 Phase 2 audit and Phase 3 refactoring backlog — 13/18 tasks done · objective: Execute the audit roadmap (docs/architecture-workflow-audit.md) without changing scientific results, the HPC baseline or history
   - BLOCKED: T-051 Cross-check attenuation_v1 vs AAPM kit mu tables with stated tolerance (A7) — Not well-defined: attenuation_v1 is water/iodine/calcium, the AAPM kit is adipose/fibroglandular/calcification (composition of kit calcification unstated); no shared material to compare except possibly calcium. Needs a human/Opus scoping decision before any tolerance exists
@@ -71,7 +71,7 @@ _none set_
 
 ## Blockers
 
-- [checkpoint] CP-011: Needs human: enable+approve hooks (T-054), decide orchestration (T-053), T-042 cleanup, plan re-parenting is unsupported by Research OS 1.0 (T-052 note), T-051 attenuation cross-check is ill-defined (materials differ), T-056 dataset-v1 move blocked on T-032. Next live HPC job must re-verify scripts/hpc_xcist_replicate.sh path resolution.
+- [checkpoint] CP-012: Physics-only arm was optimisation-limited (projection RMSE 4.3e-3 vs supervised 2.6e-3). Fixed single support mask limits Exp 8. No independent review done yet; findings not yet registered.
 
 ## Project skills
 
