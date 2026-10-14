@@ -1,0 +1,59 @@
+{
+  "artifacts_offset": 0,
+  "author_model": null,
+  "author_name": "claude-code",
+  "author_type": "agent",
+  "backend": "slurm",
+  "command": "bash scripts/hpc_run_py.sh projects/p05_aapm/exp021_classical.py --data /scratch/railabs/yb107/research-os/shared-data/aapm-dl-spectral-ct-zenodo-14262737 --split configs/aapm_split_v1.json --stage val --n-cases 100 --workers 48",
+  "created_at": "2026-10-13T22:12:04-04:00",
+  "ended_at": null,
+  "env": {
+    "lockfiles": {
+      "uv.lock": "87debd45b1676f8b"
+    },
+    "user": "yubraj"
+  },
+  "exit_code": null,
+  "experiment_id": "EXP-021",
+  "git_branch": "master",
+  "git_commit": "e91e664f2f8cb1d6b56db15e3077a5a3bccda976",
+  "git_dirty": 0,
+  "hostname": "Yubraj-1407.local.dhe.duke.edu",
+  "id": "RUN-0037",
+  "label": null,
+  "metrics_offset": 0,
+  "notes": "submitted to duke over ssh",
+  "override_reason": null,
+  "parameters": {},
+  "pid": null,
+  "reviewed": 0,
+  "run_dir": ".research/runs/RUN-0037",
+  "slurm": {
+    "hpc": {
+      "bundle": ".research/hpc/bundles/EXP-021-RUN-0037.tar.gz",
+      "bundle_dir": ".research/hpc/bundles/EXP-021-RUN-0037",
+      "cluster": "duke",
+      "datasets": {},
+      "experiment_id": "EXP-021",
+      "receipt": "/home/yb107/research-os/projects/CTsynth/runs/RUN-0037/submission.json",
+      "remote_code": "/home/yb107/research-os/projects/CTsynth/code/EXP-021/RUN-0037",
+      "remote_results": "/home/yb107/research-os/projects/CTsynth/results/RUN-0037",
+      "remote_run_dir": "/home/yb107/research-os/projects/CTsynth/runs/RUN-0037",
+      "sha256": "43aca834e6a9cafadf7b9134b90f5622c61c63fff138a42782aad351f80ffe17",
+      "slurm_job_id": "201959",
+      "ssh_host": "plp-drcc-login2",
+      "state": "submitted",
+      "submitted_at": "2026-10-13T22:12:14-04:00",
+      "token": "2fec5c817ee86d66e8f39ab90f955942",
+      "upload_detail": "all 6 file(s) match",
+      "upload_verified": true
+    }
+  },
+  "slurm_job_id": "201959",
+  "started_at": null,
+  "status": "queued",
+  "stderr_path": ".research/runs/RUN-0037/stderr.log",
+  "stdout_path": ".research/runs/RUN-0037/stdout.log",
+  "updated_at": "2026-10-13T22:12:16-04:00",
+  "working_dir": "."
+}

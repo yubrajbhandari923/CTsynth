@@ -20,7 +20,13 @@ import torch
 from ctsynth.aapm import schema as S
 from ctsynth.aapm.forward import AapmFanbeamForward
 from ctsynth.aapm.loader import CaseStore
-from ctsynth.aapm.metrics import partition_errors, per_material_errors, s1_mean_rmse
+from ctsynth.aapm.metrics import (
+    boundary_rmse,
+    partition_errors,
+    per_material_errors,
+    s1_mean_rmse,
+    s2_worst_roi_rmse,
+)
 from ctsynth.aapm.physics_loss import projection_loss, stack_kvp
 from ctsynth.aapm.unet import UNet
 
@@ -52,6 +58,8 @@ def evaluate(model, fwd, img, tr, tru, bs=2):
     e = p - t
     out = {
         "s1": s1_mean_rmse(t, p),
+        "s2": s2_worst_roi_rmse(t, p),
+        "boundary_rmse": boundary_rmse(t, p),
         "per_material": per_material_errors(t, p),
         "partition": partition_errors(t, p),
         "proj_rmse_T": float(torch.cat(pe).mean().sqrt()),
@@ -80,6 +88,7 @@ def main() -> int:
     ap.add_argument("--depth", type=int, default=2)
     ap.add_argument("--val-every", type=int, default=25)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--cosine", action="store_true", help="cosine lr decay over --steps")
     a = ap.parse_args()
     run = Path(os.environ.get("RESEARCH_RUN_DIR", "."))
     dev = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -98,6 +107,7 @@ def main() -> int:
     fwd = AapmFanbeamForward(tables).to(dev)
     model = UNet(depth=a.depth, width=a.width, output=a.output).to(dev)
     opt = torch.optim.Adam(model.parameters(), lr=a.lr)
+    sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, a.steps) if a.cosine else None
     val_sub = torch.arange(0, 256, 8, device=dev)  # fixed validation views (physics selection)
     hist: dict[str, list] = {
         "step": [],
@@ -129,6 +139,8 @@ def main() -> int:
         if not (np.isfinite(gn) and np.isfinite(loss.item())):
             raise RuntimeError(f"non-finite loss/grad at step {step}")
         opt.step()
+        if sched:
+            sched.step()
         hist["step"].append(step)
         hist["train_loss"].append(float(loss))
         hist["grad_norm"].append(gn)
@@ -201,7 +213,15 @@ def main() -> int:
         for n in arts:
             f.write(json.dumps({"path": str((run / n).resolve()), "name": n}) + "\n")
     with open(run / "metrics.jsonl", "a") as f:
-        for k in ("s1", "proj_rmse_T", "null_dir_error_frac", "runtime_s", "peak_mem_mib"):
+        for k in (
+            "s1",
+            "s2",
+            "boundary_rmse",
+            "proj_rmse_T",
+            "null_dir_error_frac",
+            "runtime_s",
+            "peak_mem_mib",
+        ):
             f.write(json.dumps({"name": k, "value": res[k]}) + "\n")
         for m, d in res["per_material"].items():
             f.write(json.dumps({"name": f"rmse_{m}", "value": d["rmse"]}) + "\n")
