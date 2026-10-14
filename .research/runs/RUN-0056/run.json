@@ -1,0 +1,63 @@
+{
+  "artifacts_offset": 0,
+  "author_model": null,
+  "author_name": "claude-code",
+  "author_type": "agent",
+  "backend": "slurm",
+  "command": "bash scripts/hpc_run_py.sh projects/p05_aapm/milestone_a.py --data /scratch/railabs/yb107/research-os/shared-data/aapm-dl-spectral-ct-zenodo-14262737 --split configs/aapm_split_v1.json --arm physics --n-train 800 --n-val 100 --steps 6000 --batch 4 --views 32 --depth 4 --width 32 --cosine --warmup 300 --lr 3e-4 --clip 1.0 --val-every 100 --seed 0 --prior entropy=2.2e-7",
+  "created_at": "2026-10-14T04:32:48-04:00",
+  "ended_at": null,
+  "env": {
+    "lockfiles": {
+      "uv.lock": "87debd45b1676f8b"
+    },
+    "user": "yubraj"
+  },
+  "exit_code": null,
+  "experiment_id": "EXP-025",
+  "git_branch": "master",
+  "git_commit": "f145ebee7582c817480279b63826cdf3ec539ad1",
+  "git_dirty": 0,
+  "hostname": "Yubraj-1407.local.dhe.duke.edu",
+  "id": "RUN-0056",
+  "label": null,
+  "metrics_offset": 0,
+  "notes": "submitted to duke over ssh",
+  "override_reason": null,
+  "parameters": {},
+  "pid": null,
+  "reviewed": 0,
+  "run_dir": ".research/runs/RUN-0056",
+  "slurm": {
+    "hpc": {
+      "bundle": ".research/hpc/bundles/EXP-025-RUN-0056.tar.gz",
+      "bundle_dir": ".research/hpc/bundles/EXP-025-RUN-0056",
+      "cluster": "duke",
+      "datasets": {},
+      "experiment_id": "EXP-025",
+      "last_sync": "2026-10-14T04:36:08-04:00",
+      "receipt": "/home/yb107/research-os/projects/CTsynth/runs/RUN-0056/submission.json",
+      "remote_code": "/home/yb107/research-os/projects/CTsynth/code/EXP-025/RUN-0056",
+      "remote_results": "/home/yb107/research-os/projects/CTsynth/results/RUN-0056",
+      "remote_run_dir": "/home/yb107/research-os/projects/CTsynth/runs/RUN-0056",
+      "sha256": "3671f455b38f09af0fdc9bd1761cfbf0e7e2870cf9945176f4758f4db26428a5",
+      "slurm_job_id": "202009",
+      "ssh_host": "plp-drcc-login2",
+      "state": "submitted",
+      "submitted_at": "2026-10-14T04:32:57-04:00",
+      "token": "75cbcc27aea2bf1b285225c888108769",
+      "upload_detail": "all 6 file(s) match",
+      "upload_verified": true
+    },
+    "nodelist": "node001",
+    "partition": "defq",
+    "state": "RUNNING"
+  },
+  "slurm_job_id": "202009",
+  "started_at": null,
+  "status": "running",
+  "stderr_path": ".research/runs/RUN-0056/stderr.log",
+  "stdout_path": ".research/runs/RUN-0056/stdout.log",
+  "updated_at": "2026-10-14T04:36:08-04:00",
+  "working_dir": "."
+}
