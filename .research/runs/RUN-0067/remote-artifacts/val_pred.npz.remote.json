@@ -1,0 +1,10 @@
+{
+  "available": true,
+  "cluster_run_dir": "/home/yb107/research-os/projects/CTsynth/runs/RUN-0067",
+  "collected_at": "2026-10-14T09:37:34-04:00",
+  "description": null,
+  "name": "val_pred.npz",
+  "reason": "larger than max_bytes; left on the cluster",
+  "remote_path": "/home/yb107/research-os/projects/CTsynth/runs/RUN-0067/val_pred.npz",
+  "size": 44906464
+}
