@@ -1,0 +1,59 @@
+{
+  "artifacts_offset": 0,
+  "author_model": null,
+  "author_name": "claude-code",
+  "author_type": "agent",
+  "backend": "slurm",
+  "command": "bash scripts/hpc_run_py.sh projects/p05_aapm/exp032_physics_iter.py --data /scratch/railabs/yb107/research-os/shared-data/aapm-dl-spectral-ct-zenodo-14262737 --split configs/aapm_split_v1.json --stage val --lam 0",
+  "created_at": "2026-10-14T00:56:31-04:00",
+  "ended_at": null,
+  "env": {
+    "lockfiles": {
+      "uv.lock": "87debd45b1676f8b"
+    },
+    "user": "yubraj"
+  },
+  "exit_code": null,
+  "experiment_id": "EXP-032",
+  "git_branch": "master",
+  "git_commit": "26bc733a54eaee57967621ff4888bf6835df3908",
+  "git_dirty": 0,
+  "hostname": "Yubraj-1407.local.dhe.duke.edu",
+  "id": "RUN-0050",
+  "label": null,
+  "metrics_offset": 0,
+  "notes": "submitted to duke over ssh",
+  "override_reason": null,
+  "parameters": {},
+  "pid": null,
+  "reviewed": 0,
+  "run_dir": ".research/runs/RUN-0050",
+  "slurm": {
+    "hpc": {
+      "bundle": ".research/hpc/bundles/EXP-032-RUN-0050.tar.gz",
+      "bundle_dir": ".research/hpc/bundles/EXP-032-RUN-0050",
+      "cluster": "duke",
+      "datasets": {},
+      "experiment_id": "EXP-032",
+      "receipt": "/home/yb107/research-os/projects/CTsynth/runs/RUN-0050/submission.json",
+      "remote_code": "/home/yb107/research-os/projects/CTsynth/code/EXP-032/RUN-0050",
+      "remote_results": "/home/yb107/research-os/projects/CTsynth/results/RUN-0050",
+      "remote_run_dir": "/home/yb107/research-os/projects/CTsynth/runs/RUN-0050",
+      "sha256": "549a667b53390d0655358d78cb0486c3918352ddcb82a97c47e9b8c8c7ccde61",
+      "slurm_job_id": "201984",
+      "ssh_host": "plp-drcc-login2",
+      "state": "submitted",
+      "submitted_at": "2026-10-14T00:56:41-04:00",
+      "token": "39a73adbb77e0481b5327acb4d3826e1",
+      "upload_detail": "all 6 file(s) match",
+      "upload_verified": true
+    }
+  },
+  "slurm_job_id": "201984",
+  "started_at": null,
+  "status": "queued",
+  "stderr_path": ".research/runs/RUN-0050/stderr.log",
+  "stdout_path": ".research/runs/RUN-0050/stdout.log",
+  "updated_at": "2026-10-14T00:56:42-04:00",
+  "working_dir": "."
+}
