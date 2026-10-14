@@ -84,3 +84,10 @@ Never put an experiment number in an experiment title — create the record firs
 
 ## Code
 `uv run ruff check . && uv run ruff format --check . && uv run mypy && uv run pytest` must pass (markers: unit, physics, regression, integration; XCIST tests run in `.venv-xcist`). Guards: `uv run ctsynth preflight|bundle-check|postcheck|run-check|paired-check|xcist-check`. Randomness only via `ctsynth.seeding.rng`. CPU-first; MPS/CUDA opt-in via config `device`. Units and conventions: `docs/physics-conventions.md`. Keep the package small; use Research OS for experiment tracking rather than building one.
+
+## HPC resource rule (owner decision 2026-10-13)
+HPC exists to make results fast: **use parallel cores and GPUs as much as the job can exploit** (parallel I/O and decompression, multi-process
+data loading, GPU for projector/training, independent seeds/arms as parallel jobs or one multi-GPU job). Standing approval to submit
+without asking each time (still `--dry-run` first, then `--yes`): **< 64 CPUs (use ≤ 63), < 4 GPUs (≤ 3), memory as needed within the
+cluster/Research OS limits, < 10 h wall-time per job.** Request what the job can actually use (Slurm bills the reservation); anything above
+this envelope, or a changed partition/account, needs a fresh explicit approval.
