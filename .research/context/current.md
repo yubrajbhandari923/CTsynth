@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
 > Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3423 tokens.
-> Generated 2026-10-13T21:24:24-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated 2026-10-13T21:25:39-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `1a13c768ad` (uncommitted changes)
+Git: `master` @ `0fa0afcf41` (uncommitted changes)
 
 ## Latest checkpoint
 
@@ -40,7 +40,7 @@ _none set_
 
 ## Current experiments
 
-- EXP-030 [needs_review] HPC torch/CUDA environment build and GPU probe — runs 1
+- EXP-030 [needs_review] HPC torch/CUDA environment build and GPU probe — runs 2
 - EXP-018 [proposed] Gradient and optimization verification of projection loss — runs 0
 - EXP-017 [proposed] Oracle forward-model verification on AAPM kit cases — runs 0
 

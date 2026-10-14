@@ -13,7 +13,7 @@ TORCH_VER=$(grep -A1 '^name = "torch"$' uv.lock | sed -n 's/^version = "\(.*\)"/
   if ! "$PY" -c "import torch,sys;sys.exit(0 if torch.__version__.endswith('+cu126') else 1)" 2>/dev/null; then
     [ -x "$PY" ] || $UV venv --python 3.11 "$P/torch-venv"
     $UV pip install --python "$PY" "torch==$TORCH_VER" --index-url https://download.pytorch.org/whl/cu126 \
-      --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match && \
+      --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match --reinstall-package torch && \
     $UV pip install --python "$PY" numpy pydantic pyyaml matplotlib scipy tqdm
   fi
   nvidia-smi -L 2>&1 | head -4
