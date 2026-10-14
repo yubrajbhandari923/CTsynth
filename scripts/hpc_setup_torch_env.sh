@@ -9,9 +9,12 @@ UV="$HOME/.local/bin/uv"; PY="$P/torch-venv/bin/python"
 TORCH_VER=$(grep -A1 '^name = "torch"$' uv.lock | sed -n 's/^version = "\(.*\)"/\1/p' | head -1)
 {
   echo "host=$(hostname) date=$(date -Is) torch_pin=$TORCH_VER"
-  if ! "$PY" -c "import torch" 2>/dev/null; then
-    $UV venv --python 3.11 "$P/torch-venv" && \
-    $UV pip install --python "$PY" "torch==$TORCH_VER" numpy pydantic pyyaml matplotlib scipy tqdm
+  # node driver is CUDA 12.7: PyPI's default wheel is cu130 (cuda_available=False), so pin the cu126 build
+  if ! "$PY" -c "import torch,sys;sys.exit(0 if torch.__version__.endswith('+cu126') else 1)" 2>/dev/null; then
+    [ -x "$PY" ] || $UV venv --python 3.11 "$P/torch-venv"
+    $UV pip install --python "$PY" "torch==$TORCH_VER" --index-url https://download.pytorch.org/whl/cu126 \
+      --extra-index-url https://pypi.org/simple --index-strategy unsafe-best-match && \
+    $UV pip install --python "$PY" numpy pydantic pyyaml matplotlib scipy tqdm
   fi
   nvidia-smi -L 2>&1 | head -4
   "$PY" - <<'PYEOF'
