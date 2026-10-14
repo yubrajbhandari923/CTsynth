@@ -89,6 +89,8 @@ def main() -> int:
     ap.add_argument("--val-every", type=int, default=25)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--cosine", action="store_true", help="cosine lr decay over --steps")
+    ap.add_argument("--warmup", type=int, default=0, help="linear lr warmup steps")
+    ap.add_argument("--clip", type=float, default=0.0, help="grad-norm clip (0 = off)")
     a = ap.parse_args()
     run = Path(os.environ.get("RESEARCH_RUN_DIR", "."))
     dev = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -107,7 +109,13 @@ def main() -> int:
     fwd = AapmFanbeamForward(tables).to(dev)
     model = UNet(depth=a.depth, width=a.width, output=a.output).to(dev)
     opt = torch.optim.Adam(model.parameters(), lr=a.lr)
-    sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, a.steps) if a.cosine else None
+
+    def lr_factor(i: int) -> float:  # i = steps taken so far
+        w = min(1.0, (i + 1) / a.warmup) if a.warmup else 1.0
+        c = 0.5 * (1 + np.cos(np.pi * min(i, a.steps) / a.steps)) if a.cosine else 1.0
+        return float(w * c)
+
+    sched = torch.optim.lr_scheduler.LambdaLR(opt, lr_factor) if (a.cosine or a.warmup) else None
     val_sub = torch.arange(0, 256, 8, device=dev)  # fixed validation views (physics selection)
     hist: dict[str, list] = {
         "step": [],
@@ -138,6 +146,8 @@ def main() -> int:
         )
         if not (np.isfinite(gn) and np.isfinite(loss.item())):
             raise RuntimeError(f"non-finite loss/grad at step {step}")
+        if a.clip:
+            torch.nn.utils.clip_grad_norm_(model.parameters(), a.clip)
         opt.step()
         if sched:
             sched.step()
@@ -182,6 +192,9 @@ def main() -> int:
         else resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
     )
     res, pred = evaluate(model, fwd, img_va, T_va, tru_va)
+    zero_mse = float((tru_va**2).mean())  # MSE of predicting nothing
+    res["zero_pred_label_mse"], res["best_val_label_mse"] = zero_mse, min(hist["val_label_mse"])
+    res["collapsed_to_zero"] = bool(min(hist["val_label_mse"]) >= 0.99 * zero_mse)
     res.update(
         arm=a.arm,
         steps=a.steps,
