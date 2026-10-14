@@ -42,3 +42,14 @@ def test_reproduces_kit_images():
         ref = np.load(k / f"{stem}kVpImages.npy")[3]
         # kit images are float32; ref range is ~1.4, so 1e-4 is ~7e-5 relative
         assert np.abs(op(t, kvp)[0].numpy() - ref).max() < 1e-4
+
+
+def test_sparse_path_equals_loop_path_and_is_differentiable():
+    op = AapmFBP(G)
+    t = _t(1).double().requires_grad_(True)
+    for kvp in (50, 80):
+        loop, sp = op(t, kvp), op(t, kvp, sparse=True)
+        assert torch.allclose(loop, sp, atol=1e-12)
+    (g,) = torch.autograd.grad(op(t, 50, sparse=True).sum(), t)
+    (g2,) = torch.autograd.grad(op(t, 50).sum(), t)
+    assert torch.allclose(g, g2, atol=1e-12)

@@ -59,6 +59,7 @@ class AapmFBP:
         self.fphi = torch.atan2(self.py, self.px)
         self.inside = self.frad <= g.fov_cm / 2.0
         self.ds = 2.0 * math.pi / n_views
+        self._sparse: dict[int, torch.Tensor] = {}
 
     def _geometry(self, view: int) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
         g = self.g
@@ -84,12 +85,44 @@ class AapmFBP:
         n1 = torch.where(ok, n1, torch.zeros_like(n1))
         return w * ok, n1, frac, ok
 
-    def __call__(self, transmission: torch.Tensor, kvp: int) -> torch.Tensor:
+    def sparse_backprojector(self, kvp: int) -> torch.Tensor:
+        """Sparse (n_pix^2, V/2 * n_det) float64 matrix B with image = 2 * ds * (B @ filtered sino).
+
+        Built once per kVp from the same per-view geometry as the loop path (exactly equal);
+        one sparse product replaces V/2 gathers, so autograd memory stays O(nnz).
+        """
+        if kvp in self._sparse:
+            return self._sparse[kvp]
+        n, nb = self.g.n_pix, self.g.n_det
+        start = 0 if kvp == KVP_HIGH else 1
+        rows, cols, vals = [], [], []
+        pix = torch.arange(n * n, device=self.dev)
+        for i in range(self.g.n_views // 2):
+            w, n1, frac, ok = self._geometry(start + 2 * i)
+            w, n1, frac, ok = w.reshape(-1), n1.reshape(-1), frac.reshape(-1), ok.reshape(-1)
+            sel = pix[ok]
+            for off, val in ((0, (1.0 - frac) * w), (1, frac * w)):
+                rows.append(sel)
+                cols.append(i * nb + n1[ok] + off)
+                vals.append(val[ok])
+        mat = torch.sparse_coo_tensor(
+            torch.stack([torch.cat(rows), torch.cat(cols)]),
+            torch.cat(vals) * (2.0 * self.ds),
+            (n * n, (self.g.n_views // 2) * nb),
+        ).coalesce()
+        self._sparse[kvp] = mat.to_sparse_csr()
+        return self._sparse[kvp]
+
+    def __call__(self, transmission: torch.Tensor, kvp: int, sparse: bool = False) -> torch.Tensor:
         """(B, V/2, n_det) air-normalised transmission of `kvp` -> (B, n_pix, n_pix) image."""
         b = transmission.shape[0]
         dtype = transmission.dtype
         sino = -torch.log(transmission.to(torch.float64))
         work = (sino * self.data_weight) @ self.toeplitz.T  # (B, V/2, N)
+        if sparse:
+            mat = self.sparse_backprojector(kvp)
+            out = (mat @ work.reshape(b, -1).T).T
+            return out.reshape(b, self.g.n_pix, self.g.n_pix).to(dtype)
         start = 0 if kvp == KVP_HIGH else 1
         n = self.g.n_pix
         img = torch.zeros(b, n, n, dtype=torch.float64, device=transmission.device)

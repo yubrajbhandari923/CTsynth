@@ -18,6 +18,7 @@ import numpy as np
 import torch
 
 from ctsynth.aapm import schema as S
+from ctsynth.aapm.fbp import AapmFBP
 from ctsynth.aapm.forward import AapmFanbeamForward
 from ctsynth.aapm.loader import CaseStore
 from ctsynth.aapm.losses import entropy, tv
@@ -105,7 +106,11 @@ def main() -> int:
     ap.add_argument("--data", type=Path, required=True)
     ap.add_argument("--split", type=Path, help="split manifest json (train/val index lists)")
     ap.add_argument("--cases", type=int, nargs="*", help="explicit case indices (smoke: train=val)")
-    ap.add_argument("--arm", choices=["supervised", "physics", "physics_feas"], required=True)
+    ap.add_argument(
+        "--arm",
+        choices=["supervised", "physics", "physics_feas", "image_phys", "recon_phys"],
+        required=True,
+    )
     ap.add_argument("--n-train", type=int, default=32)
     ap.add_argument("--n-val", type=int, default=8)
     ap.add_argument("--steps", type=int, default=300)
@@ -147,6 +152,20 @@ def main() -> int:
     img_tr, T_tr, tru_tr = load(store, tr_idx, dev)
     img_va, T_va, tru_va = load(store, va_idx, dev)
     fwd = AapmFanbeamForward(tables, exp_clip=a.exp_clip).to(dev)
+    fbp = AapmFBP(device=dev) if a.arm == "recon_phys" else None
+
+    def arm_loss(frac, img, T, sub):
+        """Measurement-domain loss of the chosen label-free arm (no truth)."""
+        if a.arm == "image_phys":  # approximate: spectrum-weighted linear attenuation image model
+            return ((fwd.spectral.image_forward(frac) - img) ** 2).mean()
+        if (
+            a.arm == "recon_phys"
+        ):  # official image formation: simulate T, -log, FBP, compare to images
+            t = fwd(frac)
+            sim = torch.stack([fbp(t[k], k, sparse=True) for k in S.KVPS], dim=1)
+            return ((sim - img) ** 2).mean()
+        return projection_loss(fwd, frac, T, sub)
+
     model = UNet(depth=a.depth, width=a.width, output=a.output).to(dev)
     opt = torch.optim.Adam(model.parameters(), lr=a.lr)
 
@@ -176,7 +195,7 @@ def main() -> int:
             loss = ((frac - tru_tr[ix]) ** 2).mean()
         else:
             sub = torch.randperm(256, generator=gen)[: a.views].to(dev)
-            loss = projection_loss(fwd, frac, T_tr[ix], sub)
+            loss = arm_loss(frac, img_tr[ix], T_tr[ix], sub)
             if a.arm == "physics_feas":
                 loss = loss + a.w_feas * feasibility(frac)
             for item in a.prior:
@@ -252,6 +271,7 @@ def main() -> int:
         arm=a.arm,
         steps=a.steps,
         selection="val label MSE" if a.arm == "supervised" else "val projection loss",
+        arm_loss_note="image_phys/recon_phys: own-domain loss; selection: val projection loss",
         runtime_s=runtime,
         peak_mem_mib=peak,
         device=str(dev),
