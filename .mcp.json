@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "research": {
+      "type": "stdio",
+      "command": "/Users/yubraj/Code/CTsynth/.research/bin/research",
+      "args": [
+        "mcp"
+      ]
+    }
+  }
+}

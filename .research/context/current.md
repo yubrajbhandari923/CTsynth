@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3437 tokens.
-> Generated 2026-10-13T00:58:54-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3463 tokens.
+> Generated 2026-10-13T20:47:30-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `8d166bcd2b` (uncommitted changes)
+Git: `master` @ `01ed8066a4` (uncommitted changes)
 
 ## Latest checkpoint
 
@@ -40,12 +40,15 @@ _none set_
 
 ## Current experiments
 
-- EXP-015 [proposed] E3 supervised pretraining plus physics-consistent adaptation under changed acquisition — runs 0
-- EXP-014 [proposed] E2 physics-consistent self-supervised material inference on XCIST measurements — runs 0
-- EXP-016 [proposed] E4 identifiability and prior comparison on XCIST data (deterministic first) — runs 0
+- EXP-029 [ready] AAPM 1000-case dataset acquisition and validation (T-017) — runs 0
+- EXP-027 [proposed] Physics mismatch and calibration sensitivity — runs 0
+- EXP-028 [proposed] Hybrid physics-gradient refinement of frozen U-Net — runs 0
 
 ## Active plans
 
+- PLAN-005 P05 AAPM end-to-end physics pipeline and benchmark suite — 1/10 tasks done · objective: Milestone A: verified differentiable fan-beam AAPM pipeline and label-free demo. Milestone B: reproducible AAPM benchmark (classical, supervised, physics-only, priors, hybrid) on the full 1000-case dataset
+  - next ready: T-062 Polychromatic AAPM forward: fractions -> kVp-switched transmissions (`research task context T-062`)
+  - BLOCKED: T-068 T-017 acquire + validate full dataset on HPC (existing task) — Duplicate of T-017 (PLAN-002); PLAN-005 depends on T-017 directly. Not to be executed.
 - PLAN-004 P04 Phase 2 audit and Phase 3 refactoring backlog — 13/18 tasks done · objective: Execute the audit roadmap (docs/architecture-workflow-audit.md) without changing scientific results, the HPC baseline or history
   - BLOCKED: T-051 Cross-check attenuation_v1 vs AAPM kit mu tables with stated tolerance (A7) — Not well-defined: attenuation_v1 is water/iodine/calcium, the AAPM kit is adipose/fibroglandular/calcification (composition of kit calcification unstated); no shared material to compare except possibly calcium. Needs a human/Opus scoping decision before any tolerance exists
   - BLOCKED: T-052 Plan hygiene: re-parent XCIST E1-E4 tasks, resolve stale PLAN-001 tasks — Human decision only: re-parenting is impossible in Research OS 1.0 (documented in PLAN-002 context); PLAN-001 tasks T-005/6/8/9 reviewed and left open. Close/abandon them only if you decide they are superseded. Not a blocker for any experiment.
@@ -53,8 +56,6 @@ _none set_
   - BLOCKED: T-054 Propose and register CTsynth hooks (not approved) — Hooks registered; awaiting human 'research hook enable/approve' (see docs/research-os.md)
   - BLOCKED: T-056 Move p04 dataset generation, split and loader into src (with tests) — Partial work done (voxel_chords moved, drivers testable). Dataset v1 generator/split/loader depends on T-032 (unresolved scientific design)
 - PLAN-003 P03 label-free physics-consistent decomposition (B0-B4 ladder) — 2/2 tasks done · objective: Implement and fairly compare B0 classical constrained, B1 regularized classical, B2 supervised U-Net, B3 label-free physics-consistent U-Net, B4 physics+priors; ablate priors individually; test identifiability, information, noise, mismatch, generalization
-- PLAN-002 P02 AAPM benchmark: adapter, classical and supervised baselines — 7/31 tasks done · objective: Reproducible benchmark on AAPM DL-Spectral CT: adapter with explicit conventions, deterministic splits, streaming loader, constrained classical baseline, small U-Net, honest evaluation
-  - next ready: T-017 P1.1 Acquire + validate the real AAPM 1000-case dataset (`research task context T-017`)
 
 ## Needs attention (verification)
 
@@ -75,7 +76,7 @@ _none set_
 
 ## Project skills
 
-- 12 more skills: `research skills list`, load one with `research skill show NAME`
+- 14 more skills: `research skills list`, load one with `research skill show NAME`
 
 ## Agent policy
 

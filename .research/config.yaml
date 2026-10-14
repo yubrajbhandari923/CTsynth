@@ -68,6 +68,7 @@ hpc:
 # Uncommenting one here overrides it for this project only.
 orchestration:
   active_strategy: sonnet_first
+  enabled: true
 harness:
   hooks:
     lint-types:

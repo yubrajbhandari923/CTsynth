@@ -33,7 +33,12 @@ axis `e_u = (-sin s, cos s)`. Detector length `L = 2*tan(asin((fov/2)/R))*SDD` (
 Reduced synthetic geometries keep fov/R/SDD and shrink `n_pix, n_views, n_det`.
 
 ## 4. Forward model (synthetic and reference)
-`P_m = sum_pixels frac_m * (exact ray-in-pixel chord length, cm)`; `T = sum_E 0.5*s_kVp(E)*exp(-sum_m mu_m(E)*P_m)`;
+**Official projector** (`starting_kit/model/projection.py`, ported in `ctsynth.aapm.fanbeam`): per ray, step through the
+image layer by layer along the dominant axis; each layer adds `travPixlen*pixel` (one pixel) or splits `travPixlen`
+linearly between the two straddled pixels (`travPixlen = d*sqrt(1+slope^2)`). This is NOT exact chord length; the
+exact-chord reference (`synthetic.line_integrals`, tests) differs by a discretisation term, quantified in EXP-017.
+Kit view order: 512 views, `s = 2*pi*k/512`; kVp-split by index parity (even=80, odd=50).
+Exact-chord reference model: `P_m = sum_pixels frac_m * (exact ray-in-pixel chord length, cm)`; `T = sum_E 0.5*s_kVp(E)*exp(-sum_m mu_m(E)*P_m)`;
 noiseless. Synthetic images = `sum_m frac_m * sum_E 0.5 s_k mu_m` (spectrum-weighted mu; NOT FBP).
 
 ## 5. Splits
