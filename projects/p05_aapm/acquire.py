@@ -15,6 +15,7 @@ import subprocess
 import sys
 import tarfile
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -60,32 +61,32 @@ def main() -> int:
     files.mkdir(exist_ok=True)
     t0 = time.time()
 
-    rc = (
-        0
-        if a.skip_fetch
-        else subprocess.run(
-            [sys.executable, str(REPO / "scripts/fetch_aapm.py"), "--dest", str(arch)]
-        ).returncode
-    )
-    if rc:
-        print("fetch failed; nothing was decompressed", file=sys.stderr)
-        return rc
+    fetch = [sys.executable, str(REPO / "scripts/fetch_aapm.py"), "--dest", str(arch)]
+    names = [f"{s}.npy.gz" for s in STEMS] + ["starting_kit.tgz"]
+    if not a.skip_fetch:  # one fetch process per file: downloads are network-bound and independent
+        with ThreadPoolExecutor(len(names)) as ex:
+            rcs = list(ex.map(lambda n: subprocess.run([*fetch, "--only", n]).returncode, names))
+        if any(rcs):
+            print("fetch failed; nothing was decompressed", file=sys.stderr)
+            return 1
 
-    sha: dict[str, str] = {}
     prev = {}
     if (a.dest / "manifest.json").exists():
         prev = {
             f["name"]: f["sha256"]
             for f in json.loads((a.dest / "manifest.json").read_text())["files"]
         }
-    for stem in STEMS:
+
+    def decompress(stem: str) -> str:
         dst = files / f"{stem}.npy"
         if dst.exists() and stem in prev:
-            sha[stem] = prev[stem]
-            print("cached", stem, flush=True)
-        else:
-            sha[stem] = gunzip(arch / f"{stem}.npy.gz", dst)
-            print("decompressed", stem, flush=True)
+            return prev[stem]
+        sha = gunzip(arch / f"{stem}.npy.gz", dst)  # zlib releases the GIL: threads parallelise
+        print("decompressed", stem, flush=True)
+        return sha
+
+    with ThreadPoolExecutor(len(STEMS)) as ex:
+        sha = dict(zip(STEMS, ex.map(decompress, STEMS), strict=True))
 
     store = CaseStore(files)  # headers: shape/dtype/case counts
     n = len(store)
