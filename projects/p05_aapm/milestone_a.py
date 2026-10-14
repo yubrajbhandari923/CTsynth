@@ -20,6 +20,7 @@ import torch
 from ctsynth.aapm import schema as S
 from ctsynth.aapm.forward import AapmFanbeamForward
 from ctsynth.aapm.loader import CaseStore
+from ctsynth.aapm.losses import entropy, tv
 from ctsynth.aapm.metrics import (
     boundary_rmse,
     partition_errors,
@@ -53,6 +54,14 @@ def partition_penalty(frac, img):
     air = (img < 0.1).all(1)
     s = frac.sum(1)
     return ((s - 1) ** 2)[~air].mean() + (s**2)[air].mean()
+
+
+PRIORS = {
+    "tv": lambda f: tv(f),
+    "entropy": lambda f: entropy(f),
+    "range_hinge": lambda f: torch.relu(f - 1).mean(),
+    "calc_l1": lambda f: f[:, 2].mean(),
+}
 
 
 def feasibility(frac: torch.Tensor) -> torch.Tensor:
@@ -111,6 +120,9 @@ def main() -> int:
     )
     ap.add_argument("--oracle-occ", action="store_true", help="UPPER-BOUND CONTROL: x truth sum S")
     ap.add_argument("--w-partition", type=float, default=0.0, help="soft partition penalty weight")
+    ap.add_argument(
+        "--prior", action="append", default=[], help="NAME=WEIGHT, NAME in " + ",".join(PRIORS)
+    )
     ap.add_argument("--exp-clip", type=float, default=None, help="guard for negative fractions")
     ap.add_argument("--width", type=int, default=8)
     ap.add_argument("--depth", type=int, default=2)
@@ -167,6 +179,9 @@ def main() -> int:
             loss = projection_loss(fwd, frac, T_tr[ix], sub)
             if a.arm == "physics_feas":
                 loss = loss + a.w_feas * feasibility(frac)
+            for item in a.prior:
+                name, w = item.split("=")
+                loss = loss + float(w) * PRIORS[name](frac)
             if a.w_partition:
                 loss = loss + a.w_partition * partition_penalty(frac, img_tr[ix])
         opt.zero_grad()
@@ -233,6 +248,7 @@ def main() -> int:
     res["collapsed_to_zero"] = bool(min(hist["val_label_mse"]) >= 0.99 * zero_mse)
     res.update(
         oracle_occupancy=a.oracle_occ,
+        priors=a.prior,
         arm=a.arm,
         steps=a.steps,
         selection="val label MSE" if a.arm == "supervised" else "val projection loss",

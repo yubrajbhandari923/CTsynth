@@ -1,13 +1,13 @@
 # Research context — CTsynth
 
-> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3234 tokens.
-> Generated 2026-10-14T03:31:35-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
+> Generated from .research/ by `research current`. Do not edit; it is overwritten. ~3235 tokens.
+> Generated 2026-10-14T03:33:09-04:00. Details: `research show <ID>` · `research search "…"` · `research task context T-…`.
 
 ## Goal
 
 Build the minimum reliable foundation for a long-term research platform that creates editable, physics-grounded virtual CT patient populations.
 
-Git: `master` @ `b2293bf80e`
+Git: `master` @ `53d495bb14` (uncommitted changes)
 
 ## Latest checkpoint
 
@@ -40,9 +40,9 @@ _none set_
 
 ## Current experiments
 
-- EXP-028 [ready] Hybrid physics-gradient refinement of frozen U-Net — runs 0
+- EXP-028 [running] Hybrid physics-gradient refinement of frozen U-Net — runs 3
+- EXP-025 [ready] Physics plus prior ablations — runs 0
 - EXP-024 [proposed] Occupancy-aware output parameterisations — runs 0
-- EXP-027 [proposed] Physics mismatch and calibration sensitivity — runs 0
 
 ## Active plans
 
