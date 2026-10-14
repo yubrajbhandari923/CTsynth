@@ -117,9 +117,13 @@ def main() -> int:
         opt.step()
         losses.append(loss.item())
     ma = np.convolve(losses, np.ones(20) / 20, mode="valid")
-    res["optim"] = {"initial": losses[0], "final": losses[-1], "reduction": 1 - losses[-1] / losses[0],
-                    "moving_avg_nonincreasing": bool(np.all(np.diff(ma) <= 1e-12)),
-                    "finite": bool(np.isfinite(losses).all())}  # fmt: skip
+    res["optim"] = {
+        "initial": losses[0],
+        "final": losses[-1],
+        "reduction": 1 - losses[-1] / losses[0],
+        "moving_avg_nonincreasing": bool(np.all(np.diff(ma) <= 1e-12)),
+        "finite": bool(np.isfinite(losses).all()),
+    }
     ok &= (
         res["optim"]["reduction"] >= 0.5
         and res["optim"]["moving_avg_nonincreasing"]
