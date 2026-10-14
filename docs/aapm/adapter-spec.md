@@ -35,9 +35,12 @@ Reduced synthetic geometries keep fov/R/SDD and shrink `n_pix, n_views, n_det`.
 ## 4. Forward model (synthetic and reference)
 **Official projector** (`starting_kit/model/projection.py`, ported in `ctsynth.aapm.fanbeam`): per ray, step through the
 image layer by layer along the dominant axis; each layer adds `travPixlen*pixel` (one pixel) or splits `travPixlen`
-linearly between the two straddled pixels (`travPixlen = d*sqrt(1+slope^2)`). This is NOT exact chord length; the
-exact-chord reference (`synthetic.line_integrals`, tests) differs by a discretisation term, quantified in EXP-017.
-Kit view order: 512 views, `s = 2*pi*k/512`; kVp-split by index parity (even=80, odd=50).
+between the two straddled pixels in proportion to the ray's extent in each (`travPixlen = d*sqrt(1+slope^2)`). Because the
+split is proportional to the extent along the non-dominant axis, this IS the exact ray-in-pixel chord length, organised
+layerwise (|slope| <= 1 guarantees at most two pixels per layer). Verified: `fanbeam_project` equals the dense exact-chord
+reference (`synthetic.line_integrals`) to 4e-14 cm on reduced geometries (64^2, 128^2; local dev check, quantified in EXP-017
+at the registered stage), and equals the kit Sinogram files to float32 rounding (3e-6 cm). An earlier note here that the kit
+is *not* exact-chord was wrong. Kit view order: 512 views, `s = 2*pi*k/512`; kVp by index parity (even=80, odd=50).
 Exact-chord reference model: `P_m = sum_pixels frac_m * (exact ray-in-pixel chord length, cm)`; `T = sum_E 0.5*s_kVp(E)*exp(-sum_m mu_m(E)*P_m)`;
 noiseless. Synthetic images = `sum_m frac_m * sum_E 0.5 s_k mu_m` (spectrum-weighted mu; NOT FBP).
 

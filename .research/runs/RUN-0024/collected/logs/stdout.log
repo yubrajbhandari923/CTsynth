@@ -1,0 +1,83 @@
+downloading   starting_kit.tgz  (98 MiB)
+downloading   Phantom_Fibroglandular.npy.gz  (108 MiB)
+downloading   Phantom_Adipose.npy.gz  (97 MiB)
+downloading   highkVpTransmission.npy.gz  (804 MiB)
+downloading   Phantom_Calcification.npy.gz  (7 MiB)
+downloading   highkVpImages.npy.gz  (683 MiB)
+downloading   lowkVpTransmission.npy.gz  (811 MiB)
+downloading   lowkVpImages.npy.gz  (684 MiB)
+ok (verified) Phantom_Calcification.npy.gz
+ok (verified) Phantom_Fibroglandular.npy.gz
+ok (verified) starting_kit.tgz
+ok (verified) Phantom_Adipose.npy.gz
+ok (verified) lowkVpImages.npy.gz
+ok (verified) highkVpImages.npy.gz
+ok (verified) lowkVpTransmission.npy.gz
+ok (verified) highkVpTransmission.npy.gz
+decompressed Phantom_Calcification
+decompressed Phantom_Fibroglandular
+decompressed Phantom_Adipose
+decompressed highkVpImages
+decompressed lowkVpImages
+decompressed lowkVpTransmission
+decompressed highkVpTransmission
+validated cases 0 25
+validated cases 25 50
+validated cases 50 75
+validated cases 75 100
+validated cases 100 125
+validated cases 125 150
+validated cases 150 175
+validated cases 175 200
+validated cases 200 225
+validated cases 225 250
+validated cases 250 275
+validated cases 275 300
+validated cases 300 325
+validated cases 325 350
+validated cases 350 375
+validated cases 375 400
+validated cases 400 425
+validated cases 425 450
+validated cases 450 475
+validated cases 475 500
+validated cases 500 525
+validated cases 525 550
+validated cases 550 575
+validated cases 575 600
+validated cases 600 625
+validated cases 625 650
+validated cases 650 675
+validated cases 675 700
+validated cases 700 725
+validated cases 725 750
+validated cases 750 775
+validated cases 775 800
+validated cases 800 825
+validated cases 825 850
+validated cases 850 875
+validated cases 875 900
+validated cases 900 925
+validated cases 925 950
+validated cases 950 975
+validated cases 975 1000
+{
+ "schema": "ctsynth.aapm.schema.validate_dataset",
+ "passed": true,
+ "n_cases": 1000,
+ "sum_max": 1.0000000447034836,
+ "T50_mean": 0.171179211884737,
+ "T80_mean": 0.19915979020297528,
+ "calc_support_frac": 0.0038150672912597664,
+ "T_min": 0.007638152223080397,
+ "T_max": 0.9999999403953552,
+ "partition_frac": {
+  "air": 0.36255645751953125,
+  "tissue": 0.6039199829101562,
+  "band": 0.0335235595703125
+ },
+ "duplicate_cases": 0,
+ "kit_overlap_indices": [],
+ "runtime_s": 410.8,
+ "dest": "/scratch/railabs/yb107/research-os/shared-data/aapm-dl-spectral-ct-zenodo-14262737"
+}

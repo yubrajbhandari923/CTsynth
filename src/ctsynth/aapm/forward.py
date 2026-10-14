@@ -27,20 +27,27 @@ class AapmFanbeamForward(nn.Module):
         self.geometry, self.view_chunk = geometry, view_chunk
         self.spectral = AapmTorchForward(tables, dtype=dtype)
 
-    def line_integrals(self, frac: torch.Tensor, kvp: int) -> torch.Tensor:
+    def line_integrals(
+        self, frac: torch.Tensor, kvp: int, sub: torch.Tensor | None = None
+    ) -> torch.Tensor:
         """(B, 3, n, n) -> (B, 3, V/2, n_det) path lengths [cm], one kVp's views."""
         b, m, n, _ = frac.shape
         start = 0 if kvp == KVP_HIGH else 1
         views = torch.arange(start, self.geometry.n_views, 2, device=frac.device)
+        if sub is not None:  # positions within this kVp's view list
+            views = views[sub.to(frac.device)]
         return fanbeam_project(frac.reshape(b * m, n, n), self.geometry, views).reshape(
             b, m, views.numel(), -1
         )
 
-    def forward(self, frac: torch.Tensor) -> dict[int, torch.Tensor]:
+    def forward(
+        self, frac: torch.Tensor, sub: torch.Tensor | None = None
+    ) -> dict[int, torch.Tensor]:
+        """`sub`: optional view positions (0..V/2-1), both kVp; output order follows it."""
         out = {}
         for kvp, ch in ((KVP_LOW, 0), (KVP_HIGH, 1)):
             parts = []
-            p = self.line_integrals(frac, kvp)
+            p = self.line_integrals(frac, kvp, sub)
             for lo in range(0, p.shape[2], self.view_chunk):  # bounds the (E x rays) exp buffer
                 parts.append(
                     self.spectral.path_forward(p[:, :, lo : lo + self.view_chunk], (ch,))[:, 0]

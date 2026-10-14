@@ -60,3 +60,17 @@ def test_reproduces_kit_transmission():
         p = fanbeam_project(x[0], views=views)[None]
         got = fwd.spectral.path_forward(p, (0 if kvp == 50 else 1,))[0, 0].numpy()
         assert np.abs(got - ref).max() < 1e-5
+
+
+def test_view_subset_matches_full_and_loss_zero_on_truth(tables):
+    from ctsynth.aapm.physics_loss import projection_loss, stack_kvp
+
+    fwd = AapmFanbeamForward(tables, G, torch.float64)
+    x = torch.tensor(np.random.default_rng(3).random((1, 3, 16, 16)) / 3)
+    full, sub = fwd(x), torch.tensor([1, 4, 6])
+    part = fwd(x, sub)
+    for k in (50, 80):
+        assert torch.equal(part[k], full[k][:, sub])
+    ref = stack_kvp(full)
+    assert projection_loss(fwd, x, ref, sub).item() == 0.0
+    assert projection_loss(fwd, x * 0.9, ref, sub, log=True).item() > 0
