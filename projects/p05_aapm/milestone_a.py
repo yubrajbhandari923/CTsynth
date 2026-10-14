@@ -46,6 +46,13 @@ def feasibility(frac: torch.Tensor) -> torch.Tensor:
     return torch.relu(-frac).mean() + torch.relu(frac.sum(1) - 1).mean()
 
 
+def pred_tissue_std(t: np.ndarray, p: np.ndarray) -> float:
+    """Mean over cases of the spatial std of predicted adipose inside truth-tissue pixels (evaluation
+    only): ~0 means a uniform, anatomy-free output (collapse); truth itself has std ~0.5."""
+    tissue = np.abs(t.sum(1) - 1) <= 1e-3
+    return float(np.mean([p[c, 0][tissue[c]].std() for c in range(p.shape[0])]))
+
+
 @torch.no_grad()
 def evaluate(model, fwd, img, tr, tru, bs=2):
     model.eval()
@@ -59,6 +66,7 @@ def evaluate(model, fwd, img, tr, tru, bs=2):
     out = {
         "s1": s1_mean_rmse(t, p),
         "s2": s2_worst_roi_rmse(t, p),
+        "pred_adipose_std_in_tissue": pred_tissue_std(t, p),
         "boundary_rmse": boundary_rmse(t, p),
         "per_material": per_material_errors(t, p),
         "partition": partition_errors(t, p),
@@ -194,6 +202,7 @@ def main() -> int:
     res, pred = evaluate(model, fwd, img_va, T_va, tru_va)
     zero_mse = float((tru_va**2).mean())  # MSE of predicting nothing
     res["zero_pred_label_mse"], res["best_val_label_mse"] = zero_mse, min(hist["val_label_mse"])
+    res["collapsed_uniform"] = bool(res["pred_adipose_std_in_tissue"] < 0.05)
     res["collapsed_to_zero"] = bool(min(hist["val_label_mse"]) >= 0.99 * zero_mse)
     res.update(
         arm=a.arm,

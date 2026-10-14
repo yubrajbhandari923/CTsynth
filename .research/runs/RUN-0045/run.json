@@ -1,0 +1,59 @@
+{
+  "artifacts_offset": 0,
+  "author_model": null,
+  "author_name": "claude-code",
+  "author_type": "agent",
+  "backend": "slurm",
+  "command": "bash scripts/hpc_run_py.sh projects/p05_aapm/milestone_a.py --data /scratch/railabs/yb107/research-os/shared-data/aapm-dl-spectral-ct-zenodo-14262737 --split configs/aapm_split_v1.json --arm supervised --n-train 800 --n-val 100 --steps 6000 --batch 8 --depth 4 --width 32 --cosine --warmup 300 --lr 1e-3 --clip 1.0 --val-every 100 --seed 1",
+  "created_at": "2026-10-13T23:20:06-04:00",
+  "ended_at": null,
+  "env": {
+    "lockfiles": {
+      "uv.lock": "87debd45b1676f8b"
+    },
+    "user": "yubraj"
+  },
+  "exit_code": null,
+  "experiment_id": "EXP-022",
+  "git_branch": "master",
+  "git_commit": "1fdc014c149b67642ae3e1007d1741a545c36f6e",
+  "git_dirty": 0,
+  "hostname": "Yubraj-1407.local.dhe.duke.edu",
+  "id": "RUN-0045",
+  "label": null,
+  "metrics_offset": 0,
+  "notes": "submitted to duke over ssh",
+  "override_reason": null,
+  "parameters": {},
+  "pid": null,
+  "reviewed": 0,
+  "run_dir": ".research/runs/RUN-0045",
+  "slurm": {
+    "hpc": {
+      "bundle": ".research/hpc/bundles/EXP-022-RUN-0045.tar.gz",
+      "bundle_dir": ".research/hpc/bundles/EXP-022-RUN-0045",
+      "cluster": "duke",
+      "datasets": {},
+      "experiment_id": "EXP-022",
+      "receipt": "/home/yb107/research-os/projects/CTsynth/runs/RUN-0045/submission.json",
+      "remote_code": "/home/yb107/research-os/projects/CTsynth/code/EXP-022/RUN-0045",
+      "remote_results": "/home/yb107/research-os/projects/CTsynth/results/RUN-0045",
+      "remote_run_dir": "/home/yb107/research-os/projects/CTsynth/runs/RUN-0045",
+      "sha256": "272f715a4d88a81b569f5d875f1b9a4abf4d17f37280136761ebef8d511293c5",
+      "slurm_job_id": "201969",
+      "ssh_host": "plp-drcc-login2",
+      "state": "submitted",
+      "submitted_at": "2026-10-13T23:20:20-04:00",
+      "token": "fc23637a29f8b312d4bdd4dc998df2c1",
+      "upload_detail": "all 6 file(s) match",
+      "upload_verified": true
+    }
+  },
+  "slurm_job_id": "201969",
+  "started_at": null,
+  "status": "queued",
+  "stderr_path": ".research/runs/RUN-0045/stderr.log",
+  "stdout_path": ".research/runs/RUN-0045/stdout.log",
+  "updated_at": "2026-10-13T23:20:21-04:00",
+  "working_dir": "."
+}
