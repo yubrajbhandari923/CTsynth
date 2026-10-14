@@ -6,6 +6,8 @@ The OUTPUT PARAMETRISATION is a scientific choice (F-019), selected explicitly v
 * "softplus": nonnegative only. Nonnegativity alone does NOT remove the 3-from-2 ambiguity.
 * "softmax": nonnegative AND sum exactly 1 at EVERY pixel. This silently imposes the identifying
   constraint everywhere, which is WRONG for air pixels (~35% of the kit) and band pixels (~5%).
+* "occ_softmax": predicted occupancy sigmoid(z0) (one channel) times a 3-way softmax composition:
+  fractions >= 0, sum = occupancy in [0, 1] (support and composition are separate heads).
 * "softmax_with_air": 4-way softmax over [adipose, fibroglandular, calcification, air], the air
   channel dropped, so fractions are >= 0 and sum to <= 1 (a true air pixel is representable).
 
@@ -17,7 +19,7 @@ from __future__ import annotations
 import torch
 from torch import nn
 
-OUTPUTS = ("linear", "softplus", "softmax", "softmax_with_air")
+OUTPUTS = ("linear", "softplus", "softmax", "softmax_with_air", "occ_softmax")
 
 
 def _block(cin: int, cout: int) -> nn.Sequential:
@@ -43,7 +45,7 @@ class UNet(nn.Module):
             [nn.ConvTranspose2d(ws[i + 1], ws[i], 2, stride=2) for i in range(depth)]
         )
         self.dec = nn.ModuleList([_block(2 * ws[i], ws[i]) for i in range(depth)])
-        self.head = nn.Conv2d(width, 4 if output == "softmax_with_air" else 3, 1)
+        self.head = nn.Conv2d(width, 4 if output in ("softmax_with_air", "occ_softmax") else 3, 1)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         if x.shape[-1] % 2**self.depth or x.shape[-2] % 2**self.depth:
@@ -59,6 +61,8 @@ class UNet(nn.Module):
             return nn.functional.softplus(z)
         if self.output == "softmax":
             return torch.softmax(z, dim=1)
+        if self.output == "occ_softmax":
+            return torch.sigmoid(z[:, :1]) * torch.softmax(z[:, 1:], dim=1)
         if self.output == "softmax_with_air":
             return torch.softmax(z, dim=1)[:, :3]
         return z  # type: ignore[no-any-return]

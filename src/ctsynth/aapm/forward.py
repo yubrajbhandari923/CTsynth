@@ -22,9 +22,10 @@ class AapmFanbeamForward(nn.Module):
         geometry: GeometrySpec = REAL_GEOMETRY,
         dtype: torch.dtype = torch.float32,
         view_chunk: int = 32,
+        exp_clip: float | None = None,
     ) -> None:
         super().__init__()
-        self.geometry, self.view_chunk = geometry, view_chunk
+        self.geometry, self.view_chunk, self.exp_clip = geometry, view_chunk, exp_clip
         self.spectral = AapmTorchForward(tables, dtype=dtype)
 
     def line_integrals(
@@ -50,7 +51,9 @@ class AapmFanbeamForward(nn.Module):
             p = self.line_integrals(frac, kvp, sub)
             for lo in range(0, p.shape[2], self.view_chunk):  # bounds the (E x rays) exp buffer
                 parts.append(
-                    self.spectral.path_forward(p[:, :, lo : lo + self.view_chunk], (ch,))[:, 0]
+                    self.spectral.path_forward(
+                        p[:, :, lo : lo + self.view_chunk], (ch,), self.exp_clip
+                    )[:, 0]
                 )
             out[kvp] = torch.cat(parts, dim=1)
         return out

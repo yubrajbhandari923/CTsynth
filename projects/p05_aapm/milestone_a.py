@@ -42,6 +42,19 @@ def load(store: CaseStore, idx: list[int], dev: torch.device):
     return img.to(dev), tr.to(dev), tru.to(dev)
 
 
+def pred(model, x, tru, oracle):
+    """Model fractions; `oracle`: times the TRUE per-pixel sum S (upper-bound control only)."""
+    f = model(x)
+    return f * tru.sum(1, keepdim=True).clamp(0, 1) if oracle else f
+
+
+def partition_penalty(frac, img):
+    """Soft partition: (S-1)^2 on tissue, S^2 on air; regimes from the MEASURED images."""
+    air = (img < 0.1).all(1)
+    s = frac.sum(1)
+    return ((s - 1) ** 2)[~air].mean() + (s**2)[air].mean()
+
+
 def feasibility(frac: torch.Tensor) -> torch.Tensor:
     return torch.relu(-frac).mean() + torch.relu(frac.sum(1) - 1).mean()
 
@@ -54,11 +67,11 @@ def pred_tissue_std(t: np.ndarray, p: np.ndarray) -> float:
 
 
 @torch.no_grad()
-def evaluate(model, fwd, img, tr, tru, bs=2):
+def evaluate(model, fwd, img, tr, tru, bs=2, oracle=False):
     model.eval()
     preds, pe = [], []
     for s in range(0, img.shape[0], bs):
-        f = model(img[s : s + bs])
+        f = pred(model, img[s : s + bs], tru[s : s + bs], oracle)
         preds.append(f.cpu())
         pe.append(((stack_kvp(fwd(f)) - tr[s : s + bs]) ** 2).mean(dim=(1, 2, 3)).cpu())
     p, t = torch.cat(preds).numpy().astype(np.float64), tru.cpu().numpy().astype(np.float64)
@@ -91,7 +104,14 @@ def main() -> int:
     ap.add_argument("--views", type=int, default=32, help="view positions per step (stochastic)")
     ap.add_argument("--lr", type=float, default=1e-3)
     ap.add_argument("--w-feas", type=float, default=1.0)
-    ap.add_argument("--output", default="softplus", choices=["linear", "softplus"])
+    ap.add_argument(
+        "--output",
+        default="softplus",
+        choices=["linear", "softplus", "softmax", "occ_softmax"],
+    )
+    ap.add_argument("--oracle-occ", action="store_true", help="UPPER-BOUND CONTROL: x truth sum S")
+    ap.add_argument("--w-partition", type=float, default=0.0, help="soft partition penalty weight")
+    ap.add_argument("--exp-clip", type=float, default=None, help="guard for negative fractions")
     ap.add_argument("--width", type=int, default=8)
     ap.add_argument("--depth", type=int, default=2)
     ap.add_argument("--val-every", type=int, default=25)
@@ -114,7 +134,7 @@ def main() -> int:
         tr_idx, va_idx = sp["train"][: a.n_train], sp["val"][: a.n_val]
     img_tr, T_tr, tru_tr = load(store, tr_idx, dev)
     img_va, T_va, tru_va = load(store, va_idx, dev)
-    fwd = AapmFanbeamForward(tables).to(dev)
+    fwd = AapmFanbeamForward(tables, exp_clip=a.exp_clip).to(dev)
     model = UNet(depth=a.depth, width=a.width, output=a.output).to(dev)
     opt = torch.optim.Adam(model.parameters(), lr=a.lr)
 
@@ -139,7 +159,7 @@ def main() -> int:
     for step in range(1, a.steps + 1):
         model.train()
         ix = torch.randperm(img_tr.shape[0], generator=gen)[: a.batch].to(dev)
-        frac = model(img_tr[ix])
+        frac = pred(model, img_tr[ix], tru_tr[ix], a.oracle_occ)
         if a.arm == "supervised":
             loss = ((frac - tru_tr[ix]) ** 2).mean()
         else:
@@ -147,6 +167,8 @@ def main() -> int:
             loss = projection_loss(fwd, frac, T_tr[ix], sub)
             if a.arm == "physics_feas":
                 loss = loss + a.w_feas * feasibility(frac)
+            if a.w_partition:
+                loss = loss + a.w_partition * partition_penalty(frac, img_tr[ix])
         opt.zero_grad()
         loss.backward()
         gn = float(
@@ -165,7 +187,12 @@ def main() -> int:
         if step % a.val_every == 0 or step == a.steps:
             model.eval()
             with torch.no_grad():
-                fv = torch.cat([model(img_va[s : s + 2]) for s in range(0, img_va.shape[0], 2)])
+                fv = torch.cat(
+                    [
+                        pred(model, img_va[s : s + 2], tru_va[s : s + 2], a.oracle_occ)
+                        for s in range(0, img_va.shape[0], 2)
+                    ]
+                )
                 vp = float(
                     np.mean(
                         [
@@ -199,12 +226,13 @@ def main() -> int:
         if dev.type == "cuda"
         else resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
     )
-    res, pred = evaluate(model, fwd, img_va, T_va, tru_va)
+    res, pred_va = evaluate(model, fwd, img_va, T_va, tru_va, oracle=a.oracle_occ)
     zero_mse = float((tru_va**2).mean())  # MSE of predicting nothing
     res["zero_pred_label_mse"], res["best_val_label_mse"] = zero_mse, min(hist["val_label_mse"])
     res["collapsed_uniform"] = bool(res["pred_adipose_std_in_tissue"] < 0.05)
     res["collapsed_to_zero"] = bool(min(hist["val_label_mse"]) >= 0.99 * zero_mse)
     res.update(
+        oracle_occupancy=a.oracle_occ,
         arm=a.arm,
         steps=a.steps,
         selection="val label MSE" if a.arm == "supervised" else "val projection loss",
@@ -220,9 +248,9 @@ def main() -> int:
     (run / "history.json").write_text(json.dumps(hist))
     torch.save(model.state_dict(), run / "checkpoint.pt")
     np.savez_compressed(
-        run / "val_pred.npz", pred=pred.astype(np.float32), truth=tru_va.cpu().numpy()
+        run / "val_pred.npz", pred=pred_va.astype(np.float32), truth=tru_va.cpu().numpy()
     )
-    figures(run, model, fwd, img_va, T_va, tru_va, hist)
+    figures(run, model, fwd, img_va, T_va, tru_va, hist, a.oracle_occ)
     arts = [
         "results.json",
         "history.json",
@@ -252,7 +280,7 @@ def main() -> int:
     return 0
 
 
-def figures(run, model, fwd, img, T, tru, hist):
+def figures(run, model, fwd, img, T, tru, hist, oracle=False):
     import matplotlib
 
     matplotlib.use("Agg")
@@ -260,7 +288,7 @@ def figures(run, model, fwd, img, T, tru, hist):
 
     model.eval()
     with torch.no_grad():
-        f = model(img[:1])
+        f = pred(model, img[:1], tru[:1], oracle)
         tp = stack_kvp(fwd(f))[0].cpu().numpy()
     f, t0, im, tt = (
         f[0].cpu().numpy(),

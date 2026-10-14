@@ -8,7 +8,7 @@ def x():
     return torch.randn(2, 2, 8, 8, generator=torch.Generator().manual_seed(0))
 
 
-@pytest.mark.parametrize("output", ["linear", "softplus", "softmax", "softmax_with_air"])
+@pytest.mark.parametrize("output", ["linear", "softplus", "softmax", "softmax_with_air", "occ_softmax"])
 def test_shape_and_params(output):
     m = UNet(2, 4, output)
     assert m(x()).shape == (2, 3, 8, 8)
@@ -43,3 +43,11 @@ def test_bad_args():
         UNet(output="relu")
     with pytest.raises(ValueError):
         UNet(2, 4)(torch.zeros(1, 2, 6, 6))
+
+
+def test_occ_softmax_sum_is_occupancy_in_unit_interval():
+    import torch
+
+    f = UNet(2, 4, "occ_softmax")(torch.randn(2, 2, 16, 16))
+    s = f.sum(1)
+    assert f.shape == (2, 3, 16, 16) and (f >= 0).all() and (s > 0).all() and (s < 1).all()

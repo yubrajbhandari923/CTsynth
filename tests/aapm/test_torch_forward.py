@@ -50,3 +50,12 @@ def test_gradcheck_both_modes(fwd):
 def test_transmission_range(fwd):
     t = fwd.path_forward(torch.zeros(1, 3, 2, dtype=torch.float64))
     torch.testing.assert_close(t, torch.ones_like(t), rtol=1e-4, atol=1e-4)  # sum 0.5 s = 1 (1e-4)
+
+
+def test_exp_clip_prevents_overflow_for_negative_paths(tables):
+    fwd = AapmTorchForward(tables, torch.float32)
+    p = torch.full((1, 3, 2), -5.0)
+    assert not torch.isfinite(fwd.path_forward(p)).all()
+    assert torch.isfinite(fwd.path_forward(p, exp_clip=20.0)).all()
+    ok = torch.rand(1, 3, 2)
+    assert torch.equal(fwd.path_forward(ok), fwd.path_forward(ok, exp_clip=1e9))

@@ -22,6 +22,10 @@ from torch import nn
 from ctsynth.aapm.schema import KVPS, ModelTable
 
 
+def _cl(x: torch.Tensor, hi: float | None) -> torch.Tensor:
+    return x if hi is None else x.clamp(min=-hi)
+
+
 class AapmTorchForward(nn.Module):
     """Holds the tables as buffers; float64-capable and autograd-clean."""
 
@@ -38,14 +42,25 @@ class AapmTorchForward(nn.Module):
         """(N,3,H,W) fractions -> (N,2,H,W) attenuation images [cm^-1]."""
         return torch.einsum("km,nm...->nk...", self.A.to(frac.dtype), frac)
 
-    def path_forward(self, paths: torch.Tensor, channels: tuple[int, ...] = (0, 1)) -> torch.Tensor:
-        """(N,3,...) line integrals [cm] -> (N,len(channels),...) transmission in (0,1]."""
+    def path_forward(
+        self,
+        paths: torch.Tensor,
+        channels: tuple[int, ...] = (0, 1),
+        exp_clip: float | None = None,
+    ) -> torch.Tensor:
+        """(N,3,...) line integrals [cm] -> (N,len(channels),...) transmission in (0,1].
+
+        `exp_clip`: clamp mu.P at >= -exp_clip so exp(-mu.P) cannot overflow (a numerical guard
+        only for outputs that can be negative; zero gradient beyond it). None = exact (default).
+        """
         n = paths.shape[0]
         flat = paths.reshape(n, 3, -1)
         out = []
         for i in channels:
             mu, w = getattr(self, f"mu{i}").to(paths.dtype), getattr(self, f"w{i}").to(paths.dtype)
             out.append(
-                torch.einsum("e,ner->nr", w, torch.exp(-torch.einsum("me,nmr->ner", mu, flat)))
+                torch.einsum(
+                    "e,ner->nr", w, torch.exp(-_cl(torch.einsum("me,nmr->ner", mu, flat), exp_clip))
+                )
             )
         return torch.stack(out, dim=1).reshape(n, len(out), *paths.shape[2:])
