@@ -8,7 +8,9 @@ def x():
     return torch.randn(2, 2, 8, 8, generator=torch.Generator().manual_seed(0))
 
 
-@pytest.mark.parametrize("output", ["linear", "softplus", "softmax", "softmax_with_air", "occ_softmax"])
+@pytest.mark.parametrize(
+    "output", ["linear", "softplus", "softmax", "softmax_with_air", "occ_softmax"]
+)
 def test_shape_and_params(output):
     m = UNet(2, 4, output)
     assert m(x()).shape == (2, 3, 8, 8)
