@@ -47,7 +47,7 @@ def feasibility(frac: torch.Tensor) -> torch.Tensor:
 
 
 def pred_tissue_std(t: np.ndarray, p: np.ndarray) -> float:
-    """Mean over cases of the spatial std of predicted adipose inside truth-tissue pixels (evaluation
+    """Mean over cases of the spatial std of predicted adipose in truth-tissue pixels (evaluation
     only): ~0 means a uniform, anatomy-free output (collapse); truth itself has std ~0.5."""
     tissue = np.abs(t.sum(1) - 1) <= 1e-3
     return float(np.mean([p[c, 0][tissue[c]].std() for c in range(p.shape[0])]))
