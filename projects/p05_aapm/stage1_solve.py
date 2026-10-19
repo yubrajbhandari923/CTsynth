@@ -176,7 +176,7 @@ def main() -> int:
         if kind == "null":
             f0 = tru + AMP * vec(nx)
         elif kind in pat:
-            f0 = tru + AMP * pat[kind][:, None] * vec([1.0, -1.0, 0.0])
+            f0 = tru + AMP * pat[kind][None, None] * vec([1.0, -1.0, 0.0])
         else:
             f0 = torch.stack([a0, 1 - a0, torch.zeros_like(a0)], 1)
         return f0 * m_img[:, None]
