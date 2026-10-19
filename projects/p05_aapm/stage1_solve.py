@@ -193,12 +193,21 @@ def main() -> int:
             full_err = torch.zeros_like(a_true)
             full_err[tis] = err_a
             bands = error_bands(full_err, tis)
+            # amendment 4 (post-hoc, review of F-045): same band metric on a clipped to [0,1], and
+            # away from lesions (truth calcification dilated by 5 px), to separate excursions
+            ac = (f[:, 0] / f.sum(1).clamp_min(1e-8)).clamp(0, 1) - a_true
+            near = torch.nn.functional.max_pool2d((tru[:, 2:3] > 1e-3).float(), 11, 1, 5)[:, 0] > 0
+            far = tis & ~near
+            bands_clip = error_bands(torch.where(tis, ac, torch.zeros_like(ac)), tis)
+            bands_far = error_bands(torch.where(far, ac, torch.zeros_like(ac)), far)
             e_t = e[:, tis[0]].double().cpu().numpy()
             out = {
                 "s1_unclipped": s1_mean_rmse(tru.cpu().numpy(), f.cpu().numpy()),
                 "s1_clipped": s1_mean_rmse(tru.cpu().numpy(), fc.cpu().numpy()),
                 "mse_data": data_mse(fwd, f, T),
                 "band_rms_adipose": bands,
+                "band_rms_adipose_clipped": bands_clip,
+                "band_rms_adipose_clipped_away_from_lesions": bands_far,
                 "adipose_err_mean_tissue": float(err_a.mean()),
                 "swap_coord_mean": float((sw @ e_t).mean()),
                 "null_coord_mean": float((nx @ e_t).mean()),
