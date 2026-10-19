@@ -66,6 +66,14 @@ class FullMSE(torch.autograd.Function):
                 loss = ((pred - T[:, :, sub]) ** 2).sum() / T.numel()
                 loss.backward()
                 total += float(loss.detach())
+                if not np.isfinite(total):  # EXP-036 amendment 3: name the first non-finite call
+                    f = build(xd).detach()
+                    raise FloatingPointError(
+                        f"non-finite loss at chunk {c}: x[{x.min():.3g},{x.max():.3g}] "
+                        f"frac[{f.min():.3g},{f.max():.3g}] pred_nonfinite="
+                        f"{int((~torch.isfinite(pred)).sum())}/{pred.numel()} "
+                        f"grad_nonfinite={int((~torch.isfinite(xd.grad)).sum())}"
+                    )
             if extra is not None:
                 pen = extra(build(xd))
                 pen.backward()
