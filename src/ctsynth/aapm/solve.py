@@ -15,6 +15,15 @@ from typing import Any
 
 import torch
 
+from ctsynth.aapm.schema import ModelTable
+
+
+def drop_zero_weight(table: ModelTable) -> ModelTable:
+    """Remove energies with spectrum == 0: they add exactly 0 to the model, but exp(+mu.P) of a
+    negative path can overflow there (mu ~1e3 cm^-1 at 1-3 keV) and 0*inf = NaN."""
+    k = table.spectrum > 0
+    return ModelTable(table.kvp, table.energies_kev[k], table.spectrum[k], table.mu_per_cm[:, k])
+
 
 def to_fractions(x: torch.Tensor, mask: torch.Tensor, arm: str) -> torch.Tensor:
     """Material fractions (N,3,H,W) from parameters x (N,k,H,W); zero outside `mask` (N,H,W)."""

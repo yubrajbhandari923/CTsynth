@@ -26,7 +26,7 @@ from ctsynth.aapm.forward import AapmFanbeamForward
 from ctsynth.aapm.loader import CaseStore
 from ctsynth.aapm.metrics import s1_mean_rmse
 from ctsynth.aapm.physics_loss import stack_kvp
-from ctsynth.aapm.solve import error_bands, minimize, to_fractions
+from ctsynth.aapm.solve import drop_zero_weight, error_bands, minimize, to_fractions
 
 SC = 1e6  # loss scale: keeps L-BFGS curvature pairs away from float32 underflow
 NCH = 8  # view chunks per evaluation (32 views each): bounds memory like training
@@ -106,7 +106,10 @@ def main() -> int:
     a = ap.parse_args()
     dev = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     tab = Path(__file__).resolve().parents[2] / "data/aapm_kit_sample"
-    tables = {k: S.load_model_table(tab / f"model_data_{k}kVp.npy", k) for k in S.KVPS}
+    # amendment 3: drop zero-weight energies (exact; stops 0*inf=NaN on negative paths)
+    tables = {
+        k: drop_zero_weight(S.load_model_table(tab / f"model_data_{k}kVp.npy", k)) for k in S.KVPS
+    }
     store = CaseStore(a.data / "files")
     val = json.loads(a.split.read_text())["val"][:100]
     counts = sorted((int((store[i].phantom[2] > 1e-3).sum()), i) for i in val)
