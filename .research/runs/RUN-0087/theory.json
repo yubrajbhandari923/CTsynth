@@ -1,0 +1,1257 @@
+{
+ "N_total_photons_per_ray": 200000.0,
+ "cases": {
+  "L=2.0cm|adipose-rich(0.8/0.2/0)|SECT-80": {
+   "n_meas": 1,
+   "svals_reduced_J": [
+    1.8176354478300805
+   ],
+   "cond_reduced": null,
+   "fisher_eig_reduced": [
+    0.0,
+    423391.9244123476
+   ],
+   "fisher_eig_unconstrained3": [
+    -1.5082324087868587e-11,
+    1.3263334684322664e-11,
+    306986.1743299062
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 1,
+   "crb_std_t_cm": Infinity,
+   "crb_std_adipose_fraction": Infinity
+  },
+  "L=2.0cm|adipose-rich(0.8/0.2/0)|SECT-50": {
+   "n_meas": 1,
+   "svals_reduced_J": [
+    3.553600836843692
+   ],
+   "cond_reduced": null,
+   "fisher_eig_reduced": [
+    0.0,
+    1465202.8629047782
+   ],
+   "fisher_eig_unconstrained3": [
+    0.0,
+    1.1641532182693481e-10,
+    924481.5519597747
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 1,
+   "crb_std_t_cm": Infinity,
+   "crb_std_adipose_fraction": Infinity
+  },
+  "L=2.0cm|adipose-rich(0.8/0.2/0)|DECT": {
+   "n_meas": 2,
+   "svals_reduced_J": [
+    3.991474508797551,
+    0.0029621687982036194
+   ],
+   "cond_reduced": 1347.4838136226892,
+   "fisher_eig_reduced": [
+    0.550309830752667,
+    944296.8433487322
+   ],
+   "fisher_eig_unconstrained3": [
+    -6.184564283629052e-11,
+    542.5289324203978,
+    615191.33421242
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 2,
+   "crb_std_t_cm": 1.3479649378266625,
+   "crb_std_adipose_fraction": 0.47657757416946794
+  },
+  "L=2.0cm|adipose-rich(0.8/0.2/0)|PCCT-2": {
+   "n_meas": 2,
+   "svals_reduced_J": [
+    3.0921553748630997,
+    0.004687781746161274
+   ],
+   "cond_reduced": 659.6201662748487,
+   "fisher_eig_reduced": [
+    1.5089867168862838,
+    567068.5394176885
+   ],
+   "fisher_eig_unconstrained3": [
+    -2.060044767407967e-11,
+    1401.1972114219718,
+    384261.1741901202
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 2,
+   "crb_std_t_cm": 0.8140247899783258,
+   "crb_std_adipose_fraction": 0.2878012245238147
+  },
+  "L=2.0cm|adipose-rich(0.8/0.2/0)|PCCT-4": {
+   "n_meas": 4,
+   "svals_reduced_J": [
+    4.80731544698037,
+    0.007973712202383949
+   ],
+   "cond_reduced": 602.8955303331738,
+   "fisher_eig_reduced": [
+    2.1231439325783867,
+    660046.274505748
+   ],
+   "fisher_eig_unconstrained3": [
+    0.0010235029236920913,
+    2077.8013296088548,
+    434206.6196148876
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 0.6862655558125528,
+   "crb_std_adipose_fraction": 0.24263151410490558
+  },
+  "L=2.0cm|adipose-rich(0.8/0.2/0)|PCCT-8": {
+   "n_meas": 8,
+   "svals_reduced_J": [
+    7.332082306597223,
+    0.012373833313467855
+   ],
+   "cond_reduced": 592.5473635253257,
+   "fisher_eig_reduced": [
+    2.454925337980967,
+    719806.5449005561
+   ],
+   "fisher_eig_unconstrained3": [
+    0.0015730164734952467,
+    2450.1984792160774,
+    466247.59453650983
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 0.6382099581932541,
+   "crb_std_adipose_fraction": 0.22564129462961646
+  },
+  "L=2.0cm|adipose-rich(0.8/0.2/0)|PCCT-32": {
+   "n_meas": 32,
+   "svals_reduced_J": [
+    15.689654618672424,
+    0.026017207744065223
+   ],
+   "cond_reduced": 603.0491347501112,
+   "fisher_eig_reduced": [
+    2.628365552285686,
+    768122.8888336872
+   ],
+   "fisher_eig_unconstrained3": [
+    0.006254951376143482,
+    2705.6343434658506,
+    492286.8778389758
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 0.6167942393573573,
+   "crb_std_adipose_fraction": 0.21806969462319292
+  },
+  "L=2.0cm|mixed(0.5/0.5/0)|SECT-80": {
+   "n_meas": 1,
+   "svals_reduced_J": [
+    1.8017898946273674
+   ],
+   "cond_reduced": null,
+   "fisher_eig_reduced": [
+    1.4551915228366852e-11,
+    409399.1701559038
+   ],
+   "fisher_eig_unconstrained3": [
+    2.6815596817572323e-13,
+    5.884899964706406e-11,
+    297587.7807579867
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 1,
+   "crb_std_t_cm": Infinity,
+   "crb_std_adipose_fraction": Infinity
+  },
+  "L=2.0cm|mixed(0.5/0.5/0)|SECT-50": {
+   "n_meas": 1,
+   "svals_reduced_J": [
+    3.5252481000902436
+   ],
+   "cond_reduced": null,
+   "fisher_eig_reduced": [
+    -5.820766091346741e-11,
+    1404970.5369959227
+   ],
+   "fisher_eig_unconstrained3": [
+    -1.077189990555299e-11,
+    1.0771899905552959e-11,
+    887558.6590408357
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 1,
+   "crb_std_t_cm": Infinity,
+   "crb_std_adipose_fraction": Infinity
+  },
+  "L=2.0cm|mixed(0.5/0.5/0)|DECT": {
+   "n_meas": 2,
+   "svals_reduced_J": [
+    3.959016569483925,
+    0.002965488646386525
+   ],
+   "cond_reduced": 1335.0300883154696,
+   "fisher_eig_reduced": [
+    0.5415494937915355,
+    907184.3120264194
+   ],
+   "fisher_eig_unconstrained3": [
+    1.1368336497502723e-13,
+    532.5304956967599,
+    592040.6894037146
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 2,
+   "crb_std_t_cm": 1.358823564441394,
+   "crb_std_adipose_fraction": 0.48041667842629265
+  },
+  "L=2.0cm|mixed(0.5/0.5/0)|PCCT-2": {
+   "n_meas": 2,
+   "svals_reduced_J": [
+    3.072298889256651,
+    0.004673462091924956
+   ],
+   "cond_reduced": 657.3924916530561,
+   "fisher_eig_reduced": [
+    1.482080788060557,
+    547950.0611017738
+   ],
+   "fisher_eig_unconstrained3": [
+    3.4942537191550522e-12,
+    1372.6898029608938,
+    372090.6343345895
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 2,
+   "crb_std_t_cm": 0.8213803182359032,
+   "crb_std_adipose_fraction": 0.29040179647888575
+  },
+  "L=2.0cm|mixed(0.5/0.5/0)|PCCT-4": {
+   "n_meas": 4,
+   "svals_reduced_J": [
+    4.785267124896312,
+    0.007953900665814336
+   ],
+   "cond_reduced": 601.6252057890626,
+   "fisher_eig_reduced": [
+    2.0831364672631025,
+    637109.4644729705
+   ],
+   "fisher_eig_unconstrained3": [
+    0.0009957239593173495,
+    2033.1376380961083,
+    419975.95278028806
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 0.6928240586381109,
+   "crb_std_adipose_fraction": 0.24495029501609722
+  },
+  "L=2.0cm|mixed(0.5/0.5/0)|PCCT-8": {
+   "n_meas": 8,
+   "svals_reduced_J": [
+    7.30847154567856,
+    0.012352647493660409
+   ],
+   "cond_reduced": 591.6522388766775,
+   "fisher_eig_reduced": [
+    2.406349993631011,
+    693966.9676538762
+   ],
+   "fisher_eig_unconstrained3": [
+    0.0015258071758417382,
+    2394.6480347028046,
+    450453.58144783234
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 0.644619182517051,
+   "crb_std_adipose_fraction": 0.22790729762036774
+  },
+  "L=2.0cm|mixed(0.5/0.5/0)|PCCT-32": {
+   "n_meas": 32,
+   "svals_reduced_J": [
+    15.668555525090927,
+    0.025994592169814482
+   ],
+   "cond_reduced": 602.7621215494819,
+   "fisher_eig_reduced": [
+    2.5740871159359813,
+    739427.0702658475
+   ],
+   "fisher_eig_unconstrained3": [
+    0.006011919844630658,
+    2640.4590847020536,
+    474949.49046408094
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 0.6232631782928073,
+   "crb_std_adipose_fraction": 0.22035680991736212
+  },
+  "L=2.0cm|fibro-rich(0.2/0.8/0)|SECT-80": {
+   "n_meas": 1,
+   "svals_reduced_J": [
+    1.786399630400656
+   ],
+   "cond_reduced": null,
+   "fisher_eig_reduced": [
+    -1.4551915228366852e-11,
+    396044.8880144834
+   ],
+   "fisher_eig_unconstrained3": [
+    0.0,
+    0.0,
+    288596.48236291145
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 1,
+   "crb_std_t_cm": Infinity,
+   "crb_std_adipose_fraction": Infinity
+  },
+  "L=2.0cm|fibro-rich(0.2/0.8/0)|SECT-50": {
+   "n_meas": 1,
+   "svals_reduced_J": [
+    3.4977322155245734
+   ],
+   "cond_reduced": null,
+   "fisher_eig_reduced": [
+    0.0,
+    1347901.8737977333
+   ],
+   "fisher_eig_unconstrained3": [
+    -1.0377434801979907e-11,
+    1.1286929503752802e-11,
+    852530.561392431
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 1,
+   "crb_std_t_cm": Infinity,
+   "crb_std_adipose_fraction": Infinity
+  },
+  "L=2.0cm|fibro-rich(0.2/0.8/0)|DECT": {
+   "n_meas": 2,
+   "svals_reduced_J": [
+    3.9275113592903192,
+    0.0029687808190415493
+   ],
+   "cond_reduced": 1322.9374610949856,
+   "fisher_eig_reduced": [
+    0.5329672851657961,
+    871972.8479388233
+   ],
+   "fisher_eig_unconstrained3": [
+    -6.457412768739945e-11,
+    522.7729585584934,
+    570040.7489191124
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 2,
+   "crb_std_t_cm": 1.3697199677640552,
+   "crb_std_adipose_fraction": 0.48426913876629135
+  },
+  "L=2.0cm|fibro-rich(0.2/0.8/0)|PCCT-2": {
+   "n_meas": 2,
+   "svals_reduced_J": [
+    3.0530236194210136,
+    0.0046593800292671515
+   ],
+   "cond_reduced": 655.2424572033046,
+   "fisher_eig_reduced": [
+    1.4557424843660556,
+    529708.3130120574
+   ],
+   "fisher_eig_unconstrained3": [
+    -1.67489562619914e-11,
+    1344.8822820788384,
+    360456.4428822465
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 2,
+   "crb_std_t_cm": 0.8287772953379856,
+   "crb_std_adipose_fraction": 0.2930170228134678
+  },
+  "L=2.0cm|fibro-rich(0.2/0.8/0)|PCCT-4": {
+   "n_meas": 4,
+   "svals_reduced_J": [
+    4.763881193477631,
+    0.007934494703058168
+   ],
+   "cond_reduced": 600.4013326319952,
+   "fisher_eig_reduced": [
+    2.044022334361216,
+    615243.8090667082
+   ],
+   "fisher_eig_unconstrained3": [
+    0.0009688628031080646,
+    1989.6220059563784,
+    406386.82844516484
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 0.6994213803688686,
+   "crb_std_adipose_fraction": 0.24728280048284126
+  },
+  "L=2.0cm|fibro-rich(0.2/0.8/0)|PCCT-8": {
+   "n_meas": 8,
+   "svals_reduced_J": [
+    7.285572589306295,
+    0.012331984915731696
+   ],
+   "cond_reduced": 590.786693228291,
+   "fisher_eig_reduced": [
+    2.3589149241743144,
+    669365.3905747622
+   ],
+   "fisher_eig_unconstrained3": [
+    0.0014803897464612421,
+    2340.5996905230454,
+    435391.2373361291
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 0.6510680515364892,
+   "crb_std_adipose_fraction": 0.23018731712768203
+  },
+  "L=2.0cm|fibro-rich(0.2/0.8/0)|PCCT-32": {
+   "n_meas": 32,
+   "svals_reduced_J": [
+    15.648083273444389,
+    0.025972612651679886
+   ],
+   "cond_reduced": 602.4839889348707,
+   "fisher_eig_reduced": [
+    2.521160406206036,
+    712161.3642146841
+   ],
+   "fisher_eig_unconstrained3": [
+    0.005778470681088686,
+    2577.1785706425535,
+    458447.7292894798
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 0.6297711327594747,
+   "crb_std_adipose_fraction": 0.222657719284879
+  },
+  "L=6.0cm|adipose-rich(0.8/0.2/0)|SECT-80": {
+   "n_meas": 1,
+   "svals_reduced_J": [
+    1.5741412429733617
+   ],
+   "cond_reduced": null,
+   "fisher_eig_reduced": [
+    0.0,
+    133472.15160995873
+   ],
+   "fisher_eig_unconstrained3": [
+    -1.4630912598575384e-11,
+    9.884920719813602e-13,
+    101124.73289489627
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 1,
+   "crb_std_t_cm": Infinity,
+   "crb_std_adipose_fraction": Infinity
+  },
+  "L=6.0cm|adipose-rich(0.8/0.2/0)|SECT-50": {
+   "n_meas": 1,
+   "svals_reduced_J": [
+    3.144501040793711
+   ],
+   "cond_reduced": null,
+   "fisher_eig_reduced": [
+    0.0,
+    400789.6380747416
+   ],
+   "fisher_eig_unconstrained3": [
+    -8.295402361658403e-13,
+    3.0842865394672117e-11,
+    257908.6489667986
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 1,
+   "crb_std_t_cm": Infinity,
+   "crb_std_adipose_fraction": Infinity
+  },
+  "L=6.0cm|adipose-rich(0.8/0.2/0)|DECT": {
+   "n_meas": 2,
+   "svals_reduced_J": [
+    3.5165036826873535,
+    0.0030492669166530227
+   ],
+   "cond_reduced": 1153.2292117435181,
+   "fisher_eig_reduced": [
+    0.23493383813183755,
+    267130.659908512
+   ],
+   "fisher_eig_unconstrained3": [
+    -1.2221449454094038e-12,
+    221.9703735396529,
+    179294.7205573076
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 2,
+   "crb_std_t_cm": 2.06304145716674,
+   "crb_std_adipose_fraction": 0.24313176737192968
+  },
+  "L=6.0cm|adipose-rich(0.8/0.2/0)|PCCT-2": {
+   "n_meas": 2,
+   "svals_reduced_J": [
+    2.802625087961665,
+    0.004466430849766141
+   ],
+   "cond_reduced": 627.4865059443176,
+   "fisher_eig_reduced": [
+    0.6164428571719327,
+    176986.36246335984
+   ],
+   "fisher_eig_unconstrained3": [
+    -5.281109453262294e-12,
+    547.6933321075699,
+    124437.41454292933
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 2,
+   "crb_std_t_cm": 1.2735968499852632,
+   "crb_std_adipose_fraction": 0.15009482818706762
+  },
+  "L=6.0cm|adipose-rich(0.8/0.2/0)|PCCT-4": {
+   "n_meas": 4,
+   "svals_reduced_J": [
+    4.4936318513724895,
+    0.00767620516568072
+   ],
+   "cond_reduced": 585.3975700731545,
+   "fisher_eig_reduced": [
+    0.8500399575859774,
+    202376.5333285586
+   ],
+   "fisher_eig_unconstrained3": [
+    0.00035407899378679425,
+    793.6674265605515,
+    138029.37776255418
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 1.0845771370453738,
+   "crb_std_adipose_fraction": 0.1278186413874459
+  },
+  "L=6.0cm|adipose-rich(0.8/0.2/0)|PCCT-8": {
+   "n_meas": 8,
+   "svals_reduced_J": [
+    6.997876520450099,
+    0.012064646516604051
+   ],
+   "cond_reduced": 580.0316246994244,
+   "fisher_eig_reduced": [
+    0.9659160700975917,
+    216599.9744726115
+   ],
+   "fisher_eig_unconstrained3": [
+    0.0005221557185872298,
+    916.157501928199,
+    145623.02351653064
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 1.0174456453979193,
+   "crb_std_adipose_fraction": 0.11990711922493201
+  },
+  "L=6.0cm|adipose-rich(0.8/0.2/0)|PCCT-32": {
+   "n_meas": 32,
+   "svals_reduced_J": [
+    15.40366527856165,
+    0.025710042049227253
+   ],
+   "cond_reduced": 599.1303028236248,
+   "fisher_eig_reduced": [
+    1.020141560897173,
+    226192.43365743035
+   ],
+   "fisher_eig_unconstrained3": [
+    0.0017044623836966091,
+    988.9660178021816,
+    150774.8153926437
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 0.9900362757732548,
+   "crb_std_adipose_fraction": 0.11667689403665721
+  },
+  "L=6.0cm|mixed(0.5/0.5/0)|SECT-80": {
+   "n_meas": 1,
+   "svals_reduced_J": [
+    1.5449916089168523
+   ],
+   "cond_reduced": null,
+   "fisher_eig_reduced": [
+    0.0,
+    123040.75199576379
+   ],
+   "fisher_eig_unconstrained3": [
+    -1.525215427262699e-11,
+    1.6097337460329528e-12,
+    93797.90532922737
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 1,
+   "crb_std_t_cm": Infinity,
+   "crb_std_adipose_fraction": Infinity
+  },
+  "L=6.0cm|mixed(0.5/0.5/0)|SECT-50": {
+   "n_meas": 1,
+   "svals_reduced_J": [
+    3.0922286526896805
+   ],
+   "cond_reduced": null,
+   "fisher_eig_reduced": [
+    1.4551915228366852e-11,
+    361158.81035842234
+   ],
+   "fisher_eig_unconstrained3": [
+    -4.9925835796888125e-12,
+    6.811572983234636e-12,
+    233078.36917605018
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 1,
+   "crb_std_t_cm": Infinity,
+   "crb_std_adipose_fraction": Infinity
+  },
+  "L=6.0cm|mixed(0.5/0.5/0)|DECT": {
+   "n_meas": 2,
+   "svals_reduced_J": [
+    3.4567134341001875,
+    0.003057229107577478
+   ],
+   "cond_reduced": 1130.668756728951,
+   "fisher_eig_reduced": [
+    0.22453315640450455,
+    242099.5566439367
+   ],
+   "fisher_eig_unconstrained3": [
+    2.4613186102200223e-11,
+    210.84815748589807,
+    163227.28909515293
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 2,
+   "crb_std_t_cm": 2.110280906413174,
+   "crb_std_adipose_fraction": 0.2486989898555415
+  },
+  "L=6.0cm|mixed(0.5/0.5/0)|PCCT-2": {
+   "n_meas": 2,
+   "svals_reduced_J": [
+    2.7660206521403703,
+    0.004434232801054692
+   ],
+   "cond_reduced": 623.7878740787959,
+   "fisher_eig_reduced": [
+    0.5855918049128377,
+    162757.22381499916
+   ],
+   "fisher_eig_unconstrained3": [
+    -8.574934136743392e-13,
+    516.9423792157551,
+    115063.19046425566
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 2,
+   "crb_std_t_cm": 1.3067141444560628,
+   "crb_std_adipose_fraction": 0.15399773876954329
+  },
+  "L=6.0cm|mixed(0.5/0.5/0)|PCCT-4": {
+   "n_meas": 4,
+   "svals_reduced_J": [
+    4.453350364866873,
+    0.007634237789390012
+   ],
+   "cond_reduced": 583.339226223225,
+   "fisher_eig_reduced": [
+    0.8053878138525761,
+    185579.47956287104
+   ],
+   "fisher_eig_unconstrained3": [
+    0.00032877078293821414,
+    746.7545888814024,
+    127274.00222016485
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 1.1142362978209068,
+   "crb_std_adipose_fraction": 0.13131400700555945
+  },
+  "L=6.0cm|mixed(0.5/0.5/0)|PCCT-8": {
+   "n_meas": 8,
+   "svals_reduced_J": [
+    6.954664967024473,
+    0.012022531874117252
+   ],
+   "cond_reduced": 578.4692475631399,
+   "fisher_eig_reduced": [
+    0.9129635905410396,
+    198095.63860588416
+   ],
+   "fisher_eig_unconstrained3": [
+    0.00048265753664421956,
+    859.3958969791527,
+    133951.66952240537
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 1.0465353269682287,
+   "crb_std_adipose_fraction": 0.12333537107508587
+  },
+  "L=6.0cm|mixed(0.5/0.5/0)|PCCT-32": {
+   "n_meas": 32,
+   "svals_reduced_J": [
+    15.363523932871068,
+    0.025666511504027694
+   ],
+   "cond_reduced": 598.5824731366458,
+   "fisher_eig_reduced": [
+    0.9623858534614556,
+    206290.07977838232
+   ],
+   "fisher_eig_unconstrained3": [
+    0.0015197302858694695,
+    924.7402256302146,
+    138349.99140978476
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 1.019310296171374,
+   "crb_std_adipose_fraction": 0.12012687042600778
+  },
+  "L=6.0cm|fibro-rich(0.2/0.8/0)|SECT-80": {
+   "n_meas": 1,
+   "svals_reduced_J": [
+    1.517678934095692
+   ],
+   "cond_reduced": null,
+   "fisher_eig_reduced": [
+    3.637978807091713e-12,
+    113673.65491668165
+   ],
+   "fisher_eig_unconstrained3": [
+    -8.78785697758219e-14,
+    1.4639793798142577e-11,
+    87177.06552695556
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 1,
+   "crb_std_t_cm": Infinity,
+   "crb_std_adipose_fraction": Infinity
+  },
+  "L=6.0cm|fibro-rich(0.2/0.8/0)|SECT-50": {
+   "n_meas": 1,
+   "svals_reduced_J": [
+    3.0433560598629446
+   ],
+   "cond_reduced": null,
+   "fisher_eig_reduced": [
+    0.0,
+    326272.6449832611
+   ],
+   "fisher_eig_unconstrained3": [
+    -1.717077232307909e-12,
+    1.2623298814214423e-12,
+    211152.32546594192
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 1,
+   "crb_std_t_cm": Infinity,
+   "crb_std_adipose_fraction": Infinity
+  },
+  "L=6.0cm|fibro-rich(0.2/0.8/0)|DECT": {
+   "n_meas": 2,
+   "svals_reduced_J": [
+    3.4007875646478993,
+    0.003065002211004691
+   ],
+   "cond_reduced": 1109.5546856173848,
+   "fisher_eig_reduced": [
+    0.21466759681788972,
+    219972.93528237456
+   ],
+   "fisher_eig_unconstrained3": [
+    9.237037987901498e-12,
+    200.3911976741678,
+    148964.30429877463
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 2,
+   "crb_std_t_cm": 2.1582265665791183,
+   "crb_std_adipose_fraction": 0.2543494400941757
+  },
+  "L=6.0cm|fibro-rich(0.2/0.8/0)|PCCT-2": {
+   "n_meas": 2,
+   "svals_reduced_J": [
+    2.731780588760032,
+    0.004403376467030648
+   ],
+   "cond_reduced": 620.3831557927564,
+   "fisher_eig_reduced": [
+    0.5564794940219144,
+    149999.3422938463
+   ],
+   "fisher_eig_unconstrained3": [
+    8.51259699967367e-12,
+    488.1702292636573,
+    106615.27586222817
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 2,
+   "crb_std_t_cm": 1.3404579876159632,
+   "crb_std_adipose_fraction": 0.15797448882315343
+  },
+  "L=6.0cm|fibro-rich(0.2/0.8/0)|PCCT-4": {
+   "n_meas": 4,
+   "svals_reduced_J": [
+    4.415763509091872,
+    0.007594364423084492
+   ],
+   "cond_reduced": 581.4526750480043,
+   "fisher_eig_reduced": [
+    0.763392475710134,
+    170561.51183848653
+   ],
+   "fisher_eig_unconstrained3": [
+    0.0003056456542921577,
+    703.0136178034671,
+    117611.11367608189
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 1.1444731469936478,
+   "crb_std_adipose_fraction": 0.13487745385418612
+  },
+  "L=6.0cm|fibro-rich(0.2/0.8/0)|PCCT-8": {
+   "n_meas": 8,
+   "svals_reduced_J": [
+    6.914407841633367,
+    0.011982917728101141
+   ],
+   "cond_reduced": 577.0220574425199,
+   "fisher_eig_reduced": [
+    0.8633270742648165,
+    181606.5013726175
+   ],
+   "fisher_eig_unconstrained3": [
+    0.000446958408583154,
+    806.6844012323166,
+    123499.9784788455
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 1.0761991682222256,
+   "crb_std_adipose_fraction": 0.1268312882928763
+  },
+  "L=6.0cm|fibro-rich(0.2/0.8/0)|PCCT-32": {
+   "n_meas": 32,
+   "svals_reduced_J": [
+    15.325974215528523,
+    0.02562582541408408
+   ],
+   "cond_reduced": 598.0675341331754,
+   "fisher_eig_reduced": [
+    0.9084353325306438,
+    188632.81881003093
+   ],
+   "fisher_eig_unconstrained3": [
+    0.0013568208555675375,
+    865.4165030202031,
+    127269.02258572678
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 1.0491406570299766,
+   "crb_std_adipose_fraction": 0.12364241216740106
+  },
+  "L=12.0cm|adipose-rich(0.8/0.2/0)|SECT-80": {
+   "n_meas": 1,
+   "svals_reduced_J": [
+    1.3472686110328567
+   ],
+   "cond_reduced": null,
+   "fisher_eig_reduced": [
+    0.0,
+    27715.334007034093
+   ],
+   "fisher_eig_unconstrained3": [
+    -1.0383783529093412e-12,
+    8.110046774661063e-13,
+    22176.867689309904
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 1,
+   "crb_std_t_cm": Infinity,
+   "crb_std_adipose_fraction": Infinity
+  },
+  "L=12.0cm|adipose-rich(0.8/0.2/0)|SECT-50": {
+   "n_meas": 1,
+   "svals_reduced_J": [
+    2.768006301942209
+   ],
+   "cond_reduced": null,
+   "fisher_eig_reduced": [
+    -3.637978807091713e-12,
+    68180.0682535241
+   ],
+   "fisher_eig_unconstrained3": [
+    -3.7588450734950336e-13,
+    7.992902634697664e-12,
+    44904.52243537277
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 1,
+   "crb_std_t_cm": Infinity,
+   "crb_std_adipose_fraction": Infinity
+  },
+  "L=12.0cm|adipose-rich(0.8/0.2/0)|DECT": {
+   "n_meas": 2,
+   "svals_reduced_J": [
+    3.0784706651712614,
+    0.003156191724031583
+   ],
+   "cond_reduced": 975.3750514366586,
+   "fisher_eig_reduced": [
+    0.06688128882524325,
+    47947.63424899027
+   ],
+   "fisher_eig_unconstrained3": [
+    4.902410203690153e-13,
+    59.99311879327309,
+    33480.70194354806
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 2,
+   "crb_std_t_cm": 3.866573972024702,
+   "crb_std_adipose_fraction": 0.22784005629817253
+  },
+  "L=12.0cm|adipose-rich(0.8/0.2/0)|PCCT-2": {
+   "n_meas": 2,
+   "svals_reduced_J": [
+    2.5358149268002017,
+    0.004225019517510311
+   ],
+   "cond_reduced": 600.1901094872311,
+   "fisher_eig_reduced": [
+    0.16436520523529907,
+    36049.406749174756
+   ],
+   "fisher_eig_unconstrained3": [
+    1.4575578585544976e-12,
+    138.01868825480742,
+    26616.328844262556
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 2,
+   "crb_std_t_cm": 2.466440620902734,
+   "crb_std_adipose_fraction": 0.1453364073695235
+  },
+  "L=12.0cm|adipose-rich(0.8/0.2/0)|PCCT-4": {
+   "n_meas": 4,
+   "svals_reduced_J": [
+    4.208982908369337,
+    0.007368636032919125
+   ],
+   "cond_reduced": 571.2024436497952,
+   "fisher_eig_reduced": [
+    0.22117826267094642,
+    40288.74107684223
+   ],
+   "fisher_eig_unconstrained3": [
+    7.767643920143251e-05,
+    194.20420836153403,
+    28874.968622397362
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 2.1262103347319887,
+   "crb_std_adipose_fraction": 0.125288145493159
+  },
+  "L=12.0cm|adipose-rich(0.8/0.2/0)|PCCT-8": {
+   "n_meas": 8,
+   "svals_reduced_J": [
+    6.694552552318646,
+    0.01176248373481919
+   ],
+   "cond_reduced": 569.1444684001132,
+   "fisher_eig_reduced": [
+    0.24617754102655454,
+    42276.74894925151
+   ],
+   "fisher_eig_unconstrained3": [
+    0.00011178184235876205,
+    218.58278734512683,
+    29930.06992113283
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 2.015366246924132,
+   "crb_std_adipose_fraction": 0.11875659498121131
+  },
+  "L=12.0cm|adipose-rich(0.8/0.2/0)|PCCT-32": {
+   "n_meas": 32,
+   "svals_reduced_J": [
+    15.131189356231031,
+    0.025418090884750427
+   ],
+   "cond_reduced": 595.2921257870307,
+   "fisher_eig_reduced": [
+    0.2564383669396193,
+    43344.096900257326
+   ],
+   "fisher_eig_unconstrained3": [
+    0.00026266332604721804,
+    230.59939729205743,
+    30499.928504945216
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 1.9746358965740567,
+   "crb_std_adipose_fraction": 0.11635653607015779
+  },
+  "L=12.0cm|mixed(0.5/0.5/0)|SECT-80": {
+   "n_meas": 1,
+   "svals_reduced_J": [
+    1.3136323027219663
+   ],
+   "cond_reduced": null,
+   "fisher_eig_reduced": [
+    -9.094947017729282e-13,
+    24319.292119825157
+   ],
+   "fisher_eig_unconstrained3": [
+    -3.062460016809906e-13,
+    7.887232623775833e-14,
+    19647.893710876488
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 1,
+   "crb_std_t_cm": Infinity,
+   "crb_std_adipose_fraction": Infinity
+  },
+  "L=12.0cm|mixed(0.5/0.5/0)|SECT-50": {
+   "n_meas": 1,
+   "svals_reduced_J": [
+    2.707288999250962
+   ],
+   "cond_reduced": null,
+   "fisher_eig_reduced": [
+    1.8189894035458565e-12,
+    57380.01264105816
+   ],
+   "fisher_eig_unconstrained3": [
+    -3.099900790565422e-13,
+    7.35857401779661e-12,
+    37956.07123220039
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 1,
+   "crb_std_t_cm": Infinity,
+   "crb_std_adipose_fraction": Infinity
+  },
+  "L=12.0cm|mixed(0.5/0.5/0)|DECT": {
+   "n_meas": 2,
+   "svals_reduced_J": [
+    3.0091582739043456,
+    0.0031677772837598473
+   ],
+   "cond_reduced": 949.9273479014169,
+   "fisher_eig_reduced": [
+    0.06135448731765791,
+    40849.591025954345
+   ],
+   "fisher_eig_unconstrained3": [
+    -1.3429692671647769e-12,
+    54.504243988545866,
+    28747.4782275499
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 2,
+   "crb_std_t_cm": 4.036965549225724,
+   "crb_std_adipose_fraction": 0.23788047627283204
+  },
+  "L=12.0cm|mixed(0.5/0.5/0)|PCCT-2": {
+   "n_meas": 2,
+   "svals_reduced_J": [
+    2.4933344051172153,
+    0.004180528906148375
+   ],
+   "cond_reduced": 596.4160184253782,
+   "fisher_eig_reduced": [
+    0.14905430537328357,
+    31467.56170997837
+   ],
+   "fisher_eig_unconstrained3": [
+    7.773627361267358e-13,
+    123.84844981181776,
+    23451.434092913656
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 2,
+   "crb_std_t_cm": 2.5900180281501233,
+   "crb_std_adipose_fraction": 0.15261827592503022
+  },
+  "L=12.0cm|mixed(0.5/0.5/0)|PCCT-4": {
+   "n_meas": 4,
+   "svals_reduced_J": [
+    4.162818614384445,
+    0.007313920435227701
+   ],
+   "cond_reduced": 569.1637817570606,
+   "fisher_eig_reduced": [
+    0.19977973112509062,
+    35012.55039267393
+   ],
+   "fisher_eig_unconstrained3": [
+    6.820025176845801e-05,
+    173.37885912316835,
+    25338.483628829104
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 2.2371813111301773,
+   "crb_std_adipose_fraction": 0.13182717298699664
+  },
+  "L=12.0cm|mixed(0.5/0.5/0)|PCCT-8": {
+   "n_meas": 8,
+   "svals_reduced_J": [
+    6.645838249656492,
+    0.011711461911376616
+   ],
+   "cond_reduced": 567.464446364349,
+   "fisher_eig_reduced": [
+    0.22159795936568116,
+    36621.50083955948
+   ],
+   "fisher_eig_unconstrained3": [
+    9.801244427641874e-05,
+    194.31586881466615,
+    26191.485511133204
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 2.124196806221035,
+   "crb_std_adipose_fraction": 0.12516949718780837
+  },
+  "L=12.0cm|mixed(0.5/0.5/0)|PCCT-32": {
+   "n_meas": 32,
+   "svals_reduced_J": [
+    15.082742696851117,
+    0.025366483830533262
+   ],
+   "cond_reduced": 594.5933538765133,
+   "fisher_eig_reduced": [
+    0.23035188434732845,
+    37450.43135456951
+   ],
+   "fisher_eig_unconstrained3": [
+    0.0002159358242476027,
+    204.28653823129827,
+    26633.51401444437
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 2.0834451105633147,
+   "crb_std_adipose_fraction": 0.12276818049243966
+  },
+  "L=12.0cm|fibro-rich(0.2/0.8/0)|SECT-80": {
+   "n_meas": 1,
+   "svals_reduced_J": [
+    1.2829823871551935
+   ],
+   "cond_reduced": null,
+   "fisher_eig_reduced": [
+    -9.094947017729282e-13,
+    21434.44857756414
+   ],
+   "fisher_eig_unconstrained3": [
+    -3.637978807091713e-12,
+    1.1368683772161603e-13,
+    17477.177802201324
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 1,
+   "crb_std_t_cm": Infinity,
+   "crb_std_adipose_fraction": Infinity
+  },
+  "L=12.0cm|fibro-rich(0.2/0.8/0)|SECT-50": {
+   "n_meas": 1,
+   "svals_reduced_J": [
+    2.652063154373729
+   ],
+   "cond_reduced": null,
+   "fisher_eig_reduced": [
+    -1.8189894035458565e-12,
+    48538.66085014047
+   ],
+   "fisher_eig_unconstrained3": [
+    0.0,
+    1.7053025658242404e-13,
+    32240.38850640082
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 1,
+   "crb_std_t_cm": Infinity,
+   "crb_std_adipose_fraction": Infinity
+  },
+  "L=12.0cm|fibro-rich(0.2/0.8/0)|DECT": {
+   "n_meas": 2,
+   "svals_reduced_J": [
+    2.9460944784238685,
+    0.003178794986830607
+   ],
+   "cond_reduced": 926.7959999399802,
+   "fisher_eig_reduced": [
+    0.05631821771748946,
+    34986.49839563459
+   ],
+   "fisher_eig_unconstrained3": [
+    1.6981420543780629e-12,
+    49.5653740211944,
+    24809.21778027988
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 2,
+   "crb_std_t_cm": 4.213600260355654,
+   "crb_std_adipose_fraction": 0.24828877644224043
+  },
+  "L=12.0cm|fibro-rich(0.2/0.8/0)|PCCT-2": {
+   "n_meas": 2,
+   "svals_reduced_J": [
+    2.4546933324762756,
+    0.004139056343320589
+   ],
+   "cond_reduced": 593.0562739107289,
+   "fisher_eig_reduced": [
+    0.1352776499434185,
+    27591.67780636759
+   ],
+   "fisher_eig_unconstrained3": [
+    1.0084173437080058e-12,
+    111.2646198812522,
+    20749.800577644488
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 2,
+   "crb_std_t_cm": 2.7187011799461573,
+   "crb_std_adipose_fraction": 0.16020100336331633
+  },
+  "L=12.0cm|fibro-rich(0.2/0.8/0)|PCCT-4": {
+   "n_meas": 4,
+   "svals_reduced_J": [
+    4.120935278293024,
+    0.0072633708366923715
+   ],
+   "cond_reduced": 567.3585131403859,
+   "fisher_eig_reduced": [
+    0.18063365222951688,
+    30571.77743307296
+   ],
+   "fisher_eig_unconstrained3": [
+    6.00429714185376e-05,
+    155.00267045805987,
+    22334.836075582167
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 2.3527566971423375,
+   "crb_std_adipose_fraction": 0.13863751791928425
+  },
+  "L=12.0cm|fibro-rich(0.2/0.8/0)|PCCT-8": {
+   "n_meas": 8,
+   "svals_reduced_J": [
+    6.601915361290277,
+    0.01166496528124899
+   ],
+   "cond_reduced": 565.9609953492633,
+   "fisher_eig_reduced": [
+    0.19972613662503136,
+    31883.78164934616
+   ],
+   "fisher_eig_unconstrained3": [
+    8.624258439162688e-05,
+    173.04198548402846,
+    23029.71188847354
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 2.237482359140331,
+   "crb_std_adipose_fraction": 0.13184491241111682
+  },
+  "L=12.0cm|fibro-rich(0.2/0.8/0)|PCCT-32": {
+   "n_meas": 32,
+   "svals_reduced_J": [
+    15.038782328877783,
+    0.025319967222932255
+   ],
+   "cond_reduced": 593.9495180411285,
+   "fisher_eig_reduced": [
+    0.20723998652374576,
+    32535.37422837373
+   ],
+   "fisher_eig_unconstrained3": [
+    0.00017902134221704197,
+    181.37468435596762,
+    23376.76507281948
+   ],
+   "rank3_unconstrained(sv>1e-6*max)": 3,
+   "crb_std_t_cm": 2.1965474887445313,
+   "crb_std_adipose_fraction": 0.12943280204079496
+  }
+ },
+ "mu_curve_angle_deg_adipose_fibro_50kVp(spectrum-weighted)": 2.4479200942646564,
+ "mu_ratio_f_over_a_50kVp(min,max over E where w>0)": [
+  1.1061711515323709,
+  1.379745911721819
+ ],
+ "mu_curve_angle_deg_adipose_fibro_80kVp(spectrum-weighted)": 2.6670599777021344,
+ "mu_ratio_f_over_a_80kVp(min,max over E where w>0)": [
+  1.0785928301399947,
+  1.375671170803445
+ ]
+}

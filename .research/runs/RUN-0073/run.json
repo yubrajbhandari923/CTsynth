@@ -1,0 +1,48 @@
+{
+  "artifacts_offset": 0,
+  "author_model": null,
+  "author_name": "claude-code",
+  "author_type": "agent",
+  "backend": "hpc-bundle",
+  "command": "true",
+  "created_at": "2026-10-14T17:05:54-04:00",
+  "ended_at": null,
+  "env": {
+    "lockfiles": {
+      "uv.lock": "87debd45b1676f8b"
+    },
+    "user": "yubraj"
+  },
+  "exit_code": null,
+  "experiment_id": "EXP-024",
+  "git_branch": "master",
+  "git_commit": "50e8b1d5cada0521695f32c1c13b03cd2267608d",
+  "git_dirty": 1,
+  "hostname": "RAD-88300596",
+  "id": "RUN-0073",
+  "label": null,
+  "metrics_offset": 0,
+  "notes": "NEVER SUBMITTED. Created as a side effect of 'hpc bundle EXP-024 --dry-run -- true' (F-038 bundle-content preview, 2026-10-14). No SLURM job, no results; do not count toward EXP-024 arms. Also noted: 'hpc status' with no id printed 'Run None not found' (cosmetic, not fixed).",
+  "override_reason": null,
+  "parameters": {},
+  "pid": null,
+  "reviewed": 0,
+  "run_dir": ".research/runs/RUN-0073",
+  "slurm": {
+    "hpc": {
+      "bundle": ".research/hpc/bundles/EXP-024-RUN-0073.tar.gz",
+      "bundle_dir": ".research/hpc/bundles/EXP-024-RUN-0073",
+      "cluster": "duke",
+      "experiment_id": "EXP-024",
+      "sha256": "63ec7e59ef051a8cb60d17f48f593d0e7768e6abf2c3172e64d44d934c58a432",
+      "token": "44be45fa613c2446f8cccc253714a697"
+    }
+  },
+  "slurm_job_id": null,
+  "started_at": null,
+  "status": "queued",
+  "stderr_path": ".research/runs/RUN-0073/stderr.log",
+  "stdout_path": ".research/runs/RUN-0073/stdout.log",
+  "updated_at": "2026-10-14T17:09:03-04:00",
+  "working_dir": "."
+}

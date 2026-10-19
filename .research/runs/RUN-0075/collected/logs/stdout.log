@@ -1,0 +1,65 @@
+step 100 loss 1.290e-01 gn 1.385e-03 val_proj 1.287e-01 val_label 2.881e-01
+step 200 loss 1.596e-03 gn 1.836e-02 val_proj 1.749e-03 val_label 1.153e-01
+step 300 loss 4.941e-04 gn 3.646e-02 val_proj 4.906e-04 val_label 1.138e-01
+step 400 loss 1.923e-04 gn 3.482e-03 val_proj 1.932e-04 val_label 1.120e-01
+step 500 loss 4.341e-05 gn 4.902e-03 val_proj 4.143e-05 val_label 1.064e-01
+step 600 loss 5.777e-06 gn 1.137e-03 val_proj 5.725e-06 val_label 1.004e-01
+step 700 loss 5.234e-06 gn 5.212e-03 val_proj 4.442e-06 val_label 9.851e-02
+step 800 loss 4.380e-06 gn 4.614e-03 val_proj 4.348e-06 val_label 9.762e-02
+step 900 loss 3.301e-06 gn 5.354e-03 val_proj 3.679e-06 val_label 9.693e-02
+step 1000 loss 3.052e-06 gn 1.306e-03 val_proj 2.803e-06 val_label 9.623e-02
+step 1100 loss 2.829e-06 gn 3.280e-03 val_proj 3.100e-06 val_label 9.563e-02
+step 1200 loss 2.299e-06 gn 3.307e-03 val_proj 2.256e-06 val_label 9.491e-02
+step 1300 loss 2.630e-06 gn 5.257e-03 val_proj 2.395e-06 val_label 9.416e-02
+step 1400 loss 1.824e-06 gn 1.625e-03 val_proj 1.984e-06 val_label 9.372e-02
+step 1500 loss 1.978e-06 gn 6.639e-04 val_proj 1.764e-06 val_label 9.293e-02
+step 1600 loss 2.298e-06 gn 5.224e-03 val_proj 2.279e-06 val_label 9.239e-02
+step 1700 loss 3.264e-06 gn 5.340e-03 val_proj 2.932e-06 val_label 9.183e-02
+step 1800 loss 1.619e-06 gn 8.639e-04 val_proj 1.549e-06 val_label 9.151e-02
+step 1900 loss 1.623e-06 gn 1.637e-03 val_proj 1.624e-06 val_label 9.101e-02
+step 2000 loss 1.923e-06 gn 3.508e-03 val_proj 1.875e-06 val_label 9.043e-02
+step 2100 loss 1.800e-06 gn 2.746e-03 val_proj 1.592e-06 val_label 9.007e-02
+step 2200 loss 1.570e-06 gn 3.017e-03 val_proj 1.448e-06 val_label 8.955e-02
+step 2300 loss 1.728e-06 gn 3.665e-03 val_proj 2.364e-06 val_label 8.914e-02
+step 2400 loss 1.882e-06 gn 4.488e-03 val_proj 2.226e-06 val_label 8.868e-02
+step 2500 loss 4.374e-06 gn 1.120e-02 val_proj 3.624e-06 val_label 8.826e-02
+step 2600 loss 1.521e-06 gn 3.767e-04 val_proj 1.260e-06 val_label 8.803e-02
+step 2700 loss 1.595e-06 gn 3.943e-03 val_proj 1.363e-06 val_label 8.755e-02
+step 2800 loss 1.211e-06 gn 9.201e-04 val_proj 1.205e-06 val_label 8.713e-02
+step 2900 loss 1.223e-06 gn 2.140e-04 val_proj 1.173e-06 val_label 8.686e-02
+step 3000 loss 1.266e-06 gn 2.507e-03 val_proj 1.144e-06 val_label 8.656e-02
+step 3100 loss 1.738e-06 gn 3.306e-03 val_proj 1.331e-06 val_label 8.616e-02
+step 3200 loss 1.435e-06 gn 2.056e-03 val_proj 1.281e-06 val_label 8.590e-02
+step 3300 loss 1.339e-06 gn 9.782e-04 val_proj 1.109e-06 val_label 8.557e-02
+step 3400 loss 1.290e-06 gn 1.201e-03 val_proj 1.094e-06 val_label 8.536e-02
+step 3500 loss 1.262e-06 gn 1.892e-03 val_proj 1.336e-06 val_label 8.508e-02
+step 3600 loss 1.131e-06 gn 1.447e-04 val_proj 1.039e-06 val_label 8.478e-02
+step 3700 loss 1.070e-06 gn 6.237e-04 val_proj 1.071e-06 val_label 8.458e-02
+step 3800 loss 1.173e-06 gn 6.021e-04 val_proj 1.023e-06 val_label 8.435e-02
+step 3900 loss 1.558e-06 gn 3.430e-03 val_proj 1.127e-06 val_label 8.414e-02
+step 4000 loss 1.117e-06 gn 7.814e-04 val_proj 1.017e-06 val_label 8.390e-02
+step 4100 loss 1.013e-06 gn 7.559e-04 val_proj 9.974e-07 val_label 8.374e-02
+step 4200 loss 1.014e-06 gn 2.566e-04 val_proj 9.771e-07 val_label 8.346e-02
+step 4300 loss 1.086e-06 gn 3.162e-04 val_proj 1.011e-06 val_label 8.331e-02
+step 4400 loss 1.176e-06 gn 3.902e-04 val_proj 9.582e-07 val_label 8.310e-02
+step 4500 loss 1.066e-06 gn 1.078e-04 val_proj 1.003e-06 val_label 8.295e-02
+step 4600 loss 9.496e-07 gn 5.066e-04 val_proj 1.005e-06 val_label 8.284e-02
+step 4700 loss 1.065e-06 gn 8.826e-05 val_proj 9.396e-07 val_label 8.271e-02
+step 4800 loss 1.052e-06 gn 7.479e-04 val_proj 9.405e-07 val_label 8.258e-02
+step 4900 loss 1.100e-06 gn 1.231e-04 val_proj 9.313e-07 val_label 8.245e-02
+step 5000 loss 1.058e-06 gn 5.117e-04 val_proj 9.319e-07 val_label 8.240e-02
+step 5100 loss 9.626e-07 gn 2.600e-04 val_proj 9.367e-07 val_label 8.230e-02
+step 5200 loss 1.079e-06 gn 2.769e-04 val_proj 9.276e-07 val_label 8.225e-02
+step 5300 loss 9.167e-07 gn 2.614e-04 val_proj 9.232e-07 val_label 8.220e-02
+step 5400 loss 9.950e-07 gn 1.338e-04 val_proj 9.197e-07 val_label 8.217e-02
+step 5500 loss 1.061e-06 gn 1.420e-04 val_proj 9.194e-07 val_label 8.213e-02
+step 5600 loss 1.096e-06 gn 2.191e-04 val_proj 9.172e-07 val_label 8.210e-02
+step 5700 loss 1.069e-06 gn 1.922e-04 val_proj 9.162e-07 val_label 8.209e-02
+step 5800 loss 9.305e-07 gn 1.195e-04 val_proj 9.159e-07 val_label 8.208e-02
+step 5900 loss 1.057e-06 gn 2.819e-04 val_proj 9.157e-07 val_label 8.208e-02
+step 6000 loss 9.970e-07 gn 1.948e-04 val_proj 9.156e-07 val_label 8.207e-02
+{
+ "s1": 0.2863815109672893,
+ "proj_rmse_T": 0.0009587528184056282,
+ "null_dir_error_frac": 0.998674944155094
+}
