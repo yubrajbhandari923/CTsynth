@@ -1,0 +1,9 @@
+{
+  "ended_at": "2026-10-15T12:05:15-04:00",
+  "exit_code": 0,
+  "hostname": "RAD-88300596",
+  "pid": 53612,
+  "runner_pid": 53601,
+  "started_at": "2026-10-15T12:05:15-04:00",
+  "state": "completed"
+}

@@ -1,0 +1,26 @@
+case 1/20 done
+case 2/20 done
+case 3/20 done
+case 4/20 done
+case 5/20 done
+case 6/20 done
+case 7/20 done
+case 8/20 done
+case 9/20 done
+case 10/20 done
+case 11/20 done
+case 12/20 done
+case 13/20 done
+case 14/20 done
+case 15/20 done
+case 16/20 done
+case 17/20 done
+case 18/20 done
+case 19/20 done
+case 20/20 done
+calc_l1 window(classical) [3.1622776601683795e-05, 0.0001] window(net) [0.0031622776601683794, 0.0001] dR_wrong 0.0
+calc_l0 window(classical) [1e-07, 3.1622776601683795e-05] window(net) [3.162277660168379e-06, 3.1622776601683795e-05] dR_wrong 0.0
+bimodal window(classical) [3.162277660168379e-06, 1.0] window(net) [0.0001, 1.0] dR_wrong -3.469446951953614e-18
+tv_a window(classical) [inf, 0.00031622776601683794] window(net) [inf, 0.00031622776601683794] dR_wrong 0.0
+w1_marginal window(classical) [3.162277660168379e-06, 1.0] window(net) [0.0001, 1.0] dR_wrong 0.35015076147770774
+detection floor {'null|classical_2e-8': None, 'null|network_1e-6': None, 'swap|classical_2e-8': np.float64(0.02), 'swap|network_1e-6': np.float64(0.08)}

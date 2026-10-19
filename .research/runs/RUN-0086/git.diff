@@ -1,0 +1,20 @@
+diff --git a/.mcp.json b/.mcp.json
+index 0c640f5..8f11620 100644
+--- a/.mcp.json
++++ b/.mcp.json
+@@ -2,7 +2,7 @@
+   "mcpServers": {
+     "research": {
+       "type": "stdio",
+-      "command": "/Users/yubraj/Code/CTsynth/.research/bin/research",
++      "command": "/home/yubraj/Code/CTsynth/.research/bin/research",
+       "args": [
+         "mcp"
+       ]
+
+# Untracked files (not included):
+#   .mcp.json.pre-linux-migration
+#   artifacts.jsonl
+#   exp018_results.json
+#   metrics.jsonl
+#   projects/p05_aapm/exp024_anomaly_diag.py
