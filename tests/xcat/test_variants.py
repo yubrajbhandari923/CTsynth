@@ -3,7 +3,15 @@
 import pytest
 import torch
 
-from ctsynth.xcat.variants import VariantSpec, apodise_channels, family_variants, sample_combined
+from ctsynth.xcat.variants import (
+    VariantSpec,
+    apodise_channels,
+    family_variants,
+    sample_combined,
+    sample_training_variant,
+    spec_from_dict,
+    spec_to_dict,
+)
 
 
 def test_groups_share_projections_only_when_geometry_and_energy_match():
@@ -48,3 +56,21 @@ def test_apodisation_properties():
     assert torch.allclose(chunked, sm, atol=1e-6)
     with pytest.raises(ValueError):
         apodise_channels(torch.zeros(3, 3), 1.0)
+
+
+def test_training_variant_never_uses_held_out_settings_and_round_trips():
+    seen = set()
+    for k in range(300):
+        s = sample_training_variant(0, k)
+        assert s.acq.energy_kev in (60.0, 70.0) and s.acq.pitch == 1.0
+        assert s.acq.view_decimation in (1, 2)
+        assert 3e4 <= s.n0 <= 1e6 and s.lowpass_w in (1.0, 2.0, 4.0)
+        assert spec_from_dict(spec_to_dict(s)) == s
+        seen.add((s.acq.energy_kev, s.acq.view_decimation, s.lowpass_w))
+    a, b, c = (
+        sample_training_variant(0, 5),
+        sample_training_variant(0, 5),
+        sample_training_variant(0, 6),
+    )
+    assert a == b and a != c
+    assert len(seen) >= 10  # real diversity across patients

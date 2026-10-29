@@ -25,11 +25,26 @@ from ctsynth.xcat.metrics import edge_width_mm, erode, noise_autocorrelation, re
 from ctsynth.xcat.noise import apply_poisson_noise, make_generator
 from ctsynth.xcat.phantom import make_grid, mu_to_hu, open_phantom, resample_phantom
 from ctsynth.xcat.profiling import MIB, MemSampler, host_rss_peak_mib, sync
-from ctsynth.xcat.variants import VariantSpec, apodise_channels, family_variants, sample_combined
+from ctsynth.xcat.variants import (
+    VariantSpec,
+    apodise_channels,
+    family_variants,
+    sample_combined,
+    spec_from_dict,
+)
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--root", required=True)
-ap.add_argument("--patients", nargs="+", required=True)
+ap.add_argument("--patients", nargs="*", default=[])
+ap.add_argument(
+    "--plan",
+    default=None,
+    help="dataset_plan JSON: per-patient variant specs and the worker assignment",
+)
+ap.add_argument("--worker", type=int, default=0)
+ap.add_argument(
+    "--durable", default=None, help="rsync each finished patient directory here (durable storage)"
+)
 ap.add_argument("--variants", nargs="*", default=["clean"])
 ap.add_argument(
     "--combos", type=int, default=0, help="number of family-E combined variants per patient"
@@ -47,7 +62,15 @@ specs: list[VariantSpec] = []
 for v in a.variants:
     specs += [s for s in fam.values() if s.family == v[7:]] if v.startswith("family:") else [fam[v]]
 specs += [sample_combined(a.seed, i) for i in range(a.combos)]
-print("variants:", [s.name for s in specs], flush=True)
+plan = json.load(open(a.plan)) if a.plan else None
+patients = plan["workers"][a.worker] if plan else a.patients
+print("patients:", patients, flush=True)
+
+
+def specs_for(pid):
+    return [spec_from_dict(d) for d in plan["patients"][pid]["variants"]] if plan else specs
+
+
 logf = open(cache / "generation_log.jsonl", "a") if cache.exists() else None
 
 
@@ -60,15 +83,20 @@ def log(rec):
     logf.flush()
 
 
-for pi, pid in enumerate(a.patients):
+import subprocess  # noqa: E402
+import traceback  # noqa: E402
+
+
+def run_patient(pid):
     t_patient = time.perf_counter()
+    pspecs = specs_for(pid)
     case = find_copd_case(a.root, pid)
     pdir = cache / f"p{pid}"
     pdir.mkdir(parents=True, exist_ok=True)
-    todo = [s for s in specs if not (pdir / f"ct_{s.name}.json").exists()]
+    todo = [s for s in pspecs if not (pdir / f"ct_{s.name}.json").exists()]
     if not todo:
         print(f"p{pid}: all variants cached, skipping", flush=True)
-        continue
+        return
     t0 = time.perf_counter()
     vol = open_phantom(case.bin_path, case.shape_zyx)
     grid = make_grid(case.shape_zyx, a.vox)
@@ -137,7 +165,7 @@ for pi, pid in enumerate(a.patients):
             lung_centroid = torch.nonzero(lung).float().mean(0).cpu().numpy()
         # clean variants first so noisy ones can reuse the same-kernel clean reconstruction
         for s in sorted(members, key=lambda s: (s.n0 is not None, s.apod_sigma_px, s.lowpass_w)):
-            vi = [x.name for x in specs].index(s.name)
+            vi = [x.name for x in pspecs].index(s.name)
             if (
                 a.metrics
                 and s.n0 is not None
@@ -258,3 +286,18 @@ for pi, pid in enumerate(a.patients):
         gc.collect()
         torch.cuda.empty_cache()
     print(f"p{pid} done in {time.perf_counter() - t_patient:.1f}s", flush=True)
+
+
+for pid in patients:
+    try:
+        run_patient(pid)
+        if a.durable:  # persist each finished patient immediately: node-local files may vanish when the allocation ends
+            Path(a.durable, f"p{pid}").mkdir(parents=True, exist_ok=True)
+            subprocess.run(
+                ["rsync", "-a", f"{cache / f'p{pid}'}/", f"{a.durable}/p{pid}/"], check=True
+            )
+    except Exception:
+        traceback.print_exc()
+        log({"patient": pid, "error": traceback.format_exc()[-1500:]})
+        gc.collect()
+        torch.cuda.empty_cache()

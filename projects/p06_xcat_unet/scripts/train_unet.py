@@ -24,20 +24,13 @@ from ctsynth.xcat.cache import VolumeReader
 ARM_VARIANTS = {
     "A": ["clean"],
     "B": ["n0_1e5"],
-    "C": [
+    "C": ["clean", "n0_1e5", "var1"],
+    "D": [
         "clean",
-        "n0_1e6",
-        "n0_3e5",
         "n0_1e5",
-        "n0_3e4",
-        "lowpass_w2",
-        "lowpass_w4",
-        "apod_0p75",
-        "e60",
-        "dec2",
-    ],
+        "var1",
+    ],  # same data as C, plus FiLM conditioning on the acquisition metadata
 }
-ARM_VARIANTS["D"] = ARM_VARIANTS["C"]
 HELD_OUT = ["e80", "pitch1p4"]
 N_CLASSES = 15
 
@@ -104,6 +97,12 @@ def main():
     ap.add_argument("--ckpt-every", type=int, default=250)
     ap.add_argument("--max-minutes", type=float, default=1e9)
     ap.add_argument("--val-variants", nargs="*", default=None)
+    ap.add_argument(
+        "--val-stride",
+        type=int,
+        default=96,
+        help="96 = non-overlapping windows (cheap model selection)",
+    )
     a = ap.parse_args()
     t_start = time.time()
     out = Path(a.out)
@@ -188,7 +187,7 @@ def main():
                 {"net": net.state_dict(), "opt": opt.state_dict(), "step": step, "best": best}, ck
             )
         if step % a.val_every == 0 or step == a.steps or stop:
-            v, _ = validate(net, val, cond_on, dev)
+            v, _ = validate(net, val, cond_on, dev, a.val_stride)
             v["step"] = step
             log.write(json.dumps({"val": v}) + "\n")
             log.flush()

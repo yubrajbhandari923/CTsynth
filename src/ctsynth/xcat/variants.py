@@ -12,7 +12,8 @@ Variants sharing (energy, pitch, view decimation, margin) share ONE forward proj
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
+from typing import Any
 
 import torch
 import torch.nn.functional as F
@@ -115,3 +116,27 @@ def apodise_channels(p: torch.Tensor, sigma_px: float, view_chunk: int = 500) ->
         out = F.conv1d(F.pad(c.reshape(n * rows, 1, ch), (r, r), mode="replicate"), k)
         p[v0 : v0 + view_chunk] = out.reshape(n, rows, ch)
     return p
+
+
+def sample_training_variant(seed: int, key: int, name: str = "var1") -> VariantSpec:
+    """One varied TRAINING variant per patient: log-uniform N0 in [3e4, 1e6], LEAP lowpass W in {1,
+    1, 2, 4}, energy in {60, 70} keV,
+    view decimation in {1, 2}; pitch fixed at 1.0. The held-out acquisition settings (80 keV, pitch
+    1.4) can never be drawn.
+    Deterministic in (seed, key)."""
+    r = rng(seed, 9, key)
+    n0 = float(10 ** r.uniform(math.log10(3e4), math.log10(1e6)))
+    acq = Acquisition(
+        energy_kev=float(r.choice([60.0, 70.0])), pitch=1.0, view_decimation=int(r.choice([1, 2]))
+    )
+    return VariantSpec(name, "T", acq, n0, 0.0, float(r.choice([1.0, 1.0, 2.0, 4.0])))
+
+
+def spec_to_dict(s: VariantSpec) -> dict[str, Any]:
+    return asdict(s)
+
+
+def spec_from_dict(d: dict[str, Any]) -> VariantSpec:
+    return VariantSpec(
+        d["name"], d["family"], Acquisition(**d["acq"]), d["n0"], d["apod_sigma_px"], d["lowpass_w"]
+    )
