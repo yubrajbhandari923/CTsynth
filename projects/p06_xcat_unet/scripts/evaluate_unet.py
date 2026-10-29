@@ -55,7 +55,15 @@ def main():
     ap.add_argument("--ckpt", default=None)
     ap.add_argument("--baseline-fit-patients", nargs="*", default=None)
     ap.add_argument("--stride", type=int, default=48)
-    ap.add_argument("--export", type=int, default=0)
+    ap.add_argument(
+        "--export-cases", nargs="*", default=[], help="patient:variant pairs to export as NIfTI"
+    )
+    ap.add_argument(
+        "--export-ct",
+        action="store_true",
+        help="also export CT and ground truth (once per case, not per model)",
+    )
+    ap.add_argument("--name", default="model")
     a = ap.parse_args()
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
@@ -76,7 +84,7 @@ def main():
     )
     res = {"unet": {}, "baseline": {}}
     rows = []
-    exported = 0
+    per_patient = {"unet": {}, "baseline": {}}
     for v in a.variants:
         cms = {
             "unet": torch.zeros(N_CLASSES, N_CLASSES, dtype=torch.long),
@@ -98,16 +106,20 @@ def main():
             if base_stats is not None:
                 preds["baseline"] = predict_baseline(hu, *base_stats)
             for k, pr in preds.items():
-                cms[k] += confusion_matrix(torch.from_numpy(pr), lt, N_CLASSES)
-            if exported < a.export and "unet" in preds:
+                cm_p = confusion_matrix(torch.from_numpy(pr), lt, N_CLASSES)
+                cms[k] += cm_p
+                per_patient[k].setdefault(v, {})[p] = cm_p.tolist()
+            if f"{p}:{v}" in a.export_cases and "unet" in preds:
                 import nibabel as nib
 
                 from ctsynth.xcat.phantom import affine_from_axcodes
 
                 aff = affine_from_axcodes(hu.shape, meta["vox_mm"])
-                for name, arr in (("ct", hu), ("truth", lab), ("pred", preds["unet"])):
+                arrays = [("pred_" + a.name, preds["unet"])] + (
+                    [("ct", hu), ("truth", lab)] if a.export_ct else []
+                )
+                for name, arr in arrays:
                     nib.save(nib.Nifti1Image(arr, aff), out / f"p{p}_{v}_{name}.nii.gz")
-                exported += 1
         for k, cm in cms.items():
             if int(cm.sum()) == 0:
                 continue
