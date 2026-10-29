@@ -115,18 +115,32 @@ for v, s in E["scenarios"].items():
 w(
     f"\nLabels for all patients: {E['scenarios']['1']['labels_GB']:.1f} GB (once). Native phantoms {E['storage_GB']['native_phantoms']:.0f} GB; clean projections for all patients would be {E['storage_GB']['clean_projections_f32_all_patients_if_kept']:.0f} GB (largest single patient {E['storage_GB']['max_single_patient_projections_GB']:.1f} GB): **not kept**."
 )
-w("\n## 5b. Parallel simulation on one node (measured, job 203529: N simulators, one per GPU, same patient, 4 variants each)\n")
+w(
+    "\n## 5b. Parallel simulation on one node (measured, job 203529: N simulators, one per GPU, same patient, 4 variants each)\n"
+)
 w("| simulators (GPUs) | wall [s] | variants/min | speed-up | efficiency |\n|---|---|---|---|---|")
-sc = [dict(kv.split("=") for kv in ln.split()[:3]) for ln in (d / "scaling.txt").read_text().splitlines() if ln.startswith("N=")]
+sc = [
+    dict(kv.split("=") for kv in ln.split()[:3])
+    for ln in (d / "scaling.txt").read_text().splitlines()
+    if ln.startswith("N=")
+]
 base = float(sc[0]["wall_s"])
 for x in sc:
     n, wall = int(x["N"]), float(x["wall_s"])
-    w(f"| {n} | {wall:.1f} | {4 * n * 60 / wall:.1f} | {n * base / wall:.2f}x | {100 * base / wall:.0f}% |")
-w("\nIndependent simulators scale almost linearly up to 8 GPUs (shared phantom page cache, 8 CPUs each), so NFS and CPU are not bottlenecks at this size. Staging a 2.1 GB cache from `/home` to local NVMe took 14.6 s (0.14 GB/s, many small files; ESTIMATE ~14 min for the full 121 GB cache), persisting it to `/home` took 9.7 s.\n")
+    w(
+        f"| {n} | {wall:.1f} | {4 * n * 60 / wall:.1f} | {n * base / wall:.2f}x | {100 * base / wall:.0f}% |"
+    )
+w(
+    "\nIndependent simulators scale almost linearly up to 8 GPUs (shared phantom page cache, 8 CPUs each), so NFS and CPU are not bottlenecks at this size. Staging a 2.1 GB cache from `/home` to local NVMe took 14.6 s (0.14 GB/s, many small files; ESTIMATE ~14 min for the full 121 GB cache), persisting it to `/home` took 9.7 s.\n"
+)
 w("## 5c. Stage-1 smoke results (two patients: NOT a generalisation result)\n")
 ov = json.load(open(d.parent / "smoke" / "overfit_report.json"))
-w(f"- Fixed-batch overfit (4 patches of copd_22728 clean, 400 steps, {ov['seconds']:.0f} s): loss {ov['loss_first']:.2f} -> {ov['loss_last']:.2f}, pixel accuracy {100 * ov['pixel_accuracy']:.1f}%, macro Dice over the {len(ov['classes_in_batch'])} classes present {ov['macro_dice_present_classes']:.2f}. The network can learn this task.")
-w("- Training with a forced stop at step 200 and resume to step 300 continued from the checkpoint; the conditioned arm D (FiLM, 7 metadata inputs) runs; evaluation, intensity-only baseline and NIfTI export run end to end. After 300 steps on one patient the validation macro Dice on the other patient is about 0.22 for the U-Net and 0.25 for the baseline: undertrained, reported only to show the pipeline works.")
+w(
+    f"- Fixed-batch overfit (4 patches of copd_22728 clean, 400 steps, {ov['seconds']:.0f} s): loss {ov['loss_first']:.2f} -> {ov['loss_last']:.2f}, pixel accuracy {100 * ov['pixel_accuracy']:.1f}%, macro Dice over the {len(ov['classes_in_batch'])} classes present {ov['macro_dice_present_classes']:.2f}. The network can learn this task."
+)
+w(
+    "- Training with a forced stop at step 200 and resume to step 300 continued from the checkpoint; the conditioned arm D (FiLM, 7 metadata inputs) runs; evaluation, intensity-only baseline and NIfTI export run end to end. After 300 steps on one patient the validation macro Dice on the other patient is about 0.22 for the U-Net and 0.25 for the baseline: undertrained, reported only to show the pipeline works."
+)
 w("\n## 6. Decisions\n")
 w(
     "1. **Simulation is cheap in absolute terms, training is the larger cost.** All variants for all 67 patients take 0.4-4.4 GPU-hours (above); a full-coverage training epoch takes 0.1-1.2 h. Re-simulating inside the training loop would still add roughly 1-2x to every epoch (per 51 M-voxel volume: 5.5 s for a noisy variant from shared projections, about 10 s with its own projection, versus about 5.7 s of U-Net compute at 9 Mvoxel/s) and would keep LEAP and a 12 GB FBP working set resident next to the network; caching removes both. It is the right design, but its benefit is a 1-2x saving per epoch plus freedom from LEAP in the trainer, not an order of magnitude."
