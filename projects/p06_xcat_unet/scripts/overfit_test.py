@@ -8,11 +8,11 @@ import time
 
 import numpy as np
 import torch
+from train_unet import build_records
 
 from ctsynth.seg.dataset import PatchDataset
 from ctsynth.seg.losses import confusion_matrix, dice_ce_loss, dice_iou_from_confusion
 from ctsynth.seg.unet3d import UNet3D
-from train_unet import build_records
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--cache", required=True)
