@@ -11,7 +11,7 @@ TR=$($PY -c "import json;print(' '.join(json.load(open('$SPLIT'))['train']))"); 
 i=0
 for arm in A B C D; do for seed in 0 1; do
   CUDA_VISIBLE_DEVICES=$i OMP_NUM_THREADS=4 $PY $S/train_unet.py --arm $arm --seed $seed --cache $L --train-patients $TR --val-patients $VA \
-     --out $O/runs/${arm}_s${seed} --steps $STEPS --val-every 2500 --ckpt-every 500 --workers 8 --max-minutes $MAXM > $O/runs/${arm}_s${seed}.log 2>&1 &
+     --out $O/runs/${arm}_s${seed} --steps $STEPS --val-every 5000 --ckpt-every 500 --workers 8 --max-minutes $MAXM > $O/runs/${arm}_s${seed}.log 2>&1 &
   i=$((i+1))
 done; done; wait
 echo "== done $(date -Is)"; for r in $O/runs/*_s?; do echo $(basename $r) $(cat $r/status.json); done
