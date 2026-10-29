@@ -12,12 +12,13 @@ dependencies = ["numpy>=1.26", "pydantic>=2.6", "pyyaml>=6"]
 [project.optional-dependencies]
 torch = ["torch>=2.1"]  # CPU-first; MPS/CUDA picked at runtime by ctsynth.device
 physics = ["torch>=2.1"]  # ctsynth.physics is torch-based (autograd); only this subpackage needs it
+xcat = ["torch>=2.1", "openpyxl>=3.1"]  # ctsynth.xcat; LEAP (commit 0c8846f) and zarr/numcodecs are optional runtime extras on the cluster
 
 [project.scripts]
 ctsynth = "ctsynth.hpc.cli:main"
 
 [dependency-groups]
-dev = ["torch>=2.1", "pytest>=8", "ruff>=0.6", "mypy>=1.11", "types-PyYAML"]
+dev = ["torch>=2.1", "pytest>=8", "ruff>=0.6", "mypy>=1.11", "types-PyYAML", "openpyxl>=3.1", "types-openpyxl"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ctsynth"]
@@ -46,6 +47,8 @@ select = ["E", "F", "I", "B", "UP", "NPY"]
 [tool.ruff.lint.per-file-ignores]
 # long provenance strings are data, not code: rewrapping them would change the recorded text
 "scripts/make_tables.py" = ["E501"]
+# generated report text (inventory markdown / shell script templates)
+"projects/p06_xcat_unet/scripts/data_inventory.py" = ["E501"]
 # frozen as run on the cluster (RUN-0012/0013): editing would change the recorded script hash;
 # stdlib/py3.8 style on purpose
 "scripts/hpc_smoke.py" = ["E501", "UP"]
@@ -59,3 +62,7 @@ files = ["src"]
 [[tool.mypy.overrides]]
 module = ["gecatsim", "gecatsim.*"]
 ignore_missing_imports = true  # optional dependency, installed only in the isolated XCIST env
+
+[[tool.mypy.overrides]]
+module = ["leapctype", "leaptorch", "zarr", "zarr.*", "numcodecs", "numcodecs.*"]
+ignore_missing_imports = true  # cluster-only / optional runtime dependencies
