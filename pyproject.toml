@@ -37,7 +37,9 @@ markers = [
 line-length = 100
 src = ["src", "tests"]
 # frozen as run on the cluster (RUN-0012/0013): editing would change the recorded script hash
-extend-exclude = ["scripts/hpc_smoke.py", "scripts/hpc_env_probe.py"]
+# scripts/truect: pilot scripts frozen as run on DRCC (TrueCT NIfTI/LEAP/XCAT pilot, T-075..T-078): their provenance is the exact text that ran, so they
+# are not reformatted; the reusable code is integrated into src/ctsynth (linted, typed, tested)
+extend-exclude = ["scripts/hpc_smoke.py", "scripts/hpc_env_probe.py", "scripts/truect"]
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "NPY"]
 

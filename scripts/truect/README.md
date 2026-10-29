@@ -124,3 +124,90 @@ for s in reference dcm_000 dcm_001; do ./run_cpu.sh proj_$s 12 24G 00:40:00 conv
 LEAP build (once): `sbatch --gres=gpu:1 build_leap.sh` after `git clone --depth 1 https://github.com/LLNL/LEAP ~/ctsynth_truect/leap/LEAP`.
 Order for the reference calibration: `recon_final.py reference ... 192` then `compare_reference.py` (writes `mu_water_calibration.json`), then rerun the others to get `HUest`.
 Evidence scripts: `orientation_analysis.py`, `orientation_analysis2.py`, `reference_insert_test.py`, `recon_search.py`, `center_test.py`, `measure_shift.py`.
+
+---
+
+# XCAT phantom -> projections -> LEAP reconstruction pipeline (`run_xcat_pipeline.py`)
+
+Takes a TrueCT XCAT material phantom, converts it to 70 keV attenuation, simulates helical projections with LEAP (commit 0c8846f), reconstructs them with LEAP helical FBP, and writes NIfTI/Zarr/previews/validation. **The reconstruction comes from the newly simulated projections, never from TrueCT measurements.** Labels, ideal CT and reconstruction share one voxel grid and one affine by construction. Nothing is a neural network. FBP is not differentiated.
+
+## Run it (one A5000, about 15 s for the reference phantom and 85-140 s for a COPD phantom)
+
+```bash
+cd ~/ctsynth_truect && ./run_xcat.sh copd_22728 0.8        # CASE VOXEL_MM [extra args]   (SLURM, one A5000)
+# equivalent direct call inside a GPU job:
+python run_xcat_pipeline.py --case copd_22728 --energy-kev 70 --voxel-size-mm 0.8 --geometry truect_helical \
+    --output /home/yb107/datasets/truect_pilot/outputs/xcat_pipeline/copd_22728
+```
+Cases: `reference`, `copd_22728`, `copd_21535` (all run); `lung_18460` and `liver_279` use the same interface (not run here). Options: `--energy-kev` (any 5-150 keV), `--voxel-size-mm`, `--geometry` (add presets in `xcat_lib.GEOMETRIES`), `--margin-mm` (extra scan length beyond the phantom, default 40), `--skip-native-labels`, `--skip-zarr`. The run refuses to start if the estimated GPU need exceeds 85% of VRAM. Runs are deterministic: two runs of copd_21535 were bit-identical (`compare_runs.py`).
+
+Modules: `xcat_lib.py` (materials, resampling, LEAP geometry/forward/FBP, Zarr), `run_xcat_pipeline.py` (CLI, NIfTI, validation, previews), `benchmark_xcat.py` + `benchmark_xcat_aggregate.py` + `run_xcat_benchmark.sh` (benchmark), `load_xcat_case_in_slicer.py`, `build_element_table.py` (element attenuation table from xraylib, run once on the laptop; DRCC uses the stored JSON). Zarr needs a private install: `pip install --target ~/ctsynth_truect/pylib zarr==2.18.2 numcodecs==0.12.1 asciitree fasteners` and `PYTHONPATH=~/ctsynth_truect/pylib` (done by `run_xcat.sh`; the shared env is not modified).
+
+## Outputs: `outputs/xcat_pipeline/<case>/` (0.8 mm; 0.6 mm runs are in `xcat_pipeline/benchmarks/e2e/<case>_0.6mm/`)
+
+| file | what it is |
+|---|---|
+| `nifti/phantom_material_labels.nii.gz` | original uint8 material labels, native 0.25 mm (assumed voxel size for COPD), same physical frame as the files below |
+| `nifti/phantom_labels_recon_grid.nii.gz` | the same labels, nearest-neighbour on the simulation grid |
+| `nifti/phantom_organ_labels_recon_grid.nii.gz` | organ-group labels (0 = air). Groups merge organ IDs only where the xlsx names agree after stripping `_trabecular`/`_cortical`; nothing else is inferred (`organ_groups.json`) |
+| `nifti/phantom_density_recon_grid.nii.gz` | density g/cm3, box-averaged |
+| `nifti/phantom_mu70_recon_grid.nii.gz` | mu(70 keV) in 1/mm, box-averaged (the volume LEAP projects) |
+| `nifti/phantom_ideal_hu70.nii.gz` | ideal CT, HU = 1000 (mu/mu_water - 1), mu_water = 0.019288 1/mm (xraylib H2O) |
+| `nifti/reconstructed_mu70.nii.gz`, `reconstructed_hu70.nii.gz` | LEAP helical FBP of the simulated projections |
+| `nifti/simulated_projections_preview.nii.gz` | downsampled projection tensor (views/5, rows, channels/3). **Not anatomy** (no spatial affine) |
+| `nifti/organ_labels.ctbl`, `material_labels.ctbl` | Slicer colour tables |
+| `projections/simulated_projections.zarr` | full lossless float32 projections, axes (view, detector_row, detector_channel), chunks (250, 64, 900), Blosc-zstd |
+| `previews/*.png` | `phantom_slices`, `attenuation_slices`, `detector_views`, `sinograms`, `reconstruction_slices`, `phantom_ct_overlay`, `reconstruction_difference` |
+| `geometry.json`, `metadata.json`, `validation_report.md` | affines, axis codes, scan plan, timings, all validation numbers |
+
+The seven `*_recon_grid`, ideal and reconstructed files have identical shapes and affines (checked from the saved files).
+
+## Physics and conventions
+
+mu(r,E) = rho(r) * sum_i w_i (mu/rho)_i(E); rho in g/cm3, mu/rho in cm2/g, mu converted cm^-1 -> mm^-1 for LEAP. Element mass fractions come from each case's xlsx; (mu/rho)_i from xraylib `CS_Total` (includes coherent scattering). **Cross-check:** our per-organ mu(70 keV) equals DukeSim's own `lin_att_120kV_121materials.bin` to 8e-7 relative for all 53 organ IDs of both COPD tables (float32 rounding), and the xlsx matches the `.in` conversion tables with 0 mismatches. The reference phantom has no such table (checked by xlsx + xraylib only). mu and density are box-averaged (exact overlap weights, any size ratio; total attenuation is conserved to 1e-9); labels are nearest neighbour at the voxel centre; the padded border is air.
+
+Geometry: TrueCT Duke1 (SOD 575 mm, SDD 1050 mm, 900 x 64 curved detector, 1 mm pixels, 1000 views per rotation, 35.05 mm per rotation = pitch 1.0), ideal and centred; the empirical offsets of the real-data pipeline are **not** used; it is borrowed geometry, not the phantom's original DukeSim acquisition. The scan covers the phantom plus 40 mm per side (COPD: 11-12 rotations). World frame: origin at the phantom centre on the isocentre / mid-scan.
+
+## Validation summary (0.8 mm, unsmoothed; full numbers in each `validation_report.md`)
+
+| case | body HU MAE / RMSE (eroded 2 vox) | lung HU MAE / RMSE | body Dice | lung Dice | recon shift vs ideal [voxel] |
+|---|---|---|---|---|---|
+| reference | 2.95 / 10.5 | n/a | 0.989 | n/a | 0.005, 0.012, 0.000 |
+| copd_22728 | 12.6 / 22.7 | 12.8 / 18.3 | 0.995 | 0.983 | 0.004, -0.002, 0.001 |
+| copd_21535 | 12.8 / 23.3 | 12.6 / 18.1 | 0.995 | 0.987 | 0.003, -0.001, 0.001 |
+
+Reference inserts (ideal vs recon HU): insert1 125.5 / 125.4, insert2 -109.0 / -112.2, insert3 901.7 / 893.4. Errors concentrate at thin edges and at the phantom's z-ends (up to about 80 HU mean at the end slices); see `previews/reconstruction_difference.png`. HU MAE is larger than for smooth objects because XCAT has fine detail and edges at 0.8 mm.
+
+## Overlay the labels on the reconstructed CT in 3D Slicer
+
+1. Download (below), then File > Add Data. Add `reconstructed_hu70.nii.gz` (Show Options: leave as Volume) and `phantom_organ_labels_recon_grid.nii.gz` (tick **LabelMap**).
+2. Load `organ_labels.ctbl` with File > Add Data (type Color) and select it as the labelmap's colour table in the Volumes module (Display > Lookup table).
+3. In a slice view's controller (pin icon) set Background = reconstructed CT, Label = organ labels, and drag the **label opacity** slider (about 0.4). Lung window: W 1400, L -300; soft tissue: W 400, L 40.
+4. Optional: Segment Editor / Segmentations module > Import a labelmap into a segmentation node for per-organ visibility and 3D surfaces. Or run `load_xcat_case_in_slicer.py` in the Python console after `CASE_DIR = "<path to the case folder>"` (written to do steps 1-4; **not tested inside Slicer**).
+5. Check the R/L/A/P/S/I letters. **They are PROVISIONAL** (inferred, not from file metadata); labels and CT are aligned regardless because they are on one grid.
+
+## Download to the Mac
+
+```bash
+mkdir -p ~/XCAT && cd ~/XCAT
+R=yb107@plp-drcc-login2.dhe.duke.edu:/home/yb107/datasets/truect_pilot/outputs/xcat_pipeline
+SSH='ssh -p 8022 -i ~/.ssh/id_ed25519_duke_hpc'
+# all NIfTI volumes + previews + reports for the three cases (about 1.5 GB; excludes the 2.2 GB of Zarr projections and the benchmark folder)
+rsync -avP -e "$SSH" --exclude='projections/' --exclude='benchmarks*' --exclude='copd_21535_repro_check' $R/ .
+# benchmark tables, plots and summary only
+rsync -avP -e "$SSH" --include='*.csv' --include='*.md' --include='*.json' --include='plots/***' --exclude='*' $R/benchmarks/ benchmarks/
+# optional: the 0.6 mm runs (about 3 GB)
+rsync -avP -e "$SSH" --exclude='projections/' $R/benchmarks/e2e/ e2e/
+```
+
+## Benchmark (`xcat_pipeline/benchmarks/benchmark_summary.md`)
+
+Stage timings, 7 repetitions, peak GPU memory, comparison with the earlier benchmark, adjoint and finite-difference checks, and training-loop practicality. Headlines: a COPD phantom takes 85-140 s end to end (9.5-16 s of simulate + reconstruct, the rest is file writing); a differentiable projector iteration at full views is 22-28 s and 21-24 GB on a 24 GB A5000 (one case at 0.6 mm did not fit with Adam); the projector gradient matches finite differences and the LEAP adjoint, the helical-FBP backward does **not** and must not be used.
+
+## Unresolved
+
+1. Orientation letters (L/R, S/I) of every phantom and therefore of every simulated CT are provisional (see above).
+2. COPD/lung/liver native voxel size is assumed 0.25 mm.
+3. No scatter, noise, bowtie or polychromatic physics yet; borrowed Duke1 geometry; reference-phantom attenuation is not cross-checked against a DukeSim table.
+4. Lung-lesion and liver-lesion phantoms are supported by the interface but were not run.
+5. Not tested: `load_xcat_case_in_slicer.py` inside Slicer; the 0.25 mm native projection; a 48 GB GPU.
