@@ -86,7 +86,9 @@ for pid in a.patients:
     R: dict = {"patient": pid}
     truth, ptruth = {}, {}
     for e in E:
-        truth[e], ptruth[e] = ct_from_conc(c_true, e, leap, plan, grid)
+        truth[e], p_e = ct_from_conc(c_true, e, leap, plan, grid)
+        ptruth[e] = p_e.cpu()  # keeps ~3 GB per energy off the 24 GB GPU
+        del p_e
     R["truth70_vs_cached_clean_ct"] = cmp(
         truth[70.0], cached70, mask, body, zsl
     )  # pipeline reproduces the cache
@@ -95,7 +97,8 @@ for pid in a.patients:
     t_noisy_b, _ = ct_from_conc(c_true, 70.0, leap, plan, grid, noise=(a.n0, (int(pid), 12)))
     R["noise_floor_independent_realisations_truth70"] = cmp(t_noisy_a, t_noisy_b, mask, body, zsl)
     t_noisy_c, _ = ct_from_conc(c_true, 70.0, leap, plan, grid, noise=(a.n0, (int(pid), 13)))
-    del t_noisy_b
+    del t_noisy_a, t_noisy_b
+    torch.cuda.empty_cache()
     for name, d in preds.items():
         c_pred = torch.from_numpy(u16_to_conc(np.load(Path(d) / "preds" / f"p{pid}_clean.npy"))).to(
             dev
@@ -104,7 +107,7 @@ for pid in a.patients:
         ct70, pp70 = ct_from_conc(c_pred, 70.0, leap, plan, grid)
         r["ct70_deterministic"] = cmp(ct70, truth[70.0], mask, body, zsl)
         r["ct70_vs_input_clean_ct"] = cmp(ct70, cached70, mask, body, zsl)
-        dp = pp70 - ptruth[70.0]
+        dp = pp70 - ptruth[70.0].to(dev)
         r["proj70_residual"] = {
             "rmse_line_integral": float(dp.square().mean().sqrt()),
             "mae_line_integral": float(dp.abs().mean()),
@@ -113,7 +116,7 @@ for pid in a.patients:
         del dp, pp70
         ct80, pp80 = ct_from_conc(c_pred, 80.0, leap, plan, grid)
         r["ct80_deterministic"] = cmp(ct80, truth[80.0], mask, body, zsl)
-        dp = pp80 - ptruth[80.0]
+        dp = pp80 - ptruth[80.0].to(dev)
         r["proj80_residual"] = {
             "rmse_line_integral": float(dp.square().mean().sqrt()),
             "truth_rms_line_integral": float(ptruth[80.0].square().mean().sqrt()),
