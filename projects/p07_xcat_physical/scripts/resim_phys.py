@@ -118,7 +118,9 @@ for pid in a.patients:
         torch.cuda.empty_cache()
         ct70, pp70 = ct_from_conc(mu_pred[70.0], 70.0, leap, plan, grid)
         r["ct70_deterministic"] = cmp(ct70, truth[70.0], mask, body, zsl)
-        assert r["ct70_deterministic"]["mae_hu_body"] < 100, "FBP failed silently (LEAP cudaMalloc); rerun"
+        assert r["ct70_deterministic"]["mae_hu_body"] < 100, (
+            "FBP failed silently (LEAP cudaMalloc); rerun"
+        )
         r["ct70_vs_input_clean_ct"] = cmp(ct70, cached70, mask, body, zsl)
         dp = pp70 - ptruth[70.0].to(dev)
         r["proj70_residual"] = {
