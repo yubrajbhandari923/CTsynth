@@ -1,0 +1,43 @@
+{
+  "artifacts_offset": 0,
+  "author_model": null,
+  "author_name": "claude-code",
+  "author_type": "agent",
+  "backend": "manual",
+  "command": "aggregate_phys.py --resim resim_v2",
+  "created_at": "2026-10-30T10:51:03-04:00",
+  "ended_at": null,
+  "env": {
+    "lockfiles": {
+      "uv.lock": "819476e0d922980f"
+    },
+    "python": "/home/yubraj/Code/CTsynth/.venv",
+    "user": "yubraj"
+  },
+  "exit_code": 0,
+  "experiment_id": "EXP-040",
+  "git_branch": "feature/xcat-simulator",
+  "git_commit": "863565eec9e47f079a61a1175cf5f9e979b7259b",
+  "git_dirty": 1,
+  "hostname": "RAD-88300596",
+  "id": "RUN-0118",
+  "label": "validation_v2_closed_loop_pitch_materials",
+  "metrics_offset": 5723,
+  "notes": "Corrected validation of EXP-040 (held-out TEST partition, 10 patients). Code commit 863565e (source-tree git status output: \"\" i.e. empty); whole-tree git_dirty is due only to unrelated files (.mcp.json, .research/*, docs/). Model/training/prediction code byte-identical to f9cbcc2 (sha256 verified cluster vs repo). Slurm: resim 203569, cond diagnostic (VALIDATION patients) 203568, material analysis 203570, aggregation 203573. Outputs under ~/datasets/truect_pilot/outputs/xcat_unet/physical/ in resim_v2, aggregate_v2, diagnostics, previews. Supersedes RUN-0117 (historical, run at 13800ce with whole-tree dirty files; kept unmodified).",
+  "override_reason": null,
+  "parameters": {
+    "partition": "test",
+    "resim": "v2"
+  },
+  "pid": null,
+  "reviewed": 0,
+  "run_dir": ".research/runs/RUN-0118",
+  "slurm": null,
+  "slurm_job_id": "203569",
+  "started_at": null,
+  "status": "completed",
+  "stderr_path": ".research/runs/RUN-0118/stderr.log",
+  "stdout_path": ".research/runs/RUN-0118/stdout.log",
+  "updated_at": "2026-10-30T10:51:03-04:00",
+  "working_dir": "."
+}
