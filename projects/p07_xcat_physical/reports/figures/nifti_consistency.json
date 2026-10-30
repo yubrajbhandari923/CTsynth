@@ -1,0 +1,300 @@
+{
+ "23235": {
+  "n_files": 26,
+  "shape": [
+   454,
+   586,
+   444
+  ],
+  "voxel_mm": [
+   0.800000011920929,
+   0.800000011920929,
+   0.800000011920929
+  ],
+  "axcodes": "SLP",
+  "inconsistent_shape_or_affine": [],
+  "all_finite": true,
+  "orientation_status": "provisional (not validated against anatomy)",
+  "files": {
+   "p23235_ct70_input_cached_HU.nii.gz": {
+    "finite": true,
+    "min": -1518.25,
+    "max": 464.0
+   },
+   "p23235_ct70_recon_pred_C_s0_HU.nii.gz": {
+    "finite": true,
+    "min": -1562.3880615234375,
+    "max": 448.0293884277344
+   },
+   "p23235_ct70_recon_pred_minus_true_C_s0_HU.nii.gz": {
+    "finite": true,
+    "min": -632.9136962890625,
+    "max": 344.68798828125
+   },
+   "p23235_ct70_recon_true_phantom_HU.nii.gz": {
+    "finite": true,
+    "min": -1518.162353515625,
+    "max": 463.9271545410156
+   },
+   "p23235_ct80_recon_pred_C_s0_HU.nii.gz": {
+    "finite": true,
+    "min": -1563.3106689453125,
+    "max": 364.00592041015625
+   },
+   "p23235_ct80_recon_pred_minus_true_C_s0_HU.nii.gz": {
+    "finite": true,
+    "min": -632.8977661132812,
+    "max": 342.5711975097656
+   },
+   "p23235_ct80_recon_true_phantom_HU.nii.gz": {
+    "finite": true,
+    "min": -1520.4127197265625,
+    "max": 331.90179443359375
+   },
+   "p23235_conc0_air_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 0.000244140625
+   },
+   "p23235_conc0_air_true_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 0.001220703125
+   },
+   "p23235_conc1_body_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.06201171875
+   },
+   "p23235_conc1_body_true_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 0.9051513671875
+   },
+   "p23235_conc2_sternum_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.1019287109375
+   },
+   "p23235_conc2_sternum_true_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.1510009765625
+   },
+   "p23235_conc3_muscle_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.223388671875
+   },
+   "p23235_conc3_muscle_true_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.056396484375
+   },
+   "p23235_conc4_lung_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 0.57177734375
+   },
+   "p23235_conc4_lung_true_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 0.9029541015625
+   },
+   "p23235_conc5_spine_cortical_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.0703125
+   },
+   "p23235_conc5_spine_cortical_true_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.240478515625
+   },
+   "p23235_conc6_skin_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 0.000244140625
+   },
+   "p23235_conc6_skin_true_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.1053466796875
+   },
+   "p23235_conc7_aorta_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 0.0010986328125
+   },
+   "p23235_conc7_aorta_true_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.0660400390625
+   },
+   "p23235_density_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.3311767578125
+   },
+   "p23235_density_error_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": -0.8892822265625,
+    "max": 0.536865234375
+   },
+   "p23235_density_true_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.001220703125,
+    "max": 1.278076171875
+   }
+  }
+ },
+ "25816": {
+  "n_files": 26,
+  "shape": [
+   374,
+   504,
+   301
+  ],
+  "voxel_mm": [
+   0.800000011920929,
+   0.800000011920929,
+   0.800000011920929
+  ],
+  "axcodes": "SLP",
+  "inconsistent_shape_or_affine": [],
+  "all_finite": true,
+  "orientation_status": "provisional (not validated against anatomy)",
+  "files": {
+   "p25816_ct70_input_cached_HU.nii.gz": {
+    "finite": true,
+    "min": -1472.25,
+    "max": 476.25
+   },
+   "p25816_ct70_recon_pred_C_s0_HU.nii.gz": {
+    "finite": true,
+    "min": -1515.7613525390625,
+    "max": 487.477783203125
+   },
+   "p25816_ct70_recon_pred_minus_true_C_s0_HU.nii.gz": {
+    "finite": true,
+    "min": -564.6908569335938,
+    "max": 370.4705810546875
+   },
+   "p25816_ct70_recon_true_phantom_HU.nii.gz": {
+    "finite": true,
+    "min": -1472.2666015625,
+    "max": 476.23931884765625
+   },
+   "p25816_ct80_recon_pred_C_s0_HU.nii.gz": {
+    "finite": true,
+    "min": -1516.072265625,
+    "max": 374.62628173828125
+   },
+   "p25816_ct80_recon_pred_minus_true_C_s0_HU.nii.gz": {
+    "finite": true,
+    "min": -564.964111328125,
+    "max": 370.8608703613281
+   },
+   "p25816_ct80_recon_true_phantom_HU.nii.gz": {
+    "finite": true,
+    "min": -1472.8829345703125,
+    "max": 355.5085754394531
+   },
+   "p25816_conc0_air_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 0.0003662109375
+   },
+   "p25816_conc0_air_true_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 0.001220703125
+   },
+   "p25816_conc1_body_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.1318359375
+   },
+   "p25816_conc1_body_true_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 0.9324951171875
+   },
+   "p25816_conc2_sternum_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.087158203125
+   },
+   "p25816_conc2_sternum_true_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.169189453125
+   },
+   "p25816_conc3_muscle_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.0975341796875
+   },
+   "p25816_conc3_muscle_true_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.0572509765625
+   },
+   "p25816_conc4_lung_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 0.537109375
+   },
+   "p25816_conc4_lung_true_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 0.91015625
+   },
+   "p25816_conc5_spine_cortical_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.083740234375
+   },
+   "p25816_conc5_spine_cortical_true_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.2322998046875
+   },
+   "p25816_conc6_skin_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 0.0003662109375
+   },
+   "p25816_conc6_skin_true_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.0919189453125
+   },
+   "p25816_conc7_aorta_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 0.0013427734375
+   },
+   "p25816_conc7_aorta_true_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.073974609375
+   },
+   "p25816_density_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.0,
+    "max": 1.3731689453125
+   },
+   "p25816_density_error_C_s0_gcm3.nii.gz": {
+    "finite": true,
+    "min": -0.7896728515625,
+    "max": 0.513671875
+   },
+   "p25816_density_true_gcm3.nii.gz": {
+    "finite": true,
+    "min": 0.001220703125,
+    "max": 1.2734375
+   }
+  }
+ }
+}

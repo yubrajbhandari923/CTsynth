@@ -21,7 +21,27 @@ ap.add_argument("--out", required=True)
 a = ap.parse_args()
 out = Path(a.out)
 out.mkdir(parents=True, exist_ok=True)
-names = load_basis().names
+basis = load_basis()
+names = basis.names
+(out / "legend.json").write_text(
+    json.dumps(
+        {
+            "units": "g/cm3 (mass concentration of each elemental composition); CT in HU",
+            "channels": {
+                f"conc{k}_{n}": {
+                    "index": k,
+                    "first_xlsx_name": n,
+                    "organ_ids": list(basis.organ_ids[k]),
+                }
+                for k, n in enumerate(names)
+            },
+            "note": "channels are compositions, not anatomical labels; skin, blood, muscle, lung tissue are "
+            "near-degenerate in attenuation (see final_report.md). Orientation (L/R) provisional: "
+            "affine from affine_from_axcodes, not validated against a clinical atlas.",
+        },
+        indent=1,
+    )
+)
 for pid in a.patients:
     pdir = Path(a.cache) / f"p{pid}"
     vox = json.loads((pdir / "ct_clean.json").read_text())["vox_mm"]

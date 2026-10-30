@@ -1,0 +1,383 @@
+{
+ "n_patients": 10,
+ "patients": [
+  "11989",
+  "13799",
+  "15679",
+  "16747",
+  "18058",
+  "18096",
+  "18216",
+  "21608",
+  "23235",
+  "25816"
+ ],
+ "means": {
+  "truth70_vs_cached_clean_ct": {
+   "mae_hu_valid": 0.06486148461699486,
+   "rmse_hu_valid": 0.07613217458128929,
+   "mae_hu_body": 0.06571569219231606,
+   "bias_hu_body": -0.006871940981363877,
+   "ssim_axial": 0.999999266824641
+  },
+  "noise_floor_independent_realisations_truth70": {
+   "mae_hu_valid": 38.728050231933594,
+   "rmse_hu_valid": 55.333169555664064,
+   "mae_hu_body": 44.16709880828857,
+   "bias_hu_body": 0.0002978913296828978,
+   "ssim_axial": 0.795941225401162
+  },
+  "A_s0:ct70_deterministic": {
+   "mae_hu_valid": 4.349502158164978,
+   "rmse_hu_valid": 9.110557079315186,
+   "mae_hu_body": 6.121653747558594,
+   "bias_hu_body": 1.1125417858362199,
+   "ssim_axial": 0.9957926890278351
+  },
+  "A_s0:ct70_vs_input_clean_ct": {
+   "mae_hu_valid": 4.3502765417099,
+   "rmse_hu_valid": 9.110502624511719,
+   "mae_hu_body": 6.121158027648926,
+   "bias_hu_body": 1.1056698530912399,
+   "ssim_axial": 0.9957940694555356
+  },
+  "A_s0:proj70_residual": {
+   "rmse_line_integral": 0.018549471721053125,
+   "mae_line_integral": 0.0074527297168970105,
+   "truth_rms_line_integral": 3.0340178489685057
+  },
+  "A_s0:ct80_deterministic": {
+   "mae_hu_valid": 4.235023832321167,
+   "rmse_hu_valid": 8.887854766845702,
+   "mae_hu_body": 5.946680355072021,
+   "bias_hu_body": 0.9153345951810479,
+   "ssim_axial": 0.9957220026749148
+  },
+  "A_s0:proj80_residual": {
+   "rmse_line_integral": 0.01732462029904127,
+   "truth_rms_line_integral": 2.8774669885635378
+  },
+  "A_s0:ct80_if_70keV_image_reused_as_80": {
+   "mae_hu_valid": 5.779977178573608,
+   "rmse_hu_valid": 18.676781463623048,
+   "mae_hu_body": 9.1141526222229,
+   "bias_hu_body": 3.353142247861251,
+   "ssim_axial": 0.990989558368392
+  },
+  "A_s0:ct70_coupled_noise": {
+   "mae_hu_valid": 6.209998321533203,
+   "rmse_hu_valid": 11.14780044555664,
+   "mae_hu_body": 8.084404516220093,
+   "bias_hu_body": 1.1135554645210504,
+   "ssim_axial": 0.993708316928801
+  },
+  "A_s1:ct70_deterministic": {
+   "mae_hu_valid": 4.611811590194702,
+   "rmse_hu_valid": 9.248918104171754,
+   "mae_hu_body": 6.4800145626068115,
+   "bias_hu_body": -0.6441153109073638,
+   "ssim_axial": 0.9956753142468129
+  },
+  "A_s1:ct70_vs_input_clean_ct": {
+   "mae_hu_valid": 4.61517698764801,
+   "rmse_hu_valid": 9.250677967071534,
+   "mae_hu_body": 6.483608961105347,
+   "bias_hu_body": -0.6509873576462268,
+   "ssim_axial": 0.9956739277726155
+  },
+  "A_s1:proj70_residual": {
+   "rmse_line_integral": 0.01921768868342042,
+   "mae_line_integral": 0.008129570214077831,
+   "truth_rms_line_integral": 3.0340178489685057
+  },
+  "A_s1:ct80_deterministic": {
+   "mae_hu_valid": 4.545832729339599,
+   "rmse_hu_valid": 9.055088567733765,
+   "mae_hu_body": 6.379863595962524,
+   "bias_hu_body": -0.8708991035819054,
+   "ssim_axial": 0.9954861468170592
+  },
+  "A_s1:proj80_residual": {
+   "rmse_line_integral": 0.01815554713830352,
+   "truth_rms_line_integral": 2.8774669885635378
+  },
+  "A_s1:ct80_if_70keV_image_reused_as_80": {
+   "mae_hu_valid": 5.779977178573608,
+   "rmse_hu_valid": 18.676781463623048,
+   "mae_hu_body": 9.1141526222229,
+   "bias_hu_body": 3.353142247861251,
+   "ssim_axial": 0.990989558368392
+  },
+  "A_s1:ct70_coupled_noise": {
+   "mae_hu_valid": 6.422897243499756,
+   "rmse_hu_valid": 11.24879207611084,
+   "mae_hu_body": 8.372381925582886,
+   "bias_hu_body": -0.645423824340105,
+   "ssim_axial": 0.9935997440830509
+  },
+  "B_s0:ct70_deterministic": {
+   "mae_hu_valid": 4.839334440231323,
+   "rmse_hu_valid": 9.850308418273926,
+   "mae_hu_body": 6.76371169090271,
+   "bias_hu_body": -1.7440632075071334,
+   "ssim_axial": 0.9949037601067585
+  },
+  "B_s0:ct70_vs_input_clean_ct": {
+   "mae_hu_valid": 4.842093276977539,
+   "rmse_hu_valid": 9.851344299316406,
+   "mae_hu_body": 6.76629409790039,
+   "bias_hu_body": -1.7509351819753647,
+   "ssim_axial": 0.9949038076082622
+  },
+  "B_s0:proj70_residual": {
+   "rmse_line_integral": 0.01925142016261816,
+   "mae_line_integral": 0.007905327947810292,
+   "truth_rms_line_integral": 3.0340178489685057
+  },
+  "B_s0:ct80_deterministic": {
+   "mae_hu_valid": 4.760017967224121,
+   "rmse_hu_valid": 9.609708881378173,
+   "mae_hu_body": 6.654229640960693,
+   "bias_hu_body": -1.845770224928856,
+   "ssim_axial": 0.9948578514418763
+  },
+  "B_s0:proj80_residual": {
+   "rmse_line_integral": 0.018128967750817536,
+   "truth_rms_line_integral": 2.8774669885635378
+  },
+  "B_s0:ct80_if_70keV_image_reused_as_80": {
+   "mae_hu_valid": 5.779977178573608,
+   "rmse_hu_valid": 18.676781463623048,
+   "mae_hu_body": 9.1141526222229,
+   "bias_hu_body": 3.353142247861251,
+   "ssim_axial": 0.990989558368392
+  },
+  "B_s0:ct70_coupled_noise": {
+   "mae_hu_valid": 6.571479940414429,
+   "rmse_hu_valid": 11.621744346618652,
+   "mae_hu_body": 8.614609670639037,
+   "bias_hu_body": -1.7461563378572464,
+   "ssim_axial": 0.9932801180253608
+  },
+  "B_s1:ct70_deterministic": {
+   "mae_hu_valid": 5.4368195056915285,
+   "rmse_hu_valid": 11.689519500732422,
+   "mae_hu_body": 7.597295236587525,
+   "bias_hu_body": -2.22525157481432,
+   "ssim_axial": 0.9932206272836007
+  },
+  "B_s1:ct70_vs_input_clean_ct": {
+   "mae_hu_valid": 5.439297389984131,
+   "rmse_hu_valid": 11.69064702987671,
+   "mae_hu_body": 7.599818229675293,
+   "bias_hu_body": -2.23212344199419,
+   "ssim_axial": 0.9932195830695887
+  },
+  "B_s1:proj70_residual": {
+   "rmse_line_integral": 0.0232151641510427,
+   "mae_line_integral": 0.009128536470234394,
+   "truth_rms_line_integral": 3.0340178489685057
+  },
+  "B_s1:ct80_deterministic": {
+   "mae_hu_valid": 5.375822973251343,
+   "rmse_hu_valid": 11.375523948669434,
+   "mae_hu_body": 7.514625167846679,
+   "bias_hu_body": -2.422765576839447,
+   "ssim_axial": 0.9931061642539923
+  },
+  "B_s1:proj80_residual": {
+   "rmse_line_integral": 0.021790765039622784,
+   "truth_rms_line_integral": 2.8774669885635378
+  },
+  "B_s1:ct80_if_70keV_image_reused_as_80": {
+   "mae_hu_valid": 5.779977178573608,
+   "rmse_hu_valid": 18.676781463623048,
+   "mae_hu_body": 9.1141526222229,
+   "bias_hu_body": 3.353142247861251,
+   "ssim_axial": 0.990989558368392
+  },
+  "B_s1:ct70_coupled_noise": {
+   "mae_hu_valid": 7.198013782501221,
+   "rmse_hu_valid": 13.35549430847168,
+   "mae_hu_body": 9.47765417098999,
+   "bias_hu_body": -2.228494514524937,
+   "ssim_axial": 0.9915024044504138
+  },
+  "C_s0:ct70_deterministic": {
+   "mae_hu_valid": 5.600623846054077,
+   "rmse_hu_valid": 11.53820867538452,
+   "mae_hu_body": 7.79565544128418,
+   "bias_hu_body": -0.7834132552146912,
+   "ssim_axial": 0.9941297856937654
+  },
+  "C_s0:ct70_vs_input_clean_ct": {
+   "mae_hu_valid": 5.605068874359131,
+   "rmse_hu_valid": 11.540501594543457,
+   "mae_hu_body": 7.799983167648316,
+   "bias_hu_body": -0.7902852952480316,
+   "ssim_axial": 0.9941283033615329
+  },
+  "C_s0:proj70_residual": {
+   "rmse_line_integral": 0.022590707615017892,
+   "mae_line_integral": 0.009637774713337422,
+   "truth_rms_line_integral": 3.0340178489685057
+  },
+  "C_s0:ct80_deterministic": {
+   "mae_hu_valid": 5.486638736724854,
+   "rmse_hu_valid": 11.144730567932129,
+   "mae_hu_body": 7.6248702049255375,
+   "bias_hu_body": -0.7936885625123977,
+   "ssim_axial": 0.9940012845936452
+  },
+  "C_s0:proj80_residual": {
+   "rmse_line_integral": 0.020939059648662807,
+   "truth_rms_line_integral": 2.8774669885635378
+  },
+  "C_s0:ct80_if_70keV_image_reused_as_80": {
+   "mae_hu_valid": 5.779977178573608,
+   "rmse_hu_valid": 18.676781463623048,
+   "mae_hu_body": 9.1141526222229,
+   "bias_hu_body": 3.353142247861251,
+   "ssim_axial": 0.990989558368392
+  },
+  "C_s0:ct70_coupled_noise": {
+   "mae_hu_valid": 7.42066764831543,
+   "rmse_hu_valid": 13.47837038040161,
+   "mae_hu_body": 9.720329093933106,
+   "bias_hu_body": -0.7843571871519088,
+   "ssim_axial": 0.9918613920708828
+  },
+  "C_s1:ct70_deterministic": {
+   "mae_hu_valid": 5.358861780166626,
+   "rmse_hu_valid": 10.923398971557617,
+   "mae_hu_body": 7.542078685760498,
+   "bias_hu_body": -1.4711171008646489,
+   "ssim_axial": 0.994160771802307
+  },
+  "C_s1:ct70_vs_input_clean_ct": {
+   "mae_hu_valid": 5.363043117523193,
+   "rmse_hu_valid": 10.925534534454346,
+   "mae_hu_body": 7.547149896621704,
+   "bias_hu_body": -1.4779890805482865,
+   "ssim_axial": 0.9941559435114712
+  },
+  "C_s1:proj70_residual": {
+   "rmse_line_integral": 0.022259433567523957,
+   "mae_line_integral": 0.009732197737321258,
+   "truth_rms_line_integral": 3.0340178489685057
+  },
+  "C_s1:ct80_deterministic": {
+   "mae_hu_valid": 5.26460177898407,
+   "rmse_hu_valid": 10.475146579742432,
+   "mae_hu_body": 7.408001708984375,
+   "bias_hu_body": -1.5497278977185487,
+   "ssim_axial": 0.9940032359387875
+  },
+  "C_s1:proj80_residual": {
+   "rmse_line_integral": 0.020579047966748476,
+   "truth_rms_line_integral": 2.8774669885635378
+  },
+  "C_s1:ct80_if_70keV_image_reused_as_80": {
+   "mae_hu_valid": 5.779977178573608,
+   "rmse_hu_valid": 18.676781463623048,
+   "mae_hu_body": 9.1141526222229,
+   "bias_hu_body": 3.353142247861251,
+   "ssim_axial": 0.990989558368392
+  },
+  "C_s1:ct70_coupled_noise": {
+   "mae_hu_valid": 7.221761465072632,
+   "rmse_hu_valid": 12.977180004119873,
+   "mae_hu_body": 9.485287094116211,
+   "bias_hu_body": -1.4739589735865593,
+   "ssim_axial": 0.9918058694380564
+  },
+  "D_s0:ct70_deterministic": {
+   "mae_hu_valid": 5.520713949203492,
+   "rmse_hu_valid": 11.218609046936034,
+   "mae_hu_body": 7.752437400817871,
+   "bias_hu_body": -1.3366851245053113,
+   "ssim_axial": 0.9940371041905681
+  },
+  "D_s0:ct70_vs_input_clean_ct": {
+   "mae_hu_valid": 5.523861837387085,
+   "rmse_hu_valid": 11.22052640914917,
+   "mae_hu_body": 7.755978918075561,
+   "bias_hu_body": -1.3435570526868106,
+   "ssim_axial": 0.9940350469106859
+  },
+  "D_s0:proj70_residual": {
+   "rmse_line_integral": 0.021917750593274832,
+   "mae_line_integral": 0.00949400463141501,
+   "truth_rms_line_integral": 3.0340178489685057
+  },
+  "D_s0:ct80_deterministic": {
+   "mae_hu_valid": 5.283271455764771,
+   "rmse_hu_valid": 10.485998821258544,
+   "mae_hu_body": 7.379223823547363,
+   "bias_hu_body": -1.3470262795686723,
+   "ssim_axial": 0.9941474759693427
+  },
+  "D_s0:proj80_residual": {
+   "rmse_line_integral": 0.019868437852710485,
+   "truth_rms_line_integral": 2.8774669885635378
+  },
+  "D_s0:ct80_if_70keV_image_reused_as_80": {
+   "mae_hu_valid": 5.779977178573608,
+   "rmse_hu_valid": 18.676781463623048,
+   "mae_hu_body": 9.1141526222229,
+   "bias_hu_body": 3.353142247861251,
+   "ssim_axial": 0.990989558368392
+  },
+  "D_s0:ct70_coupled_noise": {
+   "mae_hu_valid": 7.342149496078491,
+   "rmse_hu_valid": 13.236784934997559,
+   "mae_hu_body": 9.683113431930542,
+   "bias_hu_body": -1.3398711394751444,
+   "ssim_axial": 0.9918159540210579
+  },
+  "D_s1:ct70_deterministic": {
+   "mae_hu_valid": 5.1589258193969725,
+   "rmse_hu_valid": 11.541867446899413,
+   "mae_hu_body": 7.209369421005249,
+   "bias_hu_body": -0.8178194083273411,
+   "ssim_axial": 0.9941982835650041
+  },
+  "D_s1:ct70_vs_input_clean_ct": {
+   "mae_hu_valid": 5.161589622497559,
+   "rmse_hu_valid": 11.542734622955322,
+   "mae_hu_body": 7.2118000984191895,
+   "bias_hu_body": -0.8246913768351078,
+   "ssim_axial": 0.9941983438249629
+  },
+  "D_s1:proj70_residual": {
+   "rmse_line_integral": 0.02344142263755202,
+   "mae_line_integral": 0.008470622450113296,
+   "truth_rms_line_integral": 3.0340178489685057
+  },
+  "D_s1:ct80_deterministic": {
+   "mae_hu_valid": 5.031393766403198,
+   "rmse_hu_valid": 11.029825401306152,
+   "mae_hu_body": 7.02448525428772,
+   "bias_hu_body": -0.6765909984707832,
+   "ssim_axial": 0.994201378396731
+  },
+  "D_s1:proj80_residual": {
+   "rmse_line_integral": 0.021285868436098098,
+   "truth_rms_line_integral": 2.8774669885635378
+  },
+  "D_s1:ct80_if_70keV_image_reused_as_80": {
+   "mae_hu_valid": 5.779977178573608,
+   "rmse_hu_valid": 18.676781463623048,
+   "mae_hu_body": 9.1141526222229,
+   "bias_hu_body": 3.353142247861251,
+   "ssim_axial": 0.990989558368392
+  },
+  "D_s1:ct70_coupled_noise": {
+   "mae_hu_valid": 6.962907075881958,
+   "rmse_hu_valid": 13.327390193939209,
+   "mae_hu_body": 9.142077541351318,
+   "bias_hu_body": -0.8195050094276667,
+   "ssim_axial": 0.9921681819503337
+  }
+ }
+}

@@ -146,7 +146,34 @@ if a.resim:
     runs = sorted(k for k in R[0] if k[:1] in "ABCD" and k[1:2] == "_")
     for run in runs:
         for k in R[0][run]:
+            if not isinstance(
+                R[0][run][k], dict
+            ):  # scalar diagnostics (e.g. predicted body density)
+                continue
             agg[f"{run}:{k}"] = {m: float(np.mean([r[run][k][m] for r in R])) for m in R[0][run][k]}
+    with open(
+        out / "resim_per_patient.csv", "w", newline=""
+    ) as fh:  # patient-level closed-loop table
+        w = csv.writer(fh)
+        w.writerow(["patient", "run", "quantity", "mae_hu_body", "rmse_hu_valid", "ssim_axial"])
+        for r in R:
+            for run in runs:
+                for k in (
+                    "ct70_deterministic",
+                    "ct80_deterministic",
+                    "ct80_if_70keV_image_reused_as_80",
+                ):
+                    m = r[run][k]
+                    w.writerow(
+                        [
+                            r["patient"],
+                            run,
+                            k,
+                            m["mae_hu_body"],
+                            m["rmse_hu_valid"],
+                            m["ssim_axial"],
+                        ]
+                    )
     (out / "resim_summary.json").write_text(
         json.dumps(
             {"n_patients": len(R), "patients": [r["patient"] for r in R], "means": agg}, indent=1
