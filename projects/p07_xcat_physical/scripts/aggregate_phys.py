@@ -45,8 +45,24 @@ for f in sorted(glob.glob(f"{a.preds}/*/metrics.json")):
 pids = sorted(next(iter(next(iter(B["per_patient"].values())).values())))
 
 
+POOL = [
+    "clean",
+    "n0_1e6",
+    "n0_3e5",
+    "n0_1e5",
+    "n0_3e4",
+    "lowpass_w2",
+    "lowpass_w4",
+    "dec2",
+    "e60",
+    "var1",
+]
+
+
 def vec(model, variant, metric):
-    """(n_seeds, n_patients) array."""
+    """(n_seeds, n_patients) array; variant 'pooled' = mean over the pre-registered in-distribution panel (POOL)."""
+    if variant == "pooled":
+        return np.mean([vec(model, v, metric) for v in POOL], 0)
     src = data[model][variant] if model in data else seeds[model][variant]
     return np.array([[METRICS[metric](pp[p]) for p in pids] for pp in src.values()])
 
@@ -55,10 +71,10 @@ rng = np.random.default_rng(0)
 boot = rng.integers(0, len(pids), size=(4000, len(pids)))
 rows, diffs = [], []
 models = list(data) + sorted(seeds)
-variants = sorted({v for m in models for v in (data.get(m) or seeds.get(m, {}))})
+variants = sorted({v for m in models for v in (data.get(m) or seeds.get(m, {}))}) + ["pooled"]
 for v in variants:
     for m in models:
-        if v not in (data.get(m) or seeds.get(m, {})):
+        if v != "pooled" and v not in (data.get(m) or seeds.get(m, {})):
             continue
         for met in METRICS:
             x = vec(m, v, met)
