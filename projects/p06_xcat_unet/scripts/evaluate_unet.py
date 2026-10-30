@@ -130,6 +130,7 @@ def main():
                 "iou": iou.tolist(),
                 "confusion": cm.tolist(),
                 "n_voxels": int(cm.sum()),
+                "per_patient_confusion": per_patient[k].get(v, {}),
             }
             rows.append(
                 {
