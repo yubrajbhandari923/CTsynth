@@ -48,9 +48,9 @@ MUW = {e: et.kappa_water(e) / 10.0 for e in E}
 preds = dict(p.split("=", 1) for p in a.preds)
 
 
-def ct_from_conc(c, e, leap, plan, grid, noise=None):
-    """(HU volume, clean projections' tensor) for concentrations c at energy e; noise=(n0, stream) adds Poisson noise."""
-    mu = mu_mm_from_concentration(c, KAP[e])
+def ct_from_conc(mu, e, leap, plan, grid, noise=None):
+    """(HU volume, clean projections' tensor) for attenuation mu (mm^-1) at energy e; noise=(n0, stream) adds Poisson noise.
+    Callers pass mu, not the 8-channel concentrations, so those can be freed before the memory-heavy projection."""
     p = forward_project(leap, mu, plan)
     if noise is not None:
         work = torch.empty_like(p)
@@ -84,12 +84,15 @@ for pid in a.patients:
     leap = make_leap(grid, plan)
     mask = valid_mask(grid, plan, dev)
     body = mask & (c_true.sum(0) > 0.01)
+    mu_true = {e: mu_mm_from_concentration(c_true, KAP[e]) for e in E}
+    del c_true
+    torch.cuda.empty_cache()
     zsl = mask.any(2).any(1)
     cached70 = torch.from_numpy(VolumeReader(pdir / "ct_clean.npy", "npy_i16q").read_all())  # CPU
     R: dict = {"patient": pid}
     truth, ptruth = {}, {}
     for e in E:
-        t_e, p_e = ct_from_conc(c_true, e, leap, plan, grid)
+        t_e, p_e = ct_from_conc(mu_true[e], e, leap, plan, grid)
         truth[e] = t_e.cpu()
         ptruth[e] = p_e.cpu()  # keeps ~3 GB per energy off the 24 GB GPU
         del p_e, t_e
@@ -97,10 +100,12 @@ for pid in a.patients:
         truth[70.0], cached70, mask, body, zsl
     )  # pipeline reproduces the cache
     nz = (a.n0, (int(pid), 1))
-    t_noisy_a, _ = ct_from_conc(c_true, 70.0, leap, plan, grid, noise=(a.n0, (int(pid), 11)))
-    t_noisy_b, _ = ct_from_conc(c_true, 70.0, leap, plan, grid, noise=(a.n0, (int(pid), 12)))
+    t_noisy_a, _ = ct_from_conc(mu_true[70.0], 70.0, leap, plan, grid, noise=(a.n0, (int(pid), 11)))
+    t_noisy_b, _ = ct_from_conc(mu_true[70.0], 70.0, leap, plan, grid, noise=(a.n0, (int(pid), 12)))
     R["noise_floor_independent_realisations_truth70"] = cmp(t_noisy_a, t_noisy_b, mask, body, zsl)
-    t_noisy_c = ct_from_conc(c_true, 70.0, leap, plan, grid, noise=(a.n0, (int(pid), 13)))[0].cpu()
+    t_noisy_c = ct_from_conc(mu_true[70.0], 70.0, leap, plan, grid, noise=(a.n0, (int(pid), 13)))[
+        0
+    ].cpu()
     del t_noisy_a, t_noisy_b
     torch.cuda.empty_cache()
     for name, d in preds.items():
@@ -108,8 +113,12 @@ for pid in a.patients:
             dev
         )
         r = {}
-        ct70, pp70 = ct_from_conc(c_pred, 70.0, leap, plan, grid)
+        mu_pred = {e: mu_mm_from_concentration(c_pred, KAP[e]) for e in E}
+        del c_pred
+        torch.cuda.empty_cache()
+        ct70, pp70 = ct_from_conc(mu_pred[70.0], 70.0, leap, plan, grid)
         r["ct70_deterministic"] = cmp(ct70, truth[70.0], mask, body, zsl)
+        assert r["ct70_deterministic"]["mae_hu_body"] < 100, "FBP failed silently (LEAP cudaMalloc); rerun"
         r["ct70_vs_input_clean_ct"] = cmp(ct70, cached70, mask, body, zsl)
         dp = pp70 - ptruth[70.0].to(dev)
         r["proj70_residual"] = {
@@ -118,7 +127,7 @@ for pid in a.patients:
             "truth_rms_line_integral": float(ptruth[70.0].square().mean().sqrt()),
         }
         del dp, pp70
-        ct80, pp80 = ct_from_conc(c_pred, 80.0, leap, plan, grid)
+        ct80, pp80 = ct_from_conc(mu_pred[80.0], 80.0, leap, plan, grid)
         r["ct80_deterministic"] = cmp(ct80, truth[80.0], mask, body, zsl)
         dp = pp80 - ptruth[80.0].to(dev)
         r["proj80_residual"] = {
@@ -129,7 +138,7 @@ for pid in a.patients:
         # trivial 70-keV-only cross-energy reference: reuse the 70 keV image as the 80 keV prediction (HU unchanged) and the pure P0 map
         r["ct80_if_70keV_image_reused_as_80"] = cmp(truth[70.0], truth[80.0], mask, body, zsl)
         # coupled noise: same RNG stream on predicted and true clean projections
-        pc, _ = ct_from_conc(c_pred, 70.0, leap, plan, grid, noise=(a.n0, (int(pid), 13)))
+        pc, _ = ct_from_conc(mu_pred[70.0], 70.0, leap, plan, grid, noise=(a.n0, (int(pid), 13)))
         r["ct70_coupled_noise"] = cmp(pc, t_noisy_c, mask, body, zsl)
         R[name] = r
         if pid in a.export:
@@ -148,7 +157,7 @@ for pid in a.patients:
                     nib.Nifti1Image(arr.float().cpu().numpy(), aff),
                     out / f"p{pid}_{name}_{nm}.nii.gz",
                 )
-        del ct70, ct80, pc, c_pred
+        del ct70, ct80, pc, mu_pred
         gc.collect()
         torch.cuda.empty_cache()
     R["seconds"] = time.time() - t0
