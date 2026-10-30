@@ -1,0 +1,58 @@
+{
+ "A_s0": {
+  "test_pooled_body_density_mae_gcm3": 0.023310073558241128,
+  "test_pooled_body_mu80_mae_hu": 23.353526654243474,
+  "test_clean_body_mu80_mae_hu": 8.063553667068481,
+  "test_e80_body_mu80_mae_hu": 22.541182136535646,
+  "test_pitch1p4_body_mu80_mae_hu": 23.194123840332033
+ },
+ "A_s1": {
+  "test_pooled_body_density_mae_gcm3": 0.023591398117132484,
+  "test_pooled_body_mu80_mae_hu": 23.622581367492675,
+  "test_clean_body_mu80_mae_hu": 8.525901412963867,
+  "test_e80_body_mu80_mae_hu": 19.740107345581055,
+  "test_pitch1p4_body_mu80_mae_hu": 21.69594783782959
+ },
+ "B_s0": {
+  "test_pooled_body_density_mae_gcm3": 0.01304283054545522,
+  "test_pooled_body_mu80_mae_hu": 13.141519050598145,
+  "test_clean_body_mu80_mae_hu": 9.632694149017334,
+  "test_e80_body_mu80_mae_hu": 13.766205596923829,
+  "test_pitch1p4_body_mu80_mae_hu": 10.55348606109619
+ },
+ "B_s1": {
+  "test_pooled_body_density_mae_gcm3": 0.01415396745316684,
+  "test_pooled_body_mu80_mae_hu": 14.205215616226198,
+  "test_clean_body_mu80_mae_hu": 10.584010696411132,
+  "test_e80_body_mu80_mae_hu": 14.473152256011963,
+  "test_pitch1p4_body_mu80_mae_hu": 11.352212810516358
+ },
+ "C_s0": {
+  "test_pooled_body_density_mae_gcm3": 0.013350510140880942,
+  "test_pooled_body_mu80_mae_hu": 13.331783895492554,
+  "test_clean_body_mu80_mae_hu": 10.327079391479492,
+  "test_e80_body_mu80_mae_hu": 13.724173164367675,
+  "test_pitch1p4_body_mu80_mae_hu": 12.51803798675537
+ },
+ "C_s1": {
+  "test_pooled_body_density_mae_gcm3": 0.013062605960294604,
+  "test_pooled_body_mu80_mae_hu": 13.008765034675596,
+  "test_clean_body_mu80_mae_hu": 10.05677170753479,
+  "test_e80_body_mu80_mae_hu": 13.503348445892334,
+  "test_pitch1p4_body_mu80_mae_hu": 12.206954383850098
+ },
+ "D_s0": {
+  "test_pooled_body_density_mae_gcm3": 0.014029000261798503,
+  "test_pooled_body_mu80_mae_hu": 13.333276052474975,
+  "test_clean_body_mu80_mae_hu": 10.015193653106689,
+  "test_e80_body_mu80_mae_hu": 15.754205703735352,
+  "test_pitch1p4_body_mu80_mae_hu": 143.57620391845703
+ },
+ "D_s1": {
+  "test_pooled_body_density_mae_gcm3": 0.012899171141907573,
+  "test_pooled_body_mu80_mae_hu": 12.967330312728881,
+  "test_clean_body_mu80_mae_hu": 9.683417129516602,
+  "test_e80_body_mu80_mae_hu": 14.28575963973999,
+  "test_pitch1p4_body_mu80_mae_hu": 140.8646438598633
+ }
+}

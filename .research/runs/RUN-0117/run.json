@@ -1,0 +1,40 @@
+{
+  "artifacts_offset": 0,
+  "author_model": null,
+  "author_name": "claude-code",
+  "author_type": "agent",
+  "backend": "manual",
+  "command": "aggregate_phys.py",
+  "created_at": "2026-10-30T08:30:53-04:00",
+  "ended_at": null,
+  "env": {
+    "lockfiles": {
+      "uv.lock": "819476e0d922980f"
+    },
+    "python": "/home/yubraj/Code/CTsynth/.venv",
+    "user": "yubraj"
+  },
+  "exit_code": 0,
+  "experiment_id": "EXP-040",
+  "git_branch": "feature/xcat-simulator",
+  "git_commit": "13800ce9f69a1e59e800de6b206251119fff105d",
+  "git_dirty": 1,
+  "hostname": "RAD-88300596",
+  "id": "RUN-0117",
+  "label": "aggregate_test_baselines_closedloop",
+  "metrics_offset": 6125,
+  "notes": "Aggregation of test baselines (203553), predictions (203552) and resimulation (203555-203558); projects/p07_xcat_physical/reports/test/",
+  "override_reason": null,
+  "parameters": {},
+  "pid": null,
+  "reviewed": 0,
+  "run_dir": ".research/runs/RUN-0117",
+  "slurm": null,
+  "slurm_job_id": "203553",
+  "started_at": null,
+  "status": "completed",
+  "stderr_path": ".research/runs/RUN-0117/stderr.log",
+  "stdout_path": ".research/runs/RUN-0117/stdout.log",
+  "updated_at": "2026-10-30T08:30:53-04:00",
+  "working_dir": "."
+}

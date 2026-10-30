@@ -1,0 +1,5 @@
+{"author_type": "agent", "name": "test_pooled_body_density_mae_gcm3", "ts": "2026-10-30T08:30:25-04:00", "unit": "g/cm3", "value": 0.01415396745316684}
+{"author_type": "agent", "name": "test_pooled_body_mu80_mae_hu", "ts": "2026-10-30T08:30:26-04:00", "unit": "HU", "value": 14.205215616226198}
+{"author_type": "agent", "name": "test_clean_body_mu80_mae_hu", "ts": "2026-10-30T08:30:26-04:00", "unit": "HU", "value": 10.584010696411132}
+{"author_type": "agent", "name": "test_e80_body_mu80_mae_hu", "ts": "2026-10-30T08:30:26-04:00", "unit": "HU", "value": 14.473152256011963}
+{"author_type": "agent", "name": "test_pitch1p4_body_mu80_mae_hu", "ts": "2026-10-30T08:30:26-04:00", "unit": "HU", "value": 11.352212810516358}
