@@ -60,6 +60,7 @@ def ct_from_conc(c, e, leap, plan, grid, noise=None):
 
 
 def cmp(x, y, mask, body, zsl):
+    x, y = x.to(dev), y.to(dev)
     d = x - y
     return {
         "mae_hu_valid": float(d[mask].abs().mean()),
@@ -71,6 +72,8 @@ def cmp(x, y, mask, body, zsl):
 
 
 for pid in a.patients:
+    if (out / f"resim_p{pid}.json").exists():  # resume: finished patients are kept
+        continue
     t0 = time.time()
     pdir = Path(a.cache) / f"p{pid}"
     meta = json.loads((pdir / "ct_clean.json").read_text())
@@ -82,13 +85,14 @@ for pid in a.patients:
     mask = valid_mask(grid, plan, dev)
     body = mask & (c_true.sum(0) > 0.01)
     zsl = mask.any(2).any(1)
-    cached70 = torch.from_numpy(VolumeReader(pdir / "ct_clean.npy", "npy_i16q").read_all()).to(dev)
+    cached70 = torch.from_numpy(VolumeReader(pdir / "ct_clean.npy", "npy_i16q").read_all())  # CPU
     R: dict = {"patient": pid}
     truth, ptruth = {}, {}
     for e in E:
-        truth[e], p_e = ct_from_conc(c_true, e, leap, plan, grid)
+        t_e, p_e = ct_from_conc(c_true, e, leap, plan, grid)
+        truth[e] = t_e.cpu()
         ptruth[e] = p_e.cpu()  # keeps ~3 GB per energy off the 24 GB GPU
-        del p_e
+        del p_e, t_e
     R["truth70_vs_cached_clean_ct"] = cmp(
         truth[70.0], cached70, mask, body, zsl
     )  # pipeline reproduces the cache
@@ -96,7 +100,7 @@ for pid in a.patients:
     t_noisy_a, _ = ct_from_conc(c_true, 70.0, leap, plan, grid, noise=(a.n0, (int(pid), 11)))
     t_noisy_b, _ = ct_from_conc(c_true, 70.0, leap, plan, grid, noise=(a.n0, (int(pid), 12)))
     R["noise_floor_independent_realisations_truth70"] = cmp(t_noisy_a, t_noisy_b, mask, body, zsl)
-    t_noisy_c, _ = ct_from_conc(c_true, 70.0, leap, plan, grid, noise=(a.n0, (int(pid), 13)))
+    t_noisy_c = ct_from_conc(c_true, 70.0, leap, plan, grid, noise=(a.n0, (int(pid), 13)))[0].cpu()
     del t_noisy_a, t_noisy_b
     torch.cuda.empty_cache()
     for name, d in preds.items():
@@ -135,8 +139,8 @@ for pid in a.patients:
             for nm, arr in (
                 ("ct70_pred_phantom", ct70),
                 ("ct80_pred_phantom", ct80),
-                ("ct70_diff", ct70 - truth[70.0]),
-                ("ct80_diff", ct80 - truth[80.0]),
+                ("ct70_diff", ct70 - truth[70.0].to(dev)),
+                ("ct80_diff", ct80 - truth[80.0].to(dev)),
                 ("ct70_true_phantom", truth[70.0]),
                 ("ct80_true_phantom", truth[80.0]),
             ):
