@@ -25,7 +25,12 @@ from ctsynth.xcat.materials import ElementTable
 from ctsynth.xcat.noise import apply_poisson_noise, make_generator
 from ctsynth.xcat.phantom import Grid, affine_from_axcodes, mu_to_hu
 from ctsynth.xcat.physical import load_basis, mu_mm_from_concentration, u16_to_conc
-from ctsynth.xcat.physical_eval import ssim_axial, valid_mask
+from ctsynth.xcat.physical_eval import (
+    assert_valid_concentrations,
+    assert_valid_ct,
+    ssim_axial,
+    valid_mask,
+)
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--cache", required=True)
@@ -36,6 +41,9 @@ ap.add_argument(
 ap.add_argument("--out", required=True)
 ap.add_argument("--n0", type=float, default=1e5)
 ap.add_argument("--export", nargs="*", default=[])
+ap.add_argument(
+    "--export-arms", nargs="*", default=["C_s0"], help="runs whose CTs are exported as NIfTI"
+)
 ap.add_argument("--seed", type=int, default=0)
 a = ap.parse_args()
 dev = torch.device("cuda:0")
@@ -51,11 +59,14 @@ preds = dict(p.split("=", 1) for p in a.preds)
 def ct_from_conc(mu, e, leap, plan, grid, noise=None):
     """(HU volume, clean projections' tensor) for attenuation mu (mm^-1) at energy e; noise=(n0, stream) adds Poisson noise.
     Callers pass mu, not the 8-channel concentrations, so those can be freed before the memory-heavy projection."""
+    torch.cuda.empty_cache()  # LEAP allocates outside torch's caching allocator: give it the memory back
     p = forward_project(leap, mu, plan)
     if noise is not None:
+        torch.cuda.empty_cache()
         work = torch.empty_like(p)
         apply_poisson_noise(p, noise[0], make_generator(dev, a.seed, *noise[1]), out=work)
         return mu_to_hu(fbp(leap, work, grid, inplace=True), MUW[e]), p
+    torch.cuda.empty_cache()
     return mu_to_hu(fbp(leap, p.clone(), grid), MUW[e]), p
 
 
@@ -96,6 +107,10 @@ for pid in a.patients:
         truth[e] = t_e.cpu()
         ptruth[e] = p_e.cpu()  # keeps ~3 GB per energy off the 24 GB GPU
         del p_e, t_e
+    assert_valid_ct(truth[70.0], cached70, mask, 1.0)  # pipeline must reproduce the cache to < 1 HU
+    assert_valid_ct(
+        truth[80.0], truth[70.0], mask, 60.0
+    )  # 80 keV truth finite and a modest shift from 70 keV
     R["truth70_vs_cached_clean_ct"] = cmp(
         truth[70.0], cached70, mask, body, zsl
     )  # pipeline reproduces the cache
@@ -113,14 +128,14 @@ for pid in a.patients:
             dev
         )
         r = {}
+        assert_valid_concentrations(c_pred, tuple(mu_true[70.0].shape))
+        r["pred_density_body_mean_gcm3"] = float(c_pred.sum(0)[body].mean())
         mu_pred = {e: mu_mm_from_concentration(c_pred, KAP[e]) for e in E}
         del c_pred
         torch.cuda.empty_cache()
         ct70, pp70 = ct_from_conc(mu_pred[70.0], 70.0, leap, plan, grid)
+        assert_valid_ct(ct70, truth[70.0], mask, 100.0)
         r["ct70_deterministic"] = cmp(ct70, truth[70.0], mask, body, zsl)
-        assert r["ct70_deterministic"]["mae_hu_body"] < 100, (
-            "FBP failed silently (LEAP cudaMalloc); rerun"
-        )
         r["ct70_vs_input_clean_ct"] = cmp(ct70, cached70, mask, body, zsl)
         dp = pp70 - ptruth[70.0].to(dev)
         r["proj70_residual"] = {
@@ -130,6 +145,7 @@ for pid in a.patients:
         }
         del dp, pp70
         ct80, pp80 = ct_from_conc(mu_pred[80.0], 80.0, leap, plan, grid)
+        assert_valid_ct(ct80, truth[80.0], mask, 100.0)
         r["ct80_deterministic"] = cmp(ct80, truth[80.0], mask, body, zsl)
         dp = pp80 - ptruth[80.0].to(dev)
         r["proj80_residual"] = {
@@ -141,27 +157,36 @@ for pid in a.patients:
         r["ct80_if_70keV_image_reused_as_80"] = cmp(truth[70.0], truth[80.0], mask, body, zsl)
         # coupled noise: same RNG stream on predicted and true clean projections
         pc, _ = ct_from_conc(mu_pred[70.0], 70.0, leap, plan, grid, noise=(a.n0, (int(pid), 13)))
+        assert_valid_ct(pc, t_noisy_c, mask, 300.0)
         r["ct70_coupled_noise"] = cmp(pc, t_noisy_c, mask, body, zsl)
         R[name] = r
-        if pid in a.export:
+        if pid in a.export and name in a.export_arms:
             import nibabel as nib
 
             aff = affine_from_axcodes(tuple(ct70.shape), meta["vox_mm"])
-            for nm, arr in (
-                ("ct70_pred_phantom", ct70),
-                ("ct80_pred_phantom", ct80),
-                ("ct70_diff", ct70 - truth[70.0].to(dev)),
-                ("ct80_diff", ct80 - truth[80.0].to(dev)),
-                ("ct70_true_phantom", truth[70.0]),
-                ("ct80_true_phantom", truth[80.0]),
-            ):
+            items = [
+                (f"ct70_recon_pred_{name}_HU", ct70),
+                (f"ct80_recon_pred_{name}_HU", ct80),
+                (f"ct70_recon_pred_minus_true_{name}_HU", ct70 - truth[70.0].to(dev)),
+                (f"ct80_recon_pred_minus_true_{name}_HU", ct80 - truth[80.0].to(dev)),
+            ]
+            if not (
+                out / f"p{pid}_ct70_input_cached_HU.nii.gz"
+            ).exists():  # shared references, once per patient
+                items += [
+                    ("ct70_input_cached_HU", cached70),
+                    ("ct70_recon_true_phantom_HU", truth[70.0]),
+                    ("ct80_recon_true_phantom_HU", truth[80.0]),
+                ]
+            for nm, arr in items:
                 nib.save(
-                    nib.Nifti1Image(arr.float().cpu().numpy(), aff),
-                    out / f"p{pid}_{name}_{nm}.nii.gz",
+                    nib.Nifti1Image(arr.float().cpu().numpy(), aff), out / f"p{pid}_{nm}.nii.gz"
                 )
         del ct70, ct80, pc, mu_pred
         gc.collect()
         torch.cuda.empty_cache()
+    R["peak_torch_alloc_MiB"] = torch.cuda.max_memory_allocated() / 2**20
+    R["gpu_total_MiB"] = torch.cuda.get_device_properties(0).total_memory / 2**20
     R["seconds"] = time.time() - t0
     (out / f"resim_p{pid}.json").write_text(json.dumps(R))
     print(f"p{pid} done {R['seconds']:.0f}s", flush=True)

@@ -82,3 +82,23 @@ def test_ssim_axial_identity_and_noise():
     assert ssim_axial(a, a, sl) == pytest.approx(1.0, abs=1e-6)
     assert ssim_axial(a, a + 100 * torch.randn(a.shape, generator=g), sl) < 0.9
     assert ssim_axial(a, a, torch.zeros(6, dtype=torch.bool)) == 0.0
+
+
+def test_resim_guards_reject_invalid_inputs():
+    import pytest
+
+    from ctsynth.xcat.physical_eval import assert_valid_concentrations, assert_valid_ct
+
+    c = torch.full((2, 4, 5, 6), 0.5)
+    assert_valid_concentrations(c, (4, 5, 6))
+    for bad in (c.clone().index_fill_(0, torch.tensor([0]), float("nan")), -c, c * 100):
+        with pytest.raises(ValueError):
+            assert_valid_concentrations(bad, (4, 5, 6))
+    with pytest.raises(ValueError):
+        assert_valid_concentrations(c, (4, 5, 7))  # wrong grid (axis permutation / wrong patient)
+    ref, mask = torch.zeros(4, 5, 6), torch.ones(4, 5, 6, dtype=torch.bool)
+    assert assert_valid_ct(ref + 3.0, ref, mask, 10.0) == pytest.approx(3.0)
+    with pytest.raises(ValueError):
+        assert_valid_ct(ref + 860.0, ref, mask, 100.0)  # the 11989 failure signature
+    with pytest.raises(ValueError):
+        assert_valid_ct(ref + float("inf"), ref, mask, 100.0)

@@ -4,12 +4,13 @@
 module load cuda12.2/toolkit/12.2.1 gcc/11.2.0
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 PY=$HOME/ctsynth_xcat/venv/bin/python; export PYTHONPATH=$HOME/ctsynth_xcat/src:$HOME/ctsynth_xcat/scripts
-S=$HOME/ctsynth_xcat/scripts; O=$HOME/datasets/truect_pilot/outputs/xcat_unet; D=$O/cache_v1; SPLIT=$HOME/ctsynth_xcat/configs/split_v1_frozen.json; P=$O/physical/preds; X=$O/physical/resim
+S=$HOME/ctsynth_xcat/scripts; O=$HOME/datasets/truect_pilot/outputs/xcat_unet; D=$O/cache_v1; SPLIT=$HOME/ctsynth_xcat/configs/split_v1_frozen.json; P=$O/physical/preds; X=${RESIM_OUT:-$O/physical/resim_v2}
 TE=$($PY -c "import json;print(' '.join(json.load(open('$SPLIT'))['test']))"); mkdir -p $X
 PR=""; for arm in A B C D; do for seed in 0 1; do PR="$PR ${arm}_s${seed}=$P/${arm}_s${seed}"; done; done
 NG=$(nvidia-smi -L | wc -l)
 for i in $(seq 0 $((NG-1))); do
   SL=$(echo $TE | tr ' ' '\n' | awk -v i=$i -v n=$NG '(NR-1)%n==i')
   [ -z "$SL" ] && continue
-  CUDA_VISIBLE_DEVICES=$i $PY $S/resim_phys.py --cache $D --patients $SL --preds $PR --out $X --export "$@" > $X/worker$i.log 2>&1 &
+  CUDA_VISIBLE_DEVICES=$i $PY $S/resim_phys.py --cache $D --patients $SL --preds $PR --out $X --export-arms C_s0 --export "$@" > $X/worker$i.log 2>&1 &
 done; wait; echo "== done $(date -Is)"; grep -c Traceback $X/worker*.log | paste -sd' '
+echo "== silent LEAP allocation failures in logs: $(cat $X/worker*.log | grep -c 'cudaMalloc')"; ls $X/resim_p*.json | wc -l

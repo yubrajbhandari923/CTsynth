@@ -146,3 +146,35 @@ def ssim_axial(
         out += float(s.mean((1, 2, 3)).sum())
         n += len(ii)
     return out / max(n, 1)
+
+
+def assert_valid_concentrations(
+    c: torch.Tensor, shape_zyx: tuple[int, int, int], c_max: float = 8.0
+) -> None:
+    """A concentration stack (K, nz, ny, nx, g/cm^3) must be finite, non-negative, below the uint16
+    storage ceiling and on the expected grid, else the downstream CT would be meaningless."""
+    if tuple(c.shape[1:]) != tuple(shape_zyx):
+        raise ValueError(f"concentration grid {tuple(c.shape[1:])} != expected {tuple(shape_zyx)}")
+    if not bool(torch.isfinite(c).all()):
+        raise ValueError("non-finite concentration")
+    lo, hi = float(c.min()), float(c.max())
+    if lo < 0.0 or hi > c_max:
+        raise ValueError(f"concentration outside [0, {c_max}] g/cm3: min {lo}, max {hi}")
+
+
+def assert_valid_ct(
+    hu: torch.Tensor, ref_hu: torch.Tensor, mask: torch.Tensor, max_mae_hu: float
+) -> float:
+    """A reconstructed CT must be finite and within `max_mae_hu` of a reference over the valid mask.
+    Guards against LEAP failing silently (a non-fatal cudaMalloc error leaves an unreconstructed
+    volume). Returns the MAE."""
+    if not bool(torch.isfinite(hu).all()):
+        raise ValueError("non-finite CT")
+    if hu.shape != ref_hu.shape:
+        raise ValueError(f"CT shape {tuple(hu.shape)} != reference {tuple(ref_hu.shape)}")
+    mae = float((hu.to(mask.device) - ref_hu.to(mask.device)).abs()[mask].mean())
+    if not mae < max_mae_hu:
+        raise ValueError(
+            f"CT differs from reference by {mae:.1f} HU (> {max_mae_hu}); reconstruction failed?"
+        )
+    return mae
