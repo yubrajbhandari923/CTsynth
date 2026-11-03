@@ -1,0 +1,4 @@
+# Scientific edition: the monograph. No Research OS identifiers, evidence panels or legacy appendix.
+edition: scientific
+project:
+  output-dir: _output/scientific

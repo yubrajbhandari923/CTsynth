@@ -1,0 +1,457 @@
+{
+ "reviews": {
+  "briefing.qmd": {
+   "human": [],
+   "model": [
+    {
+     "at": "2026-10-20T10:33:25-04:00",
+     "concerns": [
+      "MAJOR: pilot described as 'converged' with clipped error 0.31->0.014-0.048; only one of three cases met the convergence rule, positive control failed, unclipped s1 0.21-0.44",
+      "MAJOR: 'bins add at most twofold, only while calcification unknown' conflates cases (calcification absent, sum unknown still ~2x)",
+      "MAJOR: 'everything tried ... failed' stronger than 'none shown to improve'",
+      "minor: 'Established' heading over an unreviewed check; the one sum-pinned success not mentioned"
+     ],
+     "fingerprint": "420d2eb3a3650cf8",
+     "model": null,
+     "notes": "~22 numbers checked",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "concern",
+      "explanatory_quality": "ok",
+      "historical_consistency": "ok",
+      "provenance": "ok",
+      "scientific_validity": "concern",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 1 of 2026-10-20",
+     "verdict": "concerns"
+    },
+    {
+     "at": "2026-10-20T10:44:06-04:00",
+     "concerns": [],
+     "fingerprint": "639bc4bdb43d2367",
+     "model": null,
+     "notes": "all round-1 findings fixed; ~45 numbers verified across six chapters; minor leftovers: pilot errors are MSE not RMSE (label), source of the 0.31 baseline, kV-switching description unchecked",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "ok",
+      "explanatory_quality": "ok",
+      "historical_consistency": "ok",
+      "provenance": "ok",
+      "scientific_validity": "ok",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 2 re-review of 2026-10-20 (after revision)",
+     "verdict": "sound"
+    }
+   ]
+  },
+  "index.qmd": {
+   "human": [],
+   "model": [
+    {
+     "at": "2026-10-20T10:33:25-04:00",
+     "concerns": [
+      "minor: literature statement vs 'no bibliography' wording; an unverifiable remark about an earlier review of the drafts"
+     ],
+     "fingerprint": "79d86fc901c8d1c7",
+     "model": null,
+     "notes": "~3 numbers checked; identifiers scan of scientific HTML clean",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "ok",
+      "explanatory_quality": "ok",
+      "historical_consistency": "ok",
+      "provenance": "ok",
+      "scientific_validity": "ok",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 1 of 2026-10-20",
+     "verdict": "sound"
+    },
+    {
+     "at": "2026-10-20T10:44:06-04:00",
+     "concerns": [],
+     "fingerprint": "8c6d4f2d3ccdd664",
+     "model": null,
+     "notes": "all round-1 findings fixed; ~45 numbers verified across six chapters; minor leftovers: pilot errors are MSE not RMSE (label), source of the 0.31 baseline, kV-switching description unchecked",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "ok",
+      "explanatory_quality": "ok",
+      "historical_consistency": "ok",
+      "provenance": "ok",
+      "scientific_validity": "ok",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 2 re-review of 2026-10-20 (after revision)",
+     "verdict": "sound"
+    }
+   ]
+  },
+  "investigations/forward-model-trust.qmd": {
+   "human": [],
+   "model": [
+    {
+     "at": "2026-10-20T10:34:41-04:00",
+     "concerns": [
+      "minor: citability section: flag definition widened by a later decision; three learning runs not tied to ids; check detector-response number against its finding"
+     ],
+     "fingerprint": "57718e5540917b15",
+     "model": null,
+     "notes": "~30 numbers verified",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "ok",
+      "explanatory_quality": "ok",
+      "historical_consistency": "ok",
+      "provenance": "ok",
+      "scientific_validity": "ok",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 1 of 2026-10-20",
+     "verdict": "sound"
+    },
+    {
+     "at": "2026-10-20T10:44:47-04:00",
+     "concerns": [],
+     "fingerprint": "9be9db66431a77f9",
+     "model": null,
+     "notes": "round-1 findings fixed; minor: check the earlier '~1%' detector-response pointer; ~12 numbers verified",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "ok",
+      "explanatory_quality": "ok",
+      "historical_consistency": "ok",
+      "provenance": "ok",
+      "scientific_validity": "ok",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 2 re-review of 2026-10-20 (after revision)",
+     "verdict": "sound"
+    }
+   ]
+  },
+  "investigations/identifiability.qmd": {
+   "human": [],
+   "model": [
+    {
+     "at": "2026-10-20T10:34:40-04:00",
+     "concerns": [
+      "MAJOR: 'air pixels contribute exactly zero error' assumes the 0.1/cm cutoff matches the true air mask; no record reports the confusion; boundary pixels below the cutoff are zeroed too",
+      "MAJOR: 'tissue effect, not an air effect' is stated more cleanly than the data allow (rough arithmetic leaves ~24% of squared error from band/misclassification; 3-case RMSE vs 10-case shares)",
+      "MINOR-MAJOR: tissue-only numbers 1.749 (run log) vs 1.823 (findings) unexplained; unregistered",
+      "minor: displayed A at 3 decimals cannot reproduce quoted angle/cond/343; F-016 superseded and 'pooled' mislabel; figure alt text lacks the point"
+     ],
+     "fingerprint": "4e9b4f9b8966f73f",
+     "model": null,
+     "notes": "~30 numbers; all 5 plotted values match RUN-0009; kit data not on disk so air-mask and tissue splits unverified",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "ok",
+      "explanatory_quality": "concern",
+      "historical_consistency": "ok",
+      "provenance": "concern",
+      "scientific_validity": "concern",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 1 of 2026-10-20",
+     "verdict": "concerns"
+    },
+    {
+     "at": "2026-10-20T10:44:07-04:00",
+     "concerns": [
+      "minor: registered claim carries a conjecture ('perhaps a different tissue mask'); tissue-region counts unregistered (disclosed); the 7.8%/5.9% claim sentence should say three images"
+     ],
+     "fingerprint": "d13e13e7c020c789",
+     "model": null,
+     "notes": "all round-1 findings fixed",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "ok",
+      "explanatory_quality": "ok",
+      "historical_consistency": "ok",
+      "provenance": "concern",
+      "scientific_validity": "ok",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 2 re-review of 2026-10-20 (after revision)",
+     "verdict": "concerns"
+    }
+   ]
+  },
+  "investigations/label-free.qmd": {
+   "human": [],
+   "model": [
+    {
+     "at": "2026-10-20T10:35:07-04:00",
+     "concerns": [
+      "MAJOR: 'three runs at the higher rate did not collapse' — records show two (four of six collapsed)",
+      "MAJOR: the one success: 'near-zero calcification' is not distinctive (seeds 0,1 also ~0.0095 RMSE); sum values for other seeds unreported; the sign/ordering observation omitted; tension with the next chapter",
+      "MAJOR: null-fraction range quoted for baseline only; the success run scores 99.6% too, so the metric is uninformative about quality",
+      "MAJOR: review status of the arm, success-run and softmax findings (needs_work, wording corrected) not stated in this chapter"
+     ],
+     "fingerprint": "ff08d3b00c5bc247",
+     "model": null,
+     "notes": "~60 numbers; both figures recompute exactly (all 30 seed-spread runs and 6 fit-vs-accuracy points)",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "concern",
+      "explanatory_quality": "ok",
+      "historical_consistency": "ok",
+      "provenance": "concern",
+      "scientific_validity": "concern",
+      "uncertainty": "concern"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 1 of 2026-10-20",
+     "verdict": "concerns"
+    },
+    {
+     "at": "2026-10-20T10:44:47-04:00",
+     "concerns": [
+      "minor: anticorrelation paragraph should compare amplitudes (baseline maps nearly constant, sd 0.02-0.03) and call the correlation sign secondary; 'reframed before the first controlled experiment' wording; figure data not re-checked this round"
+     ],
+     "fingerprint": "8ad78af4cc6dae99",
+     "model": null,
+     "notes": "all round-1 majors fixed; ~30 numbers verified",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "ok",
+      "explanatory_quality": "ok",
+      "historical_consistency": "ok",
+      "provenance": "concern",
+      "scientific_validity": "ok",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 2 re-review of 2026-10-20 (after revision)",
+     "verdict": "concerns"
+    }
+   ]
+  },
+  "investigations/mismatch-bias.qmd": {
+   "human": [],
+   "model": [
+    {
+     "at": "2026-10-20T10:34:40-04:00",
+     "concerns": [
+      "minor: dual-kVp range mixes two statistics; some terms thin (signed-mean z, basis size)"
+     ],
+     "fingerprint": "f11ef65167a76edf",
+     "model": null,
+     "notes": "~40 numbers verified",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "ok",
+      "explanatory_quality": "ok",
+      "historical_consistency": "ok",
+      "provenance": "ok",
+      "scientific_validity": "ok",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 1 of 2026-10-20",
+     "verdict": "sound"
+    },
+    {
+     "at": "2026-10-20T10:44:47-04:00",
+     "concerns": [],
+     "fingerprint": "9f49df498e176fcc",
+     "model": null,
+     "notes": "round-1 findings fixed; minor: z definition wording; 'except the marginal case' phrasing; ~12 numbers spot-verified",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "ok",
+      "explanatory_quality": "ok",
+      "historical_consistency": "ok",
+      "provenance": "ok",
+      "scientific_validity": "ok",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 2 re-review of 2026-10-20 (after revision)",
+     "verdict": "sound"
+    }
+   ]
+  },
+  "investigations/null-direction-information.qmd": {
+   "human": [],
+   "model": [
+    {
+     "at": "2026-10-20T10:35:07-04:00",
+     "concerns": [
+      "MAJOR: closing paragraph says converged solves reduce clipped error to a few per cent so optimisation alone does not limit — contradicts the body (1 of 3 cases converged; unclipped 0.21-0.44; positive control failed)",
+      "MAJOR: 'calcification far from -0.8%/unit step so errors visible' ignores comparable sum evidence; the real basis is the 4-6 orders excess projection error",
+      "MAJOR: 'best label-free refinement' is the physics refinement of the SUPERVISED network",
+      "MAJOR: amplitudes up to 1.1 extrapolate a quadratic law fitted near the truth beyond the physical range; unit convention not explicit",
+      "MAJOR: CRB rows described as 'bound to run records' though evidence verify reports no bindings; photon-counting uses the 80 kVp beam only",
+      "minor: review-history wording (F-043 R2 supported; F-041 R2 needs_work)"
+     ],
+     "fingerprint": "bda873e6fd65ade0",
+     "model": null,
+     "notes": "~35 numbers; CRB values reproduce exactly from the theory output",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "concern",
+      "explanatory_quality": "ok",
+      "historical_consistency": "ok",
+      "provenance": "concern",
+      "scientific_validity": "concern",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 1 of 2026-10-20",
+     "verdict": "concerns"
+    },
+    {
+     "at": "2026-10-20T10:44:47-04:00",
+     "concerns": [
+      "minor-major: 'priors are blind to sign / a rescuing prior would have to fix tissue ordering' stretches exact A<->F relabelling invariance to the observed anticorrelation of near-constant maps: soften",
+      "minor: arm D unclipped/hf 'marginally better' omitted; adipose change is 0.72 t not t; CRB photon split from the theory script not opened"
+     ],
+     "fingerprint": "26fa76c19f8f21e9",
+     "model": null,
+     "notes": "all five round-1 majors fixed; ~35 numbers verified incl. all CRB ranges recomputed",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "ok",
+      "explanatory_quality": "ok",
+      "historical_consistency": "ok",
+      "provenance": "ok",
+      "scientific_validity": "concern",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 2 re-review of 2026-10-20 (after revision)",
+     "verdict": "concerns"
+    }
+   ]
+  },
+  "open-questions.qmd": {
+   "human": [],
+   "model": [
+    {
+     "at": "2026-10-20T10:33:25-04:00",
+     "concerns": [
+      "minor: pilot's failed positive control not stated here; 0.03 detectability is a rule of thumb"
+     ],
+     "fingerprint": "0053dae2f10e3a3b",
+     "model": null,
+     "notes": "~7 numbers checked; proposed work correctly described as not done",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "ok",
+      "explanatory_quality": "ok",
+      "historical_consistency": "ok",
+      "provenance": "ok",
+      "scientific_validity": "ok",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 1 of 2026-10-20",
+     "verdict": "sound"
+    },
+    {
+     "at": "2026-10-20T10:44:06-04:00",
+     "concerns": [],
+     "fingerprint": "629eb14fe6191ff5",
+     "model": null,
+     "notes": "all round-1 findings fixed; ~45 numbers verified across six chapters; minor leftovers: pilot errors are MSE not RMSE (label), source of the 0.31 baseline, kV-switching description unchecked",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "ok",
+      "explanatory_quality": "ok",
+      "historical_consistency": "ok",
+      "provenance": "ok",
+      "scientific_validity": "ok",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 2 re-review of 2026-10-20 (after revision)",
+     "verdict": "sound"
+    }
+   ]
+  },
+  "storyline.qmd": {
+   "human": [],
+   "model": [
+    {
+     "at": "2026-10-20T10:33:25-04:00",
+     "concerns": [
+      "MAJOR: pilot 'let optimisation reduce clipped error to a few per cent' omits unclipped values and failed positive control",
+      "minor: independent-simulator agreement is a shared-equation check; belief table rows 1 and 6 wording; TV best at grid edge"
+     ],
+     "fingerprint": "461f7e9990714f19",
+     "model": null,
+     "notes": "~9 numbers checked; supersession chains verified",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "concern",
+      "explanatory_quality": "ok",
+      "historical_consistency": "ok",
+      "provenance": "ok",
+      "scientific_validity": "ok",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 1 of 2026-10-20",
+     "verdict": "concerns"
+    },
+    {
+     "at": "2026-10-20T10:44:06-04:00",
+     "concerns": [],
+     "fingerprint": "7325aeb6120c75fd",
+     "model": null,
+     "notes": "all round-1 findings fixed; ~45 numbers verified across six chapters; minor leftovers: pilot errors are MSE not RMSE (label), source of the 0.31 baseline, kV-switching description unchecked",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "ok",
+      "explanatory_quality": "ok",
+      "historical_consistency": "ok",
+      "provenance": "ok",
+      "scientific_validity": "ok",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 2 re-review of 2026-10-20 (after revision)",
+     "verdict": "sound"
+    }
+   ]
+  },
+  "theory.qmd": {
+   "human": [],
+   "model": [
+    {
+     "at": "2026-10-20T10:33:25-04:00",
+     "concerns": [
+      "minor: symbol collisions (y scalar vs per-pixel vector; k voltage vs basis size); kV-switching unglossed; toy-scale softmax collapse scope"
+     ],
+     "fingerprint": "e767ad8990db8ed7",
+     "model": null,
+     "notes": "~20 numbers checked",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "ok",
+      "explanatory_quality": "concern",
+      "historical_consistency": "ok",
+      "provenance": "ok",
+      "scientific_validity": "ok",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 1 of 2026-10-20",
+     "verdict": "concerns"
+    },
+    {
+     "at": "2026-10-20T10:44:06-04:00",
+     "concerns": [],
+     "fingerprint": "4887c751edcd5fc7",
+     "model": null,
+     "notes": "all round-1 findings fixed; ~45 numbers verified across six chapters; minor leftovers: pilot errors are MSE not RMSE (label), source of the 0.31 baseline, kV-switching description unchecked",
+     "provenance_errors": [],
+     "ratings": {
+      "evidence_fidelity": "ok",
+      "explanatory_quality": "ok",
+      "historical_consistency": "ok",
+      "provenance": "ok",
+      "scientific_validity": "ok",
+      "uncertainty": "ok"
+     },
+     "reviewer": "independent-reviewer-subagent (fresh-context Claude general-purpose agent; same model family as the author, so not model-independent) — round 2 re-review of 2026-10-20 (after revision)",
+     "verdict": "sound"
+    }
+   ]
+  }
+ },
+ "version": 1
+}

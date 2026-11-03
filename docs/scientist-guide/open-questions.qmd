@@ -1,0 +1,74 @@
+# Open questions and future directions {#sec-open}
+
+This chapter separates what is unresolved, what the evidence cannot yet support, and what has been proposed but not done.
+Nothing in the third group should be read as a result.
+
+## What we do not yet know
+
+**The central question.** [Two different kinds of information may resolve the split: knowledge of calcification and the sum, which makes the exchange visible to the data, and a prior that is not symmetric between the two tissues, such as a small amount of weak supervision; which is more plausible is a hypothesis to be tested by the staged plan.]{#clm-0049 .claim}
+The pilot supplied the sum from the truth, so it leaves open whether the spatially varying fat/gland error can be recovered
+without that knowledge, and whether any of it carries over to a trained network (@sec-information). [It is also undecided whether
+the large high-frequency adipose error seen in the pilot reflects a real failure to recover spatial structure or only
+out-of-range excursions near calcifications, because the clipped, away-from-lesion version of the metric has not been run.]{#clm-0132 .claim}
+[The pilot's own positive control (starts perturbed from the truth should converge and recover) failed on all three cases, so its
+non-recoveries are control or solver failures until shown otherwise rather than evidence about identifiability.]{#clm-0143 .claim}
+
+**The one unexplained success.** [One label-free run (one seed of one output form) reached a material error of 0.091 with
+correct anatomy while its siblings did not, and its mechanism is unknown; a success rate cannot be estimated from one in three
+seeds.]{#clm-0133 .claim} It is a lead, not a method (@sec-labelfree).
+
+**Detector realism.** [Realistic photon-counting detector effects (energy response, charge sharing, pile-up, calibration)
+may change identifiability and model mismatch relative to the idealised bins studied so far.]{#clm-0046 .claim} The
+idealised comparison in @sec-mismatch should not be used to argue for or against a detector.
+
+**Mismatch in learned maps.** [Training on one forward model and testing on a mismatched one (no inverse crime) has not been done: only forward-model projection differences (2-3%) and toy-model estimator bias have been measured.]{#clm-0050 .claim} The projection comparison used an independent simulator on disk phantoms (@sec-trust); supervised and self-supervised studies on its data are proposed, not run.
+
+**Generalisation.** [Whether models trained on procedural phantoms generalise to unseen material compositions is not yet
+tested.]{#clm-0048 .claim}
+
+**Transfer.** [Whether material fields learned from simulated pairs transfer to real or clinical spectral CT, and how this
+could be measured without clinical truth, is not yet studied.]{#clm-0047 .claim}
+
+## Gaps in the evidence
+
+- [The held-out test split of 100 cases has never been evaluated; every learned number is on the validation split.]{#clm-0134 .claim}
+- [Most learned results use three seeds or fewer, and the prior and refinement experiments one seed per setting; with the
+  baseline seed range of about 0.017 in material error, differences below roughly 0.03 to 0.035 would be hard to detect with
+  three seeds, and for the most variable output form (seed range 0.26) even large effects would be; this is a rule of thumb read from
+  the seed ranges, not a recorded power calculation.]{#clm-0135 .claim}
+- [All 1000 benchmark cases share a single support mask, so generalisation to new supports and the value of occupancy-based
+  ideas cannot be tested on this dataset.]{#clm-0136 .claim}
+- [Most findings behind this book are preliminary: the null-direction findings were returned for rewording and not re-reviewed,
+  and the staged-pilot, spatial-field and simulator-comparison findings have had no confirming independent review.]{#clm-0137 .claim}
+- Some numbers in the records are quoted without a registered measurement to check them against, and a few quantities in the
+  text are a reviewer's calculation rather than a recorded run; the text says where.
+- The book's literature comparisons rest on reading notes; no source has been verified, so there is no bibliography yet.
+- All data are noise-free, and the learned results use the same forward model that generated the data.
+
+## Proposed but not done
+
+The following experiments are registered or sketched in the project records; none has produced a result. Their listing
+here is a plan, not evidence.
+
+| Proposal | What it would answer | Status |
+|---|---|---|
+| Supervised, self-supervised, adaptation and identifiability studies on data from an independent simulator (four designs) | Whether supervised and physics-based learning transfer when the training and test forward models differ; whether the priors tested here help on an independent producer | Designed and registered, no data generated, no runs |
+| Comparison of image-domain, projection-domain and reconstruction-domain consistency losses | Whether the domain in which consistency is imposed changes the material error | Ready, not run |
+| Sensitivity of material accuracy to perturbed spectra, attenuation and geometry | A signed bias for each perturbation against the official model | Proposed with a minimal registration, no runs |
+| Network prior study (structural calcification and sum constraints, simple priors, wrong-prior and prior-only controls) | Whether supplying the information a network lacks recovers the split | Proposed, 24 runs planned, gated on the pilot and the owner |
+| Acquisition ablation (single-energy, dual-energy and photon counting) with the converged solver under noise | Whether the single-ray ordering of acquisitions survives tomographic coupling and noise | Proposed, not implemented; depends on whether photon counting is in scope |
+
+: Proposed work that has not been done. {#tbl-proposed}
+
+[None of the five proposed studies above, nor a ten-seed replication of the baselines that was deferred, has been run.]{#clm-0138 .claim}
+[The pilot also left undone a clipped, away-from-lesion rerun of the high-frequency metric, a longer solve for the
+free-calcification arm from a uniform start, and a synthetic lesion-free case that would separate model misspecification from
+non-identifiability.]{#clm-0139 .claim} Two engineering items are also blocked: a cross-check of the project's earlier
+general attenuation tables against the benchmark's is not well defined, because they share no material except possibly
+calcium, and some older planning records have not been tidied.
+
+## Decisions that need human judgement
+
+[The decisions waiting for the project owner are: whether the pilot justifies starting the network-prior study; whether to
+approve the pilot's undone runs; whether weak supervision, and how much label information, is acceptable; whether photon
+counting is in scope; and whether replication runs and a single evaluation on the test split are worth their cost.]{#clm-0140 .claim}

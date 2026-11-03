@@ -1,0 +1,74 @@
+# How a wrong model biases an estimate {#sec-mismatch}
+
+## Motivation
+
+The project's guiding question was whether the measurement design (which spectra are measured, and how finely) or the inference method sets what can be recovered. Before attacking the benchmark we needed to answer that in a setting small enough to analyse completely, and to learn what happens when the assumed model is slightly wrong. A wrong spectrum or a missing material is the normal situation in practice, so a method that only works with a perfect model has limited value.
+
+## Setup
+
+Three designs are compared at equal total photon counts: one energy-integrating measurement per ray; a dual-kVp pair (two
+exposures at different tube voltages); and four photon-counting energy bins in one exposure. The toy model has three
+materials (water, iodine contrast and calcium). Each ray's estimate is a maximum-likelihood fit to Poisson-distributed
+counts. The *Cramér–Rao bound* (CRB) is the smallest standard deviation any unbiased estimator could achieve; it is
+computed from the *Jacobian* of the expected counts with respect to the unknown material amounts (the matrix of how each
+count changes with each unknown). A *cell* is one combination of design, basis size (the number of materials the estimator fits), material and photon count. The *noise floor* of a bias test is the CRB divided by $\sqrt{N}$ for $N$ simulated repeats of the experiment, and a *signed-mean test* averages the signed error over rays, so that a small consistent bias adds up while noise cancels; its statistic $z$ is the mean signed error over the rays in units of the floor divided by $\sqrt{N_{\mathrm{rays}}}$. Elsewhere the bias is summarised as *rms/floor*, the root-mean-square bias over rays divided by the floor, or as the *per-ray bias*, a single ray's bias divided by the floor. The toy is a two-dimensional parallel-beam image of 48 by 48 pixels with elemental reference densities; statistics are computed on a subset of rays (48 rays for the two-material phantom, 60 for the three-material one), with 20 Poisson realisations per ray.
+
+[The attenuation table has a 1 keV energy grid, which under-resolves the iodine K-edge (the abrupt rise in iodine absorption at 33.17 keV): about 3.6% of the fluence of the 120 kVp spectrum lies in the 33-34 keV interval, where interpolation spans a fivefold jump in attenuation, so absolute iodine accuracy is outside the scope of these results.]{#clm-0073 .claim} The conditioning and noise comparisons remain meaningful because they depend on the spectral contrast actually present in the model, and the generator and the estimator share the same table, so the limitation is a shared-model one rather than a mismatch. The records leave open whether a table that resolves the K-edge would change the iodine conditioning, and a table with a finer grid near absorption edges is required before any quantitative iodine-concentration claim.
+
+## Identifiability and conditioning
+
+Identifiability has two parts that were first run together and later separated. [We first reported the rank results (one energy-integrating measurement gives rank one, a dual-kVp pair gives rank two, so three materials cannot be separated) as experimental results, together with a claim that rank verdicts were robust to the rank threshold up to $10^{-2}$; review showed the first part to be arithmetic rather than evidence and the second to contradict the singular-value ratios (0.0020 to 0.0123) quoted in the same sentence.]{#clm-0074 .claim} The structural part is the shape argument of @sec-theory: with $n$ measurements and $m$ materials the rank is at most $\min(n,m)$, at any threshold. The empirical part is what remains.
+
+[In the toy model the median condition number of the Poisson-weighted Jacobian is 195 for dual-kVp with two materials, 99
+for four photon-counting bins with two materials, and 217 for four bins with three; rank verdicts are robust to the rank
+threshold from $10^{-3}$ to $10^{-10}$ (every ray full rank) but not at $10^{-2}$, where the full-rank fraction falls to 0% for dual-kVp with two materials and for four bins with three, and 58% for four bins with two.]{#clm-0013 .claim} The rank limits themselves are structural
+(@sec-theory); the conditioning is the empirical content.
+
+[At equal basis size and equal total photons, in an idealised comparison with no detector effects, four photon-counting
+bins give about 2.4-2.5 times lower iodine Cramér–Rao uncertainty than a dual-kVp pair (median 0.00151 against 0.00376 g/cm$^2$, a ratio of 2.5; 2.4 by root-mean-square aggregation); this is ray-dependent and an upper
+bound on the advantage.]{#clm-0014 .claim} The comparison pits an idealised energy-weighted two-exposure design against an idealised four-window single-exposure design, with no detector response, charge sharing or pile-up. [An earlier version of this comparison reported a $2.7\times$ *penalty* for
+photon counting. That number is the ratio of the iodine Cramér–Rao uncertainty of four bins estimating three materials to that of a dual-kVp pair estimating two (recorded value 2.703); it compared a three-material fit with a two-material fit and so confounded the design with the price of
+estimating a third material.]{#clm-0075 .claim} The $2.5\times$ advantage and the $2.7\times$ cost therefore describe different comparisons and do not contradict each other. Whether the photon-counting advantage survives realistic detector response is not studied here.
+
+## Misspecification bias does not average away
+
+[Fitting a two-material basis to three-material data gives a bias in the iodine line integral that does not shrink with
+photon count (bias ratio, the bias at $10^6$ photons divided by that at $10^5$, 0.89 and 1.02, against 0.32 expected for noise-driven error,
+which scales as $\sqrt{0.1}$), 7 to 15 times the noise floor.]{#clm-0015 .claim} This was measured on 27 rays of the
+three-material phantom, with the iodine line integral in g/cm$^2$ (an earlier record labelled it g/cm$^3$; the unit was corrected). More dose cannot fix a wrong model, as theory predicts;
+this confirms that the code behaves correctly and is not a discovery.
+
+[For the three identifiable cells at $10^6$ photons the empirical standard deviation of the estimator agrees with the
+Cramér–Rao bound to within 12.5% (ratio 0.875 to 1.106), with a systematic pattern (two-material cells below one, three-material cells above); this checks the Jacobian, sampler and estimator against each
+other under one shared model, not the physical fidelity of the model.]{#clm-0016 .claim} An earlier statement of this check called it a validation of the forward model and quoted 11%; a wrong attenuation table or spectrum would have passed it equally, and the figure was recomputed as 12.5%.
+
+## How our understanding changed
+
+The study pre-registered a prediction that a nominal-spectrum estimator would be detectably biased on mismatched data in
+every design (with 20 Poisson realisations per condition). Seven of twelve cells passed. [We first read the pre-registered test as a partial falsification: seven of
+twelve cells passed and the dual-kVp cells showed no detectable bias, but we could not tell under-power from genuine
+insensitivity; the cause was a defective detection criterion.]{#clm-0017 .claim} Later reviews showed the reading was an artefact of that criterion. The criterion scored iodine only,
+required significance at two dose levels at once, and compared a noise-inflated root-mean-square with an unsubtracted noise
+floor. Reviews replaced the reading twice. The current statement is that [in every condition tested (four spectral
+perturbations of the two-material phantom, a noise-free calculation, 48 rays, $10^6$ photons) a mismatched nominal spectrum biased the estimate
+detectably under a signed-mean test (except the marginal case below); the dual-kVp water bias, hidden by an iodine-only criterion, was about four times the
+floor.]{#clm-0018 .claim} The perturbations were a $\pm10\%$ spectral tilt and a $\pm2\%$ energy-scale error, and the
+floor is the CRB divided by $\sqrt{20}$, the uncertainty of a 20-realisation experiment. One case remains marginal:
+[the dual-kVp iodine spectral-tilt case is marginal: the per-ray bias is only 0.66 to 0.75 of the floor and becomes
+detectable only by pooling 48 rays.]{#clm-0019 .claim} The detection statistics are noise-free calculations of what an
+infinite-data experiment would see, not observed test statistics, and the amending finding behind them is itself
+preliminary.
+
+A trade-off should be read next to the noise advantage above: [on the same two-material phantom the four-bin photon-counting
+design showed mismatch bias (root-mean-square over rays, relative to its floor) of 27 to 43 times its noise floor against about 0.8 to 4.3 times for dual-kVp; the floors are
+design-specific, so the ratios are not directly comparable.]{#clm-0062 .claim}
+
+Two different ratios are quoted in this chapter and they must not be compared directly: the "times the noise floor" figures above are root-mean-square bias over rays divided by the floor (0.8 to 4.3 for dual-kVp, 27 to 43 for four bins), whereas the marginal case is described by its per-ray bias divided by the floor (0.66 to 0.75; its rms/floor is 0.82 to 0.92) and a pooled signed-mean $z$ of about 5.
+
+The practical lesson, adopted as a project rule, is that a pre-registered criterion must score every material, state a
+detection floor from a power analysis done beforehand, avoid requiring significance at every condition, separate structural from empirical results, and not change design and basis size at the same time.
+
+## Limits
+
+Everything here is simulated in a two-dimensional toy with a shared forward model and table (so it is a best case that overstates achievable accuracy), an idealised detector, Poisson noise only, no scatter, and statistics on a subset of rays. Absolute spectrum normalisation was not verified; designs are compared at equal photons per ray by construction, which excludes pure gain mismatch. Whether the
+photon-counting trade-off survives realistic detector response is not yet studied (@sec-open).

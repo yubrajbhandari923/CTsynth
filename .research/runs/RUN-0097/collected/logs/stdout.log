@@ -1,0 +1,4 @@
+rank median: case 931 with 1062 calcified pixels
+{'case': 931, 'n_calc_pixels': 1062, 'rank': 'median', 'floor_mse_truth': 1.7464631210151802e-16, 'floor_mse_armA_model': 2.0056403116086585e-06, 'max_iter': 100, 'AMP': 0.3, 'LAM_CALC': 5.6e-05, 'LAM_BIMODAL': 1e-05}
+B uniform iters 100 max_iter mse 3.78e-05->5.16e-07 s1 0.3106->0.3113 hf 0.060 149s
+B rough iters 100 max_iter mse 1.86e-07->4.07e-08 s1 0.1395->0.1397 hf 0.292 140s

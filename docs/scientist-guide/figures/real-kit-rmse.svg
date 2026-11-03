@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" font-family="sans-serif" font-size="13">
+<text x="190" y="22" font-size="14" font-weight="bold">Volume-fraction RMSE on official benchmark images (3 cases)</text>
+<text x="182" y="62" text-anchor="end">Unconstrained</text>
+<rect x="190" y="40" width="74.0" height="34" fill="#2e6da4"/>
+<text x="270.0" y="62">0.317</text>
+<text x="182" y="108" text-anchor="end">Simplex-constrained</text>
+<rect x="190" y="86" width="88.4" height="34" fill="#2e6da4"/>
+<text x="284.4" y="108">0.379</text>
+<text x="182" y="154" text-anchor="end">Sum-to-one, clipped</text>
+<rect x="190" y="132" width="88.4" height="34" fill="#2e6da4"/>
+<text x="284.4" y="154">0.379</text>
+<text x="182" y="200" text-anchor="end">Predict zero</text>
+<rect x="190" y="178" width="104.2" height="34" fill="#2e6da4"/>
+<text x="300.2" y="200">0.447</text>
+<text x="182" y="246" text-anchor="end">Sum-to-one (unclipped)</text>
+<rect x="190" y="224" width="362.9" height="34" fill="#c0392b"/>
+<text x="558.9" y="246">1.555</text>
+<line x1="190" y1="34" x2="190" y2="270" stroke="#333"/>
+<line x1="190" y1="270" x2="620" y2="270" stroke="#333"/>
+<line x1="190.0" y1="270" x2="190.0" y2="275" stroke="#333"/><text x="190.0" y="290" text-anchor="middle">0</text>
+<line x1="306.7" y1="270" x2="306.7" y2="275" stroke="#333"/><text x="306.7" y="290" text-anchor="middle">0.5</text>
+<line x1="423.3" y1="270" x2="423.3" y2="275" stroke="#333"/><text x="423.3" y="290" text-anchor="middle">1.0</text>
+<line x1="540.0" y1="270" x2="540.0" y2="275" stroke="#333"/><text x="540.0" y="290" text-anchor="middle">1.5</text>
+<text x="415" y="322" text-anchor="middle">RMSE of estimated volume fraction (dimensionless; lower is better)</text></svg>

@@ -1,0 +1,42 @@
+# Shared by both editions. Edition-specific settings live in _quarto-scientific.yml / _quarto-researcher.yml.
+project:
+  type: book
+  output-dir: _output/scientific
+
+book:
+  title: "CTsynth: scientific guide"
+  author: "CTsynth"
+  chapters:
+    - index.qmd
+    - briefing.qmd
+    - theory.qmd
+    - storyline.qmd
+    # research:chapters:begin (investigations are listed here; `research guide chapter add` edits only this block)
+    - investigations/mismatch-bias.qmd
+    - investigations/forward-model-trust.qmd
+    - investigations/identifiability.qmd
+    - investigations/label-free.qmd
+    - investigations/null-direction-information.qmd
+    # research:chapters:end
+    - open-questions.qmd
+
+bibliography: references.bib
+
+# Rendering must never run simulations or any other code.
+execute:
+  enabled: false
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    number-sections: true
+    html-math-method: mathjax
+    code-fold: false
+    filters:
+      - filters/edition.lua
+  typst:
+    toc: true
+    number-sections: true
+    filters:
+      - filters/edition.lua

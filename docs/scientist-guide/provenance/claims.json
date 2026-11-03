@@ -1,0 +1,6759 @@
+{
+ "claims": {
+  "CLM-0001": {
+   "created_at": "2026-10-19T15:08:06-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "derivation",
+   "section": "investigations/identifiability.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "degrees",
+      "value": 1.043
+     },
+     "ref": "RUN-0007#adipose_fibro_angle_deg",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "verified",
+      "review": "F-012/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "ffb0704093373c06"
+     },
+     "ref": "F-012",
+     "role": "supports"
+    }
+   ],
+   "statement": "Adipose and fibroglandular tissue are spectrally almost degenerate: their effective attenuation columns differ by about 1.04 degrees, so a change that trades one against the other changes the two measurements very little.",
+   "status": "active"
+  },
+  "CLM-0002": {
+   "created_at": "2026-10-19T15:08:06-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "derivation",
+   "section": "investigations/identifiability.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "dimensionless",
+      "value": 1272.96
+     },
+     "ref": "RUN-0007#cond_sum_to_one_zero_thickness",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "dimensionless",
+      "value": 343.4
+     },
+     "ref": "RUN-0007#sigma_max_Binv",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "1d100a201c8b0aae"
+     },
+     "ref": "F-025",
+     "role": "supports"
+    }
+   ],
+   "statement": "With the sum-to-one constraint the three-material problem is formally unique, but measurement error in the worst direction is amplified by a factor of about 343; the zero-thickness condition number of the augmented matrix (about 1273) is an upper bound on its beam-hardened value.",
+   "status": "active",
+   "updated_at": "2026-10-19T15:37:25-04:00"
+  },
+  "CLM-0003": {
+   "created_at": "2026-10-19T15:08:06-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "interpretation",
+   "section": "investigations/identifiability.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "1d100a201c8b0aae"
+     },
+     "ref": "F-025",
+     "role": "challenges"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "verified",
+      "review": "F-012/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "ffb0704093373c06"
+     },
+     "ref": "F-012",
+     "role": "supports"
+    }
+   ],
+   "statement": "We first believed that, because the data are noiseless, exact recovery with the sum-to-one constraint was possible; that belief rested on synthetic data generated with the same linear model that was then inverted.",
+   "status": "active"
+  },
+  "CLM-0004": {
+   "created_at": "2026-10-19T15:08:11-04:00",
+   "figures": [
+    "FIG-001"
+   ],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/identifiability.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "1d100a201c8b0aae"
+     },
+     "ref": "F-025",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_real_kit_3cases",
+      "value": 1.5554
+     },
+     "ref": "RUN-0009#real_rmse_sum_to_one",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_real_kit_3cases",
+      "value": 0.4465
+     },
+     "ref": "RUN-0009#real_rmse_zero",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_real_kit_3cases",
+      "value": 0.3173
+     },
+     "ref": "RUN-0009#real_rmse_unconstrained",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_real_kit_3cases",
+      "value": 0.3787
+     },
+     "ref": "RUN-0009#real_rmse_simplex",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "22e1aa218d07c111"
+     },
+     "ref": "F-026",
+     "role": "supports"
+    }
+   ],
+   "statement": "On three official benchmark images (all-pixel RMSE, about 35% of pixels air, which the estimators zero) the unclipped sum-to-one estimator is worse than predicting zero (RMSE 1.555 against 0.447), while the unconstrained and simplex estimators are better (0.317 and 0.379).",
+   "status": "active",
+   "updated_at": "2026-10-19T18:29:30-04:00"
+  },
+  "CLM-0005": {
+   "created_at": "2026-10-19T15:08:28-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/identifiability.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "1d100a201c8b0aae"
+     },
+     "ref": "F-025",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "relative_residual_tissue",
+      "value": 0.0776
+     },
+     "ref": "RUN-0009#linear_model_resid_lo",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "relative_residual_tissue",
+      "value": 0.0586
+     },
+     "ref": "RUN-0009#linear_model_resid_hi",
+     "role": "supports"
+    }
+   ],
+   "statement": "On official benchmark tissue pixels the linear effective-attenuation model misfits the reconstructed images by about 7.8% at 50 kVp and 5.9% at 80 kVp.",
+   "status": "active",
+   "updated_at": "2026-10-19T15:37:25-04:00"
+  },
+  "CLM-0006": {
+   "created_at": "2026-10-19T15:08:43-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "briefing.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-039/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "8b9a828ce584d09d"
+     },
+     "ref": "F-039",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": null
+     },
+     "ref": "CP-013",
+     "role": "supports"
+    }
+   ],
+   "statement": "In a synthetic, noise-free, single-network study, none of six alternatives to the baseline (output parameterisations, soft-partition penalties and an oracle control) was shown to improve a physics-only, label-free estimate; only a result at supervised-network accuracy (s1 below about 0.02) could have met the registered rule, and whether pinning the sum helps was never actually tested. An independent review required the wording to be corrected.",
+   "status": "active",
+   "updated_at": "2026-10-19T15:44:28-04:00"
+  },
+  "CLM-0007": {
+   "created_at": "2026-10-19T15:08:43-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "hypothesis",
+   "section": "briefing.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "investigating",
+      "superseded_by": null
+     },
+     "ref": "Q-006",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-043/R2:supported",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5da65050bb9ba077"
+     },
+     "ref": "F-043",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6bb7b463c3b8f4d3"
+     },
+     "ref": "F-044",
+     "role": "supports"
+    }
+   ],
+   "statement": "Whether label-free training from measurement consistency alone can recover meaningful material maps depends on which additional information selects the adipose/fibroglandular split.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:36:51-04:00"
+  },
+  "CLM-0008": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "derivation",
+   "section": "theory.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-010/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "c59c9e6482f86ab1"
+     },
+     "ref": "F-010",
+     "role": "supports"
+    }
+   ],
+   "statement": "With n measurements and k unknown materials the Jacobian has rank at most min(n,k): one energy-integrating measurement cannot separate two or more materials and a dual-kVp pair cannot separate three; this is arithmetic, not experimental evidence.",
+   "status": "active"
+  },
+  "CLM-0009": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "theory.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-018/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "666d12a559cad8ad"
+     },
+     "ref": "F-018",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "completed",
+      "syntheses": 1
+     },
+     "ref": "EXP-005",
+     "role": "supports"
+    }
+   ],
+   "statement": "With the real polychromatic forward model and the official spectra, alternative three-material path-length vectors reproduce both transmissions to machine precision; the family of such decoys is one-dimensional.",
+   "status": "active"
+  },
+  "CLM-0010": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "theory.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "354ae85c8bf9a767"
+     },
+     "ref": "F-024",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "cm_path_length_L2",
+      "value": 19.734
+     },
+     "ref": "RUN-0007#decoy_separation_nonneg_cm",
+     "role": "supports"
+    }
+   ],
+   "statement": "An exact nonnegative decoy exists at an L2 distance of 19.7 cm in path-length space from an example truth of (1, 14, 0.2) cm, so nonnegativity does not bound the ambiguity in the physically reachable region.",
+   "status": "active",
+   "updated_at": "2026-10-19T15:37:25-04:00"
+  },
+  "CLM-0011": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "interpretation",
+   "section": "theory.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "354ae85c8bf9a767"
+     },
+     "ref": "F-024",
+     "role": "challenges"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-019/R1:contradicted",
+      "status": "superseded",
+      "superseded_by": null,
+      "text": "0c767b5af6b111fd"
+     },
+     "ref": "F-019",
+     "role": "supports"
+    }
+   ],
+   "statement": "We first believed that nonnegativity bounds the family of indistinguishable solutions; that rested on a poorly chosen example whose decoy was physically unreachable.",
+   "status": "active"
+  },
+  "CLM-0012": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "derivation",
+   "section": "theory.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-041/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "87e720b4c842265c"
+     },
+     "ref": "F-041",
+     "role": "supports"
+    }
+   ],
+   "statement": "In a profile over 12 validation cases, the unit-norm null vector at zero path length contains a calcification change of about -0.8% and a total adipose-plus-fibroglandular change of about -3.1% per unit step besides the adipose/fibroglandular exchange; compensating by calcification alone would leave about 5% of the exchange's visibility to the projection loss, by the sum alone about 12%.",
+   "status": "active",
+   "updated_at": "2026-10-19T15:44:28-04:00"
+  },
+  "CLM-0013": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/mismatch-bias.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-010/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "c59c9e6482f86ab1"
+     },
+     "ref": "F-010",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "supported"
+     },
+     "ref": "F-010/R1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "dimensionless",
+      "value": 195.1044
+     },
+     "ref": "RUN-0002#jac_cond",
+     "role": "supports"
+    }
+   ],
+   "statement": "In the toy model the median condition number of the Poisson-weighted Jacobian is 195 for dual-kVp with two materials, 99 for four photon-counting bins with two materials, and 217 for four bins with three; rank verdicts are robust to the rank threshold from 1e-3 to 1e-10 (every ray full rank) but not at 1e-2, where the full-rank fraction falls to 0% for dual-kVp with two materials and for four bins with three, and 58% for four bins with two.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:29:30-04:00"
+  },
+  "CLM-0014": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/mismatch-bias.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-010/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "c59c9e6482f86ab1"
+     },
+     "ref": "F-010",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "supported"
+     },
+     "ref": "F-010/R1",
+     "role": "supports"
+    }
+   ],
+   "statement": "At equal basis size and equal total photons, in an idealised comparison with no detector effects, four photon-counting bins give about 2.4-2.5 times lower iodine Cramer-Rao uncertainty than a dual-kVp pair (median 0.00151 against 0.00376 g/cm2, a ratio of 2.5; 2.4 by root-mean-square aggregation); this is ray-dependent and an upper bound on the advantage.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:29:30-04:00"
+  },
+  "CLM-0015": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/mismatch-bias.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-008/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "9f88ccbe63b25c6e"
+     },
+     "ref": "F-008",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "g_per_cm2_LINE_INTEGRAL_misspec_rms_iodine_M2",
+      "value": 0.0240821
+     },
+     "ref": "RUN-0002#mismatch_bias_gcm2_corrected",
+     "role": "supports"
+    }
+   ],
+   "statement": "Fitting a two-material basis to three-material data gives a bias in the iodine line integral that does not shrink with photon count (bias ratio between 1e6 and 1e5 photons 0.89 and 1.02, against 0.32 expected for noise-driven error), 7 to 15 times the noise floor.",
+   "status": "active"
+  },
+  "CLM-0016": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/mismatch-bias.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-006/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "44af022f9ec9bc0a"
+     },
+     "ref": "F-006",
+     "role": "supports"
+    }
+   ],
+   "statement": "For the three identifiable cells at 1e6 photons the empirical standard deviation of the estimator agrees with the Cramer-Rao bound to within 12.5%, with a systematic pattern; this checks the Jacobian, sampler and estimator against each other under one shared model, not the physical fidelity of the model.",
+   "status": "active",
+   "updated_at": "2026-10-19T15:37:25-04:00"
+  },
+  "CLM-0017": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "interpretation",
+   "section": "investigations/mismatch-bias.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "superseded",
+      "superseded_by": null,
+      "text": "eb9e655775fd4923"
+     },
+     "ref": "F-004",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "superseded",
+      "superseded_by": null,
+      "text": "f5eb9ef36fd1f869"
+     },
+     "ref": "F-005",
+     "role": "challenges"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-009/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "2548725b14f0876d"
+     },
+     "ref": "F-009",
+     "role": "challenges"
+    }
+   ],
+   "statement": "We first read the pre-registered test as a partial falsification: seven of twelve cells passed and the dual-kVp cells showed no detectable bias, but we could not tell under-power from genuine insensitivity; the cause was a defective detection criterion.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:29:30-04:00"
+  },
+  "CLM-0018": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/mismatch-bias.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-009/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "2548725b14f0876d"
+     },
+     "ref": "F-009",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "817ba62a9612e31d"
+     },
+     "ref": "F-011",
+     "role": "supports"
+    }
+   ],
+   "statement": "In every condition tested (four spectral perturbations of the two-material phantom, a noise-free calculation, 48 rays, 1e6 photons) a mismatched nominal spectrum biased the estimate detectably under a signed-mean test (except the marginal case below); the dual-kVp water bias, hidden by an iodine-only criterion, was about four times the floor.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:29:30-04:00"
+  },
+  "CLM-0019": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/mismatch-bias.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "817ba62a9612e31d"
+     },
+     "ref": "F-011",
+     "role": "supports"
+    }
+   ],
+   "statement": "The dual-kVp iodine spectral-tilt case is marginal: the per-ray bias is only 0.66 to 0.75 of the floor and becomes detectable only by pooling 48 rays.",
+   "status": "active"
+  },
+  "CLM-0020": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/forward-model-trust.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "c9e9ad8a41f3ac56"
+     },
+     "ref": "EXP-017/S2",
+     "role": "supports"
+    }
+   ],
+   "statement": "Our projector and polychromatic forward model reproduce the official benchmark generator's transmissions to float32 rounding on the starting-kit and dataset cases, about 3.3 times below the tolerance derived beforehand.",
+   "status": "active"
+  },
+  "CLM-0021": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/forward-model-trust.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "df7180a0be6349c8"
+     },
+     "ref": "EXP-018/S1",
+     "role": "supports"
+    }
+   ],
+   "statement": "Automatic-differentiation gradients of the projection loss agree with central finite differences (median relative error 9.4e-9 on a small geometry, 1.5e-7 on the full 512x512 geometry at sampled entries).",
+   "status": "active"
+  },
+  "CLM-0022": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/forward-model-trust.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6a054f1b54fc222c"
+     },
+     "ref": "F-037",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "d45c3bbaba987175"
+     },
+     "ref": "EXP-010/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.02359581512
+     },
+     "ref": "RUN-0023#G3_kvp120.M4_our_spectrum.rel_rms_obj",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.03205940008
+     },
+     "ref": "RUN-0023#G2_kvp80.M4_our_spectrum.rel_rms_obj",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.004676270965
+     },
+     "ref": "RUN-0023#G3_kvp120.M1_analytic_xcistphys.rel_rms_obj",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01048542078
+     },
+     "ref": "RUN-0023#G1_kvp80.M1_analytic_xcistphys.rel_rms_obj",
+     "role": "supports"
+    }
+   ],
+   "statement": "With the reference simulator's own spectrum, detector weights and attenuation, the earlier general-purpose model reproduces it to 0.47-1.05% (0.26-0.47% with voxel-marched chords), a check of the adapter and geometry because the transport equation is shared; replacing the spectrum with our own raises the mismatch to about 2.4-3.2%, the largest single term (synthetic disk phantoms, no scatter, preliminary).",
+   "status": "active",
+   "updated_at": "2026-10-19T18:29:30-04:00"
+  },
+  "CLM-0023": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/forward-model-trust.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5a896fc56d6f340e"
+     },
+     "ref": "F-036",
+     "role": "supports"
+    }
+   ],
+   "statement": "The reference simulator, run from one frozen source and configuration on the cluster, reproduced its own laptop result to a maximum absolute difference of 9.66e-6 in -ln(T) and reconstructions to 0.0133 HU (not bit-identical; a patched build; one phantom, one tube voltage, noise-free, CPU only).",
+   "status": "active",
+   "updated_at": "2026-10-19T15:37:25-04:00"
+  },
+  "CLM-0024": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "interpretation",
+   "section": "investigations/forward-model-trust.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "c9e9ad8a41f3ac56"
+     },
+     "ref": "EXP-017/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6a054f1b54fc222c"
+     },
+     "ref": "F-037",
+     "role": "supports"
+    }
+   ],
+   "statement": "These checks establish that the numerical stack agrees with the benchmark generator and with itself; they say nothing about real-scanner accuracy, noise, scatter or spectral error.",
+   "status": "active"
+  },
+  "CLM-0025": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "09c239c477cc16fc"
+     },
+     "ref": "EXP-004/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_synthetic_val",
+      "value": 0.4761
+     },
+     "ref": "RUN-0008#b3_tissue_rmse",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_synthetic_val",
+      "value": 0.0549
+     },
+     "ref": "RUN-0008#b2_supervised_tissue_rmse",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "mse_image_domain",
+      "value": 9.6e-05
+     },
+     "ref": "RUN-0008#b3_consistency_val",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_1500ep_w16_d2",
+      "value": 0.0372
+     },
+     "ref": "RUN-0008#supervised_converged_floor",
+     "role": "supports"
+    }
+   ],
+   "statement": "In a controlled synthetic image-domain ladder, the label-free network reached the lowest consistency loss of all ten variants while its tissue error (0.476) was far above that of a classical solution and a supervised network (0.055); training the supervised network 19 times longer with four times the capacity only reduced its error to 0.037.",
+   "status": "active"
+  },
+  "CLM-0026": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "857f73930800864c"
+     },
+     "ref": "EXP-021/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.2709351575
+     },
+     "ref": "RUN-0037#s1_tv0.1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4458516255
+     },
+     "ref": "RUN-0037#s1_zero",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 1.508385217
+     },
+     "ref": "RUN-0037#s1_sum_to_one",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3069131646
+     },
+     "ref": "RUN-0037#s1_nonneg_ls",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3153410258
+     },
+     "ref": "RUN-0037#s1_unconstrained",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3813220125
+     },
+     "ref": "RUN-0037#s1_simplex",
+     "role": "supports"
+    }
+   ],
+   "statement": "On 100 validation cases the best image-domain classical estimator (total-variation regularised) scores s1 = 0.271, only 1.6 times better than predicting zero (0.446), and the raw sum-to-one estimator is about 3.4 times worse than predicting zero (1.508).",
+   "status": "active",
+   "updated_at": "2026-10-19T18:29:30-04:00"
+  },
+  "CLM-0027": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "76432ed147c0de5c"
+     },
+     "ref": "EXP-022/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "6a1cdc98aba850dd"
+     },
+     "ref": "EXP-022/S3",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01841695096
+     },
+     "ref": "RUN-0041#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.02080396931
+     },
+     "ref": "RUN-0042#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01887406475
+     },
+     "ref": "RUN-0043#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.2709351575
+     },
+     "ref": "RUN-0037#s1_tv0.1",
+     "role": "supports"
+    }
+   ],
+   "statement": "A supervised U-Net trained on the 800-case training split reaches validation s1 of 0.018, 0.021 and 0.019 for three seeds (mean 0.0194), roughly 14 times better than the best classical method.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:29:30-04:00"
+  },
+  "CLM-0028": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "6a1cdc98aba850dd"
+     },
+     "ref": "EXP-022/S3",
+     "role": "supports"
+    }
+   ],
+   "statement": "Supervised training was fragile: four of six runs at the higher learning rate collapsed to predicting zero after output units died, and the stable reference recipe did not learn the small calcification class.",
+   "status": "active",
+   "updated_at": "2026-10-19T15:22:27-04:00"
+  },
+  "CLM-0029": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [
+    "FIG-002"
+   ],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "3e07779d85fc9ed7"
+     },
+     "ref": "EXP-023/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "76432ed147c0de5c"
+     },
+     "ref": "EXP-022/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.000983674312
+     },
+     "ref": "RUN-0047#proj_rmse_T",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.0009530154639
+     },
+     "ref": "RUN-0048#proj_rmse_T",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.0005589260254
+     },
+     "ref": "RUN-0049#proj_rmse_T",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.296845949
+     },
+     "ref": "RUN-0047#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.2868453564
+     },
+     "ref": "RUN-0048#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3033461372
+     },
+     "ref": "RUN-0049#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.001345326426
+     },
+     "ref": "RUN-0041#proj_rmse_T",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.002620133106
+     },
+     "ref": "RUN-0042#proj_rmse_T",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.001416690648
+     },
+     "ref": "RUN-0043#proj_rmse_T",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01841695096
+     },
+     "ref": "RUN-0041#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.02080396931
+     },
+     "ref": "RUN-0042#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01887406475
+     },
+     "ref": "RUN-0043#s1",
+     "role": "supports"
+    }
+   ],
+   "statement": "A U-Net trained only on measured transmissions reaches a lower projection error than the supervised network (6e-4 to 1e-3 against 1.3e-3 to 2.6e-3 in transmission RMSE across three seeds) but a material error about fifteen times larger (s1 0.287-0.303 against 0.018-0.021), comparable to the best classical method and better than the zero prediction by a factor of only 1.5.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:29:30-04:00"
+  },
+  "CLM-0030": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.9967585167
+     },
+     "ref": "RUN-0047#null_dir_error_frac",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.9986085083
+     },
+     "ref": "RUN-0048#null_dir_error_frac",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.9986732196
+     },
+     "ref": "RUN-0049#null_dir_error_frac",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.835972571
+     },
+     "ref": "RUN-0041#null_dir_error_frac",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "3e07779d85fc9ed7"
+     },
+     "ref": "EXP-023/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-041/R1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.9958352445
+     },
+     "ref": "RUN-0066#null_dir_error_frac",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.8795999934
+     },
+     "ref": "RUN-0067#null_dir_error_frac",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.8417128109
+     },
+     "ref": "RUN-0068#null_dir_error_frac",
+     "role": "supports"
+    }
+   ],
+   "statement": "Material error s1 (vertical, log scale, volume-fraction units) against projection error (horizontal, log scale, RMS error of predicted transmission, dimensionless) for six selected runs on 100 validation cases. Blue: trained with labels (the supervised reference network and the same network after 200 per-case physics steps). Red: no labels (the physics-only network, the same with a weak entropy penalty, a per-case iterative fit started from the classical estimate, and one structured run of a different output form). All are single runs (seed 0 where seeds apply), so there are no uncertainty intervals; the seed-to-seed spread is in the next figure. The dashed line is the score of predicting zero. Values are point values recreated from the recorded run metrics.](../figures/fit-vs-accuracy.svg){#fig-fit-vs-accuracy fig-alt=\"Scatter of material error against projection error on log axes; most label-free runs sit at material error near 0.3 regardless of projection error, one at 0.09, and the labelled runs near 0.02.\"} The error sits where the theory points, with a caveat. [In the baseline label-free networks 99.7-99.9% of the material error lies along the project's null-fraction direction, a three-decimal approximation to the null vector, and the networks output a nearly uniform adipose/fibroglandular mixture; the supervised network has 84% on the same metric, but the one structured label-free success scores 99.6% and the three-channel softmax runs 84-88%. Because that direction is almost a pure exchange of the two tissues, the metric cannot tell exchange-like error that the data hide from exchange-like error that they can see, nor a good solution from a bad one, so the contrast with the supervised network's 84% is uninformative as well.",
+   "status": "active",
+   "updated_at": "2026-10-20T10:41:13-04:00"
+  },
+  "CLM-0031": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "55dd4a7939397961"
+     },
+     "ref": "EXP-028/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.001306822238
+     },
+     "ref": "RUN-0053#proj_rmse_K0",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.0001444662984
+     },
+     "ref": "RUN-0053#proj_rmse_K200",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01841695212
+     },
+     "ref": "RUN-0053#s1_K0",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01768385643
+     },
+     "ref": "RUN-0053#s1_K200",
+     "role": "supports"
+    }
+   ],
+   "statement": "Refining the supervised network per case by gradient descent on the projection loss lowered its projection error about nine times (1.3e-3 to 1.4e-4) but improved s1 by only 4% (0.0184 to 0.0177).",
+   "status": "active"
+  },
+  "CLM-0032": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "a8846b1a3f789836"
+     },
+     "ref": "EXP-032/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.308258524
+     },
+     "ref": "RUN-0050#s1_mean",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3153410258
+     },
+     "ref": "RUN-0037#s1_unconstrained",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3069131646
+     },
+     "ref": "RUN-0037#s1_nonneg_ls",
+     "role": "supports"
+    }
+   ],
+   "statement": "A per-case iterative polychromatic fit started from the classical estimate ended at s1 0.308, essentially the classical starting values (0.315 for the unconstrained estimator, 0.307 for non-negative least squares), although it was under-converged.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:29:30-04:00"
+  },
+  "CLM-0033": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "3ee0e65695453e40"
+     },
+     "ref": "EXP-025/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.2904261035
+     },
+     "ref": "RUN-0056#s1",
+     "role": "supports"
+    }
+   ],
+   "statement": "Adding one prior (entropy, total variation, range hinge or calcification sparsity) at two weights each, one seed per setting, did not move any non-degenerate run beyond the pre-registered trigger (2 x the baseline seed range, 0.033): s1 stayed between 0.288 and 0.316 against a baseline of 0.296.",
+   "status": "active",
+   "updated_at": "2026-10-19T15:37:25-04:00"
+  },
+  "CLM-0034": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-039/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "8b9a828ce584d09d"
+     },
+     "ref": "F-039",
+     "role": "supports"
+    }
+   ],
+   "statement": "None of six alternatives to the baseline (output parameterisations, soft-partition penalties and an oracle control) was shown to improve the label-free estimate; the rule could only have triggered near s1 0.02, and the soft partition did not change the sum materially, so whether pinning the sum helps is untested.",
+   "status": "active",
+   "updated_at": "2026-10-19T15:37:25-04:00"
+  },
+  "CLM-0035": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-040/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "034bd69164b5a7f3"
+     },
+     "ref": "F-040",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-040/R1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.09142430886
+     },
+     "ref": "RUN-0066#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "b3c75e693459ced6"
+     },
+     "ref": "EXP-033/S1",
+     "role": "supports"
+    }
+   ],
+   "statement": "One label-free run (occupancy-aware softmax, seed 2) reached s1 0.091 with correct anatomy, the only structured solution among 21 physics-only runs; the same arm's other seeds gave 0.351 and 0.282. It was also the one run whose sum was nearly pinned (|S-1| about 0.006 against 0.034-0.051 for the baseline), and its mechanism is unknown.",
+   "status": "active",
+   "updated_at": "2026-10-20T10:41:13-04:00"
+  },
+  "CLM-0036": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-042/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "ba64bb9c11c3dfd1"
+     },
+     "ref": "F-042",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-042/R1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-042/R2",
+     "role": "supports"
+    }
+   ],
+   "statement": "Most three-channel softmax and true-sum-given runs ended as one-hot maps (constant in most) with a gradient below 1e-8, exactly zero in four of the runs inspected; in one test lowering the learning rate tenfold only delayed the collapse, from about 100 to about 260 steps, and its cause has not been isolated.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:29:30-04:00"
+  },
+  "CLM-0037": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "interpretation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-014/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "d150cf4eaab815da"
+     },
+     "ref": "F-014",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-018/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "666d12a559cad8ad"
+     },
+     "ref": "F-018",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-041/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "87e720b4c842265c"
+     },
+     "ref": "F-041",
+     "role": "supports"
+    }
+   ],
+   "statement": "The data barely constrain one direction of material space and label-free networks reach large material error at small projection error; but their projection errors stay 4-6 orders of magnitude above the noise-free floor, so under-optimisation, loss weighting and cancellation of spatially varying exchange errors are not excluded as contributors, and which implicit bias selects the solution has not been isolated by a controlled experiment.",
+   "status": "active",
+   "updated_at": "2026-10-19T15:37:25-04:00"
+  },
+  "CLM-0038": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "interpretation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-016/R1:supported",
+      "status": "superseded",
+      "superseded_by": null,
+      "text": "13256c40c4eda40e"
+     },
+     "ref": "F-016",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "3e14704e22ca39ae"
+     },
+     "ref": "F-027",
+     "role": "challenges"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "609a19cd8d4c2530"
+     },
+     "ref": "F-030",
+     "role": "supports"
+    }
+   ],
+   "statement": "On synthetic images from our own generator a simplex-projected estimator scored far better (0.051) than the exact sum-to-one estimator (1.18) and than predicting zero (0.43), but only because clipping bounded the outliers of the exact estimator; on the official benchmark images (three cases) the unconstrained estimator beats the simplex-projected one, which is no better than clipping the raw sum-to-one solution.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:29:30-04:00"
+  },
+  "CLM-0039": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-041/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "87e720b4c842265c"
+     },
+     "ref": "F-041",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "completed"
+     },
+     "ref": "RUN-0091",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-041/R2",
+     "role": "supports"
+    }
+   ],
+   "statement": "With the exact null vector (zero-thickness; recomputed after a 3-decimal approximation was withdrawn), the root-mean-square projection error averaged over rays grows by about 4e-5 per unit step along the null direction but about 1.3e-2 per unit step along the pure adipose/fibroglandular exchange with calcification fixed, a ratio of about 330 (12 validation cases).",
+   "status": "active",
+   "updated_at": "2026-10-19T18:29:30-04:00"
+  },
+  "CLM-0040": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-041/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "87e720b4c842265c"
+     },
+     "ref": "F-041",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "completed"
+     },
+     "ref": "RUN-0091",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-041/R2",
+     "role": "supports"
+    }
+   ],
+   "statement": "the trained label-free solutions have projection errors 4 to 6 orders of magnitude above the noise-free floor, so their errors are visible to the data and are not hidden along the null direction; how they nevertheless reach such small projection errors is not established by this profile.",
+   "status": "active",
+   "updated_at": "2026-10-20T10:41:13-04:00"
+  },
+  "CLM-0041": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6bb7b463c3b8f4d3"
+     },
+     "ref": "F-044",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "1ff80689ba500ac6"
+     },
+     "ref": "EXP-035/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "completed"
+     },
+     "ref": "RUN-0093",
+     "role": "supports"
+    }
+   ],
+   "statement": "Of the five priors evaluated in Stage 0 (calcification absence as L1 and as a smoothed L0 count, bimodality a(1-a), total variation of the adipose share, and a train-label marginal Wasserstein match), the four label-free ones are exactly invariant under relabelling adipose as fibroglandular and vice versa (change 0 to 1e-17); only the training-label marginal discriminates and it counts as weak supervision (analysis unreviewed, 20 training cases around the truth). The entropy and range-hinge priors of the network ablation were not part of it. Gate: calc_l0, bimodal and the train marginal pass, calc_l1 only at the classical-solver residual level, total variation fails; bimodal and calcification passes are partly by construction and the lambda windows used training labels.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:29:30-04:00"
+  },
+  "CLM-0042": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "derivation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-043/R2:supported",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5da65050bb9ba077"
+     },
+     "ref": "F-043",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "supported"
+     },
+     "ref": "F-043/R2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "dc2e60bc4a4a90c2"
+     },
+     "ref": "EXP-034/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "4d021ed3a6c4ef0a"
+     },
+     "ref": "EXP-034/S4",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "completed"
+     },
+     "ref": "RUN-0087",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "completed"
+     },
+     "ref": "RUN-0094",
+     "role": "supports"
+    }
+   ],
+   "statement": "In a single-ray Cramer-Rao analysis (ideal detector, 2e5 incident photons, nine path-length (2/6/12 cm) and composition cases, photon counting = 80 kVp beam only) with the sum known and calcification unknown, adding spectral bins improves the adipose-fraction uncertainty by at most about a factor of two (dual-energy 0.249 vs 0.120 for 32 photon-counting bins in the 6 cm, 50/50 case; ratio 1.9-2.2 over all nine cases; ranges 0.23-0.48 and 0.12-0.22); with calcification known absent and the sum known, dual-energy reaches 0.024-0.042 and photon counting adds nothing (32 bins 0.026-0.046), the best single measurement being 50 kVp alone (0.021-0.035; 80 kVp alone 0.029-0.053). Values recomputed from RUN-0087/RUN-0094 theory.json.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:29:30-04:00"
+  },
+  "CLM-0043": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "interpretation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-043/R2:supported",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5da65050bb9ba077"
+     },
+     "ref": "F-043",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-041/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "87e720b4c842265c"
+     },
+     "ref": "F-041",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "4d021ed3a6c4ef0a"
+     },
+     "ref": "EXP-034/S4",
+     "role": "supports"
+    }
+   ],
+   "statement": "The dominant lever for resolving the adipose/fibroglandular split in the single-ray bound is knowledge about calcification and the sum of the fractions, not additional spectral bins (interpretation of a variance bound that ignores model-mismatch bias, tomographic coupling and spatial priors; noiseless benchmark data; unreviewed after correction).",
+   "status": "active",
+   "updated_at": "2026-10-19T18:29:30-04:00"
+  },
+  "CLM-0044": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "e279ce2e88804fef"
+     },
+     "ref": "EXP-036/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "5e29ace4c426fa90"
+     },
+     "ref": "EXP-036/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-045/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5a2086a91393631b"
+     },
+     "ref": "F-045",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "completed"
+     },
+     "ref": "RUN-0096",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "completed"
+     },
+     "ref": "RUN-0097",
+     "role": "supports"
+    }
+   ],
+   "statement": "Arm A cannot represent calcified lesions: with the true adipose map and calcification forced to zero the projection error cannot go below 1.0e-7, 2.0e-6 and 2.4e-6 on the three pilot cases, so it is not a clean positive control; on the lowest-count case the solver nevertheless reached 1.7e-9, below that floor, which is possible only by bending the adipose map away from the truth near the lesions.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:32:52-04:00"
+  },
+  "CLM-0045": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "proposed",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "investigating",
+      "superseded_by": null
+     },
+     "ref": "Q-006",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": null
+     },
+     "ref": "CP-013",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": null
+     },
+     "ref": "CP-014",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "completed",
+      "syntheses": 3
+     },
+     "ref": "EXP-036",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "proposed",
+      "syntheses": 0
+     },
+     "ref": "EXP-037",
+     "role": "supports"
+    }
+   ],
+   "statement": "Converged per-case solves with oracle knowledge of the support are intended to test how much information the priors carry once optimisation is removed; only if that passes a gate will network priors be studied.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:32:52-04:00"
+  },
+  "CLM-0046": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "hypothesis",
+   "section": "open-questions.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "open",
+      "superseded_by": null
+     },
+     "ref": "Q-007",
+     "role": "supports"
+    }
+   ],
+   "statement": "Realistic photon-counting detector effects (energy response, charge sharing, pile-up, calibration) may change identifiability and model mismatch relative to the idealised bins studied so far.",
+   "status": "active",
+   "updated_at": "2026-10-19T15:37:25-04:00"
+  },
+  "CLM-0047": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "hypothesis",
+   "section": "open-questions.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "open",
+      "superseded_by": null
+     },
+     "ref": "Q-008",
+     "role": "supports"
+    }
+   ],
+   "statement": "Whether material fields learned from simulated pairs transfer to real or clinical spectral CT, and how this could be measured without clinical truth, is not yet studied.",
+   "status": "active",
+   "updated_at": "2026-10-19T15:37:25-04:00"
+  },
+  "CLM-0048": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "hypothesis",
+   "section": "open-questions.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "open",
+      "superseded_by": null
+     },
+     "ref": "Q-004",
+     "role": "supports"
+    }
+   ],
+   "statement": "Whether models trained on procedural phantoms generalise to unseen material compositions is not yet tested.",
+   "status": "active",
+   "updated_at": "2026-10-19T15:37:25-04:00"
+  },
+  "CLM-0049": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "hypothesis",
+   "section": "open-questions.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "investigating",
+      "superseded_by": null
+     },
+     "ref": "Q-006",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6bb7b463c3b8f4d3"
+     },
+     "ref": "F-044",
+     "role": "supports"
+    }
+   ],
+   "statement": "Two different kinds of information may resolve the split: knowledge of calcification and the sum, which makes the exchange visible to the data, and a prior that is not symmetric between the two tissues, such as a small amount of weak supervision; which is more plausible is a hypothesis to be tested by the staged plan.",
+   "status": "active",
+   "updated_at": "2026-10-19T15:44:28-04:00"
+  },
+  "CLM-0050": {
+   "created_at": "2026-10-19T15:20:22-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "hypothesis",
+   "section": "open-questions.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "investigating",
+      "superseded_by": null
+     },
+     "ref": "Q-002",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6a054f1b54fc222c"
+     },
+     "ref": "F-037",
+     "role": "supports"
+    }
+   ],
+   "statement": "Training on one forward model and testing on a mismatched one (no inverse crime) has not been done: only forward-model projection differences (2-3%) and toy-model estimator bias have been measured.",
+   "status": "active",
+   "updated_at": "2026-10-19T15:44:28-04:00"
+  },
+  "CLM-0051": {
+   "created_at": "2026-10-19T15:20:46-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "briefing.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01841695096
+     },
+     "ref": "RUN-0041#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.296845949
+     },
+     "ref": "RUN-0047#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.001345326426
+     },
+     "ref": "RUN-0041#proj_rmse_T",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.000983674312
+     },
+     "ref": "RUN-0047#proj_rmse_T",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "3e07779d85fc9ed7"
+     },
+     "ref": "EXP-023/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "76432ed147c0de5c"
+     },
+     "ref": "EXP-022/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "857f73930800864c"
+     },
+     "ref": "EXP-021/S1",
+     "role": "supports"
+    }
+   ],
+   "statement": "On the benchmark's 100 validation cases a U-Net trained with labels reaches s1 of about 0.02 (three seeds, 0.018-0.021), about 14 times better than the best classical method but far from the published scale of about 1e-6, whereas a network trained only to match the measurements reaches about 0.30 (three seeds, 0.287-0.303) although its projection error is lower.",
+   "status": "active",
+   "updated_at": "2026-10-19T15:37:25-04:00"
+  },
+  "CLM-0052": {
+   "created_at": "2026-10-19T15:20:46-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "interpretation",
+   "section": "briefing.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-018/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "666d12a559cad8ad"
+     },
+     "ref": "F-018",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-014/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "d150cf4eaab815da"
+     },
+     "ref": "F-014",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-039/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "8b9a828ce584d09d"
+     },
+     "ref": "F-039",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "3ee0e65695453e40"
+     },
+     "ref": "EXP-025/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-040/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "034bd69164b5a7f3"
+     },
+     "ref": "F-040",
+     "role": "supports"
+    }
+   ],
+   "statement": "In this problem a good fit to the measurements is not evidence that the recovered materials are right: the data barely constrain one direction of the material space, and apart from one unexplained run (one seed of one arm, s1 0.091, the one run in which the tissue sum was pinned) nothing tried so far to fix this without labels was shown to work in the settings tried.",
+   "status": "active",
+   "updated_at": "2026-10-20T10:41:13-04:00"
+  },
+  "CLM-0053": {
+   "created_at": "2026-10-19T15:20:46-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "briefing.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "55dd4a7939397961"
+     },
+     "ref": "EXP-028/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01841695212
+     },
+     "ref": "RUN-0053#s1_K0",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01768385643
+     },
+     "ref": "RUN-0053#s1_K200",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.001306822238
+     },
+     "ref": "RUN-0053#proj_rmse_K0",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.0001444662984
+     },
+     "ref": "RUN-0053#proj_rmse_K200",
+     "role": "supports"
+    }
+   ],
+   "statement": "Physics-based refinement of a good estimate removes the part of the error the data can see and little else: for one network and 100 validation cases, 200 unconverged refinement steps lowered the projection error about ninefold while the material error improved by 4%.",
+   "status": "active",
+   "updated_at": "2026-10-19T15:37:25-04:00"
+  },
+  "CLM-0054": {
+   "created_at": "2026-10-19T15:20:46-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "interpretation",
+   "section": "briefing.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-043/R2:supported",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5da65050bb9ba077"
+     },
+     "ref": "F-043",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-041/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "87e720b4c842265c"
+     },
+     "ref": "F-041",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-043/R1",
+     "role": "supports"
+    }
+   ],
+   "statement": "In an idealised single-ray analysis (ideal detector, equal incident photons), knowing that calcification is absent and the sum of the fractions improves the adipose-fraction precision six- to tenfold, whereas extra spectral bins (the 80 kVp beam binned) improve it about twofold at most (for example 0.20 against 0.10 with calcification absent but the sum unknown) and add nothing once calcification and the sum are both known; whether this is the deciding factor in practice, or whether a different loss would matter, has not been tested.",
+   "status": "active",
+   "updated_at": "2026-10-20T10:41:13-04:00"
+  },
+  "CLM-0055": {
+   "created_at": "2026-10-19T15:20:46-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "proposed",
+   "section": "briefing.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "investigating",
+      "superseded_by": null
+     },
+     "ref": "Q-006",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": null
+     },
+     "ref": "CP-014",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "439d6357e1c41103"
+     },
+     "ref": "EXP-036/S3",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "proposed",
+      "syntheses": 0
+     },
+     "ref": "EXP-037",
+     "role": "supports"
+    }
+   ],
+   "statement": "An independent re-review of the corrected and pilot findings comes first, then the pilot's undone runs; the network-prior stage is proposed and not started, and would follow only if the project owner judges the pilot sufficient.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:36:51-04:00"
+  },
+  "CLM-0056": {
+   "created_at": "2026-10-19T15:22:52-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "interpretation",
+   "section": "storyline.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-018/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "666d12a559cad8ad"
+     },
+     "ref": "F-018",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-043/R2:supported",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5da65050bb9ba077"
+     },
+     "ref": "F-043",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6bb7b463c3b8f4d3"
+     },
+     "ref": "F-044",
+     "role": "supports"
+    }
+   ],
+   "statement": "The question shifted from which loss function could remove the ambiguity to what additional information would resolve it, because no loss tried, at the weights and seeds studied, avoided inheriting its answer from the model's implicit biases; we hypothesise that information, not the loss, is missing.",
+   "status": "active",
+   "updated_at": "2026-10-19T15:44:28-04:00"
+  },
+  "CLM-0057": {
+   "created_at": "2026-10-19T15:22:52-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "observation",
+   "section": "storyline.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-009/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "2548725b14f0876d"
+     },
+     "ref": "F-009",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-010/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "c59c9e6482f86ab1"
+     },
+     "ref": "F-010",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "354ae85c8bf9a767"
+     },
+     "ref": "F-024",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "1d100a201c8b0aae"
+     },
+     "ref": "F-025",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "22e1aa218d07c111"
+     },
+     "ref": "F-026",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "3e14704e22ca39ae"
+     },
+     "ref": "F-027",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6a054f1b54fc222c"
+     },
+     "ref": "F-037",
+     "role": "supports"
+    }
+   ],
+   "statement": "Independent review overturned or narrowed earlier findings at least seven times, among them the recoverability claim for the sum constraint, the nonnegativity bound, the insensitivity of dual-kVp estimation to spectral mismatch and a simulator comparison.",
+   "status": "active"
+  },
+  "CLM-0058": {
+   "created_at": "2026-10-19T15:23:19-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/forward-model-trust.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "9218de477047910e"
+     },
+     "ref": "EXP-029/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "9846967f50c44c85"
+     },
+     "ref": "EXP-031/S1",
+     "role": "supports"
+    }
+   ],
+   "statement": "The 1000-case benchmark release was checksum-verified and split once, before any training, into 800 training, 100 validation and 100 test cases with no duplicate phantoms; all cases share a single support mask, so occupancy-based ideas cannot be tested for generalisation to new supports on this dataset, and the test split has not been used.",
+   "status": "active"
+  },
+  "CLM-0059": {
+   "created_at": "2026-10-19T15:23:19-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "df05cfab6253bb6c"
+     },
+     "ref": "EXP-020/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3921219242
+     },
+     "ref": "RUN-0035#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.02941545623
+     },
+     "ref": "RUN-0034#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.997092141
+     },
+     "ref": "RUN-0035#null_dir_error_frac",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.5034971914
+     },
+     "ref": "RUN-0036#s1",
+     "role": "supports"
+    }
+   ],
+   "statement": "In the first small-scale demonstration (32 training and 8 validation cases) the label-free network already produced a spatially uniform, anatomy-free adipose/fibroglandular mixture (s1 0.392 against 0.029 for the supervised network) with 99.7% of its error along the null direction; a feasibility penalty on the sum did not help (s1 0.504).",
+   "status": "active",
+   "updated_at": "2026-10-19T18:29:30-04:00"
+  },
+  "CLM-0060": {
+   "created_at": "2026-10-19T15:23:40-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-020/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "b806a9dc6cc9ad16"
+     },
+     "ref": "F-020",
+     "role": "supports"
+    }
+   ],
+   "statement": "One recent published label-free method solves a determined problem, two materials from two spectra, with an unweighted measurement-consistency loss and no regulariser, so the ambiguity studied here does not arise for it; its authors state the shared-model (inverse crime) setting explicitly.",
+   "status": "active"
+  },
+  "CLM-0061": {
+   "created_at": "2026-10-19T15:23:40-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-021/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "8b913db0d9f0e907"
+     },
+     "ref": "F-021",
+     "role": "supports"
+    }
+   ],
+   "statement": "Another published method is not label-free in our sense: its adversarial term requires an unpaired reference set of clean material maps, and because its measurement-consistency system is square the fidelity term alone returns the noisy direct inversion.",
+   "status": "active"
+  },
+  "CLM-0062": {
+   "created_at": "2026-10-19T15:37:25-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/mismatch-bias.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "817ba62a9612e31d"
+     },
+     "ref": "F-011",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-009/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "2548725b14f0876d"
+     },
+     "ref": "F-009",
+     "role": "supports"
+    }
+   ],
+   "statement": "on the same two-material phantom the four-bin photon-counting design showed mismatch bias (root-mean-square over rays, relative to its floor) of 27 to 43 times its noise floor against about 0.8 to 4.3 times for dual-kVp; the floors are design-specific, so the ratios are not directly comparable.",
+   "status": "active",
+   "updated_at": "2026-10-20T10:41:13-04:00"
+  },
+  "CLM-0063": {
+   "created_at": "2026-10-19T15:37:25-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/identifiability.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "609a19cd8d4c2530"
+     },
+     "ref": "F-030",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_real_kit_3cases",
+      "value": 0.3787
+     },
+     "ref": "RUN-0009#real_rmse_simplex",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_real_kit_3cases",
+      "value": 0.3789
+     },
+     "ref": "RUN-0009#real_rmse_sum_to_one_clipped",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "fraction_of_pixels",
+      "value": 0.4392
+     },
+     "ref": "RUN-0009#sum_to_one_frac_outside_01",
+     "role": "supports"
+    }
+   ],
+   "statement": "Imposing the simplex constraint by projection gives the same error as clipping the sum-to-one solution to [0,1] (0.3787 against 0.3789), and 43.9% of the sum-to-one pixels fall outside the physical range, so the apparent advantage of the simplex estimator over predicting zero comes from clipping outliers, not from the constraint (the largest unclipped value was 23.6 where the physical range is 0 to 1).",
+   "status": "active",
+   "updated_at": "2026-10-19T18:29:30-04:00"
+  },
+  "CLM-0064": {
+   "created_at": "2026-10-19T15:37:25-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6bb7b463c3b8f4d3"
+     },
+     "ref": "F-044",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "1ff80689ba500ac6"
+     },
+     "ref": "EXP-035/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "775c4f29f692df9a"
+     },
+     "ref": "EXP-035/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "completed"
+     },
+     "ref": "RUN-0093",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "55dd4a7939397961"
+     },
+     "ref": "EXP-028/S1",
+     "role": "supports"
+    }
+   ],
+   "statement": "Spatially varying exchange fields are far less visible to the projection loss than a uniform one: the fitted coefficients imply amplitudes about 6 times (smooth field) and 14 times (rough field) smaller for the same residual (38 and 210 times in mean-squared error), so a projection MSE of $10^{-6}$, about the level the physics-only networks reach, is compatible with exchange steps up to 0.077 (uniform), 0.47 (smooth) and 1.1 (rough), and a residual of $2\\times10^{-8}$, the projection error left after physics refinement of the supervised network (whose material error stays at 0.0177), with steps up to 0.011, 0.067 and 0.16.",
+   "status": "active",
+   "updated_at": "2026-10-20T10:41:13-04:00"
+  },
+  "CLM-0065": {
+   "created_at": "2026-10-19T15:37:25-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "observation",
+   "section": "storyline.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-009/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "2548725b14f0876d"
+     },
+     "ref": "F-009",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-010/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "c59c9e6482f86ab1"
+     },
+     "ref": "F-010",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "354ae85c8bf9a767"
+     },
+     "ref": "F-024",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "1d100a201c8b0aae"
+     },
+     "ref": "F-025",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "609a19cd8d4c2530"
+     },
+     "ref": "F-030",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-039/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "8b9a828ce584d09d"
+     },
+     "ref": "F-039",
+     "role": "supports"
+    }
+   ],
+   "statement": "Six earlier beliefs were revised: dual-kVp insensitivity to spectral mismatch, a photon-counting noise penalty, the nonnegativity bound, exact recovery with the sum constraint, simplex as the best classical choice, and the label-free physics loss as a route to the materials.",
+   "status": "active"
+  },
+  "CLM-0066": {
+   "created_at": "2026-10-19T15:37:25-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "observation",
+   "section": "storyline.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "active",
+      "superseded_by": null
+     },
+     "ref": "D-003",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "active",
+      "superseded_by": null
+     },
+     "ref": "D-008",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "354ae85c8bf9a767"
+     },
+     "ref": "F-024",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "1d100a201c8b0aae"
+     },
+     "ref": "F-025",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "3e14704e22ca39ae"
+     },
+     "ref": "F-027",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6a054f1b54fc222c"
+     },
+     "ref": "F-037",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6bb7b463c3b8f4d3"
+     },
+     "ref": "F-044",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-041/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "87e720b4c842265c"
+     },
+     "ref": "F-041",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-045/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5a2086a91393631b"
+     },
+     "ref": "F-045",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-046/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "393900274258bbb0"
+     },
+     "ref": "F-046",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-047/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "833d0aa319fd4ba7"
+     },
+     "ref": "F-047",
+     "role": "supports"
+    }
+   ],
+   "statement": "The project's rule that a superseding finding needs its own independent review has not been met for the most recent corrections: no review is recorded for the corrections of the sum-constraint, nonnegativity and classical-ranking claims or the simulator comparison, and the null-direction and pilot findings await re-review.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:36:51-04:00"
+  },
+  "CLM-0067": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "theory.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-041/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "87e720b4c842265c"
+     },
+     "ref": "F-041",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-041/R2",
+     "role": "supports"
+    }
+   ],
+   "statement": "Moving along the exact null vector changes the predicted projections about 330 times less per unit step than the pure adipose/fibroglandular exchange does (root-mean-square projection change of about 4e-5 against 1.3e-2 per unit step, 12 validation cases).",
+   "status": "active"
+  },
+  "CLM-0068": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "theory.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "b48dee732da376dd"
+     },
+     "ref": "F-023",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "09c239c477cc16fc"
+     },
+     "ref": "EXP-004/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_synthetic_val",
+      "value": 0.4761
+     },
+     "ref": "RUN-0008#b3_tissue_rmse",
+     "role": "supports"
+    }
+   ],
+   "statement": "In a synthetic image-domain ladder (13 validation cases, 32x32 pixels, three seeds), adding a unit-weight soft sum-to-one penalty lowered tissue error only from 0.476 to 0.468 (a factor of 1.02), against a pre-registered prediction of more than a factor of five, and imposing the constraint architecturally with a softmax output collapsed to constant all-adipose maps on every seed.",
+   "status": "active"
+  },
+  "CLM-0069": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "interpretation",
+   "section": "theory.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "b48dee732da376dd"
+     },
+     "ref": "F-023",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "09c239c477cc16fc"
+     },
+     "ref": "EXP-004/S1",
+     "role": "supports"
+    }
+   ],
+   "statement": "The pre-registered prediction was badly designed: it compared a soft penalty, whose weight was never specified in the pre-registration and never tuned, with the hard constraint whose exact identifying power had been derived, so its failure does not show that sum-to-one fails to identify.",
+   "status": "active"
+  },
+  "CLM-0070": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "interpretation",
+   "section": "theory.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "1d100a201c8b0aae"
+     },
+     "ref": "F-025",
+     "role": "challenges"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "verified",
+      "review": "F-012/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "ffb0704093373c06"
+     },
+     "ref": "F-012",
+     "role": "supports"
+    }
+   ],
+   "statement": "We first believed that exact recovery was possible on the noiseless benchmark; that came from synthetic data generated with the very linear model that was inverted, an inverse crime that was not labelled as such, and it did not carry over to the official images.",
+   "status": "active"
+  },
+  "CLM-0071": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "theory.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "c9e9ad8a41f3ac56"
+     },
+     "ref": "EXP-017/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 1.497216797e-08
+     },
+     "ref": "RUN-0031#max_rmse_T",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.0
+     },
+     "ref": "RUN-0031#total_violating_rays",
+     "role": "supports"
+    }
+   ],
+   "statement": "Our differentiable fan-beam polychromatic forward model reproduces the official transmissions of 10 starting-kit and 40 evenly spaced training cases to float32 rounding (largest per-case root-mean-square transmission error 1.5e-8, all rays within a tolerance derived beforehand), so for projection-domain methods the benchmark data and our forward model are, to numerical precision, the same model.",
+   "status": "active"
+  },
+  "CLM-0072": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "interpretation",
+   "section": "theory.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-041/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "87e720b4c842265c"
+     },
+     "ref": "F-041",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-041/R1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-041/R2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "c9e9ad8a41f3ac56"
+     },
+     "ref": "EXP-017/S2",
+     "role": "supports"
+    }
+   ],
+   "statement": "The floor of about 1.3e-8 that the true maps attain in projection error reflects the identity of generator and forward model, not evidence that the truth is the unique minimiser along the null direction, and it says nothing about physical fidelity to a scanner; the trained solutions end 4 to 6 orders of magnitude above it (projection error 5.5e-4 to 1.3e-2), so their errors are visible to the data and are not hiding along the null direction.",
+   "status": "active"
+  },
+  "CLM-0073": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "interpretation",
+   "section": "investigations/mismatch-bias.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "active",
+      "superseded_by": null
+     },
+     "ref": "D-002",
+     "role": "supports"
+    }
+   ],
+   "statement": "The attenuation table has a 1 keV energy grid, which under-resolves the iodine K-edge (the abrupt rise in iodine absorption at 33.17 keV): about 3.6% of the fluence of the 120 kVp spectrum lies in the 33-34 keV interval, where interpolation spans a fivefold jump in attenuation, so absolute iodine accuracy is outside the scope of these results.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:30:10-04:00"
+  },
+  "CLM-0074": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "interpretation",
+   "section": "investigations/mismatch-bias.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "superseded",
+      "superseded_by": null,
+      "text": "48fe0f3ea9a6e7d7"
+     },
+     "ref": "F-007",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "superseded",
+      "superseded_by": null,
+      "text": "2769f122349dd14c"
+     },
+     "ref": "F-001",
+     "role": "challenges"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-010/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "c59c9e6482f86ab1"
+     },
+     "ref": "F-010",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "216d412b399dd28a"
+     },
+     "ref": "EXP-002/S2",
+     "role": "supports"
+    }
+   ],
+   "statement": "We first reported the rank results (one energy-integrating measurement gives rank one, a dual-kVp pair gives rank two, so three materials cannot be separated) as experimental results, together with a claim that rank verdicts were robust to the rank threshold up to 1e-2; review showed the first part to be arithmetic rather than evidence and the second to contradict the singular-value ratios (0.0020 to 0.0123) quoted in the same sentence.",
+   "status": "active"
+  },
+  "CLM-0075": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "observation",
+   "section": "investigations/mismatch-bias.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "ratio_M4k3_over_M2k2_iodine",
+      "value": 2.702994
+     },
+     "ref": "RUN-0002#crlb_rel_std",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-010/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "c59c9e6482f86ab1"
+     },
+     "ref": "F-010",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "superseded",
+      "superseded_by": null,
+      "text": "48fe0f3ea9a6e7d7"
+     },
+     "ref": "F-007",
+     "role": "supports"
+    }
+   ],
+   "statement": "An earlier version of this comparison reported a 2.7x penalty for photon counting. That number is the ratio of the iodine Cramer-Rao uncertainty of four bins estimating three materials to that of a dual-kVp pair estimating two (recorded value 2.703); it compared a three-material fit with a two-material fit and so confounded the design with the price of estimating a third material.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:30:01-04:00"
+  },
+  "CLM-0076": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/identifiability.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "verified",
+      "review": "F-012/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "ffb0704093373c06"
+     },
+     "ref": "F-012",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "1d100a201c8b0aae"
+     },
+     "ref": "F-025",
+     "role": "supports"
+    }
+   ],
+   "statement": "Computed from the official starting-kit spectra and attenuation tables at zero path length, the spectrum-averaged attenuation matrix is approximately [[0.267, 0.313, 3.012], [0.219, 0.248, 1.642]] per cm, with rows the 50 and 80 kVp spectra and columns adipose, fibroglandular tissue and calcification.",
+   "status": "active"
+  },
+  "CLM-0077": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/identifiability.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "22e1aa218d07c111"
+     },
+     "ref": "F-026",
+     "role": "supports"
+    }
+   ],
+   "statement": "Over the ten starting-kit sample cases the three fraction maps sum to zero in about 35% of pixels (air background, with no fourth material class), and to one in the bulk of the remaining pixels; a boundary band of partial-volume pixels, whose sum lies strictly between zero and one, accounts for the rest.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:30:01-04:00"
+  },
+  "CLM-0078": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/identifiability.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "22e1aa218d07c111"
+     },
+     "ref": "F-026",
+     "role": "supports"
+    }
+   ],
+   "statement": "With strict equality the split is air 35.1%, tissue 51.1% and boundary band 13.8%, whereas with a tolerance of 1e-3 it is air 36.3%, tissue 60.4% and band 3.4%.",
+   "status": "active"
+  },
+  "CLM-0079": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/identifiability.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "22e1aa218d07c111"
+     },
+     "ref": "F-026",
+     "role": "supports"
+    }
+   ],
+   "statement": "All ten kit cases have an identical support mask, so the regime split is one observation repeated ten times rather than ten independent confirmations.",
+   "status": "active"
+  },
+  "CLM-0080": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "interpretation",
+   "section": "investigations/identifiability.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-013/R1:needs_work",
+      "status": "superseded",
+      "superseded_by": null,
+      "text": "3e1261604e1f52f0"
+     },
+     "ref": "F-013",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-013/R1:needs_work",
+      "status": "superseded",
+      "superseded_by": null,
+      "text": "3e1261604e1f52f0"
+     },
+     "ref": "F-013",
+     "role": "challenges"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "22e1aa218d07c111"
+     },
+     "ref": "F-026",
+     "role": "supports"
+    }
+   ],
+   "statement": "We first described the phantoms as 35% air, 60% tissue and about 5% boundary, using a calcification maximum of 0.566 as a ten-case figure and treating the ten cases as independent confirmations; later checking showed that 0.566 belongs to the first case alone (the ten-case maximum is 0.738), that the cases share one mask, and that the boundary fraction moves by a factor of four with the tolerance.",
+   "status": "active"
+  },
+  "CLM-0081": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "interpretation",
+   "section": "investigations/identifiability.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "3e14704e22ca39ae"
+     },
+     "ref": "F-027",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "22e1aa218d07c111"
+     },
+     "ref": "F-026",
+     "role": "supports"
+    }
+   ],
+   "statement": "The sum-to-one constraint is valid on tissue pixels only: it is false in air, where the fractions sum to zero, and in boundary pixels, where it contradicts the measurement and the contradiction is amplified by the poor conditioning of B, so the resulting error far exceeds the deficit 1 - sum(x) itself.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:30:01-04:00"
+  },
+  "CLM-0082": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/identifiability.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "c601c9a6fe7c5215"
+     },
+     "ref": "EXP-003/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "completed"
+     },
+     "ref": "RUN-0009",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "22e1aa218d07c111"
+     },
+     "ref": "F-026",
+     "role": "supports"
+    }
+   ],
+   "statement": "The classical estimators declare a pixel air, and set all three fractions to zero, when both reconstructed attenuations fall below 0.1 per cm, about half the smallest tissue attenuation; this cutoff is a modelling choice that the records describe as untested on real data, and the real-image runs used it unchanged.",
+   "status": "active",
+   "updated_at": "2026-10-19T18:30:01-04:00"
+  },
+  "CLM-0083": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/identifiability.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "c601c9a6fe7c5215"
+     },
+     "ref": "EXP-003/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_synthetic_val",
+      "value": 1.179
+     },
+     "ref": "RUN-0006#s1_sum_to_one",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_synthetic_val",
+      "value": 0.4301
+     },
+     "ref": "RUN-0006#s1_zero_prediction",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_synthetic_val",
+      "value": 0.05081
+     },
+     "ref": "RUN-0006#s1_classical_simplex",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_tissue_pixels_only",
+      "value": 1.2869e-06
+     },
+     "ref": "RUN-0006#tissue_rmse_sum_to_one",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_boundary_band",
+      "value": 3.838
+     },
+     "ref": "RUN-0006#boundary_rmse_sum_to_one",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "3e14704e22ca39ae"
+     },
+     "ref": "F-027",
+     "role": "supports"
+    }
+   ],
+   "statement": "On 17 noiseless synthetic validation cases (32 by 32 pixels, with the real attenuation tables), the sum-to-one estimator recovered tissue pixels almost exactly (RMSE 1.3e-6) yet scored 1.179 by the benchmark's pooled error measure, worse than predicting zero (0.430), because the boundary band had RMSE 3.84; the simplex estimator, which merely clips the same outliers, scored 0.051.",
+   "status": "active"
+  },
+  "CLM-0084": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "interpretation",
+   "section": "investigations/identifiability.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "active",
+      "superseded_by": null
+     },
+     "ref": "D-005",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "1d100a201c8b0aae"
+     },
+     "ref": "F-025",
+     "role": "challenges"
+    }
+   ],
+   "statement": "We first treated the benchmark as an exact-recovery problem: because the data are noiseless and the forward model is shared with all participants, the sum-to-one constraint (two measurements plus one partition equation) was expected to make the three-material problem well posed, with nonnegativity and priors judged unnecessary, and the published winning error of order 1e-6 (taken from the challenge report; not independently verified here) was read as reachable by exact inversion.",
+   "status": "active"
+  },
+  "CLM-0085": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/identifiability.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "completed"
+     },
+     "ref": "RUN-0009",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "1d100a201c8b0aae"
+     },
+     "ref": "F-025",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "3e14704e22ca39ae"
+     },
+     "ref": "F-027",
+     "role": "supports"
+    }
+   ],
+   "statement": "Restricted to tissue pixels (fractions summing to one within $10^{-3}$) the log of the retrospective verification run gives 1.749 for sum-to-one against 0.568 for predicting zero, with unconstrained 0.404 and simplex 0.474; the written finding quotes 1.823 and 0.567 for the first pair, and the cause of that disagreement (perhaps a different tissue mask) is unresolved, so only the run-log values are used here.",
+   "status": "active",
+   "updated_at": "2026-10-20T10:41:13-04:00"
+  },
+  "CLM-0086": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "active",
+      "superseded_by": null
+     },
+     "ref": "D-006",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-018/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "666d12a559cad8ad"
+     },
+     "ref": "F-018",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-020/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "b806a9dc6cc9ad16"
+     },
+     "ref": "F-020",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-021/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "8b913db0d9f0e907"
+     },
+     "ref": "F-021",
+     "role": "supports"
+    }
+   ],
+   "statement": "The label-free network was planned as a negative control, not as a reproduction of a published method: once the analysis had shown that measurement consistency alone has a continuum of exact minima for three materials from two spectra, and that neither of the two closest published methods addresses that case, the project decided, before the first controlled experiment, that the network's purpose was to show empirically which member of the ambiguous family its implicit biases select.",
+   "status": "active"
+  },
+  "CLM-0087": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "ca3c06b21b491406"
+     },
+     "ref": "F-022",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "09c239c477cc16fc"
+     },
+     "ref": "EXP-004/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_1500ep_w16_d2",
+      "value": 0.0372
+     },
+     "ref": "RUN-0008#supervised_converged_floor",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_synthetic_val",
+      "value": 0.4761
+     },
+     "ref": "RUN-0008#b3_tissue_rmse",
+     "role": "supports"
+    }
+   ],
+   "statement": "A supervised network, which has no identifiability problem, saturates at an error of about 0.037 across the four training lengths and widths tried (up to 19 times longer and four times larger), so the network and representation cost only about 8% of the label-free network's error, while the extra 0.439 that comes from learning without labels is 92% of it, about twelve times the network cost.",
+   "status": "active",
+   "updated_at": "2026-10-20T10:41:13-04:00"
+  },
+  "CLM-0088": {
+   "created_at": "2026-10-19T18:29:31-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "b48dee732da376dd"
+     },
+     "ref": "F-023",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "09c239c477cc16fc"
+     },
+     "ref": "EXP-004/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_synthetic_val",
+      "value": 0.4761
+     },
+     "ref": "RUN-0008#b3_tissue_rmse",
+     "role": "supports"
+    }
+   ],
+   "statement": "The pre-registered prediction that adding a sum-to-one penalty would cut tissue error more than fivefold failed (0.468 against 0.476), but the prediction was badly designed: it compared a soft penalty at an arbitrary, never-tuned unit weight with the hard constraint whose effect had been established, and the spread between variants was large next to the supervised floor, so the failure says nothing about priors in general.",
+   "status": "active"
+  },
+  "CLM-0089": {
+   "created_at": "2026-10-19T18:29:31-04:00",
+   "figures": [
+    "FIG-003"
+   ],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01841695096
+     },
+     "ref": "RUN-0041#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.02080396931
+     },
+     "ref": "RUN-0042#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01887406475
+     },
+     "ref": "RUN-0043#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4458516255
+     },
+     "ref": "RUN-0038#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4458516255
+     },
+     "ref": "RUN-0039#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01638422872
+     },
+     "ref": "RUN-0040#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4458516255
+     },
+     "ref": "RUN-0044#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4458516255
+     },
+     "ref": "RUN-0045#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01496329869
+     },
+     "ref": "RUN-0046#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.296845949
+     },
+     "ref": "RUN-0047#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.2868453564
+     },
+     "ref": "RUN-0048#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3033461372
+     },
+     "ref": "RUN-0049#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3537613116
+     },
+     "ref": "RUN-0070#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3047953896
+     },
+     "ref": "RUN-0071#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3210748812
+     },
+     "ref": "RUN-0072#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3507648625
+     },
+     "ref": "RUN-0064#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.2820539183
+     },
+     "ref": "RUN-0065#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.09142430886
+     },
+     "ref": "RUN-0066#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.6323255332
+     },
+     "ref": "RUN-0067#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4997801057
+     },
+     "ref": "RUN-0068#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.499780078
+     },
+     "ref": "RUN-0069#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4933951242
+     },
+     "ref": "RUN-0074#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.286381511
+     },
+     "ref": "RUN-0075#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3001942552
+     },
+     "ref": "RUN-0076#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.878225905
+     },
+     "ref": "RUN-0077#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.2889320989
+     },
+     "ref": "RUN-0078#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.285964801
+     },
+     "ref": "RUN-0079#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.5236024256
+     },
+     "ref": "RUN-0083#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4008471295
+     },
+     "ref": "RUN-0084#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3487248651
+     },
+     "ref": "RUN-0085#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4458516255
+     },
+     "ref": "RUN-0037#s1_zero",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "6a1cdc98aba850dd"
+     },
+     "ref": "EXP-022/S3",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "3e07779d85fc9ed7"
+     },
+     "ref": "EXP-023/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-039/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "8b9a828ce584d09d"
+     },
+     "ref": "F-039",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-040/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "034bd69164b5a7f3"
+     },
+     "ref": "F-040",
+     "role": "supports"
+    }
+   ],
+   "statement": "Every one of the 21 physics-only runs in the main arms scored a material error of at least 0.28 except one (0.091); six of the 21 scored worse than predicting zero (0.446), whereas the three runs of the supervised reference recipe scored 0.018-0.021 and four of the six supervised runs at the higher learning rate collapsed to exactly the zero prediction (100 validation cases, three seeds per arm).",
+   "status": "active"
+  },
+  "CLM-0090": {
+   "created_at": "2026-10-19T18:29:31-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/forward-model-trust.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "0b40181de6d5aa1c"
+     },
+     "ref": "EXP-019/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "03ff2734c2eedfe9"
+     },
+     "ref": "EXP-019/S2",
+     "role": "supports"
+    }
+   ],
+   "statement": "With unconstrained network outputs the polychromatic forward model produces non-finite projection errors, because negative fractions give negative path lengths and the exponential of a large positive attenuation overflows; every physics-trained network therefore needs a non-negative output parameterisation.",
+   "status": "active"
+  },
+  "CLM-0091": {
+   "created_at": "2026-10-19T18:29:31-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/forward-model-trust.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "3ace9099d757ad3e"
+     },
+     "ref": "F-031",
+     "role": "supports"
+    }
+   ],
+   "statement": "Our implementation of the benchmark's primary score reproduces the official starting-kit formula to 1e-12 relative tolerance on a random four-case test (16x16 images, a unit test rather than a registered run), including the kit's different array axis order; scores at reduced resolution are not comparable with published values.",
+   "status": "active"
+  },
+  "CLM-0092": {
+   "created_at": "2026-10-19T18:29:31-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/forward-model-trust.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "39d358b8180e52fc"
+     },
+     "ref": "F-032",
+     "role": "supports"
+    }
+   ],
+   "statement": "The kit applies kVp switching by interlacing: the 80 kVp measurement is carried by the even views and the 50 kVp measurement by the odd views of a 512-view circular fan-beam scan, and our convention matches the kit's source code; the kit's projector itself builds the full 512-view sinogram and the split is applied afterwards, so the stored 256-view arrays for each voltage are every other view, not contiguous angular sweeps (verified by reading the kit source).",
+   "status": "active"
+  },
+  "CLM-0093": {
+   "created_at": "2026-10-19T18:29:31-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "observation",
+   "section": "investigations/forward-model-trust.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6a054f1b54fc222c"
+     },
+     "ref": "F-037",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "d45c3bbaba987175"
+     },
+     "ref": "EXP-010/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": null,
+      "status": "superseded",
+      "superseded_by": "F-037",
+      "text": "b56163101ac56dfd"
+     },
+     "ref": "F-035",
+     "role": "supports"
+    }
+   ],
+   "statement": "An earlier version of the independent-simulator comparison double-counted photons in a binning window at 80 kVp and reported 2.1-2.6%; an independent review caught the error and the corrected, larger number replaced it.",
+   "status": "active"
+  },
+  "CLM-0094": {
+   "created_at": "2026-10-19T18:29:31-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/forward-model-trust.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "218205b9f9e22816"
+     },
+     "ref": "F-029",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "completed"
+     },
+     "ref": "RUN-0006",
+     "role": "supports"
+    }
+   ],
+   "statement": "Early in the project the whole-tree uncommitted-changes flag was found to mark runs as not citable merely because the provenance system was writing its own log into the repository while the run executed; there turn out to be two whole-tree flags, sampled at different moments, which legitimately disagree, and the project therefore uses a third flag, restricted to source files, as the citability signal (preliminary; the finding rests on run records without numerical metrics).",
+   "status": "active"
+  },
+  "CLM-0095": {
+   "created_at": "2026-10-19T18:29:31-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/forward-model-trust.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "active",
+      "superseded_by": null
+     },
+     "ref": "D-012",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "218205b9f9e22816"
+     },
+     "ref": "F-029",
+     "role": "supports"
+    }
+   ],
+   "statement": "A later engineering decision widened the first, narrower definition of \"source\" (source code, tests and configurations only) to one definition for citability (source code, tests, configurations, scripts, the project directories, the project metadata file and the dependency lock file, with result directories counted as outputs), shared by the run metadata and the pre-launch checks; a run with unknown source state is never citable.",
+   "status": "active",
+   "updated_at": "2026-10-20T10:41:13-04:00"
+  },
+  "CLM-0096": {
+   "created_at": "2026-10-19T18:29:31-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-041/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "87e720b4c842265c"
+     },
+     "ref": "F-041",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "completed"
+     },
+     "ref": "RUN-0091",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-041/R2",
+     "role": "supports"
+    }
+   ],
+   "statement": "The exact null vector is approximately (-0.723, 0.691, -0.008), almost the pure exchange (cosine 0.9997) but per unit step it also changes calcification by about -0.8% and the total adipose+fibroglandular fraction by about -3.1%; both compensations are needed (calcification alone leaves ~5% of the exchange's visibility to the data, the total alone ~12%).",
+   "status": "active"
+  },
+  "CLM-0097": {
+   "created_at": "2026-10-19T18:29:31-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "interpretation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "1ff80689ba500ac6"
+     },
+     "ref": "EXP-035/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6bb7b463c3b8f4d3"
+     },
+     "ref": "F-044",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-041/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "87e720b4c842265c"
+     },
+     "ref": "F-041",
+     "role": "supports"
+    }
+   ],
+   "statement": "The calcification and sum priors act on the null direction only and have no effect on exchange fields, and the trained networks already satisfy them approximately (calcification <=1.8e-3, |S-1| ~0.03-0.08); this weakens the idea that supplying calcification or sum knowledge would by itself repair the dominant network failure (a spatially varying adipose error), while leaving the per-ray result untouched. Interpretation of preliminary Stage-0 profiles.",
+   "status": "active"
+  },
+  "CLM-0098": {
+   "created_at": "2026-10-19T18:29:31-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "derivation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-043/R2:supported",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5da65050bb9ba077"
+     },
+     "ref": "F-043",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-043/R1",
+     "role": "supports"
+    }
+   ],
+   "statement": "With calcification known absent but the sum unknown, a reviewer's calculation gave about 0.20 for dual-energy against about 0.10 for photon counting; this number is not bound to a run record (RUN-0094 does not contain it) and the case and bin count were not recorded.",
+   "status": "active"
+  },
+  "CLM-0099": {
+   "created_at": "2026-10-19T18:29:31-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "completed",
+      "syntheses": 3
+     },
+     "ref": "EXP-036",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "e279ce2e88804fef"
+     },
+     "ref": "EXP-036/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "failed"
+     },
+     "ref": "RUN-0095",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "completed"
+     },
+     "ref": "RUN-0096",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "completed"
+     },
+     "ref": "RUN-0097",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "failed"
+     },
+     "ref": "RUN-0098",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "completed"
+     },
+     "ref": "RUN-0105",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "proposed",
+      "syntheses": 0
+     },
+     "ref": "EXP-037",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "proposed",
+      "syntheses": 0
+     },
+     "ref": "EXP-038",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "completed",
+      "syntheses": 2
+     },
+     "ref": "EXP-035",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": null
+     },
+     "ref": "CP-013",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "todo"
+     },
+     "ref": "T-071",
+     "role": "supports"
+    }
+   ],
+   "statement": "As of the records at time of writing (2026-10-19 ~16:10), Stage 1 (converged per-case solves) is running with no recorded pilot result: an owner-approved bounded pilot on 3 validation cases (lowest/median/highest calcified-pixel count) with pre-registered convergence/recovery rules; two 100-iteration feasibility runs completed and one run crashed on a coding error (fixed); eight pilot runs were submitted to the cluster and were queued; the network-prior stage (EXP-037) and acquisition ablation (EXP-038) are proposed and unstarted. The pilot does not test the registered 18-of-20 rule. The latest checkpoint (CP-013) predates Stage 0 results and the Stage 1 start; the re-review task for the corrected findings is still open.",
+   "status": "retired",
+   "updated_at": "2026-10-19T18:32:52-04:00"
+  },
+  "CLM-0100": {
+   "created_at": "2026-10-19T18:32:52-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "completed",
+      "syntheses": 3
+     },
+     "ref": "EXP-036",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "5e29ace4c426fa90"
+     },
+     "ref": "EXP-036/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-045/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5a2086a91393631b"
+     },
+     "ref": "F-045",
+     "role": "supports"
+    }
+   ],
+   "statement": "The Stage 1 pilot used three validation cases (557, 1062 and 1441 calcified pixels), noiseless data and a full-view (256 views, two tube voltages) L-BFGS optimiser limited to 1000 iterations in single precision; in the arms that fix the tissue sum (A, B and D) the sum was supplied by an oracle occupancy map taken from the truth, so these arms measure information limits when the sum is known, not label-free recovery.",
+   "status": "active"
+  },
+  "CLM-0101": {
+   "created_at": "2026-10-19T18:32:52-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-045/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5a2086a91393631b"
+     },
+     "ref": "F-045",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "5e29ace4c426fa90"
+     },
+     "ref": "EXP-036/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-045/R1",
+     "role": "supports"
+    }
+   ],
+   "statement": "In arm A (calcification fixed at zero, sum known) the solver reached a projection MSE of 1.7e-9 on the case with the fewest calcified pixels and 2.4e-8 and 3.2e-8 on the other two; five different starting points ended at essentially the same solution on each case (one basin, not a proof of uniqueness), and the clipped error, about 0.31 from a uniform start, fell to 0.014, 0.048 and 0.044.",
+   "status": "active"
+  },
+  "CLM-0102": {
+   "created_at": "2026-10-19T18:32:52-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-045/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5a2086a91393631b"
+     },
+     "ref": "F-045",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "439d6357e1c41103"
+     },
+     "ref": "EXP-036/S3",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-045/R1",
+     "role": "supports"
+    }
+   ],
+   "statement": "Without clipping the arm A error is 0.209, 0.355 and 0.435, so clipping removes 98 to 99.5% of the squared error and most of the unclipped error comes from estimates outside the physical range.",
+   "status": "active"
+  },
+  "CLM-0103": {
+   "created_at": "2026-10-19T18:32:52-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-045/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5a2086a91393631b"
+     },
+     "ref": "F-045",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "439d6357e1c41103"
+     },
+     "ref": "EXP-036/S3",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-045/R1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": null
+     },
+     "ref": "CP-014",
+     "role": "supports"
+    }
+   ],
+   "statement": "The >1/8 cycles/pixel adipose error of arm A (0.21, 0.35, 0.42 against a criterion of 0.05) was computed on unclipped estimates, so it is probably dominated by out-of-range excursions near calcifications and is not evidence that the spatially varying error was left unrecovered; a clipped, away-from-lesion version has been coded but was not yet run.",
+   "status": "active"
+  },
+  "CLM-0104": {
+   "created_at": "2026-10-19T18:32:52-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-046/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "393900274258bbb0"
+     },
+     "ref": "F-046",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "5e29ace4c426fa90"
+     },
+     "ref": "EXP-036/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-046/R1",
+     "role": "supports"
+    }
+   ],
+   "statement": "With calcification free (arm B) and a uniform start the solver had not converged at the iteration cap (projection error 5-6e-8, still falling 11-13% per 200 iterations) with a mostly low-frequency remaining error (0.14; clipped error 0.10-0.12); from the truth plus a random exchange pattern it stalled at 4e-8 with the clipped error unchanged at 0.14; from the truth plus a null-direction pattern it returned to within 0.011-0.015 of the truth at a projection error of 1.4-1.8e-8, short of the convergence target.",
+   "status": "active"
+  },
+  "CLM-0105": {
+   "created_at": "2026-10-19T18:32:52-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-046/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "393900274258bbb0"
+     },
+     "ref": "F-046",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "5e29ace4c426fa90"
+     },
+     "ref": "EXP-036/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-046/R1",
+     "role": "supports"
+    }
+   ],
+   "statement": "No starting point that was not given oracle information was shown to be both converged and recovered.",
+   "status": "active"
+  },
+  "CLM-0106": {
+   "created_at": "2026-10-19T18:32:52-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "interpretation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-046/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "393900274258bbb0"
+     },
+     "ref": "F-046",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6bb7b463c3b8f4d3"
+     },
+     "ref": "F-044",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "5e29ace4c426fa90"
+     },
+     "ref": "EXP-036/S2",
+     "role": "supports"
+    }
+   ],
+   "statement": "Nearly invisible perturbations persisted while visible ones were removed, the same ordering as in the Stage 0 visibility results; this rests on two comparisons and compares magnitudes only, and whether the uniform-start case of arm B is limited by information or by the solver is not decided.",
+   "status": "active"
+  },
+  "CLM-0107": {
+   "created_at": "2026-10-19T18:32:52-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-047/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "833d0aa319fd4ba7"
+     },
+     "ref": "F-047",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "5e29ace4c426fa90"
+     },
+     "ref": "EXP-036/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-047/R1",
+     "role": "supports"
+    }
+   ],
+   "statement": "The bimodality prior (arm D, one weight of 1e-5) gave no gain over arm A: clipped error 0.087-0.100 against 0.014-0.048, with the projection error (3.4-7.2e-8) not converged.",
+   "status": "active"
+  },
+  "CLM-0108": {
+   "created_at": "2026-10-19T18:32:52-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-047/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "833d0aa319fd4ba7"
+     },
+     "ref": "F-047",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "5e29ace4c426fa90"
+     },
+     "ref": "EXP-036/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "439d6357e1c41103"
+     },
+     "ref": "EXP-036/S3",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-047/R1",
+     "role": "supports"
+    }
+   ],
+   "statement": "Arms C and A_img did not test sum-free identifiability: the oracle-perturbed starts of arm C restricted to the image-derived support already had a projection error of 1.6-1.75e-5 against 1.8e-16 for the unrestricted truth; every arm C start hit the iteration cap at 2.7-2.8e-6, still falling about 1.4% per 100 iterations, and arm A_img stopped at 4.7-4.9e-6; support misspecification is plausible but inferred, not isolated, and a solver limit is not excluded.",
+   "status": "active"
+  },
+  "CLM-0109": {
+   "created_at": "2026-10-19T18:32:53-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-048/R1:supported",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "bfa6bbf79479dde8"
+     },
+     "ref": "F-048",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "completed",
+      "syntheses": 3
+     },
+     "ref": "EXP-036",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "supported"
+     },
+     "ref": "F-048/R1",
+     "role": "supports"
+    }
+   ],
+   "statement": "The first submission of arm C crashed with non-finite values because zero-spectrum-weight energies (1.25-3.25 keV, attenuation coefficients up to about 1.5e3 cm^-1 for fibroglandular tissue and 3.2e4 cm^-1 for calcification) overflowed the exponential for slightly negative fractions and zero times infinity gave NaN; dropping the zero-weight energies, which is exact on finite paths, fixed it, and arms A and B were unaffected.",
+   "status": "active"
+  },
+  "CLM-0110": {
+   "created_at": "2026-10-19T18:32:53-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-045/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5a2086a91393631b"
+     },
+     "ref": "F-045",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-046/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "393900274258bbb0"
+     },
+     "ref": "F-046",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-047/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "833d0aa319fd4ba7"
+     },
+     "ref": "F-047",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-048/R1:supported",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "bfa6bbf79479dde8"
+     },
+     "ref": "F-048",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-045/R1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-046/R1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-047/R1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "supported"
+     },
+     "ref": "F-048/R1",
+     "role": "supports"
+    }
+   ],
+   "statement": "All four Stage 1 pilot findings are preliminary: the three about arm A, arm B and the C/A_img/D arms were each judged by an independent targeted review to need work and their wording was corrected afterwards, the fourth (numerical failure) was judged supported but stays preliminary because its numbers are not bound to run records; no later review is recorded.",
+   "status": "active"
+  },
+  "CLM-0111": {
+   "created_at": "2026-10-19T18:32:53-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/null-direction-information.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "5e29ace4c426fa90"
+     },
+     "ref": "EXP-036/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "439d6357e1c41103"
+     },
+     "ref": "EXP-036/S3",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": null
+     },
+     "ref": "CP-014",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "proposed",
+      "syntheses": 0
+     },
+     "ref": "EXP-037",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "proposed",
+      "syntheses": 0
+     },
+     "ref": "EXP-038",
+     "role": "supports"
+    }
+   ],
+   "statement": "The pilot did not test the registered success rule (18 of 20 validation cases), sum-free identifiability, label-free recovery with an image-derived support, noise or the test split; the clipped and away-from-lesion rerun, a longer arm B solve from a uniform start and a lesion-free or synthetic case had not been run, whether to start Stage 2 was left to the project owner, and Stage 2 and the acquisition ablation are proposed and not started.",
+   "status": "active"
+  },
+  "CLM-0112": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "derivation",
+   "section": "briefing.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-010/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "c59c9e6482f86ab1"
+     },
+     "ref": "F-010",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "verified",
+      "review": "F-012/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "ffb0704093373c06"
+     },
+     "ref": "F-012",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-018/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "666d12a559cad8ad"
+     },
+     "ref": "F-018",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "degrees",
+      "value": 1.043
+     },
+     "ref": "RUN-0007#adipose_fibro_angle_deg",
+     "role": "supports"
+    }
+   ],
+   "statement": "Two measurements per ray cannot determine three materials: the data leave a one-dimensional family of exactly indistinguishable material vectors, close to an exchange of fat for glandular tissue, so any loss that only rewards agreement with the data has a continuum of exact minima.",
+   "status": "active"
+  },
+  "CLM-0113": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "briefing.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "c9e9ad8a41f3ac56"
+     },
+     "ref": "EXP-017/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 1.497216797e-08
+     },
+     "ref": "RUN-0031#max_rmse_T",
+     "role": "supports"
+    }
+   ],
+   "statement": "the differentiable forward model reproduces the official transmissions to float32 rounding on 50 benchmark cases.",
+   "status": "active"
+  },
+  "CLM-0114": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "briefing.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "1d100a201c8b0aae"
+     },
+     "ref": "F-025",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "22e1aa218d07c111"
+     },
+     "ref": "F-026",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "857f73930800864c"
+     },
+     "ref": "EXP-021/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_real_kit_3cases",
+      "value": 1.5554
+     },
+     "ref": "RUN-0009#real_rmse_sum_to_one",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_real_kit_3cases",
+      "value": 0.4465
+     },
+     "ref": "RUN-0009#real_rmse_zero",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 1.508385217
+     },
+     "ref": "RUN-0037#s1_sum_to_one",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4458516255
+     },
+     "ref": "RUN-0037#s1_zero",
+     "role": "supports"
+    }
+   ],
+   "statement": "The sum-to-one constraint makes the problem unique on paper, yet on official benchmark images the unclipped estimator is worse than predicting nothing, because a few per cent of linear-model misfit is amplified by poor conditioning.",
+   "status": "active"
+  },
+  "CLM-0115": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "briefing.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "3ee0e65695453e40"
+     },
+     "ref": "EXP-025/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.2904261035
+     },
+     "ref": "RUN-0056#s1",
+     "role": "supports"
+    }
+   ],
+   "statement": "Single added priors (entropy, total variation, range hinge, calcification sparsity), at two weights each and one seed per setting, left s1 between 0.288 and 0.316 against a baseline of 0.296.",
+   "status": "active"
+  },
+  "CLM-0116": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "briefing.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-045/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5a2086a91393631b"
+     },
+     "ref": "F-045",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-046/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "393900274258bbb0"
+     },
+     "ref": "F-046",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-047/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "833d0aa319fd4ba7"
+     },
+     "ref": "F-047",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "5e29ace4c426fa90"
+     },
+     "ref": "EXP-036/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "439d6357e1c41103"
+     },
+     "ref": "EXP-036/S3",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": null
+     },
+     "ref": "CP-014",
+     "role": "supports"
+    }
+   ],
+   "statement": "with the tissue sum supplied from the truth and calcification fixed at zero, per-case solves on three validation cases met the convergence rule in only one case (projection error 1.7e-9; 2.4e-8 and 3.2e-8 in the others against a target of 1e-8) and cut the clipped material error from about 0.31 to 0.014-0.048, but the unclipped error stayed at 0.21, 0.36 and 0.44 (clipping removes 98-99.5% of the squared error); the arm's own positive control failed on all three cases, no starting point without oracle information was shown to be both converged and recovered, and the arms meant to test recovery without the sum failed for modelling and numerical reasons.",
+   "status": "active",
+   "updated_at": "2026-10-20T10:41:13-04:00"
+  },
+  "CLM-0117": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "observation",
+   "section": "briefing.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-009/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "2548725b14f0876d"
+     },
+     "ref": "F-009",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "354ae85c8bf9a767"
+     },
+     "ref": "F-024",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "1d100a201c8b0aae"
+     },
+     "ref": "F-025",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "609a19cd8d4c2530"
+     },
+     "ref": "F-030",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-010/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "c59c9e6482f86ab1"
+     },
+     "ref": "F-010",
+     "role": "supports"
+    }
+   ],
+   "statement": "Several early conclusions were corrected: that the sum constraint gives exact recovery, that nonnegativity bounds the ambiguity, that a simplex constraint is the best classical choice, that dual-kVp estimation is insensitive to spectral mismatch, and that photon counting carries a noise penalty.",
+   "status": "active"
+  },
+  "CLM-0118": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "briefing.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "9218de477047910e"
+     },
+     "ref": "EXP-029/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "9846967f50c44c85"
+     },
+     "ref": "EXP-031/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "3e07779d85fc9ed7"
+     },
+     "ref": "EXP-023/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "3ee0e65695453e40"
+     },
+     "ref": "EXP-025/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "55dd4a7939397961"
+     },
+     "ref": "EXP-028/S1",
+     "role": "supports"
+    }
+   ],
+   "statement": "Every learned number is on simulated, noise-free data from the validation split of one benchmark, with one network family, at most three seeds and a single support mask shared by all cases; the held-out test split has not been used.",
+   "status": "active"
+  },
+  "CLM-0119": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "hypothesis",
+   "section": "briefing.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "investigating",
+      "superseded_by": null
+     },
+     "ref": "Q-006",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-043/R2:supported",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5da65050bb9ba077"
+     },
+     "ref": "F-043",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6bb7b463c3b8f4d3"
+     },
+     "ref": "F-044",
+     "role": "supports"
+    }
+   ],
+   "statement": "We hypothesise that the missing ingredient is information rather than a better loss: knowledge of calcification and the tissue sum, or a prior that treats fat and glandular tissue asymmetrically.",
+   "status": "active"
+  },
+  "CLM-0120": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "hypothesis",
+   "section": "briefing.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "investigating",
+      "superseded_by": null
+     },
+     "ref": "Q-006",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6bb7b463c3b8f4d3"
+     },
+     "ref": "F-044",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "1ff80689ba500ac6"
+     },
+     "ref": "EXP-035/S1",
+     "role": "supports"
+    }
+   ],
+   "statement": "A second hypothesis is that spatially varying fat and gland errors are nearly invisible to a loss averaged over rays, which would explain how large material error coexists with small projection error.",
+   "status": "active"
+  },
+  "CLM-0121": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "proposed",
+   "section": "briefing.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": null
+     },
+     "ref": "CP-014",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "439d6357e1c41103"
+     },
+     "ref": "EXP-036/S3",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "proposed",
+      "syntheses": 0
+     },
+     "ref": "EXP-037",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "proposed",
+      "syntheses": 0
+     },
+     "ref": "EXP-038",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "investigating",
+      "superseded_by": null
+     },
+     "ref": "Q-006",
+     "role": "supports"
+    }
+   ],
+   "statement": "The open decisions are: whether to start the network-prior stage at all; whether to approve the pilot's undone runs (a clipped-metric rerun, a longer free-calcification solve, a synthetic lesion-free case); whether weak supervision is acceptable if label-free recovery proves impossible; whether photon counting is in scope; and whether replication runs and the held-out test split justify their cost.",
+   "status": "active"
+  },
+  "CLM-0122": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "observation",
+   "section": "storyline.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "ratio_M4k3_over_M2k2_iodine",
+      "value": 2.702994
+     },
+     "ref": "RUN-0002#crlb_rel_std",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-010/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "c59c9e6482f86ab1"
+     },
+     "ref": "F-010",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "superseded",
+      "superseded_by": null,
+      "text": "48fe0f3ea9a6e7d7"
+     },
+     "ref": "F-007",
+     "role": "supports"
+    }
+   ],
+   "statement": "We first reported a 2.7-fold noise penalty for photon counting, but that ratio compared a three-material fit with a two-material fit; at equal basis size the idealised photon-counting design is about 2.5 times better at most.",
+   "status": "active"
+  },
+  "CLM-0123": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "interpretation",
+   "section": "storyline.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-009/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "2548725b14f0876d"
+     },
+     "ref": "F-009",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "817ba62a9612e31d"
+     },
+     "ref": "F-011",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "active",
+      "superseded_by": null
+     },
+     "ref": "D-004",
+     "role": "supports"
+    }
+   ],
+   "statement": "We first read that test as showing dual-kVp estimation to be insensitive to spectral mismatch; successive reviews replaced this reading with the current one, that every condition tested was biased, in one case only marginally (the per-ray bias was below the noise floor and became detectable only by pooling rays), and that our detection statistic had been hiding it.",
+   "status": "active",
+   "updated_at": "2026-10-20T10:41:13-04:00"
+  },
+  "CLM-0124": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "observation",
+   "section": "storyline.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "active",
+      "superseded_by": null
+     },
+     "ref": "D-005",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "1d100a201c8b0aae"
+     },
+     "ref": "F-025",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "verified",
+      "review": "F-012/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "ffb0704093373c06"
+     },
+     "ref": "F-012",
+     "role": "supports"
+    }
+   ],
+   "statement": "We recorded exact recovery as the expected route: with the data noiseless and the model shared, adding the constraint that fractions sum to one was expected to make the problem uniquely solvable, and on synthetic data we generated with the same linear model, recovery was exact to numerical precision.",
+   "status": "active"
+  },
+  "CLM-0125": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "observation",
+   "section": "storyline.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "354ae85c8bf9a767"
+     },
+     "ref": "F-024",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-019/R1:contradicted",
+      "status": "superseded",
+      "superseded_by": null,
+      "text": "0c767b5af6b111fd"
+     },
+     "ref": "F-019",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "cm_path_length_L2",
+      "value": 19.734
+     },
+     "ref": "RUN-0007#decoy_separation_nonneg_cm",
+     "role": "supports"
+    }
+   ],
+   "statement": "We first believed that nonnegativity bounds the ambiguity, from an example whose decoy was physically unreachable; a recomputation found an exact nonnegative decoy 19.7 cm away in path-length space.",
+   "status": "active"
+  },
+  "CLM-0126": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "storyline.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "1d100a201c8b0aae"
+     },
+     "ref": "F-025",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "857f73930800864c"
+     },
+     "ref": "EXP-021/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_real_kit_3cases",
+      "value": 1.5554
+     },
+     "ref": "RUN-0009#real_rmse_sum_to_one",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_real_kit_3cases",
+      "value": 0.4465
+     },
+     "ref": "RUN-0009#real_rmse_zero",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 1.508385217
+     },
+     "ref": "RUN-0037#s1_sum_to_one",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4458516255
+     },
+     "ref": "RUN-0037#s1_zero",
+     "role": "supports"
+    }
+   ],
+   "statement": "On three official benchmark images the unclipped sum-to-one estimator was worse than predicting zero (error 1.555 against 0.447), and on 100 validation cases it was about 3.4 times worse (1.508 against 0.446).",
+   "status": "active"
+  },
+  "CLM-0127": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "observation",
+   "section": "storyline.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-016/R1:supported",
+      "status": "superseded",
+      "superseded_by": null,
+      "text": "13256c40c4eda40e"
+     },
+     "ref": "F-016",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "3e14704e22ca39ae"
+     },
+     "ref": "F-027",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "609a19cd8d4c2530"
+     },
+     "ref": "F-030",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "857f73930800864c"
+     },
+     "ref": "EXP-021/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.2709351575
+     },
+     "ref": "RUN-0037#s1_tv0.1",
+     "role": "supports"
+    }
+   ],
+   "statement": "We first reported that a simplex-projected estimator looked best, but that held only on synthetic images, where clipping bounded the outliers of the exact estimator; on the benchmark images the unconstrained estimator beat it, and on 100 validation cases total-variation regularisation was the best classical method, although its weight landed on the largest value tried, so a better classical result may lie beyond the grid (@sec-labelfree).",
+   "status": "active",
+   "updated_at": "2026-10-20T10:41:13-04:00"
+  },
+  "CLM-0128": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": true,
+   "kind": "observation",
+   "section": "storyline.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "active",
+      "superseded_by": null
+     },
+     "ref": "D-006",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": "F-018/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "666d12a559cad8ad"
+     },
+     "ref": "F-018",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-020/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "b806a9dc6cc9ad16"
+     },
+     "ref": "F-020",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-021/R1:supported",
+      "status": "supported",
+      "superseded_by": null,
+      "text": "8b913db0d9f0e907"
+     },
+     "ref": "F-021",
+     "role": "supports"
+    }
+   ],
+   "statement": "We therefore planned the label-free network as a negative control from the start, whose purpose was to reveal which member of the ambiguous family the network's biases choose.",
+   "status": "active",
+   "updated_at": "2026-10-20T10:41:13-04:00"
+  },
+  "CLM-0129": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "storyline.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "c9e9ad8a41f3ac56"
+     },
+     "ref": "EXP-017/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6a054f1b54fc222c"
+     },
+     "ref": "F-037",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "d45c3bbaba987175"
+     },
+     "ref": "EXP-010/S2",
+     "role": "supports"
+    }
+   ],
+   "statement": "The differentiable forward model matches the official generator to float32 rounding, and an earlier general model agrees with an independent simulator to about 0.5-1% with the simulator's own spectrum (a check of the adapter and geometry, since both share the transport equation, not an independent validation) and 2-3% with ours.",
+   "status": "active",
+   "updated_at": "2026-10-20T10:41:13-04:00"
+  },
+  "CLM-0130": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "storyline.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "3e07779d85fc9ed7"
+     },
+     "ref": "EXP-023/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "76432ed147c0de5c"
+     },
+     "ref": "EXP-022/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01841695096
+     },
+     "ref": "RUN-0041#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.296845949
+     },
+     "ref": "RUN-0047#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.000983674312
+     },
+     "ref": "RUN-0047#proj_rmse_T",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.001345326426
+     },
+     "ref": "RUN-0041#proj_rmse_T",
+     "role": "supports"
+    }
+   ],
+   "statement": "A supervised network reduced the validation error to about 0.02 while a label-free network fitted the measurements better and left the materials badly wrong, at about 0.30.",
+   "status": "active"
+  },
+  "CLM-0131": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "storyline.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-045/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5a2086a91393631b"
+     },
+     "ref": "F-045",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-046/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "393900274258bbb0"
+     },
+     "ref": "F-046",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-047/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "833d0aa319fd4ba7"
+     },
+     "ref": "F-047",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "5e29ace4c426fa90"
+     },
+     "ref": "EXP-036/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "439d6357e1c41103"
+     },
+     "ref": "EXP-036/S3",
+     "role": "supports"
+    }
+   ],
+   "statement": "In the pilot, supplying the tissue sum from the truth and fixing calcification at zero reduced the clipped material error to a few per cent, but only one of the three cases met the convergence rule, the unclipped error remained 0.21 to 0.44, the arm's own positive control failed on all three cases, no start without oracle information was shown to be converged and recovered, and the arms that dropped the sum failed for modelling and numerical reasons.",
+   "status": "active",
+   "updated_at": "2026-10-20T10:41:13-04:00"
+  },
+  "CLM-0132": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "open-questions.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-045/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5a2086a91393631b"
+     },
+     "ref": "F-045",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "5e29ace4c426fa90"
+     },
+     "ref": "EXP-036/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "439d6357e1c41103"
+     },
+     "ref": "EXP-036/S3",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": null
+     },
+     "ref": "CP-014",
+     "role": "supports"
+    }
+   ],
+   "statement": "It is also undecided whether the large high-frequency adipose error seen in the pilot reflects a real failure to recover spatial structure or only out-of-range excursions near calcifications, because the clipped, away-from-lesion version of the metric has not been run.",
+   "status": "active"
+  },
+  "CLM-0133": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "open-questions.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-040/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "034bd69164b5a7f3"
+     },
+     "ref": "F-040",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-040/R1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.09142430886
+     },
+     "ref": "RUN-0066#s1",
+     "role": "supports"
+    }
+   ],
+   "statement": "One label-free run (one seed of one output form) reached a material error of 0.091 with correct anatomy while its siblings did not, and its mechanism is unknown; a success rate cannot be estimated from one in three seeds.",
+   "status": "active"
+  },
+  "CLM-0134": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "open-questions.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "9218de477047910e"
+     },
+     "ref": "EXP-029/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "9846967f50c44c85"
+     },
+     "ref": "EXP-031/S1",
+     "role": "supports"
+    }
+   ],
+   "statement": "The held-out test split of 100 cases has never been evaluated; every learned number is on the validation split.",
+   "status": "active"
+  },
+  "CLM-0135": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "open-questions.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "3e07779d85fc9ed7"
+     },
+     "ref": "EXP-023/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "821864cb3f8967fb"
+     },
+     "ref": "EXP-024/S5",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "3ee0e65695453e40"
+     },
+     "ref": "EXP-025/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "55dd4a7939397961"
+     },
+     "ref": "EXP-028/S1",
+     "role": "supports"
+    }
+   ],
+   "statement": "Most learned results use three seeds or fewer, and the prior and refinement experiments one seed per setting; with the baseline seed range of about 0.017 in material error, differences below roughly 0.03 to 0.035 would be hard to detect with three seeds, and for the most variable output form (seed range 0.26) even large effects would be; this is a rule of thumb read from the seed ranges, not a recorded power calculation.",
+   "status": "active",
+   "updated_at": "2026-10-20T10:41:13-04:00"
+  },
+  "CLM-0136": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "open-questions.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "9218de477047910e"
+     },
+     "ref": "EXP-029/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "9846967f50c44c85"
+     },
+     "ref": "EXP-031/S1",
+     "role": "supports"
+    }
+   ],
+   "statement": "All 1000 benchmark cases share a single support mask, so generalisation to new supports and the value of occupancy-based ideas cannot be tested on this dataset.",
+   "status": "active"
+  },
+  "CLM-0137": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "open-questions.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-039/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "8b9a828ce584d09d"
+     },
+     "ref": "F-039",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-041/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "87e720b4c842265c"
+     },
+     "ref": "F-041",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6bb7b463c3b8f4d3"
+     },
+     "ref": "F-044",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6a054f1b54fc222c"
+     },
+     "ref": "F-037",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-045/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5a2086a91393631b"
+     },
+     "ref": "F-045",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-046/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "393900274258bbb0"
+     },
+     "ref": "F-046",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-047/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "833d0aa319fd4ba7"
+     },
+     "ref": "F-047",
+     "role": "supports"
+    }
+   ],
+   "statement": "Most findings behind this book are preliminary: the null-direction findings were returned for rewording and not re-reviewed, and the staged-pilot, spatial-field and simulator-comparison findings have had no confirming independent review.",
+   "status": "active"
+  },
+  "CLM-0138": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "proposed",
+   "section": "open-questions.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "proposed",
+      "syntheses": 0
+     },
+     "ref": "EXP-013",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "proposed",
+      "syntheses": 0
+     },
+     "ref": "EXP-014",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "proposed",
+      "syntheses": 0
+     },
+     "ref": "EXP-015",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "proposed",
+      "syntheses": 0
+     },
+     "ref": "EXP-016",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "ready",
+      "syntheses": 0
+     },
+     "ref": "EXP-026",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "proposed",
+      "syntheses": 0
+     },
+     "ref": "EXP-027",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "proposed",
+      "syntheses": 0
+     },
+     "ref": "EXP-037",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "proposed",
+      "syntheses": 0
+     },
+     "ref": "EXP-038",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": null
+     },
+     "ref": "CP-013",
+     "role": "supports"
+    }
+   ],
+   "statement": "None of the five proposed studies above, nor a ten-seed replication of the baselines that was deferred, has been run.",
+   "status": "active"
+  },
+  "CLM-0139": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "proposed",
+   "section": "open-questions.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "5e29ace4c426fa90"
+     },
+     "ref": "EXP-036/S2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "439d6357e1c41103"
+     },
+     "ref": "EXP-036/S3",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": null
+     },
+     "ref": "CP-014",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-045/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5a2086a91393631b"
+     },
+     "ref": "F-045",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-046/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "393900274258bbb0"
+     },
+     "ref": "F-046",
+     "role": "supports"
+    }
+   ],
+   "statement": "The pilot also left undone a clipped, away-from-lesion rerun of the high-frequency metric, a longer solve for the free-calcification arm from a uniform start, and a synthetic lesion-free case that would separate model misspecification from non-identifiability.",
+   "status": "active"
+  },
+  "CLM-0140": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "proposed",
+   "section": "open-questions.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": null
+     },
+     "ref": "CP-014",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "proposed",
+      "syntheses": 0
+     },
+     "ref": "EXP-037",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "proposed",
+      "syntheses": 0
+     },
+     "ref": "EXP-038",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "investigating",
+      "superseded_by": null
+     },
+     "ref": "Q-006",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "active",
+      "superseded_by": null
+     },
+     "ref": "D-011",
+     "role": "supports"
+    }
+   ],
+   "statement": "The decisions waiting for the project owner are: whether the pilot justifies starting the network-prior study; whether to approve the pilot's undone runs; whether weak supervision, and how much label information, is acceptable; whether photon counting is in scope; and whether replication runs and a single evaluation on the test split are worth their cost.",
+   "status": "active"
+  },
+  "CLM-0141": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "index.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "9218de477047910e"
+     },
+     "ref": "EXP-029/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "text": "9846967f50c44c85"
+     },
+     "ref": "EXP-031/S1",
+     "role": "supports"
+    }
+   ],
+   "statement": "The main dataset is a public benchmark of 1000 simulated breast-tissue phantoms with three materials, released with measurements at two tube voltages (50 and 80 kVp), which we split once, before any training, into 800 training, 100 validation and 100 test cases.",
+   "status": "active"
+  },
+  "CLM-0142": {
+   "created_at": "2026-10-19T18:36:51-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "index.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "3e07779d85fc9ed7"
+     },
+     "ref": "EXP-023/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-039/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "8b9a828ce584d09d"
+     },
+     "ref": "F-039",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6bb7b463c3b8f4d3"
+     },
+     "ref": "F-044",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-045/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5a2086a91393631b"
+     },
+     "ref": "F-045",
+     "role": "supports"
+    }
+   ],
+   "statement": "Most conclusions come from simulated, noise-free data, one network family and at most three random seeds, and most are labelled preliminary because the findings behind them have not been independently reviewed.",
+   "status": "active"
+  },
+  "CLM-0143": {
+   "created_at": "2026-10-20T10:41:13-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "open-questions.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-046/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "393900274258bbb0"
+     },
+     "ref": "F-046",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-046/R1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-045/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5a2086a91393631b"
+     },
+     "ref": "F-045",
+     "role": "supports"
+    }
+   ],
+   "statement": "The pilot's own positive control (starts perturbed from the truth should converge and recover) failed on all three cases, so its non-recoveries are control or solver failures until shown otherwise rather than evidence about identifiability.",
+   "status": "active"
+  },
+  "CLM-0144": {
+   "created_at": "2026-10-20T10:41:13-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "text": "b3c75e693459ced6"
+     },
+     "ref": "EXP-033/S1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-040/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "034bd69164b5a7f3"
+     },
+     "ref": "F-040",
+     "role": "supports"
+    }
+   ],
+   "statement": "The baseline label-free networks' adipose maps are nearly constant inside tissue (about 0.58, 0.64 and 0.88 for three seeds, standard deviation 0.02-0.03) and are anticorrelated with the true adipose map (Pearson correlation -0.88, -0.80 and -0.58), that is, they carry the wrong tissue ordering rather than a faithful map shifted by a constant.",
+   "status": "active"
+  },
+  "CLM-0145": {
+   "created_at": "2026-10-20T10:41:13-04:00",
+   "figures": [],
+   "historical": false,
+   "kind": "observation",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-039/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "8b9a828ce584d09d"
+     },
+     "ref": "F-039",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-039/R1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-040/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "034bd69164b5a7f3"
+     },
+     "ref": "F-040",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-040/R1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-040/R2",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": "F-042/R2:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "ba64bb9c11c3dfd1"
+     },
+     "ref": "F-042",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-042/R1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "verdict": "needs_work"
+     },
+     "ref": "F-042/R2",
+     "role": "supports"
+    }
+   ],
+   "statement": "The findings behind the arm comparison, the structured success run and the softmax collapses are all preliminary. Each was judged by an independent review to need work, and their wording was corrected; second reviews of the success-run and collapse findings asked for further wording changes (their titles overstated a cause or a generality), and the arm-comparison finding has had no second review.",
+   "status": "active"
+  }
+ },
+ "version": 1
+}

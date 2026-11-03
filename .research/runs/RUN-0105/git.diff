@@ -1,0 +1,42 @@
+diff --git a/.mcp.json b/.mcp.json
+index 0c640f5..8f11620 100644
+--- a/.mcp.json
++++ b/.mcp.json
+@@ -2,7 +2,7 @@
+   "mcpServers": {
+     "research": {
+       "type": "stdio",
+-      "command": "/Users/yubraj/Code/CTsynth/.research/bin/research",
++      "command": "/home/yubraj/Code/CTsynth/.research/bin/research",
+       "args": [
+         "mcp"
+       ]
+
+# Untracked files (not included):
+#   .mcp.json.pre-linux-migration
+#   artifacts.jsonl
+#   docs/scientist-guide/.gitignore
+#   docs/scientist-guide/_quarto-researcher.yml
+#   docs/scientist-guide/_quarto-scientific.yml
+#   docs/scientist-guide/_quarto.yml
+#   docs/scientist-guide/briefing.qmd
+#   docs/scientist-guide/figures/fit-vs-accuracy.svg
+#   docs/scientist-guide/figures/real-kit-rmse.svg
+#   docs/scientist-guide/filters/edition.lua
+#   docs/scientist-guide/index.qmd
+#   docs/scientist-guide/investigations/forward-model-trust.qmd
+#   docs/scientist-guide/investigations/identifiability.qmd
+#   docs/scientist-guide/investigations/label-free.qmd
+#   docs/scientist-guide/investigations/mismatch-bias.qmd
+#   docs/scientist-guide/investigations/null-direction-information.qmd
+#   docs/scientist-guide/open-questions.qmd
+#   docs/scientist-guide/provenance/claims.json
+#   docs/scientist-guide/provenance/figures.json
+#   docs/scientist-guide/provenance/sections.json
+#   docs/scientist-guide/references.bib
+#   docs/scientist-guide/scripts/make_fig_fit_vs_accuracy.py
+#   docs/scientist-guide/scripts/make_fig_real_kit_rmse.py
+#   docs/scientist-guide/storyline.qmd
+#   docs/scientist-guide/theory.qmd
+#   exp018_results.json
+#   metrics.jsonl

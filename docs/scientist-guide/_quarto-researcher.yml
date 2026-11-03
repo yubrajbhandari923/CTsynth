@@ -1,0 +1,8 @@
+# Researcher edition: the same chapters plus exact provenance (written by `research guide quarto prepare`).
+edition: researcher
+project:
+  output-dir: _output/researcher
+book:
+  appendices:
+    - _generated/evidence-status.qmd
+    - _generated/legacy.qmd

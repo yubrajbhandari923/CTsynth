@@ -1,0 +1,81 @@
+# Where the science stands {#sec-briefing}
+
+This page can be read on its own; each statement is developed, with its evidence and limits, in the chapter it points to.
+
+**Goal.** The aim is a reliable foundation for editable, physics-grounded virtual CT patients. The current thread asks
+whether three tissue maps (fat, glandular tissue, calcification) can be learned from dual-energy measurements *without*
+paired ground-truth maps ("labels"), because real patients have no such maps. Everything so far is simulated.
+
+**The structural fact.** [Two measurements per ray cannot determine three materials: the data leave a one-dimensional family
+of exactly indistinguishable material vectors, close to an exchange of fat for glandular tissue, so any loss that only
+rewards agreement with the data has a continuum of exact minima.]{#clm-0112 .claim} This is mathematics, checked
+numerically (@sec-theory, @sec-identifiability).
+
+**Verified by computation, not yet independently reviewed.** Beyond that fact, the numerical tools were checked against the benchmark generator:
+[the differentiable forward model reproduces the official transmissions to float32 rounding on 50 benchmark cases.]{#clm-0113 .claim}
+A projector bug is therefore an unlikely explanation for the negative results below (@sec-trust); the check is unreviewed and
+shows agreement with the benchmark's own model, not with a scanner.
+
+**Preliminary results.** All of the following rest on findings not yet independently reviewed, or awaiting re-review. Here
+s1 is the benchmark's primary error score (zero is perfect; predicting nothing scores 0.446).
+
+- [On the benchmark's 100 validation cases a U-Net trained with labels reaches s1 of about 0.02 (three seeds,
+  0.018-0.021), about 14 times better than the best classical method but far from the published scale of about $10^{-6}$,
+  whereas a network trained only to match the measurements reaches about 0.30 (three seeds, 0.287-0.303) although its
+  projection error is lower.]{#clm-0051 .claim}
+- [The sum-to-one constraint makes the problem unique on paper, yet on official benchmark images the unclipped estimator is
+  worse than predicting nothing, because a few per cent of linear-model misfit is amplified by poor conditioning.]{#clm-0114 .claim}
+- [In this problem a good fit to the measurements is not evidence that the recovered materials are right: the data barely
+  constrain one direction of the material space, and apart from one unexplained run (one seed of one arm, s1 0.091, the one run in which the tissue sum was pinned) nothing
+  tried so far to fix this without labels was shown to work in the settings tried.]{#clm-0052 .claim}
+
+**Significant negative results.** [In a synthetic, noise-free, single-network study, none of six alternatives to the
+baseline (output parameterisations, soft-partition penalties and an oracle control) was shown to improve a physics-only,
+label-free estimate; only a result at supervised-network accuracy (s1 below about 0.02) could have met the registered
+rule, and whether pinning the sum helps was never actually tested. An independent review required the wording to be
+corrected.]{#clm-0006 .claim} [Single added priors (entropy, total variation, range hinge, calcification sparsity), at two
+weights each and one seed per setting, left s1 between 0.288 and 0.316 against a baseline of 0.296.]{#clm-0115 .claim}
+[Physics-based refinement of a good estimate removes the part of the error the data can see and little else: for one
+network and 100 validation cases, 200 unconverged refinement steps lowered the projection error about ninefold while the
+material error improved by 4%.]{#clm-0053 .claim} These show that the settings tried did not work, not that nothing can.
+
+**Principal unresolved question.** [Whether label-free training from measurement consistency alone can recover meaningful
+material maps depends on which additional information selects the adipose/fibroglandular split.]{#clm-0007 .claim}
+[In an idealised single-ray analysis (ideal detector, equal incident photons), knowing that calcification is absent and the
+sum of the fractions improves the adipose-fraction precision six- to tenfold, whereas extra spectral bins (the 80 kVp beam
+binned) improve it about twofold at most (for example 0.20 against 0.10 with calcification absent but the sum unknown) and
+add nothing once calcification and the sum are both known; whether this is the deciding factor in
+practice, or whether a different loss would matter, has not been tested.]{#clm-0054 .claim} A first bounded pilot has now
+been run (@sec-information): [with the tissue sum supplied from the truth and calcification fixed at zero, per-case solves on three
+validation cases met the convergence rule in only one case (projection error 1.7e-9; 2.4e-8 and 3.2e-8 in the others
+against a target of 1e-8) and cut the clipped material error from about 0.31 to 0.014-0.048, but the unclipped error
+stayed at 0.21, 0.36 and 0.44 (clipping removes 98-99.5% of the squared error); the arm's own positive control failed on
+all three cases, no starting point without oracle information was shown to be both converged and recovered, and the arms
+meant to test recovery without the sum failed for modelling and numerical reasons.]{#clm-0116 .claim} The pilot
+therefore does not show that optimisation is solved; it measures information limits with the sum known and is not
+label-free recovery.
+
+**Corrections to earlier beliefs.** [Several early conclusions were corrected: that the sum constraint gives exact recovery,
+that nonnegativity bounds the ambiguity, that a simplex constraint is the best classical choice, that dual-kVp estimation is
+insensitive to spectral mismatch, and that photon counting carries a noise penalty.]{#clm-0117 .claim} Each is told in
+@sec-storyline; most corrections are themselves unreviewed.
+
+**Main limitations.** [Every learned number is on simulated, noise-free data from the validation split of one benchmark,
+with one network family, at most three seeds and a single support mask shared by all cases; the held-out test split has not
+been used.]{#clm-0118 .claim} Noise, scatter, detector realism and a mismatched training model have not been studied
+for learned materials.
+
+**Current working hypotheses.** [We hypothesise that the missing ingredient is information rather than a better loss:
+knowledge of calcification and the tissue sum, or a prior that treats fat and glandular tissue asymmetrically.]{#clm-0119 .claim}
+[A second hypothesis is that spatially varying fat and gland errors are nearly invisible to a loss averaged over rays, which
+would explain how large material error coexists with small projection error.]{#clm-0120 .claim} Neither is
+tested in practice.
+
+**Decisions that need human judgement.** [The open decisions are: whether to start the network-prior stage at all; whether
+to approve the pilot's undone runs (a clipped-metric rerun, a longer free-calcification solve, a synthetic lesion-free
+case); whether weak supervision is acceptable if label-free recovery proves impossible; whether photon counting is in scope;
+and whether replication runs and the held-out test split justify their cost.]{#clm-0121 .claim}
+
+**Reasonable next steps.** [An independent re-review of the corrected and pilot findings comes first, then the pilot's undone
+runs; the network-prior stage is proposed and not started, and would follow only if the project owner judges the pilot
+sufficient.]{#clm-0055 .claim} The other proposed experiments, none yet run, are listed in @sec-open.

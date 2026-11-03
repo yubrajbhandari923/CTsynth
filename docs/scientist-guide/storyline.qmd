@@ -1,0 +1,112 @@
+# How the investigation developed {#sec-storyline}
+
+The work did not proceed as a straight line from question to answer. It moved through seven phases, and at several points a
+confident statement was later corrected. The corrections are part of the result, because they show which beliefs the
+evidence supports and which it does not. Throughout, "official benchmark images" means the images reconstructed by the
+benchmark organisers from simulated phantoms (@sec-identifiability); no scanner or patient data are involved.
+
+## 1. A toy model, and a lesson about our own tests
+
+The first question was general: what limits material estimation from spectral CT, the estimator or the measurements? In a
+small simulated model with water, iodine and calcium (@sec-mismatch) the answer separated into a structural part (rank,
+which no estimator can beat) and an empirical part (conditioning, which differs between designs).
+
+The same study produced two corrected beliefs. First, a comparison seemed to show that photon counting costs noise.
+[We first reported a 2.7-fold noise penalty for photon counting, but that ratio compared a three-material fit with a
+two-material fit; at equal basis size the idealised photon-counting design is about 2.5 times better at most.]{#clm-0122 .claim}
+Second, our pre-registered test for bias from a wrong spectrum was itself flawed. [We first read that test as showing dual-kVp
+estimation to be insensitive to spectral mismatch; successive reviews replaced this reading with the current one, that every
+condition tested was biased, in one case only marginally (the per-ray bias was below the noise floor and became detectable
+only by pooling rays), and that our detection statistic had been hiding it.]{#clm-0123 .claim}
+That current reading is a noise-free calculation in a toy model and has itself not been independently reviewed.
+
+## 2. The benchmark, and an optimistic first picture
+
+We then moved to a public benchmark of dual-energy phantoms with three materials (@sec-theory). The linear algebra suggested
+a hopeful picture. [We recorded exact recovery as the expected route: with the data noiseless and the model shared, adding the
+constraint that fractions sum to one was expected to make the problem uniquely solvable, and on synthetic data we generated
+with the same linear model, recovery was exact to numerical precision.]{#clm-0124 .claim} A related belief held that the
+requirement that fractions be nonnegative would bound the family of indistinguishable solutions. [We first believed that
+nonnegativity bounds the ambiguity, from an example whose decoy was physically unreachable; a recomputation found an exact
+nonnegative decoy 19.7 cm away in path-length space.]{#clm-0125 .claim}
+
+## 3. Reality check
+
+On the official benchmark images (three kit cases at first, later 100 validation cases) the picture reversed
+(@sec-identifiability). The benchmark data are noise-free, but the linear model we had inverted is not the model that
+generated them, and the near-singular matrix magnified that mismatch. [On three official benchmark images the unclipped
+sum-to-one estimator was worse than predicting zero (error 1.555 against 0.447), and on 100 validation cases it was about
+3.4 times worse (1.508 against 0.446).]{#clm-0126 .claim} The earlier exact-recovery result had been an inverse crime
+that we had not labelled as one. Claims about which classical estimator wins also failed to transfer. [We first reported that
+a simplex-projected estimator looked best, but that held only on synthetic images, where clipping bounded the outliers of the
+exact estimator; on the benchmark images the unconstrained estimator beat it, and on 100 validation cases total-variation
+regularisation was the best classical method, although its weight landed on the largest value tried, so a better classical
+result may lie beyond the grid (@sec-labelfree).]{#clm-0127 .claim}
+
+## 4. The hypothesis, and a negative control by design
+
+The scientific question was whether a network could learn the materials from measurement consistency alone. Theory said it could
+not: a one-dimensional family of wrong answers fits the data exactly (@sec-theory). Two recent papers that looked like
+precedents turned out to address easier problems (@sec-labelfree). [We therefore planned the label-free network as a negative
+control from the start, whose purpose was to reveal which member of the ambiguous family the network's biases choose.]{#clm-0128 .claim}
+An early toy-scale ladder confirmed the pattern, with one unexplained result: the label-free error was stable across seeds
+while its consistency loss was not. Its test of whether a soft sum penalty helps was badly designed by us (a soft penalty at an
+arbitrary weight against the hard constraint the theory concerned), so that half of the ladder was inconclusive. We also
+checked that our tools were not the culprit (@sec-trust). [The differentiable forward model matches the official generator to
+float32 rounding, and an earlier general model agrees with an independent simulator to about 0.5-1% with the simulator's own
+spectrum (a check of the adapter and geometry, since both share the transport equation, not an independent validation) and
+2-3% with ours.]{#clm-0129 .claim}
+
+## 5. At scale: fit is not accuracy
+
+On the full benchmark the prediction held (@sec-labelfree). [A supervised network reduced the validation error to about 0.02
+while a label-free network fitted the measurements better and left the materials badly wrong, at about 0.30.]{#clm-0130 .claim}
+Refinement, single added priors and alternative output forms did not change this in the settings tried (mostly single seeds
+and two weights per prior), with one unexplained run as the exception. Diagnostics found collapses to constant outputs, with a
+cause that was not isolated.
+
+## 6. Where the question moved
+
+[The question shifted from which loss function could remove the ambiguity to what additional information would resolve it,
+because no loss tried, at the weights and seeds studied, avoided inheriting its answer from the model's implicit biases; we
+hypothesise that information, not the loss, is missing.]{#clm-0056 .claim} Analysis of the null direction, of which simple
+priors can discriminate, and of the information content of different acquisitions (@sec-information) points to knowledge about
+calcification and the sum of the fractions, and to prior structure that breaks the fat-versus-gland symmetry. That is a
+hypothesis resting on preliminary, single-ray and training-case analyses.
+
+## 7. The first test of the information hypothesis
+
+A staged plan separates information from optimisation. Its first stage, deterministic profiles around the truth, is done. Its
+second stage was a bounded pilot of converged per-case solves on three validation cases, approved by the project owner and now
+complete. [In the pilot, supplying the tissue sum from the truth and fixing calcification at zero reduced the clipped material
+error to a few per cent, but only one of the three cases met the convergence rule, the unclipped error remained 0.21 to
+0.44, the arm's own positive control failed on all three cases, no start without oracle information was shown to be
+converged and recovered, and the arms that dropped the sum failed for modelling and numerical reasons.]{#clm-0131 .claim} So the pilot has not yet
+tested the hypothesis in the label-free sense: its oracle arms measure information limits with the sum known. Whether to
+proceed to network priors is left to the project owner (@sec-open).
+
+## How belief changed
+
+| Earlier belief | What changed it | Current reading |
+|---|---|---|
+| A dual-kVp estimator is not detectably biased by a wrong spectrum | A defective test; a corrected statistic | Every condition tested was biased; one case is marginal per ray and detectable only when rays are pooled (toy model, noise-free calculation; the later amendment is unreviewed) |
+| Photon counting costs more noise | A comparison that confounded design with basis size | About 2.5 times better at most, idealised |
+| Nonnegativity bounds the ambiguity | A reachable, nonnegative decoy at 19.7 cm | It does not bound it |
+| Sum-to-one gives exact recovery | Official benchmark images; linear-model misfit amplified by conditioning | Unique on paper; unusable in the image-domain inversion tested |
+| Simplex is the best classical choice | Benchmark-image comparison; its win is clipping | Unconstrained beats simplex on three images; total-variation regularisation is best of the classical methods on 100 cases, at the edge of its weight grid |
+| A label-free physics loss might recover the materials (the initial aim, reframed before the first controlled experiment as a negative control) | Negative control at scale | Not by itself in the settings tried |
+| (Current hypothesis) Information, not the loss, is missing | Null-direction, prior and acquisition analyses | Untested in practice; the first pilot supplied the sum from the truth and so does not decide it |
+| (Current hypothesis) Calcification and sum knowledge would resolve the split | Single-ray bounds; the pilot | Supported only as an information limit with the sum known; sum-free and label-free versions untested |
+
+: Beliefs that were revised, and why. The last two rows are current hypotheses, not revisions. {#tbl-belief}
+
+[Six earlier beliefs were revised: dual-kVp insensitivity to spectral mismatch, a photon-counting noise penalty, the
+nonnegativity bound, exact recovery with the sum constraint, simplex as the best classical choice, and the label-free
+physics loss as a route to the materials.]{#clm-0065 .claim}
+
+[Independent review overturned or narrowed earlier findings at least seven times, among them the recoverability claim for
+the sum constraint, the nonnegativity bound, the insensitivity of dual-kVp estimation to spectral mismatch and a simulator
+comparison.]{#clm-0057 .claim} [The project's rule that a superseding finding needs its own independent review has not
+been met for the most recent corrections: no review is recorded for the corrections of the sum-constraint, nonnegativity
+and classical-ranking claims or the simulator comparison, and the null-direction and pilot findings await re-review.]{#clm-0066 .claim}
+That is one reason the current findings are labelled preliminary.

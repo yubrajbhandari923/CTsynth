@@ -1,0 +1,7 @@
+rank low: case 743 with 557 calcified pixels
+{'case': 743, 'n_calc_pixels': 557, 'rank': 'low', 'floor_mse_truth': 1.7892946985692985e-16, 'floor_mse_armA_model': 1.0251094817448347e-07, 'max_iter': 1000, 'AMP': 0.3, 'LAM_CALC': 5.6e-05, 'LAM_BIMODAL': 1e-05}
+C uniform iters 1000 max_iter mse 1.21e-04->2.83e-06 s1 0.3110->0.3206 hf 152670.328 1440s
+C rough iters 1000 max_iter mse 1.59e-05->2.83e-06 s1 0.1936->0.2106 hf 644515.312 1436s
+C null iters 1000 max_iter mse 1.57e-05->2.83e-06 s1 0.1370->0.1595 hf 852292.812 1431s
+A_img uniform iters 425 plateau mse 1.21e-04->4.90e-06 s1 0.3109->0.3532 hf 1.535 619s
+D uniform iters 1000 max_iter mse 4.33e-05->3.35e-08 s1 0.3104->0.0873 hf 0.193 1392s

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 430" font-family="sans-serif" font-size="12">
+<text x="70" y="22" font-size="14" font-weight="bold">Data fit versus material accuracy (100 validation cases)</text>
+<line x1="70.0" y1="40" x2="70.0" y2="370" stroke="#e3e3e3"/><text x="70.0" y="386" text-anchor="middle">0.0001</text>
+<line x1="241.3" y1="40" x2="241.3" y2="370" stroke="#e3e3e3"/><text x="241.3" y="386" text-anchor="middle">0.0003</text>
+<line x1="429.0" y1="40" x2="429.0" y2="370" stroke="#e3e3e3"/><text x="429.0" y="386" text-anchor="middle">0.001</text>
+<line x1="600.3" y1="40" x2="600.3" y2="370" stroke="#e3e3e3"/><text x="600.3" y="386" text-anchor="middle">0.003</text>
+<line x1="70" y1="370.0" x2="680" y2="370.0" stroke="#e3e3e3"/><text x="64" y="374.0" text-anchor="end">0.01</text>
+<line x1="70" y1="291.3" x2="680" y2="291.3" stroke="#e3e3e3"/><text x="64" y="295.3" text-anchor="end">0.03</text>
+<line x1="70" y1="205.0" x2="680" y2="205.0" stroke="#e3e3e3"/><text x="64" y="209.0" text-anchor="end">0.1</text>
+<line x1="70" y1="126.3" x2="680" y2="126.3" stroke="#e3e3e3"/><text x="64" y="130.3" text-anchor="end">0.3</text>
+<line x1="70" y1="40.0" x2="680" y2="40.0" stroke="#e3e3e3"/><text x="64" y="44.0" text-anchor="end">1</text>
+<line x1="70" y1="97.9" x2="680" y2="97.9" stroke="#777" stroke-dasharray="5 4"/><text x="676" y="92.9" text-anchor="end" fill="#555">predicting zero (0.446)</text>
+<line x1="70" y1="370" x2="680" y2="370" stroke="#333"/><line x1="70" y1="40" x2="70" y2="370" stroke="#333"/>
+<circle cx="475.3" cy="326.2" r="6" fill="#2e6da4"/><text x="483.3" y="342.2" text-anchor="start">Supervised network</text>
+<circle cx="127.4" cy="329.1" r="6" fill="#2e6da4"/><text x="137.4" y="319.1" text-anchor="start">Supervised + 200 physics steps</text>
+<circle cx="426.5" cy="127.0" r="6" fill="#c0392b"/><text x="418.5" y="145.0" text-anchor="end">Physics-only network</text>
+<circle cx="421.2" cy="128.6" r="6" fill="#c0392b"/><text x="413.2" y="118.6" text-anchor="end">Physics-only + entropy prior</text>
+<circle cx="541.5" cy="124.3" r="6" fill="#c0392b"/><text x="551.5" y="114.3" text-anchor="start">Per-case iterative fit</text>
+<circle cx="445.7" cy="211.4" r="6" fill="#c0392b"/><text x="453.7" y="215.4" text-anchor="start">Physics-only, one structured run</text>
+<text x="375" y="416" text-anchor="middle">Projection error: RMS error of predicted transmission (lower = better fit to the measurements)</text>
+<text transform="translate(16 205) rotate(-90)" text-anchor="middle">Material error s1 (lower = better)</text>
+<text x="76" y="56" fill="#2e6da4">blue: trained with labels</text><text x="76" y="72" fill="#c0392b">red: no labels</text></svg>

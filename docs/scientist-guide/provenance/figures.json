@@ -1,0 +1,583 @@
+{
+ "figures": {
+  "FIG-001": {
+   "created_at": "2026-10-19T15:08:11-04:00",
+   "file": "figures/real-kit-rmse.svg",
+   "file_sha256": "d76162e1dcb0013c7009152dd27ba0847513cd8c0200dec0c9858026e8fec471",
+   "generator": {
+    "args": [],
+    "inputs": [],
+    "script": "docs/scientist-guide/scripts/make_fig_real_kit_rmse.py"
+   },
+   "history": [
+    {
+     "at": "2026-10-19T15:45:55-04:00",
+     "file_sha256": "51d8c68f5c87281a552daa6ada1813b00498ec2884cf7d646a9af8e9c6201e84",
+     "input_hashes": {},
+     "note": "title wording: official benchmark images"
+    }
+   ],
+   "input_hashes": {},
+   "kind": "recreated",
+   "label": "fig-real-kit-rmse",
+   "section": "investigations/identifiability.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_real_kit_3cases",
+      "value": 0.3173
+     },
+     "ref": "RUN-0009#real_rmse_unconstrained",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_real_kit_3cases",
+      "value": 0.3787
+     },
+     "ref": "RUN-0009#real_rmse_simplex",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_real_kit_3cases",
+      "value": 0.3789
+     },
+     "ref": "RUN-0009#real_rmse_sum_to_one_clipped",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_real_kit_3cases",
+      "value": 0.4465
+     },
+     "ref": "RUN-0009#real_rmse_zero",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": "volume_fraction_rmse_real_kit_3cases",
+      "value": 1.5554
+     },
+     "ref": "RUN-0009#real_rmse_sum_to_one",
+     "role": "supports"
+    }
+   ],
+   "title": "Estimator error on official benchmark images"
+  },
+  "FIG-002": {
+   "created_at": "2026-10-19T15:19:39-04:00",
+   "file": "figures/fit-vs-accuracy.svg",
+   "file_sha256": "0bc5ec1b176399d457310934a5e30733eeeb8507998f55b11a46da9fc92be62d",
+   "generator": {
+    "args": [],
+    "inputs": [],
+    "script": "docs/scientist-guide/scripts/make_fig_fit_vs_accuracy.py"
+   },
+   "history": [
+    {
+     "at": "2026-10-19T15:26:05-04:00",
+     "file_sha256": "386663d4476664f9c759a9a001c5f624d07794e9bd166309f1d2e634c00436fb",
+     "input_hashes": {},
+     "note": "label positions adjusted"
+    },
+    {
+     "at": "2026-10-19T15:39:46-04:00",
+     "file_sha256": "0bc5ec1b176399d457310934a5e30733eeeb8507998f55b11a46da9fc92be62d",
+     "input_hashes": {},
+     "note": "caption text unchanged; label placement"
+    }
+   ],
+   "input_hashes": {},
+   "kind": "recreated",
+   "label": "fig-fit-vs-accuracy",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.001345326426
+     },
+     "ref": "RUN-0041#proj_rmse_T",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01841695096
+     },
+     "ref": "RUN-0041#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.0001444662984
+     },
+     "ref": "RUN-0053#proj_rmse_K200",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01768385643
+     },
+     "ref": "RUN-0053#s1_K200",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.000983674312
+     },
+     "ref": "RUN-0047#proj_rmse_T",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.296845949
+     },
+     "ref": "RUN-0047#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.0009508109069
+     },
+     "ref": "RUN-0056#proj_rmse_T",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.2904261035
+     },
+     "ref": "RUN-0056#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.002056823776
+     },
+     "ref": "RUN-0050#proj_rmse_T_mean",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.308258524
+     },
+     "ref": "RUN-0050#s1_mean",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.001112588565
+     },
+     "ref": "RUN-0066#proj_rmse_T",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.09142430886
+     },
+     "ref": "RUN-0066#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4458516255
+     },
+     "ref": "RUN-0037#s1_zero",
+     "role": "supports"
+    }
+   ],
+   "title": "Data fit versus material accuracy"
+  },
+  "FIG-003": {
+   "created_at": "2026-10-19T18:29:30-04:00",
+   "file": "figures/seed-spread.svg",
+   "file_sha256": "3c4ed99cd4f463cdab5a2cf3e24e3ab06e3199c329bb01a58d2ec13e583340ca",
+   "generator": {
+    "args": [],
+    "inputs": [
+     ".research/runs/RUN-0041/metrics.jsonl",
+     ".research/runs/RUN-0042/metrics.jsonl",
+     ".research/runs/RUN-0043/metrics.jsonl",
+     ".research/runs/RUN-0038/metrics.jsonl",
+     ".research/runs/RUN-0039/metrics.jsonl",
+     ".research/runs/RUN-0040/metrics.jsonl",
+     ".research/runs/RUN-0044/metrics.jsonl",
+     ".research/runs/RUN-0045/metrics.jsonl",
+     ".research/runs/RUN-0046/metrics.jsonl",
+     ".research/runs/RUN-0047/metrics.jsonl",
+     ".research/runs/RUN-0048/metrics.jsonl",
+     ".research/runs/RUN-0049/metrics.jsonl",
+     ".research/runs/RUN-0070/metrics.jsonl",
+     ".research/runs/RUN-0071/metrics.jsonl",
+     ".research/runs/RUN-0072/metrics.jsonl",
+     ".research/runs/RUN-0064/metrics.jsonl",
+     ".research/runs/RUN-0065/metrics.jsonl",
+     ".research/runs/RUN-0066/metrics.jsonl",
+     ".research/runs/RUN-0067/metrics.jsonl",
+     ".research/runs/RUN-0068/metrics.jsonl",
+     ".research/runs/RUN-0069/metrics.jsonl",
+     ".research/runs/RUN-0074/metrics.jsonl",
+     ".research/runs/RUN-0075/metrics.jsonl",
+     ".research/runs/RUN-0076/metrics.jsonl",
+     ".research/runs/RUN-0077/metrics.jsonl",
+     ".research/runs/RUN-0078/metrics.jsonl",
+     ".research/runs/RUN-0079/metrics.jsonl",
+     ".research/runs/RUN-0083/metrics.jsonl",
+     ".research/runs/RUN-0084/metrics.jsonl",
+     ".research/runs/RUN-0085/metrics.jsonl",
+     ".research/runs/RUN-0037/metrics.jsonl"
+    ],
+    "script": "docs/scientist-guide/scripts/make_fig_seed_spread.py"
+   },
+   "input_hashes": {
+    ".research/runs/RUN-0037/metrics.jsonl": "e29e443f30a838a1ff6497bdfb6f690fa20794334ac6703f6658b17a883e9942",
+    ".research/runs/RUN-0038/metrics.jsonl": "0af7a999662efc2b9ba79ac5d356a6410f4560c32e5b99c13492e4dc2d6f396f",
+    ".research/runs/RUN-0039/metrics.jsonl": "a84cdd0e9ce05f45a5f8efdb27797158bfb2fe5eaea5e8fdfd5144e71fb3f233",
+    ".research/runs/RUN-0040/metrics.jsonl": "b54d07527243fd28ce55026e126df4b9fc23d71b026e1953dfe93e80ce16eb45",
+    ".research/runs/RUN-0041/metrics.jsonl": "969b28652a1dbc8f34ff3f8e900ae82817d07b94ea94c603529e4aa6f2b15d31",
+    ".research/runs/RUN-0042/metrics.jsonl": "7b469b4be79aeb1461ef05361883884a7c728b37d0b5a45f7e7e8c40841e4a92",
+    ".research/runs/RUN-0043/metrics.jsonl": "e0c4dce4ee3caf710e44b851fe671d94383123ecf185fa38fc6eeee105e3b8a3",
+    ".research/runs/RUN-0044/metrics.jsonl": "6be82d44adbfd8e218fae9891687026d5a613233b38ab9515c9f22a30998ff83",
+    ".research/runs/RUN-0045/metrics.jsonl": "a72cd578a2a3d88d7594d8b1545b207d391fe32be21e6693750f9cd5fa0ac74b",
+    ".research/runs/RUN-0046/metrics.jsonl": "2ee8e85467e9748f7fab67372fba1290b2e3a4a0134e56c0796d61b3209ff44b",
+    ".research/runs/RUN-0047/metrics.jsonl": "bf43951ab3f154e885cda85250de15a3a0e1dce257e502fff856259961907360",
+    ".research/runs/RUN-0048/metrics.jsonl": "15ae0df57c96a9eaa24b5d42da8581e3ffa5bdbfa9a96713de16e67ac29f669f",
+    ".research/runs/RUN-0049/metrics.jsonl": "c83c96e544df9cc5b2ff4a3d0e628509df903c800c6706d208df58c82255caf2",
+    ".research/runs/RUN-0064/metrics.jsonl": "b94d737d6dec37c077f5b1f3909690f074676bd0d45410afea6d7c70eaaa49d8",
+    ".research/runs/RUN-0065/metrics.jsonl": "862568af60f285cd8db7d74cff7c50ecd07f04257b49ae02e5c03162b4f1655b",
+    ".research/runs/RUN-0066/metrics.jsonl": "35dfcae2287af6bb35ce895d1802011e26a48f7f1ac63c00bcc9e965a6afd532",
+    ".research/runs/RUN-0067/metrics.jsonl": "8bcc33d71d6ac61618f07c06a312e51e7acc9536340fc7102d715bb513bf7c60",
+    ".research/runs/RUN-0068/metrics.jsonl": "a60a0d34fcd2ba34cc2e4f555c149798e3250538886279ff892687f07934d23b",
+    ".research/runs/RUN-0069/metrics.jsonl": "9d51c2a2f1aa51cafd4dcdccf8097cacdce0e73413a998d2389acacb9a10dc13",
+    ".research/runs/RUN-0070/metrics.jsonl": "ce3c7b3c3e5e8569817ae32a324f3deb73c5cac978210bc16f1636edd48bf176",
+    ".research/runs/RUN-0071/metrics.jsonl": "3200153e2a46e98e8dddeee184e2b2d33b7778b6aad68e7191ea4ec6044c6fe6",
+    ".research/runs/RUN-0072/metrics.jsonl": "8b0af33612d20483842e0defb7efdf7b5157acf89b822a7f0f9df11f52af0a8c",
+    ".research/runs/RUN-0074/metrics.jsonl": "6b7a40d5b9bb5b2e4fa55dc87772666d239a652c1baf1d5361f421d04a28187d",
+    ".research/runs/RUN-0075/metrics.jsonl": "180ea18dfe99e11265ba411c90e85027eca4f4af7acec375c19c14718a5e6e14",
+    ".research/runs/RUN-0076/metrics.jsonl": "2f42ebb0680f6a20c978ba856bc31236a6d3937961c3eb9b58648f3bfb5bc960",
+    ".research/runs/RUN-0077/metrics.jsonl": "81cf78db12e62ca83cb55cf131a4d6a04987e924485302f408f3f42caf0d0abe",
+    ".research/runs/RUN-0078/metrics.jsonl": "7822dff47e315ef1300bf9c2fc94482e668303a652982f603eaf33aa5060e992",
+    ".research/runs/RUN-0079/metrics.jsonl": "7cc1238d98036c5dae251652f34c0ff6a8fdf5b08b4dd5c4ac77702102411605",
+    ".research/runs/RUN-0083/metrics.jsonl": "6f399a995868e83cf6f2b26b962ceab874e1214f15390c8bafacc9dcc1fcf07b",
+    ".research/runs/RUN-0084/metrics.jsonl": "0c64f268b8641a32b5f7042d46431f4f312b12dd5d29e8296998fc6115c68a59",
+    ".research/runs/RUN-0085/metrics.jsonl": "c7a3030fb8071756880041829e72dbfd0f7b3dc963a5e30fa90a22dbf6f244e1"
+   },
+   "kind": "recreated",
+   "label": "fig-seed-spread",
+   "section": "investigations/label-free.qmd",
+   "sources": [
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01841695096
+     },
+     "ref": "RUN-0041#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.02080396931
+     },
+     "ref": "RUN-0042#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01887406475
+     },
+     "ref": "RUN-0043#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4458516255
+     },
+     "ref": "RUN-0038#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4458516255
+     },
+     "ref": "RUN-0039#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01638422872
+     },
+     "ref": "RUN-0040#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4458516255
+     },
+     "ref": "RUN-0044#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4458516255
+     },
+     "ref": "RUN-0045#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.01496329869
+     },
+     "ref": "RUN-0046#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.296845949
+     },
+     "ref": "RUN-0047#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.2868453564
+     },
+     "ref": "RUN-0048#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3033461372
+     },
+     "ref": "RUN-0049#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3537613116
+     },
+     "ref": "RUN-0070#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3047953896
+     },
+     "ref": "RUN-0071#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3210748812
+     },
+     "ref": "RUN-0072#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3507648625
+     },
+     "ref": "RUN-0064#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.2820539183
+     },
+     "ref": "RUN-0065#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.09142430886
+     },
+     "ref": "RUN-0066#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.6323255332
+     },
+     "ref": "RUN-0067#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4997801057
+     },
+     "ref": "RUN-0068#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.499780078
+     },
+     "ref": "RUN-0069#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4933951242
+     },
+     "ref": "RUN-0074#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.286381511
+     },
+     "ref": "RUN-0075#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3001942552
+     },
+     "ref": "RUN-0076#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.878225905
+     },
+     "ref": "RUN-0077#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.2889320989
+     },
+     "ref": "RUN-0078#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.285964801
+     },
+     "ref": "RUN-0079#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.5236024256
+     },
+     "ref": "RUN-0083#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4008471295
+     },
+     "ref": "RUN-0084#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.3487248651
+     },
+     "ref": "RUN-0085#s1",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": "verified",
+      "unit": null,
+      "value": 0.4458516255
+     },
+     "ref": "RUN-0037#s1_zero",
+     "role": "supports"
+    }
+   ],
+   "title": "Material error of every run in the main arms"
+  }
+ },
+ "version": 1
+}

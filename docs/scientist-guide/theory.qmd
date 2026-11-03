@@ -1,0 +1,70 @@
+# Mathematical and physical formulation {#sec-theory}
+
+## The measurement
+
+An X-ray tube operated at voltage $k$ emits a spectrum $S_k(E)$ of photon energies $E$. A ray passes through a body made
+of $m=3$ materials (adipose, fibroglandular tissue, calcification); let $\ell_j$ be the path length in cm the ray spends in
+material $j$, and $\mu_j(E)$ the energy-dependent attenuation of material $j$. The fraction of photons transmitted is the
+polychromatic Beer–Lambert law,
+$$
+T_k(\boldsymbol{\ell}) = \int S_k(E)\, \exp\!\Big(-\sum_{j=1}^{m} \mu_j(E)\,\ell_j\Big)\, dE .
+$$ {#eq-beer}
+The benchmark scanner alternates the tube voltage between 50 and 80 kVp from one view to the next ("kV-switching"), so each ray path yields two attenuation measurements, $y_k=-\ln T_k$ (a scalar line integral for one ray and one voltage $k$), and there are three unknowns. The benchmark data are noiseless: $T_k$ is the exact output of the generating model, with no photon statistics.
+
+Because the spectrum is broad, @eq-beer is not linear in $\boldsymbol{\ell}$. For small path lengths it is approximated by
+$-\ln T_k \approx \sum_j \bar\mu_{kj}\,\ell_j$, where $\bar\mu_{kj}$ is the attenuation of material $j$ averaged over the
+spectrum $S_k$. In a pixel the unknowns are the volume fractions $x_j$ of the three materials (so $\ell_j$ is the pixel's
+thickness times $x_j$), and the *image-domain* model, with $\mathbf{y}$ now the pair of linear attenuations of one pixel at the two voltages (a different object from the scalar line integral $y_k$), is
+$$
+\mathbf{y} = A\,\mathbf{x}, \qquad A=(\bar\mu_{kj})\in\mathbb{R}^{2\times 3},\quad \mathbf{x}\in\mathbb{R}^{3}.
+$$ {#eq-linear}
+The approximation matters later: the averaged attenuations drift as the beam hardens (its spectrum shifts towards higher energies) along a path, and on the official
+benchmark images the linear model misfits the data by several per cent (@sec-identifiability). All values quoted for $A$ below are at zero path
+length. Two further modelling facts are used throughout: the fractions of a pixel that is entirely tissue sum to one, whereas in air they all vanish (the benchmark phantoms mix both kinds of pixel; see @sec-identifiability).
+
+## What the structure forces
+
+[With $n$ measurements and $m$ unknown materials the Jacobian has rank at most $\min(n,m)$: one energy-integrating
+measurement cannot separate two or more materials, and a dual-kVp pair cannot separate three.]{#clm-0008 .claim} This is
+arithmetic about matrix shape, not a result of any experiment. For the three-material problem the matrix $A$ in
+@eq-linear has a one-dimensional null space: there is a direction $\mathbf{v}$ with $A\mathbf{v}=0$, so $\mathbf{x}$ and $\mathbf{x}+t\mathbf{v}$ give identical measurements.
+
+[The same holds for the full polychromatic model: alternative three-material path-length vectors reproduce both
+transmissions to machine precision, and the family of such decoys is one-dimensional.]{#clm-0009 .claim} Any loss
+function whose only signal is agreement with the measurements therefore has a continuum of exact minima.
+
+For this tissue combination the null direction is nearly the exchange of adipose for fibroglandular tissue, because those
+two materials are spectrally almost degenerate: the two columns of $A$, viewed as vectors in $\mathbb{R}^2$, point in
+directions about one degree apart, so one is almost a multiple of the other (@sec-identifiability). Here we call the
+*visibility* of a change in $\mathbf{x}$ the root-mean-square change it produces in the predicted transmissions $T_k$ (dimensionless, averaged over rays and both voltages; the projection error used throughout is this quantity, not an error in $-\ln T_k$). The null vector is not exactly the pure exchange, because an exact null vector must satisfy both measurement equations. [In a profile over 12 validation cases, the unit-norm null vector at zero path length contains a calcification change of about $-0.8\%$ and a total adipose-plus-fibroglandular change of about $-3.1\%$ per unit step besides the adipose/fibroglandular exchange; compensating by calcification alone would leave about 5% of the exchange's visibility to the projection loss, by the sum alone about 12%.]{#clm-0012 .claim} Two compensating changes are needed because there are two measurement equations. [Moving along the exact null vector changes the predicted projections about 330 times less per unit step than the pure adipose/fibroglandular exchange does (root-mean-square projection change of about $4\times10^{-5}$ against $1.3\times10^{-2}$ per unit step, 12 validation cases).]{#clm-0067 .claim} These numbers come from a finding that independent review returned for correction; its wording has been corrected but it has not been re-reviewed, so they are preliminary. The 12% figure is a reviewer's calculation, not a recorded run; the visibility is measured with the full polychromatic model, so it includes first-order beam hardening; and a spatially uniform exchange is not the same as the spatially varying errors a trained network makes, so the ratio is a bound on sensitivity, not a prediction for any particular estimator.
+
+## Which constraints help, and which do not
+
+Two natural constraints are that the fractions are nonnegative and that they sum to one inside the body.
+
+*Nonnegativity.* [We first believed that nonnegativity bounds the family of indistinguishable solutions; that rested on a
+poorly chosen example whose decoy was physically unreachable.]{#clm-0011 .claim} The first example (a decoy 6.5 cm away in path length) had a negative fibroglandular path length of $-0.51$ cm, so a nonnegativity constraint excluded it trivially, and a second example, a boundary-pixel decoy about 0.26 cm away, was an underestimate by roughly a factor of 75. An independent review exposed this, and a recomputation on the official attenuation tables replaced the belief. In fact [an exact nonnegative
+decoy exists at an L2 distance of 19.7 cm in path-length space from an example truth of (1, 14, 0.2) cm, so nonnegativity
+does not bound the ambiguity in the physically reachable region.]{#clm-0010 .claim} (The decoy is (15.3, 0.37, 0.35) cm and reproduces both transmissions with zero relative error.) This is one extreme example; the
+finding behind it has not been independently reviewed. It strengthens the conclusion that agreement with the measurements cannot select the truth, while withdrawing the earlier statement about what nonnegativity buys.
+
+*Sum to one.* Appending the row $\mathbf{1}^{\mathsf T}\mathbf{x}=1$ gives a square matrix
+$$
+B=\begin{pmatrix}A\\ \mathbf{1}^{\mathsf T}\end{pmatrix}\in\mathbb{R}^{3\times 3}
+$$ {#eq-sum}
+that is full rank, so the pixelwise solution becomes unique in the exact linear model. The reason is that the null vector of $A$ changes the total tissue amount (its entries do not sum to zero), so the extra row excludes it. Uniqueness is not recoverability: $B$ has a very small singular value, so its inverse amplifies errors. Two numbers
+describe this and measure different things: the condition number of $B$ (about 1273 at zero path length, an upper bound
+that falls to roughly 750-960 as the beam hardens) bounds the amplification when all rows may be perturbed, whereas the
+largest singular value of the first two columns of $B^{-1}$ (about 343) is the worst-case amplification of error in the two
+measured rows, because the sum row is exact. The constraint is also false in air, where the fractions sum to zero, and, depending on the tolerance used, in boundary pixels; the measured size of these regimes, and how an estimator has to treat them, are set out in @sec-identifiability. The practical conclusion is that identifiability is regime-dependent: the constraint that identifies the problem is valid on only part of the image.
+
+*A soft penalty is not the hard constraint.* A learned experiment tested the sum-to-one idea inside training. [In a synthetic image-domain ladder (13 validation cases, 32x32 pixels, three seeds), adding a unit-weight soft sum-to-one penalty lowered tissue error only from 0.476 to 0.468 (a factor of 1.02), against a pre-registered prediction of more than a factor of five, and imposing the constraint architecturally with a softmax output collapsed to constant all-adipose maps on every seed.]{#clm-0068 .claim} [The pre-registered prediction was badly designed: it compared a soft penalty, whose weight was never specified in the pre-registration and never tuned, with the hard constraint whose exact identifying power had been derived, so its failure does not show that sum-to-one fails to identify.]{#clm-0069 .claim} The correct reading is narrower: a unit-weight soft penalty did not recover the identifying power of the hard constraint in that training setup. The softmax collapse was likewise seen in this toy-scale study; the benchmark-scale softmax runs are a separate matter (@sec-labelfree). The finding recording this self-criticism is preliminary. Later experiments, which also used softmax outputs, are described in @sec-labelfree and @sec-information.
+
+## Inverse crime
+
+An experiment commits an *inverse crime* when the same model generates the data and is then inverted. Exact recovery in that
+setting shows internal consistency only. Much of what follows depends on distinguishing results obtained under a shared
+model (useful for verifying code, and the setting of the learned experiments here) from results on data produced by a
+different process, which is the only evidence about whether a method works.
+
+Two instances are worth fixing in mind. First, [we first believed that exact recovery was possible on the noiseless benchmark; that came from synthetic data generated with the very linear model that was inverted, an inverse crime that was not labelled as such, and it did not carry over to the official images (@sec-identifiability).]{#clm-0070 .claim} Second, the projection-domain model is a different matter. [Our differentiable fan-beam polychromatic forward model reproduces the official transmissions of 10 starting-kit and 40 evenly spaced training cases to float32 rounding (largest per-case root-mean-square transmission error $1.5\times10^{-8}$, all rays within a tolerance derived beforehand), so for projection-domain methods the benchmark data and our forward model are, to numerical precision, the same model.]{#clm-0071 .claim} [The floor of about $1.3\times10^{-8}$ that the true maps attain in projection error reflects the identity of generator and forward model, not evidence that the truth is the unique minimiser along the null direction, and it says nothing about physical fidelity to a scanner; the trained solutions end 4 to 6 orders of magnitude above it (projection error $5.5\times10^{-4}$ to $1.3\times10^{-2}$), so their errors are visible to the data and are not hiding along the null direction.]{#clm-0072 .claim} How such solutions nevertheless reach small projection error is not explained by the records, and whether the truth is the unique minimiser along the null family has not been shown. (An independent reviewer of the underlying finding made the point about the floor explicitly; the finding is preliminary.)

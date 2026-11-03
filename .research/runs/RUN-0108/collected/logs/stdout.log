@@ -1,0 +1,7 @@
+rank high: case 143 with 1441 calcified pixels
+{'case': 143, 'n_calc_pixels': 1441, 'rank': 'high', 'floor_mse_truth': 1.7373810253052052e-16, 'floor_mse_armA_model': 2.441088440718886e-06, 'max_iter': 1000, 'AMP': 0.3, 'LAM_CALC': 5.6e-05, 'LAM_BIMODAL': 1e-05}
+C uniform iters 1000 max_iter mse 9.54e-05->2.77e-06 s1 0.3111->0.3209 hf 163463.125 1446s
+C rough iters 1000 max_iter mse 1.75e-05->2.77e-06 s1 0.1936->0.2098 hf 516468.031 1445s
+C null iters 1000 max_iter mse 1.72e-05->2.77e-06 s1 0.1370->0.1604 hf 890790.000 1434s
+A_img uniform iters 425 plateau mse 9.54e-05->4.71e-06 s1 0.3111->0.3486 hf 1.493 622s
+D uniform iters 1000 max_iter mse 3.99e-05->7.17e-08 s1 0.3106->0.0998 hf 0.383 1401s

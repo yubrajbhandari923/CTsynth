@@ -1,0 +1,10 @@
+rank median: case 931 with 1062 calcified pixels
+{'case': 931, 'n_calc_pixels': 1062, 'rank': 'median', 'floor_mse_truth': 1.7464631210151802e-16, 'floor_mse_armA_model': 2.0056403116086585e-06, 'max_iter': 1000, 'AMP': 0.3, 'LAM_CALC': 5.6e-05, 'LAM_BIMODAL': 1e-05}
+A uniform iters 450 plateau mse 3.78e-05->2.35e-08 s1 0.3106->0.0481 hf 0.348 661s
+A rough iters 475 plateau mse 2.19e-06->2.35e-08 s1 0.1396->0.0476 hf 0.349 688s
+A image iters 450 plateau mse 1.83e-05->2.35e-08 s1 0.2327->0.0483 hf 0.349 653s
+A smooth iters 425 plateau mse 2.40e-06->2.35e-08 s1 0.0398->0.0471 hf 0.348 617s
+A uswap iters 425 plateau mse 4.89e-05->2.35e-08 s1 0.1150->0.0471 hf 0.348 621s
+B uniform iters 1000 max_iter mse 3.78e-05->5.96e-08 s1 0.3106->0.1066 hf 0.036 1407s
+B rough iters 575 plateau mse 1.86e-07->4.04e-08 s1 0.1395->0.1396 hf 0.292 799s
+B null iters 1000 max_iter mse 4.25e-06->1.66e-08 s1 0.1169->0.0136 hf 0.006 1402s

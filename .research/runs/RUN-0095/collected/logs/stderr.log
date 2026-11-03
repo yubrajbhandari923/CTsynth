@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/home/yb107/research-os/projects/CTsynth/code/EXP-036/RUN-0095/source/projects/p05_aapm/stage1_solve.py", line 269, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/yb107/research-os/projects/CTsynth/code/EXP-036/RUN-0095/source/projects/p05_aapm/stage1_solve.py", line 237, in main
+    r0 = evaluate(arm, build, x0)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yb107/research-os/projects/CTsynth/code/EXP-036/RUN-0095/source/projects/p05_aapm/stage1_solve.py", line 178, in evaluate
+    fc[:, 0] = fc[:, 0].clamp(0, Ssum)  # clip adipose into [0, S]
+               ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: clamp() received an invalid combination of arguments - got (int, Tensor), but expected one of:
+ * (Tensor min = None, Tensor max = None)
+      didn't match because some of the arguments have invalid types: (!int!, !Tensor!)
+ * (Number min = None, Number max = None)
+      didn't match because some of the arguments have invalid types: (!int!, !Tensor!)
+

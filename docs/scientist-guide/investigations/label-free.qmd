@@ -1,0 +1,201 @@
+# Can measurement consistency alone recover the materials? {#sec-labelfree}
+
+## Motivation
+
+Paired ground truth is unavailable for real patients, so a method that learns material maps from the measurements alone
+would be valuable ("label-free" means trained without the true material maps). The natural loss asks the network's material
+maps to reproduce the measured transmissions through the verified forward model (@sec-trust). The theory (@sec-theory)
+predicts that this cannot work for three materials from two spectra, because a continuum of wrong answers fit the data
+exactly. This chapter tests that prediction, and then tests whether anything tried can rescue it. [The label-free network
+was therefore planned as a negative control, not as a reproduction of a published method: once the analysis had shown that
+measurement consistency alone has a continuum of exact minima for three materials from two spectra, and that neither of the
+two closest published methods addresses that case, the project decided, before the first controlled experiment, that the
+network's purpose was to show empirically which member of the ambiguous family its implicit biases select.]{#clm-0086 .claim}
+
+Two scores are used. The **projection error** is the root-mean-square error of the predicted transmission against the
+measured one (lower means a better fit to the data). The **material error s1** is the benchmark's primary score, a
+root-mean-square error of the volume fractions over materials and all pixels (air and boundaries included), averaged over
+cases (@eq-s1); zero is perfect and predicting nothing scores 0.446. Unless a smaller study is named, learned results below
+are on the 100 validation cases of the official benchmark's simulated, noise-free data, in a setting where the data and the
+network's forward model coincide. The test split has not been used.
+
+## Baselines
+
+[On 100 validation cases the best image-domain classical estimator (total-variation regularised) scores s1 = 0.271, only 1.6
+times better than predicting zero (0.446), and the raw sum-to-one estimator is about 3.4 times worse than predicting zero
+(1.508).]{#clm-0026 .claim} The second result is the benchmark-image failure of the sum constraint described in
+@sec-identifiability. The total-variation weight was chosen by validation score and landed on the largest value tried, so
+a better classical result may exist beyond the grid; the other classical scores were 0.307 (non-negative least squares),
+0.315 (unconstrained inversion) and 0.381 (simplex projection).
+
+[A supervised U-Net trained on the 800-case training split reaches validation s1 of 0.018, 0.021 and 0.019 for three
+seeds (mean 0.0194), roughly 14 times better than the best classical method.]{#clm-0027 .claim} This is a conservative
+reference, not an upper bound: [supervised training was fragile: four of six runs at the higher learning rate collapsed to predicting zero
+after output units died, and the stable reference recipe did not learn the small calcification
+class.]{#clm-0028 .claim} The two runs at the higher rate that did not collapse reached 0.0150 and 0.0164, and one of them learned
+the calcifications, so the reference is not the best a supervised network can do. The recipe was chosen by a rule fixed beforehand (lower mean
+validation s1 over three seeds), whereas the label-free arms were not tuned in the same way.
+
+## The negative control
+
+An early controlled ladder on small synthetic images (32 by 32 pixels, 13 validation cases, three seeds, image domain, not the
+benchmark's data) isolated the effect. [In a controlled synthetic image-domain ladder, the label-free network reached the lowest
+consistency loss of all ten variants while its tissue error (0.476) was far above that of a classical solution and a
+supervised network (0.055); training the supervised network 19 times longer with four times the capacity only reduced its
+error to 0.037.]{#clm-0025 .claim} Its consistency loss ($9.6\times10^{-5}$) was about five times lower than the
+classical solution's, yet its tissue error was about 26 times higher.
+
+A capacity control, run after the ladder and not pre-registered, asks whether that gap could be mere under-training. It
+splits the label-free network's error of 0.476 into two parts. [A supervised network, which has no identifiability problem,
+saturates at an error of about 0.037 across the four training lengths and widths tried (up to 19 times longer and four times
+larger), so the network and representation cost only about 8% of
+the label-free network's error, while the extra 0.439 that comes from learning without labels is 92% of it, about twelve times
+the network cost.]{#clm-0087 .claim} The split subtracts error magnitudes, which do not add linearly, so it is a rough
+apportioning, and four settings do not show that more training could never lower the supervised error further. The comparison is within one synthetic image-domain study, so it shows that
+the failure is not explained by under-training of the representation there; it does not by itself show that the
+benchmark-scale label-free networks below are optimised to convergence. In that study the label-free network's material
+error was stable across seeds while its consistency loss was not, the opposite of what we had predicted, and we have no
+explanation.
+
+The ladder's other half tested whether a soft sum-to-one penalty helps. [The pre-registered prediction that adding a
+sum-to-one penalty would cut tissue error more than fivefold failed (0.468 against 0.476), but the prediction was badly
+designed: it compared a soft penalty at an arbitrary, never-tuned unit weight with the hard constraint whose effect had been
+established, and the spread between variants was large next to the supervised floor, so the failure says nothing about
+priors in general.]{#clm-0088 .claim} The two variants that imposed the sum exactly by a softmax output
+collapsed to constant all-adipose maps on every seed, which is itself what a hard constraint combined with an unconstrained
+consistency objective can be expected to do. The ladder's authors also warned that none of its numbers should be expected to
+transfer to benchmark images, because the linear image model it assumed is wrong by 6-8% on those images.
+
+The first small-scale demonstration on the benchmark showed the same pattern. [In the first small-scale demonstration (32
+training and 8 validation cases) the label-free network already produced a spatially uniform, anatomy-free
+adipose/fibroglandular mixture (s1 0.392 against 0.029 for the supervised network) with 99.7% of its error along the null
+direction (with the caveat on that metric given below); a feasibility penalty on the sum did not help (s1 0.504).]{#clm-0059 .claim} Its low calcification error is not recovery:
+calcifications cover about 0.4% of pixels and predicting zero scores about the same. This was one seed, 3000 steps, and the
+physics-only arm had not reached the supervised arm's projection error (0.0043 against 0.0026), so it was under-trained.
+
+On the full benchmark the result repeats. [A U-Net trained only on measured transmissions reaches a lower projection error
+than the supervised network ($6\times10^{-4}$ to $10^{-3}$ against $1.3\times10^{-3}$ to $2.6\times10^{-3}$ in transmission RMSE across
+three seeds) but a material error about fifteen times larger (s1 0.287-0.303 against 0.018-0.021), comparable to the best
+classical method and better than the zero prediction by a factor of only 1.5.]{#clm-0029 .claim} The label-free network
+was selected by its validation projection loss alone. @fig-fit-vs-accuracy plots the two scores for selected
+runs: the seed-0 reference run of each main approach, two variants of them, and the single structured label-free run. It omits the classical
+estimators, the other seeds, the collapsed runs and several output-parameterisation arms, some of which scored worse than
+predicting zero; @fig-seed-spread shows every run of the main arms.
+
+![Material error s1 (vertical, log scale, volume-fraction units) against projection error (horizontal, log scale,
+RMS error of predicted transmission, dimensionless) for six selected runs on 100 validation cases. Blue: trained with labels
+(the supervised reference network and the same network after 200 per-case physics steps). Red: no labels (the physics-only
+network, the same with a weak entropy penalty, a per-case iterative fit started from the classical estimate, and one
+structured run of a different output form). All are single runs (seed 0 where seeds apply), so there are no uncertainty
+intervals; the seed-to-seed spread is in the next figure. The dashed line is the score of predicting zero. Values are point values
+recreated from the recorded run metrics.](../figures/fit-vs-accuracy.svg){#fig-fit-vs-accuracy fig-alt="Scatter of material error against projection error on log axes; most label-free runs sit at material error near 0.3 regardless of projection error, one at 0.09, and the labelled runs near 0.02."}
+
+The error sits where the theory points, with a caveat. [In the baseline label-free networks 99.7-99.9% of the material error lies along the
+project's null-fraction direction, a three-decimal approximation to the null vector, and the networks output a nearly
+uniform adipose/fibroglandular mixture; the supervised network has 84% on the same metric, but the one structured
+label-free success scores 99.6% and the three-channel softmax runs 84-88%. Because that direction is almost a
+pure exchange of the two tissues, the metric cannot tell exchange-like error that the data hide from exchange-like error that
+they can see, nor a good solution from a bad one, so the contrast with the supervised network's 84% is uninformative as well.]{#clm-0030 .claim} The later analysis in @sec-information sharpens the caveat: the trained networks' errors
+are not along the exact null vector, and a uniform exchange of the two tissues is far more visible to the data than the
+exact null direction is.
+
+The three seeds of each arm tell the same story, and also show how variable the label-free arms are (@fig-seed-spread).
+[Every one of the 21 physics-only runs in the main arms scored a material error of at least 0.28 except one (0.091); six of
+the 21 scored worse than predicting zero (0.446), whereas the three runs of the supervised reference recipe scored 0.018-0.021
+and four of the six supervised runs at the higher learning rate collapsed to exactly the zero prediction.]{#clm-0089 .claim}
+
+![Material error s1 (vertical, log scale, volume-fraction units) of every supervised and physics-only run in the main arms,
+one point per run, grouped by arm (30 runs, 100 validation cases each). Blue: trained with labels; red: no labels. The dashed
+line is the score of predicting zero. The four collapsed supervised runs sit on that line. There is no further uncertainty
+interval: the spread of the points is the seed-to-seed variation, with three seeds per arm. Values are recreated from the
+recorded run metrics; screening runs with one seed per setting (the added priors) are not shown.](../figures/seed-spread.svg){#fig-seed-spread fig-alt="Dot plot on a log axis of material error for each run in nine groups. Supervised reference runs sit near 0.02. Higher learning rate supervised runs: two near 0.015, four on the zero-prediction line. Label-free groups sit between 0.28 and 0.9 except one occupancy-softmax run at 0.09."}
+
+The figure is a descriptive display of three runs per arm; it supports no significance statement, and the arms differ in output
+form and penalty, so it should not be read as a ranking of arms.
+
+## Attempts to rescue label-free recovery
+
+*Physics refinement of a good estimate.* [Refining the supervised network per case by gradient descent on the projection
+loss lowered its projection error about ninefold ($1.3\times10^{-3}$ to $1.4\times10^{-4}$) but improved s1 by only 4%
+(0.0184 to 0.0177).]{#clm-0031 .claim} This was one network (seed 0), 200 steps that had not converged, with settings
+chosen on the same validation cases. The small gain was uniform (s1 improved in all 100 cases, by 0.0007 on average) but was
+smaller than the seed-to-seed range of the network (0.0024), so by the rule fixed beforehand refinement did not help. The refinement fixes what the data can see; that the remainder lies in what they barely constrain is consistent with the null-direction metric, which cannot establish it alone.
+
+*Per-case iterative fitting from a classical start.* [A per-case iterative polychromatic fit started from the classical
+estimate ended at s1 0.308, essentially the classical starting values (0.315 for the unconstrained estimator, 0.307 for non-negative least squares), although it was under-converged.]{#clm-0032 .claim}
+Its projection error (about $2\times10^{-3}$, after 600 iterations per case) is worse than the label-free reference seeds', so this run says little about where a converged
+fit would end; adding small total-variation weights changed s1 by at most 0.0013.
+
+*Added priors.* [Adding one prior (entropy, total variation, range hinge or calcification sparsity) at two weights each, one
+seed per setting, did not move any non-degenerate run beyond the pre-registered trigger (2 x the baseline seed range,
+0.033): s1 stayed between 0.288 and 0.316 against a baseline of 0.296.]{#clm-0033 .claim} (Each screened setting is a single seed, whereas the baseline is a three-seed mean with a seed range of 0.017, so seed-to-seed variation is compared with a mean.) The weights were set at 10%
+and 100% of the data-loss scale. Stronger total-variation weights made s1 worse while smoothing the maps, and one
+calcification-sparsity weight, ten times above its scale rule, destroyed training. The result is "these settings did not
+work", not "priors cannot work".
+
+*Output parameterisations.* [None of six alternatives to the baseline (output parameterisations, soft-partition penalties
+and an oracle control) was shown to improve the label-free estimate; the rule could only have triggered near s1 0.02, and
+the soft partition did not change the sum materially, so whether pinning the sum helps is untested.]{#clm-0034 .claim}
+The three-seed mean s1 values were 0.296 for the baseline, 0.326 for an unbounded linear output, 0.544 for a three-channel
+softmax, 0.360 and 0.484 for the two soft-partition weights, 0.424 for a softmax with the true occupancy supplied, and 0.242
+for the occupancy-aware softmax, whose seed range of 0.26 is what makes it indistinguishable from the baseline by that rule.
+The rule required a mean below the baseline by more than twice the pooled seed range; for the most variable arm that range
+was 0.26. Diagnostics show that [most three-channel softmax and true-sum-given runs ended as one-hot maps (constant in most) with a gradient below $10^{-8}$,
+exactly zero in four of the runs inspected; in one test lowering the learning rate tenfold only delayed the collapse, from about 100 to about 260 steps, and its cause has not
+been isolated.]{#clm-0036 .claim} The remaining two runs with the true sum supplied kept live gradients but were
+under-trained (s1 0.31-0.32), so whether a converged run with the sum known would identify the split is untested.
+
+## One unexplained success
+
+[One label-free run (occupancy-aware softmax, seed 2) reached s1 0.091 with correct anatomy, the only structured solution
+among 21 physics-only runs; the same arm's other seeds gave 0.351 and 0.282. It was also the one run whose sum was nearly
+pinned (|S-1| about 0.006 against 0.034-0.051 for the baseline), and its mechanism is
+unknown.]{#clm-0035 .claim} Its calcification was near zero, but that is not distinctive: the calcification errors of the other seeds of the same arm are about the same (about 0.0095), and the sum for those seeds is not reported in the records examined. Its output form presents occupancy separately from composition, and a nearly pinned sum is the
+kind of knowledge the next chapter (@sec-information) identifies as a candidate lever; the other seeds with the same output form did not reach it, so it is a lead, not an explanation.
+Within its arm the projection error (0.0011, 0.0018 and 0.0077 for the three seeds) ranks them the same way as s1, but across arms it does not, so the records do not settle
+whether the projection loss selected the good solution. With one success in three seeds the success rate cannot be
+estimated (a 95% interval is roughly 1% to 91%). The run is about five times worse than the supervised network. It is a lead, not a
+method.
+
+The baseline networks' failure is also not simply a uniform offset. [The baseline label-free networks' adipose maps are nearly constant inside tissue (about 0.58, 0.64 and 0.88 for three seeds, standard deviation 0.02-0.03) and are anticorrelated with the true adipose map (Pearson correlation -0.88, -0.80 and -0.58), that is, they carry the wrong tissue ordering rather than a faithful map shifted by a constant.]{#clm-0144 .claim} This sits uneasily with describing their error as a pure adipose/fibroglandular exchange along the null direction (the previous section and @sec-information), since an exchange of that kind would not by itself reverse the ordering of tissues; the records do not explain it.
+
+## Relation to published label-free work
+
+Two recent papers are natural comparators, and neither addresses this problem. [One recent published label-free method
+solves a determined problem, two materials from two spectra, with an unweighted measurement-consistency loss and no
+regulariser, so the ambiguity studied here does not arise for it; its authors state the shared-model (inverse crime)
+setting explicitly.]{#clm-0060 .claim} [Another published method is not label-free in our sense: its adversarial term
+requires an unpaired reference set of clean material maps, and because its measurement-consistency system is square the
+fidelity term alone returns the noisy direct inversion.]{#clm-0061 .claim} This summary rests on our reading notes, and
+several details of both papers (bin counts, final activations, one supplement, the loss weights) were not verified, and the
+bibliographic details of both are not yet verified, so neither is cited formally in this edition.
+
+## Interpretation
+
+[The data barely constrain one direction of material space and label-free networks reach large material error at small
+projection error; but their projection errors stay 4-6 orders of magnitude above the noise-free floor, so
+under-optimisation, loss weighting and cancellation of spatially varying exchange errors are not excluded as contributors,
+and which implicit bias selects the solution has not been isolated by a controlled experiment.]{#clm-0037 .claim} The
+one unexplained success and the collapses are consistent with this reading, but neither proves it.
+
+## A correction carried over from synthetic data
+
+We first reported that a clipped estimator looked best, and later evidence showed that this did not transfer. [On synthetic
+images from our own generator, a simplex-projected estimator scored far better (0.051) than the exact sum-to-one estimator (1.18) and than predicting zero (0.43), but
+only because clipping bounded the outliers of the exact estimator (17 validation cases of 32 by 32 pixels); on the official benchmark images (three cases) the unconstrained
+estimator beats the simplex-projected one, which is no better than simply clipping the raw sum-to-one solution.]{#clm-0038 .claim}
+The first statement had been made without its synthetic-only qualifier, and was corrected after review. On the
+100 validation cases the ranking is total-variation (0.271), non-negative least squares (0.307) and unconstrained (0.315),
+then simplex (0.381). The general lesson is about metrics: a pooled error over a phantom with several regimes (air, tissue,
+boundary) can rank a clipped estimator above an exact one for the wrong reason, so errors should be reported per regime;
+this chapter reports the pooled score only. Here "synthetic" means images from our own generator, whereas the benchmark
+images are the organisers' simulated data, not scanner data.
+
+## Limits
+
+*Review status.* [The findings behind the arm comparison, the structured success run and the softmax collapses are all preliminary. Each was judged by an independent review to need work, and their wording was corrected; second reviews of the success-run and collapse findings asked for further wording changes (their titles overstated a cause or a generality), and the arm-comparison finding has had no second review.]{#clm-0145 .claim} The numbers in this chapter are therefore preliminary and the wording of these three results in particular may change.
+
+All learned results are on simulated, noise-free, validation-split data from one benchmark, with one U-Net family, a shared
+support mask and at most three seeds per arm (one for the added-prior screens and the refinements). The test split has not been evaluated. Hyperparameters were not tuned for the
+physics-only arms. The same-model setting is an inverse crime for the forward physics; mismatch has not been studied for
+learned materials (@sec-open).

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 470" font-family="sans-serif" font-size="12">
+<text x="70" y="22" font-size="14" font-weight="bold">Material error s1 of every run in the main arms (100 validation cases; one point per run)</text>
+<line x1="70" y1="374.0" x2="840" y2="374.0" stroke="#e3e3e3"/><text x="64" y="378.0" text-anchor="end">0.01</text>
+<line x1="70" y1="295.3" x2="840" y2="295.3" stroke="#e3e3e3"/><text x="64" y="299.3" text-anchor="end">0.03</text>
+<line x1="70" y1="209.0" x2="840" y2="209.0" stroke="#e3e3e3"/><text x="64" y="213.0" text-anchor="end">0.1</text>
+<line x1="70" y1="130.3" x2="840" y2="130.3" stroke="#e3e3e3"/><text x="64" y="134.3" text-anchor="end">0.3</text>
+<line x1="70" y1="44.0" x2="840" y2="44.0" stroke="#e3e3e3"/><text x="64" y="48.0" text-anchor="end">1</text>
+<line x1="70" y1="101.9" x2="840" y2="101.9" stroke="#777" stroke-dasharray="5 4"/><text x="836" y="96.9" text-anchor="end" fill="#555">predicting zero (0.446)</text>
+<line x1="70" y1="374" x2="840" y2="374" stroke="#333"/><line x1="70" y1="44" x2="70" y2="374" stroke="#333"/>
+<circle cx="98.8" cy="330.2" r="5" fill="#2e6da4" fill-opacity="0.85"/>
+<circle cx="112.8" cy="328.5" r="5" fill="#2e6da4" fill-opacity="0.85"/>
+<circle cx="126.8" cy="321.5" r="5" fill="#2e6da4" fill-opacity="0.85"/>
+<text x="112.8" y="392" text-anchor="middle">Supervised,</text>
+<text x="112.8" y="406" text-anchor="middle">reference</text>
+<text x="112.8" y="420" text-anchor="middle">recipe</text>
+<text x="112.8" y="438" text-anchor="middle" fill="#555" font-size="11">3 runs</text>
+<circle cx="170.8" cy="345.1" r="5" fill="#2e6da4" fill-opacity="0.85"/>
+<circle cx="181.8" cy="338.6" r="5" fill="#2e6da4" fill-opacity="0.85"/>
+<circle cx="192.8" cy="101.9" r="5" fill="#2e6da4" fill-opacity="0.85"/>
+<circle cx="203.8" cy="101.9" r="5" fill="#2e6da4" fill-opacity="0.85"/>
+<circle cx="214.8" cy="101.9" r="5" fill="#2e6da4" fill-opacity="0.85"/>
+<circle cx="225.8" cy="101.9" r="5" fill="#2e6da4" fill-opacity="0.85"/>
+<text x="198.3" y="392" text-anchor="middle">Supervised,</text>
+<text x="198.3" y="406" text-anchor="middle">higher</text>
+<text x="198.3" y="420" text-anchor="middle">learning rate</text>
+<text x="198.3" y="438" text-anchor="middle" fill="#555" font-size="11">6 runs</text>
+<circle cx="269.9" cy="133.5" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<circle cx="283.9" cy="131.0" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<circle cx="297.9" cy="129.5" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<text x="283.9" y="392" text-anchor="middle">Label-free,</text>
+<text x="283.9" y="406" text-anchor="middle">baseline</text>
+<text x="283.9" y="420" text-anchor="middle">output</text>
+<text x="283.9" y="438" text-anchor="middle" fill="#555" font-size="11">3 runs</text>
+<circle cx="355.4" cy="129.1" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<circle cx="369.4" cy="125.4" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<circle cx="383.4" cy="118.5" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<text x="369.4" y="392" text-anchor="middle">Label-free,</text>
+<text x="369.4" y="406" text-anchor="middle">unbounded</text>
+<text x="369.4" y="420" text-anchor="middle">linear output</text>
+<text x="369.4" y="438" text-anchor="middle" fill="#555" font-size="11">3 runs</text>
+<circle cx="441.0" cy="215.4" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<circle cx="455.0" cy="134.7" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<circle cx="469.0" cy="119.1" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<text x="455.0" y="392" text-anchor="middle">Label-free,</text>
+<text x="455.0" y="406" text-anchor="middle">occupancy</text>
+<text x="455.0" y="420" text-anchor="middle">softmax</text>
+<text x="455.0" y="438" text-anchor="middle" fill="#555" font-size="11">3 runs</text>
+<circle cx="526.6" cy="93.7" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<circle cx="540.6" cy="93.7" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<circle cx="554.6" cy="76.8" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<text x="540.6" y="392" text-anchor="middle">Label-free,</text>
+<text x="540.6" y="406" text-anchor="middle">3-way</text>
+<text x="540.6" y="420" text-anchor="middle">softmax</text>
+<text x="540.6" y="438" text-anchor="middle" fill="#555" font-size="11">3 runs</text>
+<circle cx="612.1" cy="133.6" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<circle cx="626.1" cy="130.2" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<circle cx="640.1" cy="94.6" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<text x="626.1" y="392" text-anchor="middle">Label-free,</text>
+<text x="626.1" y="406" text-anchor="middle">sum penalty</text>
+<text x="626.1" y="420" text-anchor="middle">w=1.6e-5</text>
+<text x="626.1" y="438" text-anchor="middle" fill="#555" font-size="11">3 runs</text>
+<circle cx="697.7" cy="133.7" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<circle cx="711.7" cy="133.0" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<circle cx="725.7" cy="53.3" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<text x="711.7" y="392" text-anchor="middle">Label-free,</text>
+<text x="711.7" y="406" text-anchor="middle">sum penalty</text>
+<text x="711.7" y="420" text-anchor="middle">w=1.6e-4</text>
+<text x="711.7" y="438" text-anchor="middle" fill="#555" font-size="11">3 runs</text>
+<circle cx="783.2" cy="119.5" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<circle cx="797.2" cy="109.5" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<circle cx="811.2" cy="90.4" r="5" fill="#c0392b" fill-opacity="0.85"/>
+<text x="797.2" y="392" text-anchor="middle">Label-free,</text>
+<text x="797.2" y="406" text-anchor="middle">softmax, true</text>
+<text x="797.2" y="420" text-anchor="middle">occupancy given</text>
+<text x="797.2" y="438" text-anchor="middle" fill="#555" font-size="11">3 runs</text>
+<text transform="translate(16 209) rotate(-90)" text-anchor="middle">Material error s1 (lower = better; log scale)</text>
+<text x="76" y="56" fill="#2e6da4">blue: trained with labels</text><text x="260" y="56" fill="#c0392b">red: no labels</text></svg>

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/yb107/research-os/projects/CTsynth/code/EXP-036/RUN-0102/source/projects/p05_aapm/stage1_solve.py", line 280, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/yb107/research-os/projects/CTsynth/code/EXP-036/RUN-0102/source/projects/p05_aapm/stage1_solve.py", line 235, in main
+    x0 = init(arm, kind).contiguous()
+         ^^^^^^^^^^^^^^^
+  File "/home/yb107/research-os/projects/CTsynth/code/EXP-036/RUN-0102/source/projects/p05_aapm/stage1_solve.py", line 179, in init
+    f0 = tru + AMP * pat[kind][:, None] * vec([1.0, -1.0, 0.0])
+               ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+RuntimeError: The size of tensor a (512) must match the size of tensor b (3) at non-singleton dimension 1

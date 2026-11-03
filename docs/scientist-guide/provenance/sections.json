@@ -1,0 +1,179 @@
+{
+ "sections": {
+  "briefing.qmd": {
+   "depends_on": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "1d100a201c8b0aae"
+     },
+     "ref": "F-025",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-039/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "8b9a828ce584d09d"
+     },
+     "ref": "F-039",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-043/R2:supported",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5da65050bb9ba077"
+     },
+     "ref": "F-043",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "status": null
+     },
+     "ref": "CP-013",
+     "role": "supports"
+    }
+   ],
+   "owner": "agent",
+   "pinned_at": "2026-10-20T10:45:16-04:00",
+   "prose_sha256": "ab4895f3b3d0a026c9e281864900cef42c98e4bec5622a18258ff17fe8566374"
+  },
+  "index.qmd": {
+   "depends_on": [],
+   "owner": "agent",
+   "pinned_at": "2026-10-20T10:45:16-04:00",
+   "prose_sha256": "b8277c6c9c7e43f1eeea3abed4247bdfb2027ba3d5e308ca6a534ecfd20e6fb4"
+  },
+  "investigations/forward-model-trust.qmd": {
+   "depends_on": [],
+   "owner": "agent",
+   "pinned_at": "2026-10-20T10:45:17-04:00",
+   "prose_sha256": "811bf72a6b0e181fdfa7cc38fc6d5bf6f2ef64f79abc31f15e50f0616ea930ed"
+  },
+  "investigations/identifiability.qmd": {
+   "depends_on": [],
+   "owner": "agent",
+   "pinned_at": "2026-10-20T10:45:17-04:00",
+   "prose_sha256": "8986f104eaa45032e0aa006e2524cf2955c6c49b35252fc5724ae552d8dbb0da"
+  },
+  "investigations/label-free.qmd": {
+   "depends_on": [
+    {
+     "basis": {
+      "status": "completed",
+      "syntheses": 2
+     },
+     "ref": "EXP-019",
+     "role": "supports"
+    }
+   ],
+   "owner": "agent",
+   "pinned_at": "2026-10-20T10:45:17-04:00",
+   "prose_sha256": "8a72f39241601d52589d5d0fe0377dec3ad798fa770bc5d2f9ae93ff5355e59d"
+  },
+  "investigations/mismatch-bias.qmd": {
+   "depends_on": [],
+   "owner": "agent",
+   "pinned_at": "2026-10-20T10:45:17-04:00",
+   "prose_sha256": "fbc6cddcfe3b88b74861bd1dfdc05424378654d01e5d518d95b4c5e01fbf0a0a"
+  },
+  "investigations/null-direction-information.qmd": {
+   "depends_on": [],
+   "owner": "agent",
+   "pinned_at": "2026-10-20T10:45:17-04:00",
+   "prose_sha256": "655e9d35d57e6b1c392e08e2c80e09db5ced44f61a75f6797031739632805b0e"
+  },
+  "open-questions.qmd": {
+   "depends_on": [],
+   "owner": "agent",
+   "pinned_at": "2026-10-20T10:45:17-04:00",
+   "prose_sha256": "d99901d6dc34e154c6fcfcbc976456dcda0362c6543483c3e57113528b292624"
+  },
+  "storyline.qmd": {
+   "depends_on": [
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "354ae85c8bf9a767"
+     },
+     "ref": "F-024",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": null,
+      "numerics": "verified",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "1d100a201c8b0aae"
+     },
+     "ref": "F-025",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-043/R2:supported",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "5da65050bb9ba077"
+     },
+     "ref": "F-043",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "medium",
+      "numerics": "no_bindings",
+      "review": null,
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "6bb7b463c3b8f4d3"
+     },
+     "ref": "F-044",
+     "role": "supports"
+    },
+    {
+     "basis": {
+      "confidence": "high",
+      "numerics": "no_bindings",
+      "review": "F-039/R1:needs_work",
+      "status": "preliminary",
+      "superseded_by": null,
+      "text": "8b9a828ce584d09d"
+     },
+     "ref": "F-039",
+     "role": "supports"
+    }
+   ],
+   "owner": "agent",
+   "pinned_at": "2026-10-20T10:45:17-04:00",
+   "prose_sha256": "c5a0d4dd5713588ee5609fd1091d218086ff21dc77338ba801634ced68a17b39"
+  },
+  "theory.qmd": {
+   "depends_on": [],
+   "owner": "agent",
+   "pinned_at": "2026-10-20T10:45:16-04:00",
+   "prose_sha256": "bf776d90531e54f05181dd650a1c5778adbe840d67a3afe061b0ecf3078de50f"
+  }
+ },
+ "version": 1
+}

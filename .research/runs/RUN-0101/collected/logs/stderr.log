@@ -1,0 +1,40 @@
+Traceback (most recent call last):
+  File "/home/yb107/research-os/projects/CTsynth/code/EXP-036/RUN-0101/source/projects/p05_aapm/stage1_solve.py", line 277, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/yb107/research-os/projects/CTsynth/code/EXP-036/RUN-0101/source/projects/p05_aapm/stage1_solve.py", line 246, in main
+    x, info = minimize(loss_fn, x0, max_iter=a.max_iter, abs_tol=1e-12 * SC)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yb107/research-os/projects/CTsynth/code/EXP-036/RUN-0101/source/src/ctsynth/aapm/solve.py", line 83, in minimize
+    opt.step(closure)  # type: ignore[no-untyped-call]
+    ^^^^^^^^^^^^^^^^^
+  File "/home/yb107/research-os/projects/CTsynth/env/torch-venv/lib/python3.11/site-packages/torch/optim/optimizer.py", line 549, in wrapper
+    out = func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yb107/research-os/projects/CTsynth/env/torch-venv/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yb107/research-os/projects/CTsynth/env/torch-venv/lib/python3.11/site-packages/torch/optim/lbfgs.py", line 456, in step
+    loss, flat_grad, t, ls_func_evals = _strong_wolfe(
+                                        ^^^^^^^^^^^^^^
+  File "/home/yb107/research-os/projects/CTsynth/env/torch-venv/lib/python3.11/site-packages/torch/optim/lbfgs.py", line 47, in _strong_wolfe
+    f_new, g_new = obj_func(x, t, d)
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/yb107/research-os/projects/CTsynth/env/torch-venv/lib/python3.11/site-packages/torch/optim/lbfgs.py", line 454, in obj_func
+    return self._directional_evaluate(closure, x, t, d)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yb107/research-os/projects/CTsynth/env/torch-venv/lib/python3.11/site-packages/torch/optim/lbfgs.py", line 295, in _directional_evaluate
+    loss = float(closure())
+                 ^^^^^^^^^
+  File "/home/yb107/research-os/projects/CTsynth/env/torch-venv/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yb107/research-os/projects/CTsynth/code/EXP-036/RUN-0101/source/src/ctsynth/aapm/solve.py", line 66, in closure
+    loss = loss_fn(x)
+           ^^^^^^^^^^
+  File "/home/yb107/research-os/projects/CTsynth/code/EXP-036/RUN-0101/source/projects/p05_aapm/stage1_solve.py", line 241, in <lambda>
+    FullMSE.apply(x, b, fwd, T, p) if torch.is_grad_enabled() else _val(x, b, p)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yb107/research-os/projects/CTsynth/code/EXP-036/RUN-0101/source/projects/p05_aapm/stage1_solve.py", line 71, in forward
+    raise FloatingPointError(
+FloatingPointError: non-finite loss at chunk 0: x[-0.0674,0.502] frac[-0.0674,0.502] pred_nonfinite=104/65536 grad_nonfinite=76833

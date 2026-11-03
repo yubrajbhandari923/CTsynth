@@ -1,0 +1,135 @@
+# Can the numerical tools be trusted? {#sec-trust}
+
+## Motivation
+
+Every later conclusion about learning assumes that the differentiable forward model reproduces the benchmark's data, that
+its gradients are correct, that the score we optimise and report is the benchmark's own score, and that the model is not
+simply a different physics from an independent simulator. A negative result from a faulty projector would say nothing
+about the science, so these checks came first. The forward model in question maps the three material volume fractions in
+each pixel to the transmitted fraction $T_k$ at each tube voltage $k$ through the polychromatic Beer-Lambert law
+(@eq-beer), integrated along every ray of a fan-beam scan.
+
+The evidence is of uneven strength, and it is worth saying so first. The comparison with the official generator and the
+gradient check are each recorded in a single experiment summary that has not had an independent review. The comparison with
+an independent simulator was reviewed once, and the review found an error (described below); the corrected result is
+itself still awaiting review. The remaining checks are preliminary findings. None of these checks used real scanner data.
+
+Two different forward models appear in this chapter and they should not be confused. The first is the **benchmark
+pipeline** used for all learning experiments in this guide: a fan-beam projector with the benchmark's published spectra,
+attenuation tables and geometry, for adipose, fibroglandular tissue and calcification. The second is the project's earlier,
+more general model (water, calcium and iodine, with the project's own spectra and attenuation tables), which was compared
+with an independent simulator. A check of one does not transfer to the other, because they use different spectra and
+different material tables.
+
+## What was verified
+
+*Agreement with the official generator.* [Our projector and polychromatic forward model reproduce the official benchmark
+generator's transmissions to float32 rounding on the starting-kit and dataset cases, with the largest error about 3.3 times
+below the tolerance derived beforehand.]{#clm-0020 .claim} The comparison used the 10 starting-kit cases and 40 evenly
+spaced dataset cases, both tube voltages, and it holds under the model the benchmark shares with us (its published spectra,
+attenuation tables and geometry, unit incident intensity, no noise). The largest absolute difference in transmission was
+$3.6\times10^{-7}$ and no ray exceeded the tolerance. The tolerance was derived from float32 error propagation before the
+comparison, not tuned to the result. The official projector integrates over each pixel layer by layer; at reduced
+resolution (64 and 128 pixels, one starting-kit case) it agreed with an exact chord-length integral to within
+$4.3\times10^{-14}$ cm, so the official layered projector is, to rounding, the exact line integral. The comparison is
+against the official generator's own forward model, so it shows that we implemented that model correctly, not that the
+model is a faithful description of a scanner. The first attempt at this
+comparison failed because of an error in our driver script (it looked for the starting-kit cases among the 1000 dataset
+cases, where they are not present); it was recorded, fixed and rerun, and produced no physics result.
+
+*Gradients.* [Automatic-differentiation gradients of the projection loss agree with central finite differences (median
+relative error $9.4\times10^{-9}$ on a small geometry, $1.5\times10^{-7}$ on the full $512\times512$ geometry at sampled
+entries).]{#clm-0021 .claim} These medians are for the loss on transmissions in double precision; the worst sampled entries
+were off by about $10^{-6}$ (relative), and variants of the loss on $-\ln T$ gave medians between $6\times10^{-9}$ and
+$2.3\times10^{-7}$. Gradients are finite and non-zero for all three materials, single- and double-precision
+gradients agree to a relative $2\times10^{-7}$ in the Euclidean norm, and gradient descent from a valid but wrong starting
+point on a tiny phantom reduced the loss by 99.8%. The check samples 60 entries on the small ($24\times24$-pixel) geometry
+and 12 on the large one, and both use only 16 of the view positions, so it makes a gradient bug unlikely, not impossible.
+The optimisation test generated its data with the same model it then inverted, so it is not a test of model mismatch. It verifies the differentiable
+physics, not that minimising the loss recovers the right materials, which is the subject of @sec-labelfree.
+
+*A property of the forward model that constrains the learning code.* [With unconstrained network outputs the polychromatic
+forward model produces non-finite projection errors, because negative fractions give negative path lengths and the
+exponential of a large positive attenuation overflows; every physics-trained network therefore needs a non-negative output
+parameterisation.]{#clm-0090 .claim} This was found in the first supervised smoke test, which also missed its
+pre-registered loss-reduction criterion because it was too short; both problems were fixed before the rerun that passed.
+
+*The score and the acquisition conventions.* The benchmark's primary score is the mean over cases of the per-case
+root-mean-square error of the volume fractions over the three materials and all $n_x n_y$ pixels (@eq-s1), with
+$\hat f$ the estimate, $f$ the truth and $C$ the number of cases:
+
+$$
+s_1 \;=\; \frac{1}{C}\sum_{c=1}^{C}\sqrt{\frac{1}{3\,n_x n_y}\sum_{m=1}^{3}\sum_{x,y}\bigl(\hat f_{c,m}(x,y)-f_{c,m}(x,y)\bigr)^2}.
+$$ {#eq-s1}
+
+[Our implementation of the benchmark's primary score reproduces the official starting-kit formula to $10^{-12}$ relative
+tolerance on a random four-case test, including the kit's different array axis order.]{#clm-0091 .claim} The test used
+$16\times16$ images and was a unit test, not a registered run; the official divisor on the real task is
+$3\times512^2$ per case, and the records state that scores at reduced resolution are not comparable with published values. A
+separate source-code reading checked the second, tie-breaking score as well, including a kit quirk that omits the last
+region-of-interest position. [The kit applies kVp switching by interlacing: the 80 kVp measurement is carried by the even
+views and the 50 kVp measurement by the odd views of a 512-view circular fan-beam scan, and our convention matches the kit's
+source code; the kit's projector itself builds the full 512-view sinogram and the split is applied afterwards, so the stored
+256-view arrays for each voltage are every other view, not contiguous angular sweeps.]{#clm-0092 .claim} Any
+projection-domain code must therefore apply the parity split itself. This was verified by reading the kit source, not by a
+numerical experiment.
+
+*Agreement with an independent simulator (the earlier general model).* [With the reference simulator's own spectrum,
+detector weights and attenuation, the earlier general-purpose model reproduces it to 0.47-1.05% (0.26-0.47% with
+voxel-marched chords), a check of the adapter and geometry because the transport equation is shared; replacing the
+spectrum with our own raises the mismatch to about 2.4-3.2%, the largest single term (synthetic disk phantoms, no scatter,
+preliminary).]{#clm-0022 .claim} The percentages are relative root-mean-square differences in $-\ln T$ (the log attenuation
+of the transmitted fraction $T$) on rays through the object, over three disk phantoms at 80 and 120 kVp. A point-binned
+spectrum convention gives 2.1-2.7% and a half-bin shift of the bin edges 4-6%, so only "about 2-3% or more" is robust. The
+spectrum term compares two different spectrum specifications (the reference simulator's tungsten-target spectra and our own, whose
+filtration was not verified), ours being systematically softer, so it measures sensitivity to the spectrum specification
+and is not an error of either. Changing the attenuation tables moved projections by only 0.1-0.2%, and the detector response
+by at most 0.25% (the superseded earlier version of the finding said at most about 1%; the corrected finding is used here). [An earlier version of this comparison double-counted photons in a binning window at 80 kVp and reported
+2.1-2.6%; an independent review caught the error and the corrected, larger number replaced it.]{#clm-0093 .claim} The corrected finding still needs its own review. The comparison was single-ray, one detector row, with no scatter
+no photon counting and no reconstruction-domain comparison, and the reference simulator is itself a model, not the truth.
+
+*Reproducibility across machines.* This check concerns the reference simulator, not our model. [The reference simulator, run
+from one frozen source and configuration on the cluster, reproduced its own laptop result to a maximum absolute difference of
+$9.66\times10^{-6}$ in $-\ln T$ and reconstructions to 0.0133 HU (not bit-identical; a patched build; one phantom, one tube
+voltage, noise-free, CPU only).]{#clm-0023 .claim} It shows that the workflow for moving computations to the cluster does
+not change results appreciably. Two earlier cluster attempts failed on a line-ending defect in the simulator's source
+distribution, which is why the build was patched (the source archive was hash-verified; only the build scripts' line endings
+were changed).
+
+## The data and the split
+
+[The 1000-case benchmark release was checksum-verified and split once, before any training, into 800 training, 100
+validation and 100 test cases with no duplicate phantoms; all cases share a single support mask, so occupancy-based ideas
+cannot be tested for generalisation to new supports on this dataset, and the test split has not been
+used.]{#clm-0058 .claim} The ten starting-kit cases are not among the 1000, so they form a small out-of-sample check on the
+same support. Duplicate detection is by exact byte hash, so near-duplicates are not excluded, and the release carries no
+patient-level grouping because the phantoms are synthetic. The shared mask also means that "knowing where tissue is" is
+knowing one fixed image, a point that matters for the occupancy-based network outputs in @sec-labelfree.
+
+## How citable are the runs?
+
+A computed result is only as useful as the code that produced it can be identified. The project records, for every run, whether
+the working tree had uncommitted changes. [Early in the project the whole-tree "uncommitted changes" flag was found to
+mark runs as not citable merely because the provenance system was writing its own log into the repository while the run
+executed; there turn out to be two whole-tree flags, sampled at different moments, which legitimately disagree, and the project
+therefore uses a third flag, restricted to source files, as the citability signal.]{#clm-0094 .claim}
+The history is untidy and is told here as it happened. We first stated that the whole-tree flag is always true during a run;
+a reviewer pointed to a run that recorded it false; that statement was first conceded and then restored when both records
+turned out to be correct but sampled at different times. The supporting finding remains preliminary and rests on run records
+without numerical metrics. [A later engineering decision widened the first, narrower definition of "source" (source code, tests and configurations
+only) to one definition for citability (source code, tests, configurations, scripts, the project directories, the project
+metadata file and the dependency lock file, with result directories counted as outputs), shared by the run metadata and the
+pre-launch checks; a run with unknown source state is never citable.]{#clm-0095 .claim}
+The learning runs examined for this guide (the reference supervised run, the baseline label-free run and the structured
+label-free run) were recorded by the provenance system with a clear whole-tree flag at launch. This is a statement about the process, not
+about correctness; it also does not mean that every run in the project is citable, and this guide does not audit every run.
+
+## What this does and does not establish
+
+[These checks establish that the numerical stack agrees with the benchmark generator and with itself; they say nothing about
+real-scanner accuracy, noise, scatter or spectral error.]{#clm-0024 .claim} They make a bug in the projector an unlikely
+explanation for the negative results that follow, and they do not show that conclusions about the benchmark carry over to
+clinical data (@sec-open). One limitation is structural: the benchmark data were generated by the same model our
+projector implements, so agreement is expected, and the checks cannot reveal how much a different, more realistic generator
+would change the answers. The spectrum comparison above, made with the earlier general model, shows that such a difference
+can be a few per cent in projections.
